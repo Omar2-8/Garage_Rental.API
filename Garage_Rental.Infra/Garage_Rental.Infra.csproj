@@ -19,4 +19,9 @@
     <ProjectReference Include="..\Garage_Rental.Core\Garage_Rental.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Service\" />
+    <Folder Include="Repository\" />
+  </ItemGroup>
+
 </Project>
