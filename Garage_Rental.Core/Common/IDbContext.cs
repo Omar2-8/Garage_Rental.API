@@ -7,10 +7,7 @@ namespace Garage_Rental.Core.Common
 {
     public interface IDbContext
     {
-        public interface IDbContext
-        {
-            DbConnection Connection { get; }
-        }
+        public DbConnection Connection { get; }
 
     }
 }

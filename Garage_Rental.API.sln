@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Garage_Rental.API", "Garage_Rental.API\Garage_Rental.API.csproj", "{1EC35291-945E-47E1-A059-93BF129E4ED0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Garage_Rental.API", "Garage_Rental.API\Garage_Rental.API.csproj", "{1EC35291-945E-47E1-A059-93BF129E4ED0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Garage_Rental.Core", "Garage_Rental.Core\Garage_Rental.Core.csproj", "{DB3D42E7-13A1-4FB5-AEC1-842FCA065C3D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Garage_Rental.Core", "Garage_Rental.Core\Garage_Rental.Core.csproj", "{DB3D42E7-13A1-4FB5-AEC1-842FCA065C3D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Garage_Rental.Infra", "Garage_Rental.Infra\Garage_Rental.Infra.csproj", "{B6DC91C0-B47D-474C-8D89-B3FD2F85037A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Garage_Rental.Infra", "Garage_Rental.Infra\Garage_Rental.Infra.csproj", "{B6DC91C0-B47D-474C-8D89-B3FD2F85037A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
