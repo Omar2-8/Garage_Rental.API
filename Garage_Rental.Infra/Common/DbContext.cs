@@ -9,7 +9,7 @@ using System.Text;
 
 namespace Garage_Rental.Infra.Common
 {
-    internal class DbContext : IDbContext
+    public class DbContext : IDbContext
     {
         private DbConnection _connection;
         private readonly IConfiguration _configuration;
