@@ -29,11 +29,10 @@ namespace Garage_Rental.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-           // services.AddScoped<IDbContext, DbContext>();
 
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+       //zaID//fsadfgfdgd
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
