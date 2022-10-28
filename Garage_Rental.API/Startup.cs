@@ -1,10 +1,13 @@
 using Garage_Rental.Core.Common;
- 
+using Garage_Rental.Infra.Common;
+
+
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+ 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -29,6 +32,7 @@ namespace Garage_Rental.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddScoped<IDbContext, DbContext>();
            //by Omar 
            //by falah
         }
