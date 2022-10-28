@@ -30,10 +30,11 @@ namespace Garage_Rental.API
         {
             services.AddControllers();
            //by Omar 
-
+           //by falah
         }
 
-       //zaID//fsadfgfdgd
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
