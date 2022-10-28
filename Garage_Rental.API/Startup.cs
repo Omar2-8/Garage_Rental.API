@@ -29,6 +29,7 @@ namespace Garage_Rental.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+           //by Omar 
 
         }
 
