@@ -22,14 +22,16 @@ namespace Garage_Rental.Infra.Repository
         {
             var p = new DynamicParameters();
 
-            p.Add("FIRST_NAME", t.FirstName, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("LAST_NAME", t.LastName, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("Email", t.Email, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("Password", t.Password, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("Phonenumber", t.Phonenumber, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("UserImage", t.UserImage, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("FName", t.FirstName, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("LName", t.LastName, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("U_email", t.Email, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("pass", t.Password, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("phone", t.Phonenumber, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("img", t.UserImage, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("U_identity", t.UserIdentity, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("role_id", t.RolesId, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("result", dbType: DbType.Int32, direction: ParameterDirection.Output);
-            _dbcontext.Connection.Execute("COURSE_PACKAGE.CREATECOURSES", p, commandType: CommandType.StoredProcedure);
+            _dbcontext.Connection.Execute("Users_Package.CREATEUSER", p, commandType: CommandType.StoredProcedure);
             int id = p.Get<int>("result");
             if (id != 0)
             {
@@ -41,22 +43,41 @@ namespace Garage_Rental.Infra.Repository
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var p = new DynamicParameters();
+            p.Add("Id", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            _dbcontext.Connection.Execute("Users_Package.DeleteUsers", p, commandType: CommandType.StoredProcedure);
         }
 
         public List<User> GetAll()
         {
-            throw new NotImplementedException();
+            IEnumerable<User> result = _dbcontext.Connection.Query<User>("Users_Package.GETALLUSERS", commandType: CommandType.StoredProcedure);
+            return result.ToList();
         }
 
         public User GetById(int id)
         {
-            throw new NotImplementedException();
+            var p = new DynamicParameters();
+            p.Add("Id", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            IEnumerable<User> result = _dbcontext.Connection.Query<User>("Users_Package.GetUSERById", p, commandType: CommandType.StoredProcedure);
+            return result.FirstOrDefault();
         }
 
         public void Update(User t)
         {
-            throw new NotImplementedException();
+            var p = new DynamicParameters();
+            p.Add("ID", t.UserId, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("FName", t.FirstName, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("LName", t.LastName, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("U_email", t.Email, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("pass", t.Password, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("phone", t.Phonenumber, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("img", t.UserImage, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("U_identity", t.UserIdentity, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("role_id", t.RolesId, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("result", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            _dbcontext.Connection.Execute("Users_Package.UPDATEUSER", p, commandType: CommandType.StoredProcedure);
+            
         }
+    
     }
 }
