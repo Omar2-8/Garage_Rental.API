@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.OpenApi.Models;
 
 namespace Garage_Rental.API
 {
@@ -43,6 +44,18 @@ namespace Garage_Rental.API
 
             services.AddScoped<IDbContext, DbContext>();
             services.AddControllers();
+            services.AddSwaggerGen();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "Swagger API",
+                    Version = "v1",
+                    Description = "Description for the API goes here.",
+                    
+                });
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,6 +66,11 @@ namespace Garage_Rental.API
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("v1/swagger.json", "My Api v1");
+            });
 
             app.UseHttpsRedirection();
 
@@ -62,8 +80,11 @@ namespace Garage_Rental.API
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapSwagger();
                 endpoints.MapControllers();
             });
-        }
+            
+       
+        } 
     }
 }
