@@ -12,20 +12,20 @@ namespace Garage_Rental.Core.Data
             Rents = new HashSet<Rent>();
         }
 
-        public decimal GarageId { get; set; }
-        public string GarageName { get; set; }
+        public decimal GARAGE_ID { get; set; }
+        public string GARAGE_NAME { get; set; }
         public string Latitude { get; set; }
         public string Longitude { get; set; }
         public string Image1 { get; set; }
         public string Image2 { get; set; }
-        public decimal? AvailableFrom { get; set; }
-        public decimal? AvailableTo { get; set; }
-        public decimal? RentPrice { get; set; }
+        public decimal? AVAILABLE_FROM { get; set; }
+        public decimal? AVAILABLE_TO { get; set; }
+        public decimal? RENT_PRICE { get; set; }
         public string Street { get; set; }
-        public decimal? BuildingNumber { get; set; }
+        public decimal? BUILDING_NUMBER { get; set; }
         public string Status { get; set; }
-        public string GarageMode { get; set; }
-        public decimal? UserId { get; set; }
+        public string GARAGE_MODE { get; set; }
+        public decimal? USER_ID { get; set; }
 
         public virtual User User { get; set; }
         public virtual ICollection<Rent> Rents { get; set; }

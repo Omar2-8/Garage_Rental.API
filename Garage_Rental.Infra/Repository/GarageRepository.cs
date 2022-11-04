@@ -21,14 +21,14 @@ namespace Garage_Rental.Infra.Repository
         public bool Create(Garage t)
         {
             var p = new DynamicParameters();
-            p.Add("Name",t.GarageName , dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("Name",t.GARAGE_NAME , dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("G_Latitude", t.Latitude, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("G_Longitude", t.Longitude, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("Img1", t.Image1, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("Img2", t.Image2, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("Price", t.RentPrice, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("Price", t.RENT_PRICE, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("G_Street", t.Street, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("BUILDING_Num", t.BuildingNumber, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("BUILDING_Num", t.BUILDING_NUMBER, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("U_ID", t.Latitude, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("result", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbcontext.Connection.Execute("GARAGE_PACKAGE.CreateGARAGE", p, commandType: CommandType.StoredProcedure);
@@ -65,15 +65,15 @@ namespace Garage_Rental.Infra.Repository
         public void Update(Garage t)
         {
             var p = new DynamicParameters();
-            p.Add("G_ID", t.GarageId, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("Name", t.GarageName, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("G_ID", t.GARAGE_ID, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("Name", t.GARAGE_NAME, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("G_Latitude", t.Latitude, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("G_Longitude", t.Longitude, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("Img1", t.Image1, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("Img2", t.Image2, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("Price", t.RentPrice, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("Price", t.RENT_PRICE, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("G_Street", t.Street, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("BUILDING_Num", t.BuildingNumber, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("BUILDING_Num", t.BUILDING_NUMBER, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("U_ID", t.Latitude, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("result", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbcontext.Connection.Execute("GARAGE_PACKAGE.UPDATEGARAGE", p, commandType: CommandType.StoredProcedure);
