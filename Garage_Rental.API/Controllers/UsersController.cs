@@ -22,6 +22,7 @@ namespace Garage_Rental.API.Controllers
         {
             return _usersService.GetAll();
         }
+
         [HttpPost]
         public bool Create(User user)
         {
@@ -29,14 +30,12 @@ namespace Garage_Rental.API.Controllers
         }
 
         [HttpDelete]
-        //[Route("Delete/{id}")]
         public void Delete(int id)
         {
             _usersService.Delete(id);
         }
 
-        [HttpGet]
-       // [Route("GetById/{id}")]
+        [HttpGet]       
         public User GetById(int id)
         {
             return _usersService.GetById(id);
