@@ -34,13 +34,29 @@ namespace Garage_Rental.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //by Falah
             services.AddScoped<IGenericRepository<User>, UsersRepository>();
             services.AddScoped<IGenericService<User>, UsersService>();
+            
             services.AddScoped<IGenericRepository<Garage>, GarageRepository>();
             services.AddScoped<IGenericService<Garage>, GarageService>();
+            
             services.AddScoped<IGenericRepository<Car>, CarRepository>();
             services.AddScoped<IGenericService<Car>, CarService>();
 
+            //by Omar Master :)
+            services.AddScoped<IGenericRepository<Payment>, PaymentRepository>();
+            services.AddScoped<IGenericService<Payment>, PaymentService>();
+            
+            services.AddScoped<IGenericRepository<Rent>, RentRepository>();
+            services.AddScoped<IGenericService<Rent>, RentService>();
+            
+            services.AddScoped<IGenericRepository<Role>, RoleRepository>();
+            services.AddScoped<IGenericService<Role>, RoleService>(); 
+
+            // By Zaid 
+            // where is your code bitch     
+            
 
             services.AddScoped<IDbContext, DbContext>();
             services.AddControllers();
