@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Garage_Rental.Infra.Service
 {
-    internal class GarageService : IGenericService<Garage>
+    public class GarageService : IGenericService<Garage>
     {
         private readonly IGenericRepository<Garage> _garageRepository;
 
