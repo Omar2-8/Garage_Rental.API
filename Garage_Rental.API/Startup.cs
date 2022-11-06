@@ -52,12 +52,23 @@ namespace Garage_Rental.API
             services.AddScoped<IGenericService<Rent>, RentService>();
             
             services.AddScoped<IGenericRepository<Role>, RoleRepository>();
-            services.AddScoped<IGenericService<Role>, RoleService>(); 
+            services.AddScoped<IGenericService<Role>, RoleService>();
+
+
 
             // By Zaid 
-            // where is your code bitch     
-            
+            // where is your code bitch
+            // In ur ass
+            services.AddScoped<IGenericRepository<Testimonial>, TestimonialRepository>();
+            services.AddScoped<IGenericService<Testimonial>, TestimonialService>();
 
+            services.AddScoped<IGenericRepository<ContactU>, ContactUsRepository>();
+            services.AddScoped<IGenericService<ContactU>, ContactUsService>();
+
+            services.AddScoped<IGenericRepository<AboutU>, AboutUsRepository>();
+            services.AddScoped<IGenericService<AboutU>, AboutUsService>();
+
+            
             services.AddScoped<IDbContext, DbContext>();
             services.AddControllers();
             services.AddSwaggerGen();
