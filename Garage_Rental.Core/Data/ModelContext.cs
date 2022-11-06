@@ -358,12 +358,12 @@ namespace Garage_Rental.Core.Data
             {
                 entity.ToTable("ROLES");
 
-                entity.Property(e => e.RoleId)
+                entity.Property(e => e.ROLE_ID)
                     .HasColumnType("NUMBER")
                     .ValueGeneratedOnAdd()
                     .HasColumnName("ROLE_ID");
 
-                entity.Property(e => e.RoleName)
+                entity.Property(e => e.ROLE_NAME)
                     .IsRequired()
                     .HasMaxLength(20)
                     .IsUnicode(false)

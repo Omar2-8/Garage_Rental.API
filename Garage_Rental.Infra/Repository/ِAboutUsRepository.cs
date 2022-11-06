@@ -10,7 +10,7 @@ using System.Text;
 
 namespace Garage_Rental.Infra.Repository
 {
-    internal class AboutUsRepository : IGenericRepository<AboutU>
+    public class AboutUsRepository : IGenericRepository<AboutU>
     {
         private readonly IDbContext dBContext;
 

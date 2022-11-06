@@ -5,20 +5,16 @@ using Garage_Rental.Core.Service;
 using Garage_Rental.Infra.Common;
 using Garage_Rental.Infra.Repository;
 using Garage_Rental.Infra.Service;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
- 
+
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System.Text;
 
 namespace Garage_Rental.API
 {
@@ -30,11 +26,31 @@ namespace Garage_Rental.API
         }
 
         public IConfiguration Configuration { get; }
+        
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             //by Falah
+
+            services.AddAuthentication(opt => {
+                opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+        .AddJwtBearer(options =>
+        {
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("follow your dreams, the sky is the limit"))
+            };
+        });
+
+
+
             services.AddScoped<IGenericRepository<User>, UsersRepository>();
             services.AddScoped<IGenericService<User>, UsersService>();
             
@@ -44,6 +60,9 @@ namespace Garage_Rental.API
             services.AddScoped<IGenericRepository<Car>, CarRepository>();
             services.AddScoped<IGenericService<Car>, CarService>();
 
+            services.AddScoped<IAuthRepository, AuthRepository>();
+            services.AddScoped<IAuthService, AuthService>();
+
             //by Omar Master :)
             services.AddScoped<IGenericRepository<Payment>, PaymentRepository>();
             services.AddScoped<IGenericService<Payment>, PaymentService>();
@@ -52,12 +71,23 @@ namespace Garage_Rental.API
             services.AddScoped<IGenericService<Rent>, RentService>();
             
             services.AddScoped<IGenericRepository<Role>, RoleRepository>();
-            services.AddScoped<IGenericService<Role>, RoleService>(); 
+            services.AddScoped<IGenericService<Role>, RoleService>();
+
+
 
             // By Zaid 
-            // where is your code bitch     
-            
+            // where is your code bitch
+            // In ur ass
+            services.AddScoped<IGenericRepository<Testimonial>, TestimonialRepository>();
+            services.AddScoped<IGenericService<Testimonial>, TestimonialService>();
 
+            services.AddScoped<IGenericRepository<ContactU>, ContactUsRepository>();
+            services.AddScoped<IGenericService<ContactU>, ContactUsService>();
+
+            services.AddScoped<IGenericRepository<AboutU>, AboutUsRepository>();
+            services.AddScoped<IGenericService<AboutU>, AboutUsService>();
+
+            
             services.AddScoped<IDbContext, DbContext>();
             services.AddControllers();
             services.AddSwaggerGen();
