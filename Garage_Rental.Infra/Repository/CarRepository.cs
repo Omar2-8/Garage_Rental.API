@@ -21,9 +21,9 @@ namespace Garage_Rental.Infra.Repository
         public bool Create(Car t)
         {
             var p = new DynamicParameters();
-            p.Add("CAR_TYPE", t.CarType, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("CAR_PLATE", t.CarPlate, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("User_Id", t.UserId, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("CAR_TYPE", t.CAR_TYPE, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("CAR_PLATE", t.CAR_PLATE, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("User_Id", t.USER_ID, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("result", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbcontext.Connection.Execute("Car_Package.CreateCar", p, commandType: CommandType.StoredProcedure);
             int id = p.Get<int>("result");
@@ -59,10 +59,10 @@ namespace Garage_Rental.Infra.Repository
         public void Update(Car t)
         {
             var p = new DynamicParameters();
-            p.Add("ID", t.CarId, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("CAR_TYPE", t.CarType, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("CAR_PLATE", t.CarPlate, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("User_Id", t.UserId, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("ID", t.CAR_ID, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("CAR_TYPE", t.CAR_TYPE, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("CAR_PLATE", t.CAR_PLATE, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("User_Id", t.USER_ID, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("result", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbcontext.Connection.Execute("Car_Package.CreateCar", p, commandType: CommandType.StoredProcedure);
         }

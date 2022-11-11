@@ -12,8 +12,8 @@ namespace Garage_Rental.Core.Data
             Users = new HashSet<User>();
         }
 
-        public decimal RoleId { get; set; }
-        public string RoleName { get; set; }
+        public decimal ROLE_ID { get; set; }
+        public string ROLE_NAME { get; set; }
 
         public virtual ICollection<User> Users { get; set; }
     }

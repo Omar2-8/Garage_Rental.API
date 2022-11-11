@@ -24,7 +24,7 @@ namespace Garage_Rental.Infra.Repository
             try
             {
                 var p = new DynamicParameters();
-            p.Add("Role_Name", t.RoleName, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("Role_Name", t.ROLE_NAME, dbType: DbType.String, direction: ParameterDirection.Input);
             var result = dBContext.Connection.ExecuteAsync("stdcourse_Package.CreateRole",
                 p, commandType: CommandType.StoredProcedure);
                 return true;
@@ -62,8 +62,8 @@ namespace Garage_Rental.Infra.Repository
         public void Update(Role t)
         {
             var p = new DynamicParameters();
-            p.Add("Role_Id", t.RoleId, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-            p.Add("Role_Name", t.RoleName, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("Role_Id", t.ROLE_NAME, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+            p.Add("Role_Name", t.ROLE_NAME, dbType: DbType.String, direction: ParameterDirection.Input);
             var result = dBContext.Connection.ExecuteAsync("stdcourse_Package.UpdateRole",
                 p, commandType: CommandType.StoredProcedure);
 
