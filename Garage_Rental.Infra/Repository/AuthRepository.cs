@@ -26,7 +26,7 @@ namespace Garage_Rental.Infra.Repository
             p.Add("PASS", login.Password, dbType: DbType.String, direction: ParameterDirection.Input);
             IEnumerable<User> result = _dbcontext.Connection.Query<User>("Users_Package.User_Login", p, commandType: CommandType.StoredProcedure);
             return result.FirstOrDefault();
-        }
+        }//سيتمباخثتؤب
 
         public bool AuthRegister(User register)
         {
