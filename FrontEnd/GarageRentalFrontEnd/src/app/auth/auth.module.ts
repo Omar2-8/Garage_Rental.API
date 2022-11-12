@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import {MatCardModule} from '@angular/material/card';
 import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -12,13 +12,15 @@ import {MatInputModule} from '@angular/material/input';
   declarations: [
     LoginComponent,
     RegisterComponent
+   
   ],
   imports: [
     CommonModule,
     AuthRoutingModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatCardModule
   ]
 })
 export class AuthModule { }
