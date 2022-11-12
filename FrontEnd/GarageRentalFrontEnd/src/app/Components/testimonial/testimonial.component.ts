@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import 'lodash';
 
+declare var _:any[];
 @Component({
   selector: 'app-testimonial',
   templateUrl: './testimonial.component.html',
