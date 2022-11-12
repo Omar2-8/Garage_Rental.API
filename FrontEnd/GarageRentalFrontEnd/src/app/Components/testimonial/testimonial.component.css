@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+ HEAD
 body {
     margin: 0;
     padding: 0;
@@ -132,8 +132,8 @@ hr {
     .img-1{
         margin-right: 0 !important;
     }
+  }
 
-=======
 /* Google Fonts - Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
@@ -271,5 +271,5 @@ body{
   .swiper-navBtn{
     display: none;
   }
->>>>>>> d669fa952856cfdffedcc92dd36a8dce7d7009fe
+
 }
