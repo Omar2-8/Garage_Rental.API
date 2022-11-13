@@ -2,11 +2,13 @@
 using Garage_Rental.Core.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Garage_Rental.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class GarageController : ControllerBase
     {
@@ -29,14 +31,14 @@ namespace Garage_Rental.API.Controllers
         }
 
         [HttpDelete]
-        [Route("Delete/{id}")]
+        [Route("/{id}")]
         public void Delete(int id)
         {
             _garageService.Delete(id);
         }
 
         [HttpGet]
-        [Route("GetById/{id}")]
+        [Route("/{id}")]
         public Garage GetById(int id)
         {
             return _garageService.GetById(id);
@@ -45,6 +47,25 @@ namespace Garage_Rental.API.Controllers
         public void Update(Garage garage)
         {
             _garageService.Update(garage);
+        }
+
+        [Route("uploadImage")]
+        [HttpPost]
+        public Garage UploadIMage()
+        {
+            var file = Request.Form.Files[0];
+            var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
+            var fullPath = Path.Combine("Images", fileName);
+            using (var stream = new FileStream(fullPath, FileMode.Create))
+            {
+                file.CopyTo(stream);
+            }
+            List<int> Images = new List<int>();
+            Garage item = new Garage();
+            Garage item2 = new Garage();
+            item.Image1 = fileName;
+            item2.Image2 = fileName;
+            return item;//مش كامل الكود بدو تعديل
         }
     }
 }

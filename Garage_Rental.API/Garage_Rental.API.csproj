@@ -20,5 +20,9 @@
     <ProjectReference Include="..\Garage_Rental.Infra\Garage_Rental.Infra.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Images\" />
+  </ItemGroup>
+
 
 </Project>

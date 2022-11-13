@@ -8,11 +8,11 @@ namespace Garage_Rental.Core.Data
     public partial class Home
     {
         public decimal Id { get; set; }
-        public string Image1 { get; set; }
-        public string Title1 { get; set; }
-        public string Image2 { get; set; }
-        public string Title2 { get; set; }
-        public string Image3 { get; set; }
-        public string Title3 { get; set; }
+        public string IMAGE_1 { get; set; }
+        public string TITLE_1 { get; set; }
+        public string IMAGE_2 { get; set; }
+        public string TITLE_2 { get; set; }
+        public string IMAGE_3 { get; set; }
+        public string TITLE_3 { get; set; }
     }
 }

@@ -7,5 +7,7 @@ namespace Garage_Rental.API.Controllers
     [ApiController]
     public class VisaController : ControllerBase
     {
+
+
     }
 }

@@ -1,4 +1,5 @@
 <body>
+  <br> <br> <br> <br> <br> <br>
   <div class="container" #container>
     <div class="form-container sign-up-container">
       <form action="#">
@@ -14,6 +15,7 @@
         <input type="password" placeholder="Password" />
         <button>Sign Up</button>
       </form>
+      
     </div>
     <div class="form-container sign-in-container">
       <form action="#">
@@ -32,7 +34,9 @@
             [formControl]="email"
             title="email"
             placeholder="Email"
+            
           />
+          
           <mat-error *ngIf="email.hasError('email')">
             Please enter a valid email address
           </mat-error>
@@ -86,7 +90,7 @@
       </div>
     </div>
   </div>
-
+  
   <script src="//src/assets/js/main.js">
          let switchCtn = document.querySelector("#switch-cnt");
     let switchC1 = document.querySelector("#switch-c1");

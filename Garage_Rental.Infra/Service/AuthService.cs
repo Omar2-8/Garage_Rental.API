@@ -34,7 +34,7 @@ namespace Garage_Rental.Infra.Service
                 var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
                 var claims = new List<Claim>
                {
-                 new Claim(ClaimTypes.Name, result.Email),
+                 new Claim(ClaimTypes.Email, result.Email),
                  new Claim(ClaimTypes.Role, result.ROLES_ID.ToString())
                };
                 var tokeOptions = new JwtSecurityToken(

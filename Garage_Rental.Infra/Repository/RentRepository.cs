@@ -21,37 +21,38 @@ namespace Garage_Rental.Infra.Repository
 
         public bool Create(Rent t)
         {
-            try
-            {
+            
                 var p = new DynamicParameters();
-                p.Add("Start_Time", t.StartTime, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-                p.Add("End_Time", t.EndTime, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-                p.Add("Garage_Id", t.GarageId, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-                p.Add("User_Id", t.UserId, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-                p.Add("Rent_Date", t.RentDate, dbType: DbType.DateTime, direction: ParameterDirection.Input);
-                
-                var result = dBContext.Connection.ExecuteAsync("Rent_Package.CreatRent",
-                    p, commandType: CommandType.StoredProcedure);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+                p.Add("startTimes", t.START_TIME, dbType: DbType.Int32, direction: ParameterDirection.Input);
+                p.Add("ENDTimes", t.END_TIME, dbType: DbType.Int32, direction: ParameterDirection.Input);
+                p.Add("G_ID", t.GARAGE_ID, dbType: DbType.Int32, direction: ParameterDirection.Input);
+                p.Add("U_ID", t.USER_ID, dbType: DbType.Int32, direction: ParameterDirection.Input);
+                p.Add("R_date", t.RENT_DATE, dbType: DbType.DateTime, direction: ParameterDirection.Input);
+                p.Add("result", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                dBContext.Connection.ExecuteAsync("Rent_Package.CreatRent",p, commandType: CommandType.StoredProcedure);
+                int id = p.Get<int>("result");
+                if (id != 0)
+                {
+                    return true;
+                }
+                else
+                    return false;
         }
+            
+        
 
         public void Delete(int id)
         {
             var p = new DynamicParameters();
             p.Add("Rent_Id", id, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-            var result = dBContext.Connection.ExecuteAsync("stdcourse_Package.DeleteRent",
+            var result = dBContext.Connection.ExecuteAsync("Rent_PACKAGE.DeleteRent",
                 p, commandType: CommandType.StoredProcedure);
 
         }
 
         public List<Rent> GetAll()
         {
-            IEnumerable<Rent> result = dBContext.Connection.Query<Rent>("stdcourse_Package.GetAllRent",
+            IEnumerable<Rent> result = dBContext.Connection.Query<Rent>("Rent_PACKAGE.GetAllRent",
                                                             commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
@@ -60,7 +61,7 @@ namespace Garage_Rental.Infra.Repository
         {
             var p = new DynamicParameters();
             p.Add("Payment_Id", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            IEnumerable<Rent> result = dBContext.Connection.Query<Rent>("stdcourse_Package.GetRentById",
+            IEnumerable<Rent> result = dBContext.Connection.Query<Rent>("Rent_PACKAGE.GetRentById",
                 p, commandType: CommandType.StoredProcedure);
             return result.FirstOrDefault();
         }
@@ -68,14 +69,14 @@ namespace Garage_Rental.Infra.Repository
         public void Update(Rent t)
         {
             var p = new DynamicParameters();
-            p.Add("Rent_Id", t.RentId, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-            p.Add("Start_Time", t.StartTime, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-            p.Add("End_Time", t.EndTime, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-            p.Add("Garage_Id", t.GarageId, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-            p.Add("User_Id", t.UserId, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-            p.Add("Rent_Date", t.RentDate, dbType: DbType.DateTime, direction: ParameterDirection.Input);
+            p.Add("Rent_Id", t.RENT_ID, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+            p.Add("Start_Time", t.START_TIME, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+            p.Add("End_Time", t.END_TIME, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+            p.Add("Garage_Id", t.GARAGE_ID, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+            p.Add("User_Id", t.USER_ID, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+            p.Add("Rent_Date", t.RENT_DATE, dbType: DbType.DateTime, direction: ParameterDirection.Input);
 
-            var result = dBContext.Connection.ExecuteAsync("stdcourse_Package.UpdateRent",
+            var result = dBContext.Connection.ExecuteAsync("Rent_PACKAGE.UpdateRent",
                 p, commandType: CommandType.StoredProcedure);
       
         }

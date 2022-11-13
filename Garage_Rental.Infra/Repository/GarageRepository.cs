@@ -29,7 +29,7 @@ namespace Garage_Rental.Infra.Repository
             p.Add("Price", t.RENT_PRICE, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("G_Street", t.Street, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("BUILDING_Num", t.BUILDING_NUMBER, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("U_ID", t.Latitude, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("U_ID", t.USER_ID, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("result", dbType: DbType.Int32, direction: ParameterDirection.Output);
             _dbcontext.Connection.Execute("GARAGE_PACKAGE.CreateGARAGE", p, commandType: CommandType.StoredProcedure);
             int id = p.Get<int>("result");

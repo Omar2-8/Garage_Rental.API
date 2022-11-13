@@ -22,11 +22,11 @@ namespace Garage_Rental.Infra.Repository
         public User AuthLogin(User login)
         {
             var p = new DynamicParameters();
-            p.Add("User_NAME", login.Email, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("UEmail", login.Email, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("PASS", login.Password, dbType: DbType.String, direction: ParameterDirection.Input);
-            IEnumerable<User> result = _dbcontext.Connection.Query<User>("Users_Package.User_Login", p, commandType: CommandType.StoredProcedure);
+            IEnumerable<User> result = _dbcontext.Connection.Query<User>("LOGIN_PACKAGE.User_Login", p, commandType: CommandType.StoredProcedure);
             return result.FirstOrDefault();
-        }//سيتمباخثتؤب
+        }
 
         public bool AuthRegister(User register)
         {

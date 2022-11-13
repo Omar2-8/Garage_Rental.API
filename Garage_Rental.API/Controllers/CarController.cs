@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Garage_Rental.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class CarController : ControllerBase
     {
@@ -29,14 +29,14 @@ namespace Garage_Rental.API.Controllers
         }
 
         [HttpDelete]
-        [Route("Delete/{id}")]
+        [Route("/{id}")]
         public void Delete(int id)
         {
             _carService.Delete(id);
         }
 
         [HttpGet]
-        [Route("GetById/{id}")]
+        [Route("/{id}")]
         public Car GetById(int id)
         {
             return _carService.GetById(id);

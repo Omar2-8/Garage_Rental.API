@@ -19,25 +19,28 @@ namespace Garage_Rental.Infra.Repository
             this.dBContext = dBContext;
         }
     
-public bool Create(Testimonial t)
-        {
-            try
-            {
-                var p = new DynamicParameters();
-                p.Add("RATING", t.Rating, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-                p.Add("OPINION", t.Opinion, dbType: DbType.String, direction: ParameterDirection.Input);
-                p.Add("STATUS", t.Status, dbType: DbType.DateTime, direction: ParameterDirection.Input);
-                p.Add("USER_ID", t.UserId, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-             
+    public bool Create(Testimonial t)
+           {
             
+                var p = new DynamicParameters();
+                p.Add("U_Rating", t.Rating, dbType: DbType.Int32, direction: ParameterDirection.Input);
+                p.Add("U_Opinion", t.Opinion, dbType: DbType.String, direction: ParameterDirection.Input);
+                p.Add("STATUS", t.Status, dbType: DbType.String, direction: ParameterDirection.Input);
+                p.Add("User_Id", t.USER_ID, dbType: DbType.Int32, direction: ParameterDirection.Input);
+                p.Add("result", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
-                var result = dBContext.Connection.ExecuteAsync("TESTIMONIAL_PACKAGE.CreateTESTIMONIAL", p, commandType: CommandType.StoredProcedure);
+               dBContext.Connection.Execute("TESTIMONIAL_PACKAGE.CreateTESTIMONIAL", p, commandType: CommandType.StoredProcedure);
+            int id = p.Get<int>("result");
+            if (id != 0)
+            {
                 return true;
             }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            else
+                return false;
+
+           
+                
+           
 
 
         }
@@ -45,8 +48,8 @@ public bool Create(Testimonial t)
         public void Delete(int id)
         {
             var p = new DynamicParameters();
-            p.Add("Id", id, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-            var result = dBContext.Connection.ExecuteAsync("TESTIMONIAL_PACKAGE.DeleteTESTIMONIAL", p, commandType: CommandType.StoredProcedure);
+            p.Add("U_id", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+             dBContext.Connection.Execute("TESTIMONIAL_PACKAGE.DeleteTESTIMONIAL", p, commandType: CommandType.StoredProcedure);
         }
 
         public List<Testimonial> GetAll()
@@ -65,12 +68,12 @@ public bool Create(Testimonial t)
         public void Update(Testimonial t)
         {
             var p = new DynamicParameters();
-            p.Add("ID", t.Id, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-            p.Add("STATUS", t.Status, dbType: DbType.Decimal, direction: ParameterDirection.Input);
            
+            p.Add("Us_Id", t.Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("U_STATUS", t.Status, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("result", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
-
-            var result = dBContext.Connection.ExecuteAsync("ABOUT_PACKAGE.UPDATEABOUT", p, commandType: CommandType.StoredProcedure);
+            dBContext.Connection.ExecuteAsync("TESTIMONIAL_PACKAGE.UPDATETESTIMONIAL", p, commandType: CommandType.StoredProcedure);
 
         }
     }

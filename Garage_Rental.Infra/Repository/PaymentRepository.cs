@@ -24,13 +24,13 @@ namespace Garage_Rental.Infra.Repository
             try
             {
                 var p = new DynamicParameters();
-                p.Add("Pay_Amount", t.PayAmount, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-                p.Add("Garagee_Name", t.GarageName, dbType: DbType.String, direction: ParameterDirection.Input);
-                p.Add("Pay_Date", t.PayDate, dbType: DbType.DateTime, direction: ParameterDirection.Input);
-                p.Add("Commission_Rate", t.CommissionRate, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-                p.Add("User_Id", t.UserId, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-                p.Add("Visa_Id", t.VisaId, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-                p.Add("Rent_Id", t.RentId, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+                p.Add("Pay_Amount", t.PAY_AMOUNT, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+                p.Add("Garagee_Name", t.GARAGE_NAME, dbType: DbType.String, direction: ParameterDirection.Input);
+                p.Add("Pay_Date", t.PAY_DATE, dbType: DbType.DateTime, direction: ParameterDirection.Input);
+                p.Add("Commission_Rate", t.COMMISSION_RATE, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+                p.Add("User_Id", t.USER_ID, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+                p.Add("Visa_Id", t.VISA_ID, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+                p.Add("Rent_Id", t.RENT_ID, dbType: DbType.Decimal, direction: ParameterDirection.Input);
 
                 var result = dBContext.Connection.ExecuteAsync("Payment_Package.CreatePayment", p, commandType: CommandType.StoredProcedure);
                 return true;
@@ -67,13 +67,13 @@ namespace Garage_Rental.Infra.Repository
         {
             var p = new DynamicParameters();
             p.Add("Payment_Id", t.PayId, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-            p.Add("Pay_Amount", t.PayAmount, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-            p.Add("Garagee_Name", t.GarageName, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("Pay_Date", t.PayDate, dbType: DbType.DateTime, direction: ParameterDirection.Input);
-            p.Add("Commission_Rate", t.CommissionRate, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-            p.Add("User_Id", t.UserId, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-            p.Add("Visa_Id", t.VisaId, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-            p.Add("Rent_Id", t.RentId, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+            p.Add("Pay_Amount", t.PAY_AMOUNT, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+            p.Add("Garagee_Name", t.GARAGE_NAME, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("Pay_Date", t.PAY_DATE, dbType: DbType.DateTime, direction: ParameterDirection.Input);
+            p.Add("Commission_Rate", t.COMMISSION_RATE, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+            p.Add("User_Id", t.USER_ID, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+            p.Add("Visa_Id", t.VISA_ID, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+            p.Add("Rent_Id", t.RENT_ID, dbType: DbType.Decimal, direction: ParameterDirection.Input);
 
             var result = dBContext.Connection.ExecuteAsync("Payment_Package.UpdatePayment", p, commandType: CommandType.StoredProcedure);
             

@@ -27,7 +27,9 @@ export class LoginComponent implements OnInit {
   email = new FormControl('',[Validators.required,Validators.email]);
   password = new FormControl('',[Validators.required,Validators.minLength(8)]);
   cheack= new FormControl('');
+   
   ngOnInit(): void {
+   
   }
 
   click(){
@@ -36,6 +38,7 @@ export class LoginComponent implements OnInit {
     console.log("check");
 
     console.log(this.cheack.value);
+    
   }
   Submit()
   {
@@ -43,10 +46,15 @@ export class LoginComponent implements OnInit {
     localStorage.setItem("user info is saved",this.cheack.value as string);
     localStorage.setItem("Email",this.email.value as string);
     localStorage.setItem("Password",this.password.value as string);
+    
+
     }
+    
 
 
   }
-
+ 
+    
+  
 
 }

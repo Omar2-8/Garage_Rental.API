@@ -8,13 +8,13 @@ namespace Garage_Rental.Core.Data
     public partial class Payment
     {
         public decimal PayId { get; set; }
-        public decimal? PayAmount { get; set; }
-        public string GarageName { get; set; }
-        public DateTime? PayDate { get; set; }
-        public decimal? CommissionRate { get; set; }
-        public decimal? UserId { get; set; }
-        public decimal? VisaId { get; set; }
-        public decimal? RentId { get; set; }
+        public decimal? PAY_AMOUNT { get; set; }
+        public string GARAGE_NAME { get; set; }
+        public DateTime? PAY_DATE { get; set; }
+        public decimal? COMMISSION_RATE { get; set; }
+        public decimal? USER_ID { get; set; }
+        public decimal? VISA_ID { get; set; }
+        public decimal? RENT_ID { get; set; }
 
         public virtual Rent Rent { get; set; }
         public virtual User User { get; set; }

@@ -11,7 +11,7 @@ namespace Garage_Rental.Core.Data
         public int? Rating { get; set; }
         public string Opinion { get; set; }
         public string Status { get; set; }
-        public decimal? UserId { get; set; }
+        public decimal? USER_ID { get; set; }
 
         public virtual User User { get; set; }
     }

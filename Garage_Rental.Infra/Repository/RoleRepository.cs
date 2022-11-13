@@ -25,7 +25,7 @@ namespace Garage_Rental.Infra.Repository
             {
                 var p = new DynamicParameters();
             p.Add("Role_Name", t.ROLE_NAME, dbType: DbType.String, direction: ParameterDirection.Input);
-            var result = dBContext.Connection.ExecuteAsync("stdcourse_Package.CreateRole",
+            var result = dBContext.Connection.ExecuteAsync("Package.CreateRole",
                 p, commandType: CommandType.StoredProcedure);
                 return true;
             }
@@ -39,13 +39,13 @@ namespace Garage_Rental.Infra.Repository
         {
             var p = new DynamicParameters();
             p.Add("Role_Id", id, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-            var result = dBContext.Connection.ExecuteAsync("stdcourse_Package.DeleteRole",
+            var result = dBContext.Connection.ExecuteAsync("Package.DeleteRole",
                 p, commandType: CommandType.StoredProcedure);
         }
 
         public List<Role> GetAll()
         {
-            IEnumerable<Role> result = dBContext.Connection.Query<Role>("stdcourse_Package.GetAllRole",
+            IEnumerable<Role> result = dBContext.Connection.Query<Role>("Package.GetAllRole",
                                                             commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
@@ -54,7 +54,7 @@ namespace Garage_Rental.Infra.Repository
         {
             var p = new DynamicParameters();
             p.Add("Role_Id", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            IEnumerable<Role> result = dBContext.Connection.Query<Role>("stdcourse_Package.GetRoleById",
+            IEnumerable<Role> result = dBContext.Connection.Query<Role>("Package.GetRoleById",
                 p, commandType: CommandType.StoredProcedure);
             return result.FirstOrDefault();
         }
@@ -64,7 +64,7 @@ namespace Garage_Rental.Infra.Repository
             var p = new DynamicParameters();
             p.Add("Role_Id", t.ROLE_NAME, dbType: DbType.Decimal, direction: ParameterDirection.Input);
             p.Add("Role_Name", t.ROLE_NAME, dbType: DbType.String, direction: ParameterDirection.Input);
-            var result = dBContext.Connection.ExecuteAsync("stdcourse_Package.UpdateRole",
+            var result = dBContext.Connection.ExecuteAsync("Package.UpdateRole",
                 p, commandType: CommandType.StoredProcedure);
 
         }

@@ -11,7 +11,7 @@ namespace Garage_Rental.Core.Data
         public string Name { get; set; }
         public string Email { get; set; }
         public string Message { get; set; }
-        public long? PhoneNumber { get; set; }
+        public long? PHONE_NUMBER { get; set; }
         public string Address { get; set; }
     }
 }

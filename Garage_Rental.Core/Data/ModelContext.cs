@@ -72,7 +72,7 @@ namespace Garage_Rental.Core.Data
                     .IsUnicode(false)
                     .HasColumnName("NAME");
 
-                entity.Property(e => e.PhoneNumber)
+                entity.Property(e => e.PHONE_NUMBER)
                     .HasPrecision(17)
                     .HasColumnName("PHONE_NUMBER");
             });
@@ -131,7 +131,7 @@ namespace Garage_Rental.Core.Data
                     .IsUnicode(false)
                     .HasColumnName("NAME");
 
-                entity.Property(e => e.PhoneNumber)
+                entity.Property(e => e.PHONE_NUMBER)
                     .HasPrecision(17)
                     .HasColumnName("PHONE_NUMBER");
             });
@@ -221,32 +221,32 @@ namespace Garage_Rental.Core.Data
                     .ValueGeneratedOnAdd()
                     .HasColumnName("ID");
 
-                entity.Property(e => e.Image1)
+                entity.Property(e => e.IMAGE_1)
                     .HasMaxLength(250)
                     .IsUnicode(false)
                     .HasColumnName("IMAGE_1");
 
-                entity.Property(e => e.Image2)
+                entity.Property(e => e.IMAGE_2)
                     .HasMaxLength(250)
                     .IsUnicode(false)
                     .HasColumnName("IMAGE_2");
 
-                entity.Property(e => e.Image3)
+                entity.Property(e => e.IMAGE_3)
                     .HasMaxLength(250)
                     .IsUnicode(false)
                     .HasColumnName("IMAGE_3");
 
-                entity.Property(e => e.Title1)
+                entity.Property(e => e.TITLE_1)
                     .HasMaxLength(250)
                     .IsUnicode(false)
                     .HasColumnName("TITLE_1");
 
-                entity.Property(e => e.Title2)
+                entity.Property(e => e.TITLE_2)
                     .HasMaxLength(250)
                     .IsUnicode(false)
                     .HasColumnName("TITLE_2");
 
-                entity.Property(e => e.Title3)
+                entity.Property(e => e.TITLE_3)
                     .HasMaxLength(250)
                     .IsUnicode(false)
                     .HasColumnName("TITLE_3");
@@ -264,50 +264,50 @@ namespace Garage_Rental.Core.Data
                     .ValueGeneratedOnAdd()
                     .HasColumnName("PAY_ID");
 
-                entity.Property(e => e.CommissionRate)
+                entity.Property(e => e.COMMISSION_RATE)
                     .HasColumnType("NUMBER")
                     .HasColumnName("COMMISSION_RATE");
 
-                entity.Property(e => e.GarageName)
+                entity.Property(e => e.GARAGE_NAME)
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("GARAGE_NAME");
 
-                entity.Property(e => e.PayAmount)
+                entity.Property(e => e.PAY_AMOUNT)
                     .HasColumnType("NUMBER")
                     .HasColumnName("PAY_AMOUNT");
 
-                entity.Property(e => e.PayDate)
+                entity.Property(e => e.PAY_DATE)
                     .HasColumnType("DATE")
                     .HasColumnName("PAY_DATE");
 
-                entity.Property(e => e.RentId)
+                entity.Property(e => e.RENT_ID)
                     .HasColumnType("NUMBER")
                     .HasColumnName("RENT_ID");
 
-                entity.Property(e => e.UserId)
+                entity.Property(e => e.USER_ID)
                     .HasColumnType("NUMBER")
                     .HasColumnName("USER_ID");
 
-                entity.Property(e => e.VisaId)
+                entity.Property(e => e.VISA_ID)
                     .HasColumnType("NUMBER")
                     .HasColumnName("VISA_ID");
 
                 entity.HasOne(d => d.Rent)
                     .WithMany(p => p.Payments)
-                    .HasForeignKey(d => d.RentId)
+                    .HasForeignKey(d => d.RENT_ID)
                     .OnDelete(DeleteBehavior.SetNull)
                     .HasConstraintName("SYS_C00297976");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Payments)
-                    .HasForeignKey(d => d.UserId)
+                    .HasForeignKey(d => d.USER_ID)
                     .OnDelete(DeleteBehavior.SetNull)
                     .HasConstraintName("SYS_C00297974");
 
                 entity.HasOne(d => d.Visa)
                     .WithMany(p => p.Payments)
-                    .HasForeignKey(d => d.VisaId)
+                    .HasForeignKey(d => d.VISA_ID)
                     .OnDelete(DeleteBehavior.SetNull)
                     .HasConstraintName("SYS_C00297975");
             });
@@ -316,40 +316,42 @@ namespace Garage_Rental.Core.Data
             {
                 entity.ToTable("RENT");
 
-                entity.Property(e => e.RentId)
+                entity.Property(e => e.RENT_ID)
                     .HasColumnType("NUMBER")
                     .ValueGeneratedOnAdd()
                     .HasColumnName("RENT_ID");
-
-                entity.Property(e => e.EndTime)
-                    .HasColumnType("NUMBER")
-                    .HasColumnName("END_TIME");
-
-                entity.Property(e => e.GarageId)
-                    .HasColumnType("NUMBER")
-                    .HasColumnName("GARAGE_ID");
-
-                entity.Property(e => e.RentDate)
-                    .HasColumnType("DATE")
-                    .HasColumnName("RENT_DATE");
-
-                entity.Property(e => e.StartTime)
+                entity.Property(e => e.START_TIME)
                     .HasColumnType("NUMBER")
                     .HasColumnName("START_TIME");
 
-                entity.Property(e => e.UserId)
+                entity.Property(e => e.END_TIME)
+                    .HasColumnType("NUMBER")
+                    .HasColumnName("END_TIME");
+
+                entity.Property(e => e.GARAGE_ID)
+                    .HasColumnType("NUMBER")
+                    .HasColumnName("GARAGE_ID");
+
+                    entity.Property(e => e.USER_ID)
                     .HasColumnType("NUMBER")
                     .HasColumnName("USER_ID");
 
+                entity.Property(e => e.RENT_DATE)
+                    .HasColumnType("DATE")
+                    .HasColumnName("RENT_DATE");
+
+                
+                
+
                 entity.HasOne(d => d.Garage)
                     .WithMany(p => p.Rents)
-                    .HasForeignKey(d => d.GarageId)
+                    .HasForeignKey(d => d.GARAGE_ID)
                     .OnDelete(DeleteBehavior.SetNull)
                     .HasConstraintName("SYS_C00297970");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Rents)
-                    .HasForeignKey(d => d.UserId)
+                    .HasForeignKey(d => d.USER_ID)
                     .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("SYS_C00297971");
             });
@@ -379,27 +381,29 @@ namespace Garage_Rental.Core.Data
                     .ValueGeneratedOnAdd()
                     .HasColumnName("ID");
 
+                 entity.Property(e => e.Rating)
+                    .HasPrecision(10)
+                    .HasColumnName("RATING");
+
                 entity.Property(e => e.Opinion)
                     .HasMaxLength(100)
                     .IsUnicode(false)
                     .HasColumnName("OPINION");
 
-                entity.Property(e => e.Rating)
-                    .HasPrecision(10)
-                    .HasColumnName("RATING");
+                
 
                 entity.Property(e => e.Status)
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("STATUS");
 
-                entity.Property(e => e.UserId)
+                entity.Property(e => e.USER_ID)
                     .HasColumnType("NUMBER")
                     .HasColumnName("USER_ID");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Testimonials)
-                    .HasForeignKey(d => d.UserId)
+                    .HasForeignKey(d => d.USER_ID)
                     .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("SYS_C00297985");
             });
