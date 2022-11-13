@@ -19,17 +19,34 @@ export class LoginComponent implements OnInit {
   signUp() {
     this.container.nativeElement.classList.add('right-panel-active');
   }
-  constructor() { }
+  constructor() {
+    console.log(1);
+
+  }
 
   email = new FormControl('',[Validators.required,Validators.email]);
   password = new FormControl('',[Validators.required,Validators.minLength(8)]);
+  cheack= new FormControl('');
   ngOnInit(): void {
   }
 
+  click(){
+
+    console.log(this.password.value);
+    console.log("check");
+
+    console.log(this.cheack.value);
+  }
   Submit()
   {
-    console.log(this.email.value);//عباره عن اوبجكن 
-    console.log(this.password.value);
+    if(this.cheack){
+    localStorage.setItem("user info is saved",this.cheack.value as string);
+    localStorage.setItem("Email",this.email.value as string);
+    localStorage.setItem("Password",this.password.value as string);
+    }
+
+
   }
+
 
 }
