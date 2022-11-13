@@ -1,120 +1,128 @@
-
 <body>
+  <div class="container" #container>
+    <div class="form-container sign-up-container">
+      <form action="#">
+        <h1>Create Account</h1>
+        <div class="social-container">
+          <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+          <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <span>or use your email for registration</span>
+        <input type="text" placeholder="Name" />
+        <input type="email" placeholder="Email" />
+        <input type="password" placeholder="Password" />
+        <button>Sign Up</button>
+      </form>
+    </div>
+    <div class="form-container sign-in-container">
+      <form action="#">
+        <h1>Sign in</h1>
+        <div class="social-container">
+          <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+          <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <span>or use your account</span>
+        <mat-form-field class="example-full-width">
+          <input
+            id="email"
+            type="email"
+            matInput
+            [formControl]="email"
+            title="email"
+            placeholder="Email"
+          />
+          <mat-error *ngIf="email.hasError('email')">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="email.hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
 
+        <mat-form-field class="example-full-width">
+          <input
+            id="password"
+            type="password"
+            matInput
+            [formControl]="password"
+            title="password"
+            placeholder="Password"
+          />
 
-
-<div class="container" #container>
-  <div class="form-container sign-up-container">
-    <form action="#">
-      <h1>Create Account</h1>
-      <div class="social-container">
-        <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-        <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-      </div>
-      <span>or use your email for registration</span>
-      <input type="text" placeholder="Name" />
-      <input type="email" placeholder="Email" />
-      <input type="password" placeholder="Password" />
-      <button>Sign Up</button>
-    </form>
-  </div>
-  <div class="form-container sign-in-container">
-    <form action="#">
-      <h1>Sign in</h1>
-      <div class="social-container">
-        <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-        <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-      </div>
-      <span>or use your account</span>
-      <mat-form-field class="example-full-width">
-        <input id="email" type="email" matInput [formControl]="email"   title="email" placeholder="Email" >
-        <mat-error *ngIf="email.hasError('email')">
-          Please enter a valid email address
-        </mat-error>
-        <mat-error *ngIf="email.hasError('required')">
-          Email is <strong>required</strong>
-       </mat-error>  
-      </mat-form-field>
-      
-      <mat-form-field class="example-full-width">
-        <input id="password" type="password" matInput  [formControl]="password" title="password" placeholder="Password" >
-        
-        <mat-error *ngIf="password.hasError('minlength')">
-         Please enter Strong value
-        </mat-error>
-        <mat-error *ngIf="password.hasError('required')">
+          <mat-error *ngIf="password.hasError('minlength')">
+            Please enter Strong value
+          </mat-error>
+          <mat-error *ngIf="password.hasError('required')">
             password is <strong>required</strong>
-        </mat-error> 
-      </mat-form-field>
-      
+          </mat-error>
+        </mat-form-field>
 
+        <mat-checkbox [formControl]="cheack">
+          <span style="color: black">Remember Me</span>
+        </mat-checkbox>
 
-
-
-      <a href="#">Forgot your password?</a>
-      <button>Sign In</button>
-    </form>
-  </div>
-  <div class="overlay-container">
-    <div class="overlay">
-      <div class="overlay-panel overlay-left">
-        <h1>Welcome Back!</h1>
-        <p style="color:white;">To keep connected with us please login with your personal info</p>
-        <button class="ghost" (click)="signIn()">Sign In</button>
-      </div>
-      <div class="overlay-panel overlay-right">
-        <h1>Hello, Friend!</h1>
-        <p style="color:white;">Enter your personal details and start journey with us</p>
-        <button class="ghost" (click)="signUp()">Sign Up</button>
+        <a href="#">Forgot your password?</a>
+        <button type="button" onclick="submit()">Sign In</button>
+      </form>
+    </div>
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-left">
+          <h1>Welcome Back!</h1>
+          <p style="color: white">
+            To keep connected with us please login with your personal info
+          </p>
+          <button class="ghost" (click)="signIn()">Sign In</button>
+        </div>
+        <div class="overlay-panel overlay-right">
+          <h1>Hello, Friend!</h1>
+          <p style="color: white">
+            Enter your personal details and start journey with us
+          </p>
+          <button class="ghost" (click)="signUp()">Sign Up</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
+  <script src="//src/assets/js/main.js">
+         let switchCtn = document.querySelector("#switch-cnt");
+    let switchC1 = document.querySelector("#switch-c1");
+    let switchC2 = document.querySelector("#switch-c2");
+    let switchCircle = document.querySelectorAll(".switch__circle");
+    let switchBtn = document.querySelectorAll(".switch-btn");
+    let aContainer = document.querySelector("#a-container");
+    let bContainer = document.querySelector("#b-container");
+    let allButtons = document.querySelectorAll(".submit");
 
-    <script src="//src/assets/js/main.js">
-     let switchCtn = document.querySelector("#switch-cnt");
-let switchC1 = document.querySelector("#switch-c1");
-let switchC2 = document.querySelector("#switch-c2");
-let switchCircle = document.querySelectorAll(".switch__circle");
-let switchBtn = document.querySelectorAll(".switch-btn");
-let aContainer = document.querySelector("#a-container");
-let bContainer = document.querySelector("#b-container");
-let allButtons = document.querySelectorAll(".submit");
+    let getButtons = (e) => e.preventDefault();
 
-let getButtons = (e) => e.preventDefault();
+    let changeForm = (e) => {
+    	switchCtn.classList.add("is-gx");
+    	setTimeout(function () {
+    		switchCtn.classList.remove("is-gx");
+    	}, 1500);
 
-let changeForm = (e) => {
-	switchCtn.classList.add("is-gx");
-	setTimeout(function () {
-		switchCtn.classList.remove("is-gx");
-	}, 1500);
+    	switchCtn.classList.toggle("is-txr");
+    	switchCircle[0].classList.toggle("is-txr");
+    	switchCircle[1].classList.toggle("is-txr");
 
-	switchCtn.classList.toggle("is-txr");
-	switchCircle[0].classList.toggle("is-txr");
-	switchCircle[1].classList.toggle("is-txr");
+    	switchC1.classList.toggle("is-hidden");
+    	switchC2.classList.toggle("is-hidden");
+    	aContainer.classList.toggle("is-txl");
+    	bContainer.classList.toggle("is-txl");
+    	bContainer.classList.toggle("is-z200");
+    };
 
-	switchC1.classList.toggle("is-hidden");
-	switchC2.classList.toggle("is-hidden");
-	aContainer.classList.toggle("is-txl");
-	bContainer.classList.toggle("is-txl");
-	bContainer.classList.toggle("is-z200");
-};
+    let mainF = (e) => {
+    	for (var i = 0; i < allButtons.length; i++)
+    		allButtons[i].addEventListener("click", getButtons);
+    	for (var i = 0; i < switchBtn.length; i++)
+    		switchBtn[i].addEventListener("click", changeForm);
+    };
 
-let mainF = (e) => {
-	for (var i = 0; i < allButtons.length; i++)
-		allButtons[i].addEventListener("click", getButtons);
-	for (var i = 0; i < switchBtn.length; i++)
-		switchBtn[i].addEventListener("click", changeForm);
-};
-
-window.addEventListener("load", mainF);
-
-
-    </script>
-
-
-  </body>
-
+    window.addEventListener("load", mainF);
+  </script>
+</body>
