@@ -1,4 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-login',
@@ -19,7 +21,15 @@ export class LoginComponent implements OnInit {
   }
   constructor() { }
 
+  email = new FormControl('',[Validators.required,Validators.email]);
+  password = new FormControl('',[Validators.required,Validators.minLength(8)]);
   ngOnInit(): void {
+  }
+
+  Submit()
+  {
+    console.log(this.email.value);//عباره عن اوبجكن 
+    console.log(this.password.value);
   }
 
 }

@@ -28,8 +28,31 @@
         <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
       </div>
       <span>or use your account</span>
-      <input type="email" placeholder="Email" />
-      <input type="password" placeholder="Password" />
+      <mat-form-field class="example-full-width">
+        <input id="email" type="email" matInput [formControl]="email"   title="email" placeholder="Email" >
+        <mat-error *ngIf="email.hasError('email')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="email.hasError('required')">
+          Email is <strong>required</strong>
+       </mat-error>  
+      </mat-form-field>
+      
+      <mat-form-field class="example-full-width">
+        <input id="password" type="password" matInput  [formControl]="password" title="password" placeholder="Password" >
+        
+        <mat-error *ngIf="password.hasError('minlength')">
+         Please enter Strong value
+        </mat-error>
+        <mat-error *ngIf="password.hasError('required')">
+            password is <strong>required</strong>
+        </mat-error> 
+      </mat-form-field>
+      
+
+
+
+
       <a href="#">Forgot your password?</a>
       <button>Sign In</button>
     </form>
