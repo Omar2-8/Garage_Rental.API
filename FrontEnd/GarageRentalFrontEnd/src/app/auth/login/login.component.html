@@ -1,6 +1,11 @@
 <app-navbar></app-navbar>
 <body>
-  <br> <br> <br> <br> <br> <br>
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
   <div class="container" #container>
     <div class="form-container sign-up-container">
       <form action="#">
@@ -87,6 +92,12 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="mt-5" *ngIf="isAccepted">
+    <mat-card>the user has accepted to save his information</mat-card>
+    <mat-card>Email: {{ emailFromnStorage }}</mat-card>
+    <mat-card>Password: {{ passFromStorage }}</mat-card>
   </div>
 
   <script src="//src/assets/js/main.js">

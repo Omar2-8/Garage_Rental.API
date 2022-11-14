@@ -41,12 +41,24 @@ export class LoginComponent implements OnInit {
 
     console.log(this.cheack.value);
   }
+  isAccepted !:boolean;
+  emailFromnStorage!:string;
+  passFromStorage!:string;
   Submit()
   {
+
     if(this.cheack){
     localStorage.setItem("user info is saved",this.cheack.value as string);
     localStorage.setItem("Email",this.email.value as string);
     localStorage.setItem("Password",this.password.value as string);
+
+
+     this.emailFromnStorage=localStorage.getItem("Email") as string;
+      this.passFromStorage=localStorage.getItem("Password") as string;
+
+      this.isAccepted=this.cheack.value as unknown as boolean;
+
+
     }
 
 
