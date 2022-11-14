@@ -8,6 +8,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { SharedModule } from './../shared/shared.module';
+
+
 @NgModule({
   declarations: [
     LoginComponent,
@@ -21,7 +24,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    SharedModule
+    
   ]
 })
 export class AuthModule { }
