@@ -28,6 +28,10 @@ export class LoginComponent implements OnInit {
   password = new FormControl('',[Validators.required,Validators.minLength(8)]);
   cheack= new FormControl('');
   ngOnInit(): void {
+    localStorage.getItem('user info is saved');
+    localStorage.getItem('Email');
+    localStorage.getItem('Password');
+
   }
 
   click(){
