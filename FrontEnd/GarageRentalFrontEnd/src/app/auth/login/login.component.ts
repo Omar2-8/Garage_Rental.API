@@ -54,11 +54,8 @@ export class LoginComponent implements OnInit {
 
 
      this.emailFromnStorage=localStorage.getItem("Email") as string;
-      this.passFromStorage=localStorage.getItem("Password") as string;
-
-      this.isAccepted=this.cheack.value as unknown as boolean;
-
-
+     this.passFromStorage=localStorage.getItem("Password") as string;
+     this.isAccepted=this.cheack.value as unknown as boolean;
     }
 
 
