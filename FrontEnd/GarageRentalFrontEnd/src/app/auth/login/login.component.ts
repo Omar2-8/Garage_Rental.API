@@ -29,7 +29,14 @@ export class LoginComponent implements OnInit {
   cheack= new FormControl('');
    
   ngOnInit(): void {
+<<<<<<< HEAD
    
+=======
+    localStorage.getItem('user info is saved');
+    localStorage.getItem('Email');
+    localStorage.getItem('Password');
+
+>>>>>>> 02d86726f1d06d3a3f36b970b81d06827d1a7d1c
   }
 
   click(){
@@ -40,14 +47,26 @@ export class LoginComponent implements OnInit {
     console.log(this.cheack.value);
     
   }
+  isAccepted !:boolean;
+  emailFromnStorage!:string;
+  passFromStorage!:string;
   Submit()
   {
+
     if(this.cheack){
     localStorage.setItem("user info is saved",this.cheack.value as string);
     localStorage.setItem("Email",this.email.value as string);
     localStorage.setItem("Password",this.password.value as string);
+<<<<<<< HEAD
     
 
+=======
+
+
+     this.emailFromnStorage=localStorage.getItem("Email") as string;
+     this.passFromStorage=localStorage.getItem("Password") as string;
+     this.isAccepted=this.cheack.value as unknown as boolean;
+>>>>>>> 02d86726f1d06d3a3f36b970b81d06827d1a7d1c
     }
     
 
