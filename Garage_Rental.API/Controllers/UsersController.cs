@@ -32,14 +32,14 @@ namespace Garage_Rental.API.Controllers
         }
 
         [HttpDelete]
-        [Route("/{id}")]
+        [Route("{id}")]
         public void Delete(int id)
         {
             _usersService.Delete(id);
         }
 
         [HttpGet]
-        [Route("/{id}")]
+        [Route("{id}")]
         public User GetById(int id)
         {
             return _usersService.GetById(id);
@@ -62,9 +62,8 @@ namespace Garage_Rental.API.Controllers
                 file.CopyTo(stream);
             }
             User item = new User();
-            User item2 = new User();
             item.USER_IMAGE = fileName;
-            item2.USER_IDENTITY = fileName;
+            
             return item;
         }
     }

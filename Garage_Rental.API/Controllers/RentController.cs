@@ -30,14 +30,14 @@ namespace Garage_Rental.API.Controllers
         }
 
         [HttpDelete]
-        [Route("/{id}")]
+        [Route("{id}")]
         public void Delete(int id)
         {
             _rentService.Delete(id);
         }
 
         [HttpGet]
-        [Route("/{id}")]
+        [Route("{id}")]
 
         public Rent GetById(int id)
         {

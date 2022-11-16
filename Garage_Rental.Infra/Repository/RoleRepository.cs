@@ -25,7 +25,8 @@ namespace Garage_Rental.Infra.Repository
             {
                 var p = new DynamicParameters();
             p.Add("Role_Name", t.ROLE_NAME, dbType: DbType.String, direction: ParameterDirection.Input);
-            var result = dBContext.Connection.ExecuteAsync("Package.CreateRole",
+
+             dBContext.Connection.ExecuteAsync("Package.CreateRole",
                 p, commandType: CommandType.StoredProcedure);
                 return true;
             }
@@ -64,7 +65,8 @@ namespace Garage_Rental.Infra.Repository
             var p = new DynamicParameters();
             p.Add("Role_Id", t.ROLE_NAME, dbType: DbType.Decimal, direction: ParameterDirection.Input);
             p.Add("Role_Name", t.ROLE_NAME, dbType: DbType.String, direction: ParameterDirection.Input);
-            var result = dBContext.Connection.ExecuteAsync("Package.UpdateRole",
+            p.Add("result", dbType: DbType.Int32, direction: ParameterDirection.Output);
+             dBContext.Connection.ExecuteAsync("Package.UpdateRole",
                 p, commandType: CommandType.StoredProcedure);
 
         }

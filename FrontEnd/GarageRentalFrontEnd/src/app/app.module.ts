@@ -12,7 +12,7 @@ import { TestimonialComponent } from './Components/testimonial/testimonial.compo
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import{HttpClientModule}from  '@angular/common/http'
 import { ToastrModule, ToastNoAnimation, ToastNoAnimationModule } from 'ngx-toastr';
-import { UserProfileComponent } from './user-profile/user-profile.component';
+
 
 @NgModule({
   declarations: [
@@ -20,9 +20,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     HomeComponent,
     ContactUsComponent,
     AboutUsComponent,
-    TestimonialComponent,
-    UserProfileComponent,
-    
+    TestimonialComponent, 
    
   ],
   imports: [

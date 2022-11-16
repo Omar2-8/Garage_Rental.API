@@ -45,15 +45,15 @@ public bool Create(AboutU t)
         {
 
             var p = new DynamicParameters();
-            p.Add("User_Id", t.Id, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-            p.Add("U_Name", t.Name, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+            p.Add("User_Id", t.Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("U_Name", t.Name, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("U_Email", t.Email, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("Msg", t.Message, dbType: DbType.DateTime, direction: ParameterDirection.Input);
-            p.Add("Phone", t.PHONE_NUMBER, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-            p.Add("U_Address", t.Address, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-          
+            p.Add("Msg", t.Message, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("Phone", t.PHONE_NUMBER, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("U_Address", t.Address, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("result", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
-            var result = dBContext.Connection.ExecuteAsync("ABOUT_PACKAGE.UPDATEABOUT", p, commandType: CommandType.StoredProcedure);
+             dBContext.Connection.ExecuteAsync("ABOUT_PACKAGE.UPDATEABOUT", p, commandType: CommandType.StoredProcedure);
 
 
 

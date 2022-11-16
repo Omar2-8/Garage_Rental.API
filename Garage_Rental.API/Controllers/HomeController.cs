@@ -10,48 +10,48 @@ namespace Garage_Rental.API.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class GarageController : ControllerBase
+    public class HomeController : ControllerBase
     {
-        private readonly IGenericService<Garage> _garageService;
+        private readonly IGenericService<Home> _homeService;
 
-        public GarageController(IGenericService<Garage> GarageService)
+        public HomeController(IGenericService<Home> HomeService)
         {
-            _garageService = GarageService;
+            _homeService = HomeService;
         }
-
         [HttpGet]
-        public List<Garage> GetAll()
+        public List<Home> GetAll()
         {
-            return _garageService.GetAll();
+            return _homeService.GetAll();
         }
+
         [HttpPost]
-        public bool Create(Garage garage)
+        public bool Create(Home home)
         {
-            return _garageService.Create(garage);
+            throw new NotImplementedException();
         }
 
         [HttpDelete]
-        [Route("{id}")]
+        
         public void Delete(int id)
         {
-            _garageService.Delete(id);
+            throw new NotImplementedException();
         }
 
         [HttpGet]
-        [Route("{id}")]
-        public Garage GetById(int id)
+       
+        public Home GetById(int id)
         {
-            return _garageService.GetById(id);
+            throw new NotImplementedException();
         }
         [HttpPut]
-        public void Update(Garage garage)
+        public void Update(Home home)
         {
-            _garageService.Update(garage);
+            _homeService.Update(home);
         }
 
         [Route("uploadImage")]
         [HttpPost]
-        public Garage UploadIMage()
+        public Home UploadIMage()
         {
             var file = Request.Form.Files[0];
             var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
@@ -60,12 +60,11 @@ namespace Garage_Rental.API.Controllers
             {
                 file.CopyTo(stream);
             }
+            Home item = new Home();
             
-            Garage item = new Garage();
-
-            item.Image1 = fileName;
+            item.IMAGE_1 = fileName;
             
-            return item;//مش كامل الكود بدو تعديل
+            return item;
         }
     }
 }

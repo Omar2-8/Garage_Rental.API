@@ -38,7 +38,7 @@ namespace Garage_Rental.Infra.Repository
         public void Delete(int id)
         {
             var p = new DynamicParameters();
-            p.Add("Id", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("ID", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             _dbcontext.Connection.Execute("Car_Package.DeleteCar", p, commandType: CommandType.StoredProcedure);
         }
 

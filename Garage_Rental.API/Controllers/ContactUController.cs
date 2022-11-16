@@ -30,7 +30,7 @@ namespace Garage_Rental.API.Controllers
         }
 
         [HttpDelete]
-        [Route("/{id}")]
+        [Route("{id}")]
         public void Delete(int id)
         {
             _ContactUService.Delete(id);
