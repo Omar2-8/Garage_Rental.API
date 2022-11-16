@@ -71,6 +71,9 @@ namespace Garage_Rental.API
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IAuthService, AuthService>();
 
+            services.AddScoped<IGenericRepository<Home>, HomeRepository>();
+            services.AddScoped<IGenericService<Home>, HomeService>();
+
             //by Omar Master :)
             services.AddScoped<IGenericRepository<Payment>, PaymentRepository>();
             services.AddScoped<IGenericService<Payment>, PaymentService>();

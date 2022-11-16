@@ -75,8 +75,8 @@ namespace Garage_Rental.Infra.Repository
             p.Add("Garage_Id", t.GARAGE_ID, dbType: DbType.Decimal, direction: ParameterDirection.Input);
             p.Add("User_Id", t.USER_ID, dbType: DbType.Decimal, direction: ParameterDirection.Input);
             p.Add("Rent_Date", t.RENT_DATE, dbType: DbType.DateTime, direction: ParameterDirection.Input);
-
-            var result = dBContext.Connection.ExecuteAsync("Rent_PACKAGE.UpdateRent",
+            p.Add("result", dbType: DbType.Int32, direction: ParameterDirection.Output);
+             dBContext.Connection.ExecuteAsync("Rent_PACKAGE.UpdateRent",
                 p, commandType: CommandType.StoredProcedure);
       
         }

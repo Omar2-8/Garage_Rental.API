@@ -31,7 +31,7 @@ namespace Garage_Rental.Infra.Repository
                 p.Add("User_Id", t.USER_ID, dbType: DbType.Decimal, direction: ParameterDirection.Input);
                 p.Add("Visa_Id", t.VISA_ID, dbType: DbType.Decimal, direction: ParameterDirection.Input);
                 p.Add("Rent_Id", t.RENT_ID, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-
+                p.Add("result", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 var result = dBContext.Connection.ExecuteAsync("Payment_Package.CreatePayment", p, commandType: CommandType.StoredProcedure);
                 return true;
             }
@@ -74,7 +74,7 @@ namespace Garage_Rental.Infra.Repository
             p.Add("User_Id", t.USER_ID, dbType: DbType.Decimal, direction: ParameterDirection.Input);
             p.Add("Visa_Id", t.VISA_ID, dbType: DbType.Decimal, direction: ParameterDirection.Input);
             p.Add("Rent_Id", t.RENT_ID, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-
+            p.Add("result", dbType: DbType.Int32, direction: ParameterDirection.Output);
             var result = dBContext.Connection.ExecuteAsync("Payment_Package.UpdatePayment", p, commandType: CommandType.StoredProcedure);
             
         }

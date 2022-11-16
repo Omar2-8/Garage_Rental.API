@@ -26,10 +26,10 @@ namespace Garage_Rental.Infra.Repository
                 var p = new DynamicParameters();
       
                 p.Add("UName", t.Name, dbType: DbType.String, direction: ParameterDirection.Input);
-                p.Add("UEmail", t.Email, dbType: DbType.DateTime, direction: ParameterDirection.Input);
-                p.Add("Msg", t.Message, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-                p.Add("Phone", t.PHONE_NUMBER, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-
+                p.Add("UEmail", t.Email, dbType: DbType.String, direction: ParameterDirection.Input);
+                p.Add("Msg", t.Message, dbType: DbType.String, direction: ParameterDirection.Input);
+                p.Add("Phone", t.PHONE_NUMBER, dbType: DbType.Int32, direction: ParameterDirection.Input);
+                p.Add("result", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
                 var result = dBContext.Connection.ExecuteAsync("Contact_PACKAGE.CreateContact", p, commandType: CommandType.StoredProcedure);
                 return true;
