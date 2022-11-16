@@ -1,3 +1,4 @@
+import { AdminModule } from './admin/admin.module';
 import { TestimonialComponent } from './Components/testimonial/testimonial.component';
 import { AuthModule } from './auth/auth.module';
 import { AboutUsComponent } from './Components/about-us/about-us.component';
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path:'testimonial',
     component:TestimonialComponent
+  },
+  {
+    path:'Admin',
+    loadChildren:()=>AdminModule
   }
 
 ];

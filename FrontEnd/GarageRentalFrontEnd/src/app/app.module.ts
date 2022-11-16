@@ -10,7 +10,9 @@ import { AboutUsComponent } from './Components/about-us/about-us.component';
 
 import { TestimonialComponent } from './Components/testimonial/testimonial.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import{HttpClientModule}from  '@angular/common/http'
+import { ToastrModule, ToastNoAnimation, ToastNoAnimationModule } from 'ngx-toastr';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ContactUsComponent,
     AboutUsComponent,
     TestimonialComponent,
+    UserProfileComponent,
     
    
   ],
@@ -27,7 +30,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     BrowserAnimationsModule,
     NgxSpinnerModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule,
+    ToastrModule.forRoot(),
+    ToastNoAnimationModule.forRoot()
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

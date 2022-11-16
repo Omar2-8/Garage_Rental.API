@@ -1,4 +1,4 @@
-using Garage_Rental.Core.Common;
+﻿using Garage_Rental.Core.Common;
 using Garage_Rental.Core.Data;
 using Garage_Rental.Core.Repository;
 using Garage_Rental.Core.Service;
@@ -32,6 +32,14 @@ namespace Garage_Rental.API
         public void ConfigureServices(IServiceCollection services)
         {
             //by Falah
+            services.AddCors(corsOptions =>
+            {
+                corsOptions.AddPolicy("policy",
+                builder =>
+                {
+                    builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+                });
+            });
 
             services.AddAuthentication(opt => {
                 opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -121,6 +129,8 @@ namespace Garage_Rental.API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors("policy");//-->موقعها هون اذا تغير error
 
             app.UseAuthorization();
 
