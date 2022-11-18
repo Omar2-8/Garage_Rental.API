@@ -9,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private router:Router,public home:HomeService) { }
+
+
+  constructor(public home:HomeService) { }
 
   ngOnInit(): void {
     this.home.getAll();

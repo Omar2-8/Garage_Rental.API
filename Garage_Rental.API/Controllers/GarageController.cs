@@ -62,9 +62,9 @@ namespace Garage_Rental.API.Controllers
             }
             List<int> Images = new List<int>();
             Garage item = new Garage();
-            Garage item2 = new Garage();
+          
             item.Image1 = fileName;
-            item2.Image2 = fileName;
+ 
             return item;//مش كامل الكود بدو تعديل
         }
     }
