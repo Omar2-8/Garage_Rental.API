@@ -13,6 +13,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import{HttpClientModule}from  '@angular/common/http'
 import { ToastrModule, ToastNoAnimation, ToastNoAnimationModule } from 'ngx-toastr';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { GoogleMapsModule } from '@angular/google-maps';
+
 
 @NgModule({
   declarations: [
@@ -22,8 +24,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     AboutUsComponent,
     TestimonialComponent,
     UserProfileComponent,
-    
-   
+
+
   ],
   imports: [
     BrowserModule,
@@ -32,9 +34,10 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     NgxSpinnerModule,
     SharedModule,
     HttpClientModule,
+    GoogleMapsModule,
     ToastrModule.forRoot(),
     ToastNoAnimationModule.forRoot()
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent]
