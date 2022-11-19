@@ -20,17 +20,17 @@ export class VisaService {
   }
 
   getVisa(id:string):Observable<Visa>{
-    return this.http.get<Visa>(this.baseApiUrl +'/api/Visa/GetById?id=' + id);
+    return this.http.get<Visa>(this.baseApiUrl +'Visa/GetById?id=' + id);
   }
 
   addVisa(addVisaReq:Visa):Observable<Visa>{
-    return this.http.post<Visa>(this.baseApiUrl +'/api/Visa/Create',addVisaReq);
+    return this.http.post<Visa>(this.baseApiUrl +'Visa/Create',addVisaReq);
   }
 
   updateVisa(id:number,updateVisareq:Visa):Observable<Visa>{
-    return this.http.post<Visa>(this.baseApiUrl +'/api/Visa/Update?id='+ id ,updateVisareq)
+    return this.http.post<Visa>(this.baseApiUrl +'Visa/Update?id='+ id ,updateVisareq)
   }
   deleteVisa(id:number):Observable<Visa>{
-    return this.http.delete<Visa>(this.baseApiUrl +'/api/Visa/Delete?id=' + id);
+    return this.http.delete<Visa>(this.baseApiUrl +'Visa/Delete?id=' + id);
   }
 }

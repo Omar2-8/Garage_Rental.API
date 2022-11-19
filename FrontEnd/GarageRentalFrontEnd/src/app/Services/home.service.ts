@@ -45,18 +45,18 @@ export class HomeService {
   }
 
   getHome(id:string):Observable<Home>{
-    return this.http.get<Home>(this.baseApiUrl +'/api/Home/GetById?id=' + id);
+    return this.http.get<Home>(this.baseApiUrl +'Home/GetById?id=' + id);
   }
 
   addHome(addHomeReq:Home):Observable<Home>{
-    return this.http.post<Home>(this.baseApiUrl +'/api/Home/Create',addHomeReq);
+    return this.http.post<Home>(this.baseApiUrl +'Home/Create',addHomeReq);
   }
 
   updateHome(id:number,updateHomereq:Home):Observable<Home>{
-    return this.http.post<Home>(this.baseApiUrl +'/api/Home/Update?id='+ id ,updateHomereq)
+    return this.http.post<Home>(this.baseApiUrl +'Home/Update?id='+ id ,updateHomereq)
   }
   deleteHome(id:number):Observable<Home>{
-    return this.http.delete<Home>(this.baseApiUrl +'/api/Home/Delete?id=' + id);
+    return this.http.delete<Home>(this.baseApiUrl +'Home/Delete?id=' + id);
   }
 
 }

@@ -20,17 +20,17 @@ export class ContactUsService {
   }
 
   getContactUs(id:string):Observable<ContactUs>{
-    return this.http.get<ContactUs>(this.baseApiUrl +'/api/ContactU/GetById?id=' + id);
+    return this.http.get<ContactUs>(this.baseApiUrl +'ContactU/GetById?id=' + id);
   }
 
   addContactUs(addContactUsReq:ContactUs):Observable<ContactUs>{
-    return this.http.post<ContactUs>(this.baseApiUrl +'/api/ContactU/Create',addContactUsReq);
+    return this.http.post<ContactUs>(this.baseApiUrl +'ContactU/Create',addContactUsReq);
   }
 
   updateContactUs(id:number,updateContactUsreq:ContactUs):Observable<ContactUs>{
-    return this.http.post<ContactUs>(this.baseApiUrl +'/api/ContactU/Update?id='+ id ,updateContactUsreq)
+    return this.http.post<ContactUs>(this.baseApiUrl +'ContactU/Update?id='+ id ,updateContactUsreq)
   }
   deleteContactUs(id:number):Observable<ContactUs>{
-    return this.http.delete<ContactUs>(this.baseApiUrl +'/api/ContactU/Delete?id=' + id);
+    return this.http.delete<ContactUs>(this.baseApiUrl +'ContactU/Delete?id=' + id);
   }
 }

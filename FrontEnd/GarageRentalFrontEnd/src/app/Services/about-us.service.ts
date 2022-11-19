@@ -19,17 +19,17 @@ export class AboutUsService {
   }
 
   getAboutUs(id:string):Observable<AboutUs>{
-    return this.http.get<AboutUs>(this.baseApiUrl +'/api/AboutU/GetById?id=' + id);
+    return this.http.get<AboutUs>(this.baseApiUrl +'AboutU/GetById?id=' + id);
   }
 
   addAboutUs(addAboutUsReq:AboutUs):Observable<AboutUs>{
-    return this.http.post<AboutUs>(this.baseApiUrl +'/api/AboutU/Create',addAboutUsReq);
+    return this.http.post<AboutUs>(this.baseApiUrl +'AboutU/Create',addAboutUsReq);
   }
 
   updateAboutUs(id:number,updateAboutUsreq:AboutUs):Observable<AboutUs>{
-    return this.http.post<AboutUs>(this.baseApiUrl +'/api/AboutU/Update?id='+ id ,updateAboutUsreq)
+    return this.http.post<AboutUs>(this.baseApiUrl +'AboutU/Update?id='+ id ,updateAboutUsreq)
   }
   deleteAboutUs(id:number):Observable<AboutUs>{
-    return this.http.delete<AboutUs>(this.baseApiUrl +'/api/AboutU/Delete?id=' + id);
+    return this.http.delete<AboutUs>(this.baseApiUrl +'AboutU/Delete?id=' + id);
   }
 }

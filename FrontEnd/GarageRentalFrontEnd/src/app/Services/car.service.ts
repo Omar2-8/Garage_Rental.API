@@ -20,17 +20,17 @@ export class CarService {
   }
 
   getCar(id:string):Observable<Car>{
-    return this.http.get<Car>(this.baseApiUrl +'/api/Car/GetById?id=' + id);
+    return this.http.get<Car>(this.baseApiUrl +'Car/GetById?id=' + id);
   }
 
   addCar(addCarReq:Car):Observable<Car>{
-    return this.http.post<Car>(this.baseApiUrl +'/api/Car/Create',addCarReq);
+    return this.http.post<Car>(this.baseApiUrl +'Car/Create',addCarReq);
   }
 
   updateCar(id:number,updateCarreq:Car):Observable<Car>{
-    return this.http.post<Car>(this.baseApiUrl +'/api/Car/Update?id='+ id ,updateCarreq)
+    return this.http.post<Car>(this.baseApiUrl +'Car/Update?id='+ id ,updateCarreq)
   }
   deleteCar(id:number):Observable<Car>{
-    return this.http.delete<Car>(this.baseApiUrl +'/api/Car/Delete?id=' + id);
+    return this.http.delete<Car>(this.baseApiUrl +'Car/Delete?id=' + id);
   }
 }

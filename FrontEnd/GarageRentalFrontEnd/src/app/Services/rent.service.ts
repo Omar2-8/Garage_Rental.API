@@ -20,17 +20,17 @@ export class RentService {
   }
 
   getRent(id:string):Observable<Rent>{
-    return this.http.get<Rent>(this.baseApiUrl +'/api/Rent/GetById?id=' + id);
+    return this.http.get<Rent>(this.baseApiUrl +'Rent/GetById?id=' + id);
   }
 
   addRent(addRentReq:Rent):Observable<Rent>{
-    return this.http.post<Rent>(this.baseApiUrl +'/api/Rent/Create',addRentReq);
+    return this.http.post<Rent>(this.baseApiUrl +'Rent/Create',addRentReq);
   }
 
   updateRent(id:number,updateRentreq:Rent):Observable<Rent>{
-    return this.http.post<Rent>(this.baseApiUrl +'/api/Rent/Update?id='+ id ,updateRentreq)
+    return this.http.post<Rent>(this.baseApiUrl +'Rent/Update?id='+ id ,updateRentreq)
   }
   deleteRent(id:number):Observable<Rent>{
-    return this.http.delete<Rent>(this.baseApiUrl +'/api/Rent/Delete?id=' + id);
+    return this.http.delete<Rent>(this.baseApiUrl +'Rent/Delete?id=' + id);
   }
 }

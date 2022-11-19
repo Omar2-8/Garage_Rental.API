@@ -20,17 +20,17 @@ export class TestimonialService {
   }
 
   getTestimonial(id:string):Observable<Testimonial>{
-    return this.http.get<Testimonial>(this.baseApiUrl +'/api/Testimonial/GetById?id=' + id);
+    return this.http.get<Testimonial>(this.baseApiUrl +'Testimonial/GetById?id=' + id);
   }
 
   addTestimonial(addTestimonialReq:Testimonial):Observable<Testimonial>{
-    return this.http.post<Testimonial>(this.baseApiUrl +'/api/Testimonial/Create',addTestimonialReq);
+    return this.http.post<Testimonial>(this.baseApiUrl +'Testimonial/Create',addTestimonialReq);
   }
 
   updateTestimonial(id:number,updateTestimonialreq:Testimonial):Observable<Testimonial>{
-    return this.http.post<Testimonial>(this.baseApiUrl +'/api/Testimonial/Update?id='+ id ,updateTestimonialreq)
+    return this.http.post<Testimonial>(this.baseApiUrl +'Testimonial/Update?id='+ id ,updateTestimonialreq)
   }
   deleteTestimonial(id:number):Observable<Testimonial>{
-    return this.http.delete<Testimonial>(this.baseApiUrl +'/api/Testimonial/Delete?id=' + id);
+    return this.http.delete<Testimonial>(this.baseApiUrl +'Testimonial/Delete?id=' + id);
   }
 }

@@ -20,17 +20,17 @@ export class UserService {
   }
 
   getUser(id:string):Observable<User>{
-    return this.http.get<User>(this.baseApiUrl +'/api/User/GetById?id=' + id);
+    return this.http.get<User>(this.baseApiUrl +'User/GetById?id=' + id);
   }
 
   addUser(addUserReq:User):Observable<User>{
-    return this.http.post<User>(this.baseApiUrl +'/api/User/Create',addUserReq);
+    return this.http.post<User>(this.baseApiUrl +'User/Create',addUserReq);
   }
 
   updateUser(id:number,updateUserreq:User):Observable<User>{
-    return this.http.post<User>(this.baseApiUrl +'/api/User/Update?id='+ id ,updateUserreq)
+    return this.http.post<User>(this.baseApiUrl +'User/Update?id='+ id ,updateUserreq)
   }
   deleteUser(id:number):Observable<User>{
-    return this.http.delete<User>(this.baseApiUrl +'/api/User/Delete?id=' + id);
+    return this.http.delete<User>(this.baseApiUrl +'User/Delete?id=' + id);
   }
 }

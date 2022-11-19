@@ -20,17 +20,17 @@ export class PaymentService {
   }
 
   getPayment(id:string):Observable<Payment>{
-    return this.http.get<Payment>(this.baseApiUrl +'/api/Payment/GetById?id=' + id);
+    return this.http.get<Payment>(this.baseApiUrl +'Payment/GetById?id=' + id);
   }
 
   addPayment(addPaymentReq:Payment):Observable<Payment>{
-    return this.http.post<Payment>(this.baseApiUrl +'/api/Payment/Create',addPaymentReq);
+    return this.http.post<Payment>(this.baseApiUrl +'Payment/Create',addPaymentReq);
   }
 
   updatePayment(id:number,updatePaymentreq:Payment):Observable<Payment>{
-    return this.http.post<Payment>(this.baseApiUrl +'/api/Payment/Update?id='+ id ,updatePaymentreq)
+    return this.http.post<Payment>(this.baseApiUrl +'Payment/Update?id='+ id ,updatePaymentreq)
   }
   deletePayment(id:number):Observable<Payment>{
-    return this.http.delete<Payment>(this.baseApiUrl +'/api/Payment/Delete?id=' + id);
+    return this.http.delete<Payment>(this.baseApiUrl +'Payment/Delete?id=' + id);
   }
 }

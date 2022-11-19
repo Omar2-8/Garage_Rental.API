@@ -20,17 +20,17 @@ export class GarageService {
   }
 
   getGarage(id:string):Observable<Garage>{
-    return this.http.get<Garage>(this.baseApiUrl +'/api/Garage/GetById?id=' + id);
+    return this.http.get<Garage>(this.baseApiUrl +'Garage/GetById?id=' + id);
   }
 
   addGarage(addGarageReq:Garage):Observable<Garage>{
-    return this.http.post<Garage>(this.baseApiUrl +'/api/Garage/Create',addGarageReq);
+    return this.http.post<Garage>(this.baseApiUrl +'Garage/Create',addGarageReq);
   }
 
   updateGarage(id:number,updateGaragereq:Garage):Observable<Garage>{
-    return this.http.post<Garage>(this.baseApiUrl +'/api/Garage/Update?id='+ id ,updateGaragereq)
+    return this.http.post<Garage>(this.baseApiUrl +'Garage/Update?id='+ id ,updateGaragereq)
   }
   deleteGarage(id:number):Observable<Garage>{
-    return this.http.delete<Garage>(this.baseApiUrl +'/api/Garage/Delete?id=' + id);
+    return this.http.delete<Garage>(this.baseApiUrl +'Garage/Delete?id=' + id);
   }
 }
