@@ -1,4 +1,4 @@
-export interface Hone{
+export interface Home{
   Id:number;
   IMAGE_1: string;
   TITLE_1: string;

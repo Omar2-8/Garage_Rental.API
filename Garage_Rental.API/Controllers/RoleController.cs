@@ -30,14 +30,14 @@ namespace Garage_Rental.API.Controllers
         }
 
         [HttpDelete]
-        [Route("/{id}")]
+    
         public void Delete(int id)
         {
             _roleService.Delete(id);
         }
 
         [HttpGet]
-        [Route("/{id}")]
+       
         public Role GetById(int id)
         {
             return _roleService.GetById(id);

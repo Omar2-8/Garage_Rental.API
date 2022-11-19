@@ -31,14 +31,14 @@ namespace Garage_Rental.API.Controllers
         }
 
         [HttpDelete]
-        [Route("/{id}")]
+         
         public void Delete(int id)
         {
             _garageService.Delete(id);
         }
 
         [HttpGet]
-        [Route("/{id}")]
+       
         public Garage GetById(int id)
         {
             return _garageService.GetById(id);
@@ -48,8 +48,7 @@ namespace Garage_Rental.API.Controllers
         {
             _garageService.Update(garage);
         }
-
-        [Route("uploadImage")]
+ 
         [HttpPost]
         public Garage UploadIMage()
         {
