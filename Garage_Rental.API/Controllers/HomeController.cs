@@ -49,7 +49,7 @@ namespace Garage_Rental.API.Controllers
             _homeService.Update(home);
         }
 
-        [Route("uploadImage")]
+       
         [HttpPost]
         public Home UploadIMage()
         {
