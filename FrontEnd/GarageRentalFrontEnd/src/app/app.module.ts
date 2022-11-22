@@ -12,11 +12,8 @@ import { TestimonialComponent } from './Components/testimonial/testimonial.compo
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import{HttpClientModule}from  '@angular/common/http'
 import { ToastrModule, ToastNoAnimation, ToastNoAnimationModule } from 'ngx-toastr';
-<<<<<<< HEAD
-=======
-import { UserProfileComponent } from './user-profile/user-profile.component';
+
 import { GoogleMapsModule } from '@angular/google-maps';
->>>>>>> 633fe6da4ba24189e9ba56f981224860447d785e
 
 
 @NgModule({
@@ -25,15 +22,10 @@ import { GoogleMapsModule } from '@angular/google-maps';
     HomeComponent,
     ContactUsComponent,
     AboutUsComponent,
-<<<<<<< HEAD
-    TestimonialComponent, 
-   
-=======
     TestimonialComponent,
-    UserProfileComponent,
+    
 
 
->>>>>>> 633fe6da4ba24189e9ba56f981224860447d785e
   ],
   imports: [
     BrowserModule,
