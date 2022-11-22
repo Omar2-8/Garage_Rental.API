@@ -27,7 +27,7 @@ export class AboutUsService {
   }
 
   updateAboutUs(id:number,updateAboutUsreq:AboutUs):Observable<AboutUs>{
-    return this.http.post<AboutUs>(this.baseApiUrl +'AboutU/Update?id='+ id ,updateAboutUsreq)
+    return this.http.put<AboutUs>(this.baseApiUrl +'AboutU/Update?id='+ id ,updateAboutUsreq)
   }
   deleteAboutUs(id:number):Observable<AboutUs>{
     return this.http.delete<AboutUs>(this.baseApiUrl +'AboutU/Delete?id=' + id);

@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   display: any;
 
   ngOnInit(): void {
-    this.home.getAll();
+    //this.home.getAll();
   }
 
     center: google.maps.LatLngLiteral = {

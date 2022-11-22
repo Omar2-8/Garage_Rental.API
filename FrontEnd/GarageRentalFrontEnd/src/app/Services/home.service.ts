@@ -53,7 +53,7 @@ export class HomeService {
   }
 
   updateHome(id:number,updateHomereq:Home):Observable<Home>{
-    return this.http.post<Home>(this.baseApiUrl +'Home/Update?id='+ id ,updateHomereq)
+    return this.http.put<Home>(this.baseApiUrl +'Home/Update?id='+ id ,updateHomereq)
   }
   deleteHome(id:number):Observable<Home>{
     return this.http.delete<Home>(this.baseApiUrl +'Home/Delete?id=' + id);
