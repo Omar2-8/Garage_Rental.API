@@ -20,7 +20,7 @@ getAll(){
   //3-Hide Spinner 
   //4-resp=> Toster
   this.spinner.show();
-  this.http.get('حط هون رابط اللوكل هوست').subscribe((Resp:any)=>{//السبسكرايب بتتكون من حالتين اول وحدة ترو والثانية اذا كانت ايرور ريسبونس
+  this.http.get('https://localhost:44391/api/LongLetGrages/GetLongitudeLatitude').subscribe((Resp:any)=>{//السبسكرايب بتتكون من حالتين اول وحدة ترو والثانية اذا كانت ايرور ريسبونس
     this.garage=Resp;
     this.spinner.hide();
      this.toster.success('Data Retrieved')
