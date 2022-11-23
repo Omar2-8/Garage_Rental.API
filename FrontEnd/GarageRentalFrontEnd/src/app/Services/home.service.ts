@@ -40,6 +40,7 @@ export class HomeService {
   constructor(private http:HttpClient) { }
 
 
+
   getHomeList(): Observable<Home[]>{
     return this.http.get<Home[]>(this.baseApiUrl +'Home/GetAll');
   }
@@ -60,3 +61,6 @@ export class HomeService {
   }
 
 }
+
+
+
