@@ -12,9 +12,8 @@ export class HomeComponent implements OnInit {
 
 
 
-  constructor(private home:HomeService, private dialog: MatDialog) { }
-  @ViewChild('callUpdatDailog') callUpdate!:TemplateRef<any>
-  @ViewChild('callDeleteDailog') callDelete!:TemplateRef<any>
+  constructor(private home:HomeService) { }
+  
 
   createFormTestimonial :FormGroup= new FormGroup({
     Rating:new FormControl('',Validators.required),
@@ -29,25 +28,9 @@ export class HomeComponent implements OnInit {
   }
 
    
-    openDeleteDailog(id:number)
-    {
-      const dialogRef=  this.dialog.open(this.callDelete);
-      dialogRef.afterClosed().subscribe((result)=>{
-        if(result!=undefined)
-        {
-          if(result=='yes')
-          {
-            debugger
-            this.home.deleteTestimonial(id);
-          }
-            
-            else if(result=='no')
-            console.log('thank you ');
-            
-        }
-      })
-    }
+
   ngOnInit(): void {
+    this.home.getAll();
   }
   saveDataTestimonial()
   {

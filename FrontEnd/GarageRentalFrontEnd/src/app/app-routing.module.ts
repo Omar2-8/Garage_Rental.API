@@ -18,6 +18,10 @@ const routes: Routes = [
   },
   //the defult
   {
+    path:'',
+    component:HomeComponent
+  },
+  {
     path:'home',
     component:HomeComponent
   },
