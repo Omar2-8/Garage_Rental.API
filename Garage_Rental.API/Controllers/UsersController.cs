@@ -32,22 +32,19 @@ namespace Garage_Rental.API.Controllers
         }
 
         [HttpDelete]
-<<<<<<< HEAD
+
         [Route("{id}")]
-=======
-     
->>>>>>> 633fe6da4ba24189e9ba56f981224860447d785e
+
         public void Delete(int id)
         {
             _usersService.Delete(id);
         }
 
         [HttpGet]
-<<<<<<< HEAD
+
         [Route("{id}")]
-=======
-      
->>>>>>> 633fe6da4ba24189e9ba56f981224860447d785e
+
+
         public User GetById(int id)
         {
             return _usersService.GetById(id);
