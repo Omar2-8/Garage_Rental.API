@@ -8,7 +8,12 @@ import { ToastrService } from 'ngx-toastr';
   providedIn: 'root'
 })
 export class HomeService {
-  garage :any[]=[];//عرفنا اريي عشان رح ترجعلي الداتا جيسون اوبجكت فبحتاج ارريي لحتى اخزن فيها الداتا الي جبتها من الإي بي اّي
+  message: string = "Welcome :) ";
+  display_image: any;
+  home :any[]=[];
+  testimonial :any[]=[];
+  Contactus :any[]=[];
+  Aboutus :any[]=[];//عرفنا اريي عشان رح ترجعلي الداتا جيسون اوبجكت فبحتاج ارريي لحتى اخزن فيها الداتا الي جبتها من الإي بي اّي
   constructor(private http:HttpClient ,private spinner:NgxSpinnerService , private toster:ToastrService ) { }
 
 
@@ -20,8 +25,8 @@ getAll(){
   //3-Hide Spinner 
   //4-resp=> Toster
   this.spinner.show();
-  this.http.get('https://localhost:44391/api/LongLetGrages/GetLongitudeLatitude').subscribe((Resp:any)=>{//السبسكرايب بتتكون من حالتين اول وحدة ترو والثانية اذا كانت ايرور ريسبونس
-    this.garage=Resp;
+  this.http.get('https://localhost:44391/api/AboutU/GetAll').subscribe((Resp:any)=>{//السبسكرايب بتتكون من حالتين اول وحدة ترو والثانية اذا كانت ايرور ريسبونس
+    this.Aboutus=Resp;
     this.spinner.hide();
      this.toster.success('Data Retrieved')
   },err=>{
@@ -29,5 +34,183 @@ getAll(){
     this.toster.error('something Wrong')
   })//شكل الداتا الي رح ترجع من الهيت على ال api (اريي اوف اوبجكتس)
 }
+//About Us
+getAboutUs(){
+
+  
+  this.http.get('https://localhost:44391/api/AboutU/GetAll').subscribe((Resp:any)=>{//السبسكرايب بتتكون من حالتين اول وحدة ترو والثانية اذا كانت ايرور ريسبونس
+    this.Aboutus=Resp;
+     
+     this.toster.success('Data Retrieved')
+  },err=>{
+    
+    this.toster.error('something Wrong')
+  })
+}
+
+updateAboutus(body:any)
+  {
+    
+    this.spinner.show();
+    this.http.put('https://localhost:44391/api/AboutU/Update',body).subscribe((resp)=>{
+      this.spinner.hide();
+      this.toster.success('Updated Successfully !!');
+    },err=>{
+      this.spinner.hide();
+      this.toster.error(err.message, err.status);
+    })
+  }
+ //End About Us
+  
+
+
+ //Contact Us
+ createContactus(body: any) {
+  
+  this.spinner.show();
+  debugger
+  this.http.post('https://localhost:44391/api/ContactU/Create', body).subscribe((resp) => {
+    console.log(resp);
+    this.spinner.hide();
+    this.toster.success('Created Successfuly!!');
+  }, err => {
+    this.spinner.hide();
+    this.toster.error(err.message, err.status);
+  }
+  )
+}
+
+getAllContactus(){
+
+  
+  this.http.get('https://localhost:44391/api/ContactU/GetAll').subscribe((Resp:any)=>{//السبسكرايب بتتكون من حالتين اول وحدة ترو والثانية اذا كانت ايرور ريسبونس
+    this.Contactus=Resp;
+    
+     this.toster.success('Data Retrieved')
+  },err=>{
+    
+    this.toster.error('something Wrong')
+  })
+}
+
+
+
+deleteContactus(id:number)
+{
+  this.spinner.show();
+  
+  this.http.delete('https://localhost:44391/api/ContactU/Delete/'+id).subscribe((resp)=>{
+    this.spinner.hide();
+      this.toster.success('Deleted Successfully !!');
+  },err=>{
+    this.spinner.hide();
+   this.toster.error(err.message, err.status);
+  })
+}
+ 
+
+   //End Contact Us
+
+   //Testimonial
+   createTestimonial(body: any) {
+    
+    this.spinner.show();
+   
+    this.http.post('https://localhost:44391/api/Testimonial/Create', body).subscribe((resp) => {
+      console.log(resp);
+      this.spinner.hide();
+      this.toster.success('Created Successfuly!!');
+    }, err => {
+      this.spinner.hide();
+      this.toster.error(err.message, err.status);
+    }
+    )
+  }
+  
+  getAllTestimonial(){
+  
+    
+    this.http.get('https://localhost:44391/api/Testimonial/GetAll').subscribe((Resp:any)=>{//السبسكرايب بتتكون من حالتين اول وحدة ترو والثانية اذا كانت ايرور ريسبونس
+      this.testimonial=Resp;
+      
+       this.toster.success('Data Retrieved')
+    },err=>{
+      
+      this.toster.error('something Wrong')
+    })
+  }
+  
+ 
+  
+  deleteTestimonial(id:number)
+  {
+    this.spinner.show();
+   
+    this.http.delete('https://localhost:44391/api/Testimonial/Delete/'+id).subscribe((resp)=>{
+      
+        this.toster.success('Deleted Successfully !!');
+    },err=>{
+      
+     this.toster.error(err.message, err.status);
+    })
+  }
+   
+  updateTestimonial(body:any)
+    {
+      
+      this.spinner.show();
+      this.http.put('https://localhost:44391/api/Testimonial/Update',body).subscribe((resp)=>{
+        this.spinner.hide();
+        this.toster.success('Updated Successfully !!');
+      },err=>{
+        this.spinner.hide();
+        this.toster.error(err.message, err.status);
+      })
+    }
+    //End Testimonial
+
+    //Home
+    
+    
+    getHome(){
+    
+      
+      this.http.get('https://localhost:44391/api/Home/GetAll').subscribe((Resp:any)=>{//السبسكرايب بتتكون من حالتين اول وحدة ترو والثانية اذا كانت ايرور ريسبونس
+        this.home=Resp;
+        
+         this.toster.success('Data Retrieved')
+      },err=>{
+        
+        this.toster.error('something Wrong')
+      })
+    }
+    
+     
+    updateHome(body:any)
+      {
+        body.image = this.display_image;
+        this.spinner.show();
+        this.http.put('https://localhost:44391/api/Home/Update',body).subscribe((resp)=>{
+          this.spinner.hide();
+          this.toster.success('Updated Successfully !!');
+        },err=>{
+          this.spinner.hide();
+          this.toster.error(err.message, err.status);
+        })
+      }
+
+      uploadAttachmentHome(file: FormData) {
+        this.http.post('https://localhost:44391/api/Home/UploadIMage/', file).subscribe((resp: any) => {
+          this.display_image = resp.image;
+        }, err => {
+          this.toster.error('Can not Upload Image');
+          console.log(err);
+    
+        })
+      }
+
+      //End Home
+
+
 
 }

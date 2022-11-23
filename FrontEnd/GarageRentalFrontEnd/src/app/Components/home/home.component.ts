@@ -1,7 +1,8 @@
 import { Router } from '@angular/router';
 import { HomeService } from './../../Services/home.service';
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -11,10 +12,54 @@ export class HomeComponent implements OnInit {
 
 
 
-  constructor(public home:HomeService) { }
+  constructor(private home:HomeService, private dialog: MatDialog) { }
+  @ViewChild('callUpdatDailog') callUpdate!:TemplateRef<any>
+  @ViewChild('callDeleteDailog') callDelete!:TemplateRef<any>
 
+  createFormTestimonial :FormGroup= new FormGroup({
+    Rating:new FormControl('',Validators.required),
+    Opinion:new FormControl('',Validators.required),
+    Status:new FormControl('',Validators.required),
+    USER_ID:new FormControl('',Validators.required),
+  })
+  
+
+  opendialogTestimonial() {
+    //this.dialog.open()
+  }
+
+   
+    openDeleteDailog(id:number)
+    {
+      const dialogRef=  this.dialog.open(this.callDelete);
+      dialogRef.afterClosed().subscribe((result)=>{
+        if(result!=undefined)
+        {
+          if(result=='yes')
+          {
+            debugger
+            this.home.deleteTestimonial(id);
+          }
+            
+            else if(result=='no')
+            console.log('thank you ');
+            
+        }
+      })
+    }
   ngOnInit(): void {
-    this.home.getAll();
+  }
+  saveDataTestimonial()
+  {
+    this.home.createTestimonial(this.createFormTestimonial.value);
+  }
+  uploadFile(file:any){
+    if(file.length==0)
+    return;
+    let fileToUpload=<File>file[0]//the first image 
+    const formdata= new FormData();
+    formdata.append('file',fileToUpload,fileToUpload.name);
+    this.home.uploadAttachmentHome(formdata);
   }
 
 }
