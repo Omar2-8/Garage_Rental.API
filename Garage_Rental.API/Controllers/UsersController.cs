@@ -32,14 +32,22 @@ namespace Garage_Rental.API.Controllers
         }
 
         [HttpDelete]
-        [Route("/{id}")]
+<<<<<<< HEAD
+        [Route("{id}")]
+=======
+     
+>>>>>>> 633fe6da4ba24189e9ba56f981224860447d785e
         public void Delete(int id)
         {
             _usersService.Delete(id);
         }
 
         [HttpGet]
-        [Route("/{id}")]
+<<<<<<< HEAD
+        [Route("{id}")]
+=======
+      
+>>>>>>> 633fe6da4ba24189e9ba56f981224860447d785e
         public User GetById(int id)
         {
             return _usersService.GetById(id);
@@ -50,7 +58,7 @@ namespace Garage_Rental.API.Controllers
             _usersService.Update(user);
         }
 
-        [Route("uploadImage")]
+  
         [HttpPost]
         public User UploadIMage()
         {
@@ -62,9 +70,8 @@ namespace Garage_Rental.API.Controllers
                 file.CopyTo(stream);
             }
             User item = new User();
-            User item2 = new User();
             item.USER_IMAGE = fileName;
-            item2.USER_IDENTITY = fileName;
+            
             return item;
         }
     }

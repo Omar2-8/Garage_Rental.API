@@ -44,23 +44,22 @@ namespace Garage_Rental.Infra.Repository
         public void Delete(int id)
         {
             var p = new DynamicParameters();
-            p.Add("Rent_Id", id, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-            var result = dBContext.Connection.ExecuteAsync("Rent_PACKAGE.DeleteRent",
+            p.Add("Id", id, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+            dBContext.Connection.ExecuteAsync("Rent_PACKAGE.DeleteRent",
                 p, commandType: CommandType.StoredProcedure);
 
         }
 
         public List<Rent> GetAll()
         {
-            IEnumerable<Rent> result = dBContext.Connection.Query<Rent>("Rent_PACKAGE.GetAllRent",
-                                                            commandType: CommandType.StoredProcedure);
+            IEnumerable<Rent> result = dBContext.Connection.Query<Rent>("Rent_PACKAGE.GetAllRent",commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
 
-        public Rent GetById(int id)
+        public  Rent GetById(int id)
         {
             var p = new DynamicParameters();
-            p.Add("Payment_Id", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("Id", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             IEnumerable<Rent> result = dBContext.Connection.Query<Rent>("Rent_PACKAGE.GetRentById",
                 p, commandType: CommandType.StoredProcedure);
             return result.FirstOrDefault();
@@ -69,7 +68,7 @@ namespace Garage_Rental.Infra.Repository
         public void Update(Rent t)
         {
             var p = new DynamicParameters();
-            p.Add("Rent_Id", t.RENT_ID, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+            p.Add("Id", t.RENT_ID, dbType: DbType.Decimal, direction: ParameterDirection.Input);
             p.Add("Start_Time", t.START_TIME, dbType: DbType.Decimal, direction: ParameterDirection.Input);
             p.Add("End_Time", t.END_TIME, dbType: DbType.Decimal, direction: ParameterDirection.Input);
             p.Add("Garage_Id", t.GARAGE_ID, dbType: DbType.Decimal, direction: ParameterDirection.Input);

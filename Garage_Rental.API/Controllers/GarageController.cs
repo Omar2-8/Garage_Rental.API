@@ -31,14 +31,22 @@ namespace Garage_Rental.API.Controllers
         }
 
         [HttpDelete]
-        [Route("/{id}")]
+<<<<<<< HEAD
+        [Route("{id}")]
+=======
+         
+>>>>>>> 633fe6da4ba24189e9ba56f981224860447d785e
         public void Delete(int id)
         {
             _garageService.Delete(id);
         }
 
         [HttpGet]
-        [Route("/{id}")]
+<<<<<<< HEAD
+        [Route("{id}")]
+=======
+       
+>>>>>>> 633fe6da4ba24189e9ba56f981224860447d785e
         public Garage GetById(int id)
         {
             return _garageService.GetById(id);
@@ -48,8 +56,7 @@ namespace Garage_Rental.API.Controllers
         {
             _garageService.Update(garage);
         }
-
-        [Route("uploadImage")]
+ 
         [HttpPost]
         public Garage UploadIMage()
         {
@@ -60,11 +67,11 @@ namespace Garage_Rental.API.Controllers
             {
                 file.CopyTo(stream);
             }
-            List<int> Images = new List<int>();
+            
             Garage item = new Garage();
-          
+
             item.Image1 = fileName;
- 
+            
             return item;//مش كامل الكود بدو تعديل
         }
     }

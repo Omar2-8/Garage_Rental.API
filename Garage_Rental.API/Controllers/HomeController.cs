@@ -49,7 +49,7 @@ namespace Garage_Rental.API.Controllers
             _homeService.Update(home);
         }
 
-        [Route("uploadImage")]
+       
         [HttpPost]
         public Home UploadIMage()
         {
@@ -61,11 +61,9 @@ namespace Garage_Rental.API.Controllers
                 file.CopyTo(stream);
             }
             Home item = new Home();
-            Home item2 = new Home();
-            Home item3 = new Home();
+            
             item.IMAGE_1 = fileName;
-            item2.IMAGE_2 = fileName;
-            item3.IMAGE_3 = fileName;
+            
             return item;
         }
     }

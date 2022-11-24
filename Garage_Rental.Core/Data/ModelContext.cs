@@ -86,15 +86,17 @@ namespace Garage_Rental.Core.Data
                     .ValueGeneratedOnAdd()
                     .HasColumnName("CAR_ID");
 
-                entity.Property(e => e.CAR_PLATE)
-                    .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("CAR_TYPE");
+                
 
                 entity.Property(e => e.CAR_TYPE)
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("CAR_TYPE");
+
+                entity.Property(e => e.CAR_PLATE)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("CAR_PLATE");
 
                 entity.Property(e => e.USER_ID)
                     .HasColumnType("NUMBER")

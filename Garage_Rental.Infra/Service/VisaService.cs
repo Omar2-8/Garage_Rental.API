@@ -23,17 +23,17 @@ namespace Garage_Rental.Infra.Service
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            _visaRepository.Delete(id);
         }
 
         public List<Visa> GetAll()
         {
-            throw new NotImplementedException();
+            return _visaRepository.GetAll();
         }
 
         public Visa GetById(int id)
         {
-            throw new NotImplementedException();
+            return _visaRepository.GetById(id);
         }
 
         public void Update(Visa t)

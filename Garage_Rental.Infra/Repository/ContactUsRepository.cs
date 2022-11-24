@@ -43,7 +43,7 @@ namespace Garage_Rental.Infra.Repository
         public void Delete(int id)
         {
             var p = new DynamicParameters();
-            p.Add("ID", id, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+            p.Add("U_id", id, dbType: DbType.Decimal, direction: ParameterDirection.Input);
             var result = dBContext.Connection.ExecuteAsync("Contact_PACKAGE.DeleteContact", p, commandType: CommandType.StoredProcedure);
         }
 
