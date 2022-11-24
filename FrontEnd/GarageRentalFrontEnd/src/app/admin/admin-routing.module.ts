@@ -1,3 +1,5 @@
+import { AboutUsComponent } from './about-us/about-us.component';
+
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { NgModule } from '@angular/core';
@@ -9,6 +11,10 @@ const routes: Routes = [
   {
     path:'dashboard',
     component:DashboardComponent
+  },
+  {
+    path:'aboutUs',
+    component:AboutUsComponent
   }
 
 
