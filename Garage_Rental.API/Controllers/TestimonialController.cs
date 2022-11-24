@@ -25,13 +25,7 @@ namespace Garage_Rental.API.Controllers
         }
 
         [HttpDelete]
-<<<<<<< HEAD
-
         [Route("{id}")]
-
-=======
-        [Route("{id}")]
->>>>>>> 557d5158e1abdc2ec797bd6ba8df4d7d0de22ef5
         public void Delete(int id)
         {
             _TestimonialService.Delete(id);
@@ -42,8 +36,6 @@ namespace Garage_Rental.API.Controllers
         {
             return _TestimonialService.Create(Testimonial);
         }
-
-
         [HttpPut]
         public void Update(Testimonial Testimonial)
         {

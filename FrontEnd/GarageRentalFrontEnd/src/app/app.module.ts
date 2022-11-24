@@ -25,7 +25,6 @@ import { GoogleMapsModule } from '@angular/google-maps';
     TestimonialComponent,
     
 
-
   ],
   imports: [
     BrowserModule,

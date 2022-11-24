@@ -1,0 +1,155 @@
+<div class="wrapper ">
+    <app-sidebar></app-sidebar>
+    <div class="main-panel">
+        <app-navbar></app-navbar>
+        <br><br><br>
+<div class="col-lg-12 col-md-12">
+    <div class="card">
+        <div class="card-header card-header-primary">
+            <h4 class="card-title">Testimonials</h4>
+            <p class="card-category"></p>
+        </div>
+        <div class="card-body table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            User
+                            
+                        </th>
+                        <th>
+                            Opinion
+                        </th>
+                        <th>
+                            Rating
+                        </th>
+                        <th>
+                           Status
+                        </th>
+                        <th>
+                            USER ID
+                         </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+            
+                    <tr *ngFor="let obj of home.testimonial">
+                        <td>{{obj.id}}</td>
+                        <td>{{obj.opinion}}</td>
+                        <td>{{obj.rating}}</td>
+                        <td>{{obj.status}}</td>
+                        <td>{{obj.useR_ID}}</td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+            
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
+</div>
+</div>
+
+
+
+
+
+<ng-template #callUpdatDailog>
+<h1>Edit</h1>
+
+<h4>Testimonial</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group" hidden="hidden">
+                <label asp-for="Rating" class="control-label"></label>
+                <input asp-for="Rating" class="form-control" />
+                <span asp-validation-for="Rating" class="text-danger"></span>
+            </div>
+            <div class="form-group" hidden="hidden">
+                <label asp-for="Opinion" class="control-label"></label>
+                <input asp-for="Opinion" class="form-control" />
+                <span asp-validation-for="Opinion" class="text-danger"></span>
+            </div>
+            <div class="form-group" hidden="hidden">
+                <label asp-for="UserId" class="control-label"></label>
+                <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></select>
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group" hidden="hidden">
+                <label asp-for="HomeId" class="control-label"></label>
+                <select asp-for="HomeId" class="form-control" asp-items="ViewBag.HomeId"></select>
+                <span asp-validation-for="HomeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <select asp-for="Status" class="form-control" asp-items="ViewBag.Status" style="background-color:#202940"></select>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+</ng-template>
+
+
+    <form class="example-form" [formGroup]="updateForm" >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Course Name</mat-label>
+          <input type="text" matInput formControlName="course_Name" [(ngModel)]="p_data.course_Name">
+          <mat-error *ngIf="updateForm.controls['course_Name'].hasError('required')">
+            course_Name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <br>
+     
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Course Price</mat-label>
+            <input type="number" matInput formControlName="price"  
+            [(ngModel)]="p_data.price">
+            <mat-error *ngIf="updateForm.controls['price'].hasError('required')">
+                price is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+    <br>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Start Date</mat-label>
+            <input type="date" matInput formControlName="start_Date" 
+            [(ngModel)]="p_data.start_Date">
+            <mat-error *ngIf="updateForm.controls['start_Date'].hasError('required')">
+                start_Date <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <br>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Start Date</mat-label>
+            <input type="date" matInput formControlName="end_Date">
+            <mat-error *ngIf="updateForm.controls['end_Date'].hasError('required')"
+            [(ngModel)]="p_data.end_Date">
+                end_Date <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <br>
+          <input type="file" #file formControlName="image" (change)="uploadFile(file.files) " [(ngModel)]="p_data.image">
+        </form>
+   
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>Cancel</button>
+      <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="saveData()">Save</button>
+    </mat-dialog-actions>
+
+
+
