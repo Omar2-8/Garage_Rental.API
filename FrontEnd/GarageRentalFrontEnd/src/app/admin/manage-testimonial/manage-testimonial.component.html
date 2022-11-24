@@ -106,50 +106,5 @@
 </ng-template>
 
 
-    <form class="example-form" [formGroup]="updateForm" >
-        <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>Course Name</mat-label>
-          <input type="text" matInput formControlName="course_Name" [(ngModel)]="p_data.course_Name">
-          <mat-error *ngIf="updateForm.controls['course_Name'].hasError('required')">
-            course_Name is <strong>required</strong>
-          </mat-error>
-        </mat-form-field>
-        <br>
-     
-          <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Course Price</mat-label>
-            <input type="number" matInput formControlName="price"  
-            [(ngModel)]="p_data.price">
-            <mat-error *ngIf="updateForm.controls['price'].hasError('required')">
-                price is <strong>required</strong>
-            </mat-error>
-          </mat-form-field>
-    <br>
-          <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Start Date</mat-label>
-            <input type="date" matInput formControlName="start_Date" 
-            [(ngModel)]="p_data.start_Date">
-            <mat-error *ngIf="updateForm.controls['start_Date'].hasError('required')">
-                start_Date <strong>required</strong>
-            </mat-error>
-          </mat-form-field>
-          <br>
-          <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Start Date</mat-label>
-            <input type="date" matInput formControlName="end_Date">
-            <mat-error *ngIf="updateForm.controls['end_Date'].hasError('required')"
-            [(ngModel)]="p_data.end_Date">
-                end_Date <strong>required</strong>
-            </mat-error>
-          </mat-form-field>
-          <br>
-          <input type="file" #file formControlName="image" (change)="uploadFile(file.files) " [(ngModel)]="p_data.image">
-        </form>
-   
-    <mat-dialog-actions align="end">
-      <button mat-button mat-dialog-close>Cancel</button>
-      <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="saveData()">Save</button>
-    </mat-dialog-actions>
-
 
 
