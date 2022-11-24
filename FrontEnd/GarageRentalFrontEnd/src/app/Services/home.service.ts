@@ -18,7 +18,7 @@ export class HomeService {
   Contactus :any[]=[];
   Aboutus :any[]=[];//عرفنا اريي عشان رح ترجعلي الداتا جيسون اوبجكت فبحتاج ارريي لحتى اخزن فيها الداتا الي جبتها من الإي بي اّي
   constructor(private http:HttpClient ,private spinner:NgxSpinnerService , private toster:ToastrService ) { }
-
+ baseApiUrl:string = environment.baseApiUrl;
   addHome(addHomeReq:Home):Observable<Home>{
     return this.http.post<Home>(this.baseApiUrl +'Home/Create',addHomeReq);
   }
@@ -26,9 +26,9 @@ export class HomeService {
 getAll(){
   //هذه الخطوات اللازمة اتباعها عند انشاء اي فنكشن عشان اعمل هيت وهذا الفنكشن بقدر استخدمه في اي مكان زي شييرد بضل ما اضل اكتبه في كل كلاس
   //عن طريق الماب بس اشتقبل البيانات في ارييي بقدر اتجكم فيها واشكلها وشو بدي ارجع منها عن طريق الماب زي ما اخذنا بالتايب سكريبنت لكن بعدلها هون بالسيرفيس دير بالك
-  //1-show spinar 
+  //1-show spinar
   //2-Hits API
-  //3-Hide Spinner 
+  //3-Hide Spinner
   //4-resp=> Toster
   this.spinner.show();
   this.http.get('https://localhost:44391/api/AboutU/GetAll').subscribe((Resp:any)=>{//السبسكرايب بتتكون من حالتين اول وحدة ترو والثانية اذا كانت ايرور ريسبونس
@@ -43,20 +43,20 @@ getAll(){
 //About Us
 getAboutUs(){
 
-  
+
   this.http.get('https://localhost:44391/api/AboutU/GetAll').subscribe((Resp:any)=>{//السبسكرايب بتتكون من حالتين اول وحدة ترو والثانية اذا كانت ايرور ريسبونس
     this.Aboutus=Resp;
-     
+
      this.toster.success('Data Retrieved')
   },err=>{
-    
+
     this.toster.error('something Wrong')
   })
 }
 
 updateAboutus(body:any)
   {
-    
+
     this.spinner.show();
     this.http.put('https://localhost:44391/api/AboutU/Update',body).subscribe((resp)=>{
       this.spinner.hide();
@@ -67,12 +67,12 @@ updateAboutus(body:any)
     })
   }
  //End About Us
-  
+
 
 
  //Contact Us
  createContactus(body: any) {
-  
+
   this.spinner.show();
   debugger
   this.http.post('https://localhost:44391/api/ContactU/Create', body).subscribe((resp) => {
@@ -88,13 +88,13 @@ updateAboutus(body:any)
 
 getAllContactus(){
 
-  
+
   this.http.get('https://localhost:44391/api/ContactU/GetAll').subscribe((Resp:any)=>{//السبسكرايب بتتكون من حالتين اول وحدة ترو والثانية اذا كانت ايرور ريسبونس
     this.Contactus=Resp;
-    
+
      this.toster.success('Data Retrieved')
   },err=>{
-    
+
     this.toster.error('something Wrong')
   })
 }
@@ -104,7 +104,7 @@ getAllContactus(){
 deleteContactus(id:number)
 {
   this.spinner.show();
-  
+
   this.http.delete('https://localhost:44391/api/ContactU/Delete/'+id).subscribe((resp)=>{
     this.spinner.hide();
       this.toster.success('Deleted Successfully !!');
@@ -113,15 +113,15 @@ deleteContactus(id:number)
    this.toster.error(err.message, err.status);
   })
 }
- 
+
 
    //End Contact Us
 
    //Testimonial
    createTestimonial(body: any) {
-    
+
     this.spinner.show();
-   
+
     this.http.post('https://localhost:44391/api/Testimonial/Create', body).subscribe((resp) => {
       console.log(resp);
       this.spinner.hide();
@@ -132,38 +132,38 @@ deleteContactus(id:number)
     }
     )
   }
-  
+
   getAllTestimonial(){
-  
-    
+
+
     this.http.get('https://localhost:44391/api/Testimonial/GetAll').subscribe((Resp:any)=>{//السبسكرايب بتتكون من حالتين اول وحدة ترو والثانية اذا كانت ايرور ريسبونس
       this.testimonial=Resp;
-      
+
        this.toster.success('Data Retrieved')
     },err=>{
-      
+
       this.toster.error('something Wrong')
     })
   }
-  
- 
-  
+
+
+
   deleteTestimonial(id:number)
   {
     this.spinner.show();
-   
+
     this.http.delete('https://localhost:44391/api/Testimonial/Delete/'+id).subscribe((resp)=>{
-      
+
         this.toster.success('Deleted Successfully !!');
     },err=>{
-      
+
      this.toster.error(err.message, err.status);
     })
   }
-   
+
   updateTestimonial(body:any)
     {
-      
+
       this.spinner.show();
       this.http.put('https://localhost:44391/api/Testimonial/Update',body).subscribe((resp)=>{
         this.spinner.hide();
@@ -176,22 +176,22 @@ deleteContactus(id:number)
     //End Testimonial
 
     //Home
-    
-    
+
+
     getHome(){
-    
-      
+
+
       this.http.get('https://localhost:44391/api/Home/GetAll').subscribe((Resp:any)=>{//السبسكرايب بتتكون من حالتين اول وحدة ترو والثانية اذا كانت ايرور ريسبونس
         this.home=Resp;
-        
+
          this.toster.success('Data Retrieved')
       },err=>{
-        
+
         this.toster.error('something Wrong')
       })
     }
-    
-     
+
+
     updateHome(body:any)
       {
         body.image = this.display_image;
@@ -211,7 +211,7 @@ deleteContactus(id:number)
         }, err => {
           this.toster.error('Can not Upload Image');
           console.log(err);
-    
+
         })
       }
 
