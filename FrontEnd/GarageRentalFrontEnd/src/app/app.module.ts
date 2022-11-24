@@ -10,8 +10,9 @@ import { AboutUsComponent } from './Components/about-us/about-us.component';
 
 import { TestimonialComponent } from './Components/testimonial/testimonial.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import{HttpClientModule}from  '@angular/common/http'
+import { HttpClientModule}from  '@angular/common/http'
 import { ToastrModule, ToastNoAnimation, ToastNoAnimationModule } from 'ngx-toastr';
+import { FormsModule } from '@angular/forms';
 
 import { GoogleMapsModule } from '@angular/google-maps';
 
@@ -36,7 +37,8 @@ import { GoogleMapsModule } from '@angular/google-maps';
     HttpClientModule,
     GoogleMapsModule,
     ToastrModule.forRoot(),
-    ToastNoAnimationModule.forRoot()
+    ToastNoAnimationModule.forRoot(),
+    FormsModule
 
   ],
   providers: [],
