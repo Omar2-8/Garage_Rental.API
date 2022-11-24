@@ -9,6 +9,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { SharedModule } from '../shared/shared.module';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { SharedModule } from '../shared/shared.module';
       AboutUsComponent,
       SidebarComponent,
       NavbarComponent,
-      FooterComponent
+      FooterComponent,
+      ContactUsComponent
   ],
   imports: [
     CommonModule,

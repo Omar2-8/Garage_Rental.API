@@ -1,3 +1,5 @@
+import { ContactUsComponent } from './contact-us/contact-us.component';
+
 import { AboutUsComponent } from './about-us/about-us.component';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -15,6 +17,10 @@ const routes: Routes = [
   {
     path:'aboutUs',
     component:AboutUsComponent
+  },
+  {
+    path:'contactUs',
+    component:ContactUsComponent
   }
 
 

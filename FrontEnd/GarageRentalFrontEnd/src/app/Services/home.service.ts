@@ -51,7 +51,7 @@ getAboutUs(){
   })
 }
 updateAboutus(body:any)
-  {debugger
+  {
     // this.spinner.show();
     this.http.put('https://localhost:44391/api/AboutU/Update',body).subscribe((resp)=>{
       // this.spinner.hide();
@@ -67,7 +67,6 @@ updateAboutus(body:any)
 
  //Contact Us
  createContactus(body: any) {
-
   this.spinner.show();
   debugger
   this.http.post('https://localhost:44391/api/ContactU/Create', body).subscribe((resp) => {
@@ -82,19 +81,13 @@ updateAboutus(body:any)
 }
 
 getAllContactus(){
-
-
   this.http.get('https://localhost:44391/api/ContactU/GetAll').subscribe((Resp:any)=>{//السبسكرايب بتتكون من حالتين اول وحدة ترو والثانية اذا كانت ايرور ريسبونس
     this.Contactus=Resp;
-
      this.toster.success('Data Retrieved')
   },err=>{
-
     this.toster.error('something Wrong')
   })
 }
-
-
 
 deleteContactus(id:number)
 {
@@ -108,8 +101,6 @@ deleteContactus(id:number)
    this.toster.error(err.message, err.status);
   })
 }
-
-
    //End Contact Us
 
    //Testimonial

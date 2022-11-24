@@ -12,9 +12,14 @@ export class HomeComponent implements OnInit {
 
 
 
-  constructor(private home:HomeService) { }
-  
+  constructor(public home:HomeService) { }
 
+  createFormContactUs :FormGroup= new FormGroup({
+    name:new FormControl('',Validators.required),
+    email:new FormControl('',[Validators.required,Validators.email]),
+    message:new FormControl('',Validators.required),
+    phonE_NUMBER:new FormControl('',Validators.required),
+  })
   createFormTestimonial :FormGroup= new FormGroup({
     Rating:new FormControl('',Validators.required),
     Opinion:new FormControl('',Validators.required),
@@ -22,13 +27,13 @@ export class HomeComponent implements OnInit {
     USER_ID:new FormControl('',Validators.required),
   })
   
-
+  saveDataContactUs()
+  {
+    this.home.createContactus(this.createFormContactUs.value);
+  }
   opendialogTestimonial() {
     //this.dialog.open()
   }
-
-   
-
   ngOnInit(): void {
     // this.home.getAll();
   }
