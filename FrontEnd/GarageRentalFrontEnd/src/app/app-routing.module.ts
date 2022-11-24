@@ -22,6 +22,10 @@ const routes: Routes = [
     component:HomeComponent
   },
   {
+    path:'home',
+    component:HomeComponent
+  },
+  {
     path:'security',
     loadChildren:()=>AuthModule //هان بدي احمل موديول كامل
   },
