@@ -10,25 +10,12 @@ import { NgxSpinnerService } from "ngx-spinner";
 })
 export class LoginComponent implements OnInit {
 
-  @ViewChild('container')
-  container!: ElementRef;
-
-  signIn() {
-    this.container.nativeElement.classList.remove('right-panel-active');
-  }
-
-  signUp() {
-    this.container.nativeElement.classList.add('right-panel-active');
-  }
-  constructor() {
-    console.log(1);
-
-  }
+  constructor() { }
 
   email = new FormControl('',[Validators.required,Validators.email]);
   password = new FormControl('',[Validators.required,Validators.minLength(8)]);
   cheack= new FormControl('');
-   
+  
   ngOnInit(): void {
     localStorage.getItem('user info is saved');
     localStorage.getItem('Email');
@@ -56,16 +43,9 @@ export class LoginComponent implements OnInit {
     localStorage.setItem("Password",this.password.value as string);
 
 
-     this.emailFromnStorage=localStorage.getItem("Email") as string;
-     this.passFromStorage=localStorage.getItem("Password") as string;
-     this.isAccepted=this.cheack.value as unknown as boolean;
+    this.emailFromnStorage=localStorage.getItem("Email") as string;
+    this.passFromStorage=localStorage.getItem("Password") as string;
+    this.isAccepted=this.cheack.value as unknown as boolean;
     }
-    
-
-
   }
- 
-    
-  
-
 }

@@ -1,36 +1,348 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
-import { User } from '../Models/user.model';
-
+import { HttpClient } from '@angular/common/http';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
+  message: string = "Welcome :) ";
+  display_image: any;
+  car :any[]=[];
+  testimonial :any[]=[];
+  visa :any[]=[];
+  payment :any[]=[];
+  rent :any[]=[];
+  user :any[]=[];
+  garage :any[]=[];//عرفنا اريي عشان رح ترجعلي الداتا جيسون اوبجكت فبحتاج ارريي لحتى اخزن فيها الداتا الي جبتها من الإي بي اّي
+  constructor(private http:HttpClient ,private spinner:NgxSpinnerService , private toster:ToastrService ) { }
+  //--------Users
+  createUser(body: any) {
+    body.image = this.display_image;
+    this.spinner.show();
+   
+    this.http.post('https://localhost:44391/api/Users/Create', body).subscribe((resp) => {
+      console.log(resp);
+      this.spinner.hide();
+      this.toster.success('Created Successfuly!!');
+    }, err => {
+      this.spinner.hide();
+      this.toster.error(err.message, err.status);
+    }
+    )
+  }
+  
+  getUserId(id: number) {
+    //show Spinner 
+    //Hits Api 
+    //Hide Spinner
+    //Resp=> Toastr 
+  
+  
+    this.http.get('https://localhost:44391/api/Users/GetById/' + id).subscribe((resp: any) => {
+      this.user = resp;
+      console.log(this.user);
+      
+      this.toster.success('Data Retrieved!');
+  
+    }, err => {
+      
+      this.toster.error(err.message, err.status);
+    })
+  
+  }
+ 
+  
+  deleteUser(id:number)
+  {
+    this.spinner.show();
+   
+    this.http.delete('https://localhost:44391/api/Users/Delete/'+id).subscribe((resp)=>{
+      
+        this.toster.success('Deleted Successfully !!');
+    },err=>{
+      
+     this.toster.error(err.message, err.status);
+    })
+  }
+   
+  updateUser(body:any)
+    {
+      body.image = this.display_image;
+      this.spinner.show();
+      this.http.put('https://localhost:44391/api/Users/Update',body).subscribe((resp)=>{
+        this.spinner.hide();
+        this.toster.success('Updated Successfully !!');
+      },err=>{
+        this.spinner.hide();
+        this.toster.error(err.message, err.status);
+      })
+    }
+   
+    uploadAttachmentUser(file: FormData) {
+      this.http.post('https://localhost:44391/api/Users/UploadIMage/', file).subscribe((resp: any) => {
+        this.display_image = resp.image;
+      }, err => {
+        this.toster.error('Can not Upload Image');
+        console.log(err);
+  
+      })
+    }
+  //--------End Users
 
- baseApiUrl:string = environment.baseApiUrl;
 
-  constructor(private http:HttpClient) { }
-
-
-  getUserList(): Observable<User[]>{
-    return this.http.get<User[]>(this.baseApiUrl +'User/GetAll');
+   //-------Garage 
+   
+   createGarage(body: any) {
+    body.image = this.display_image;
+    this.spinner.show();
+    debugger
+    this.http.post('https://localhost:44391/api/Garage/Create', body).subscribe((resp) => {
+      console.log(resp);
+      this.spinner.hide();
+      this.toster.success('Created !!');
+    }, err => {
+      this.spinner.hide();
+      this.toster.error(err.message, err.status);
+    }
+    )
+  }
+  getGarageId(id: number) {
+    //show Spinner 
+    //Hits Api 
+    //Hide Spinner
+    //Resp=> Toastr 
+  
+  
+    this.http.get('https://localhost:44391/api/Garage/GetById/' + id).subscribe((resp: any) => {
+      this.garage = resp;
+      console.log(this.garage);
+      
+      this.toster.success('Data Retrieved!');
+  
+    }, err => {
+      
+      this.toster.error(err.message, err.status);
+    })
+  
+  }
+ 
+  
+  deleteGarage(id:number)
+  {
+    this.spinner.show();
+    
+    this.http.delete('https://localhost:44391/api/Garage/Delete/'+id).subscribe((resp)=>{
+      
+        this.toster.success('Deleted Successfully !!');
+    },err=>{
+      
+     this.toster.error(err.message, err.status);
+    })
+  }
+  updateGarage(body:any)
+  {
+    body.image = this.display_image;
+    this.spinner.show();
+    this.http.put('https://localhost:44391/api/Garage/Update',body).subscribe((resp)=>{
+      this.spinner.hide();
+      this.toster.success('Accepted The Garage Successfully !!');
+    },err=>{
+      this.spinner.hide();
+      this.toster.error(err.message, err.status);
+    })
   }
 
-  getUser(id:string):Observable<User>{
-    return this.http.get<User>(this.baseApiUrl +'User/GetById?id=' + id);
-  }
+  uploadAttachmentGarage(file: FormData) {
+    this.http.post('https://localhost:44391/api/Home/UploadIMage/', file).subscribe((resp: any) => {
+      this.display_image = resp.image;
+    }, err => {
+      this.toster.error('Can not Upload Image');
+      console.log(err);
 
-  addUser(addUserReq:User):Observable<User>{
-    return this.http.post<User>(this.baseApiUrl +'User/Create',addUserReq);
+    })
   }
+    //-------End Garage 
 
-  updateUser(id:number,updateUserreq:User):Observable<User>{
-    return this.http.post<User>(this.baseApiUrl +'User/Update?id='+ id ,updateUserreq)
+    //-------Rent 
+    createRent(body: any) {
+      
+      this.spinner.show();
+     
+      this.http.post('https://localhost:44391/api/Rent/Create', body).subscribe((resp) => {
+        console.log(resp);
+        this.spinner.hide();
+        this.toster.success('Created Successfuly!!');
+      }, err => {
+        this.spinner.hide();
+        this.toster.error(err.message, err.status);
+      }
+      )
+    }
+    
+    getRentId(id: number) {
+      //show Spinner 
+      //Hits Api 
+      //Hide Spinner
+      //Resp=> Toastr 
+    
+    
+      this.http.get('https://localhost:44391/api/Rent/GetById/' + id).subscribe((resp: any) => {
+        this.rent = resp;
+        console.log(this.user);
+        
+        this.toster.success('Data Retrieved!');
+    
+      }, err => {
+        
+        this.toster.error(err.message, err.status);
+      })
+    
+    }
+   
+    
+    deleteRent(id:number)
+    {
+      this.spinner.show();
+     
+      this.http.delete('https://localhost:44391/api/Rent/Delete/'+id).subscribe((resp)=>{
+        
+          this.toster.success('Deleted Successfully !!');
+      },err=>{
+        
+       this.toster.error(err.message, err.status);
+      })
+    }
+
+    //-------End Rent 
+    
+    //-------Visa
+    getVisaId(id: number) {
+      //show Spinner 
+      //Hits Api 
+      //Hide Spinner
+      //Resp=> Toastr 
+    
+    
+      this.http.get('https://localhost:44391/api/Visa/GetById/' + id).subscribe((resp: any) => {
+        this.visa = resp;
+        console.log(this.visa);
+        
+        this.toster.success('Data Retrieved!');
+    
+      }, err => {
+        
+        this.toster.error(err.message, err.status);
+      })
+    
+    }
+   
+    
+    deleteVisa(id:number)
+    {
+      this.spinner.show();
+     
+      this.http.delete('https://localhost:44391/api/Visa/Delete/'+id).subscribe((resp)=>{
+        
+          this.toster.success('Deleted Successfully !!');
+      },err=>{
+        
+       this.toster.error(err.message, err.status);
+      })
+    }
+
+    //-------End Visa 
+
+    //--------Car
+  createCar(body: any) {
+    
+    this.spinner.show();
+   
+    this.http.post('https://localhost:44391/api/Car/Create', body).subscribe((resp) => {
+      console.log(resp);
+      this.spinner.hide();
+      this.toster.success('Created Successfuly!!');
+    }, err => {
+      this.spinner.hide();
+      this.toster.error(err.message, err.status);
+    }
+    )
   }
-  deleteUser(id:number):Observable<User>{
-    return this.http.delete<User>(this.baseApiUrl +'User/Delete?id=' + id);
+  
+  getCarId(id: number) {
+    //show Spinner 
+    //Hits Api 
+    //Hide Spinner
+    //Resp=> Toastr 
+  
+  
+    this.http.get('https://localhost:44391/api/Car/GetById/' + id).subscribe((resp: any) => {
+      this.car = resp;
+      console.log(this.car);
+      
+      this.toster.success('Data Retrieved!');
+  
+    }, err => {
+      
+      this.toster.error(err.message, err.status);
+    })
+  
   }
+ 
+  
+  deleteCar(id:number)
+  {
+    this.spinner.show();
+   
+    this.http.delete('https://localhost:44391/api/Car/Delete/'+id).subscribe((resp)=>{
+      
+        this.toster.success('Deleted Successfully !!');
+    },err=>{
+      
+     this.toster.error(err.message, err.status);
+    })
+  }
+   
+  updateCar(body:any)
+    {
+      
+      this.spinner.show();
+      this.http.put('https://localhost:44391/api/Car/Update',body).subscribe((resp)=>{
+        this.spinner.hide();
+        this.toster.success('Updated Successfully !!');
+      },err=>{
+        this.spinner.hide();
+        this.toster.error(err.message, err.status);
+      })
+    }
+    
+    //-------End Car
+
+    //--------- Payment
+   
+    getPaymentId(id: number) {
+      //show Spinner 
+      //Hits Api 
+      //Hide Spinner
+      //Resp=> Toastr 
+    
+    
+      this.http.get('https://localhost:44391/api/Payment/GetById/' + id).subscribe((resp: any) => {
+        this.payment = resp;
+        console.log(this.payment);
+        
+        this.toster.success('Data Retrieved!');
+    
+      }, err => {
+        
+        this.toster.error(err.message, err.status);
+      })
+    
+    }
+  
+  
+  //--------- End Payment
+
+
 }

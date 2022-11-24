@@ -1,7 +1,8 @@
 import { Router } from '@angular/router';
 import { HomeService } from './../../Services/home.service';
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -9,29 +10,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private router:Router,public home:HomeService) { }
- markerPositions: google.maps.LatLngLiteral[] = [];
-  display: any;
 
-  ngOnInit(): void {
-    //this.home.getAll();
+
+  constructor(private home:HomeService) { }
+  
+
+  createFormTestimonial :FormGroup= new FormGroup({
+    Rating:new FormControl('',Validators.required),
+    Opinion:new FormControl('',Validators.required),
+    Status:new FormControl('',Validators.required),
+    USER_ID:new FormControl('',Validators.required),
+  })
+  
+
+  opendialogTestimonial() {
+    //this.dialog.open()
   }
 
-    center: google.maps.LatLngLiteral = {
-        lat: 31,
-        lng: 36
-    };
-    zoom = 7;
-     markerOptions: google.maps.MarkerOptions = {
-        draggable: false
-    };
+   
 
-    addMarker(event: google.maps.MapMouseEvent) {
-
-        if (event.latLng != null) this.markerPositions.push(event.latLng.toJSON());
-        console.log(this.markerPositions.length);
-
-    }
+  ngOnInit(): void {
+    this.home.getAll();
+  }
+  saveDataTestimonial()
+  {
+    this.home.createTestimonial(this.createFormTestimonial.value);
+  }
+  uploadFile(file:any){
+    if(file.length==0)
+    return;
+    let fileToUpload=<File>file[0]//the first image 
+    const formdata= new FormData();
+    formdata.append('file',fileToUpload,fileToUpload.name);
+    this.home.uploadAttachmentHome(formdata);
+  }
 
 
 }
