@@ -55,8 +55,8 @@
                 </div>
             </div>
         </div>
-<mat-dialog-content>
-        <ng-template #callUpdatDailog>
+
+        <!-- <ng-template #callUpdatDailog>
             <hr />
             <div class="col-lg-12 col-md-12" >
                 <div class="card">
@@ -133,14 +133,7 @@
                                 </mat-form-field>
                                 <span asp-validation-for="Address" class="text-danger"></span>
                             </div>
-                            <!-- <div class="form-group" hidden="hidden">
-                                <label asp-for="HomeId" class="control-label"></label>
-                                <select asp-for="HomeId" class="form-control" asp-items="ViewBag.HomeId" style="background-color:#202940"></select>
-                                <span asp-validation-for="HomeId" class="text-danger"></span>
-                            </div> -->
-                            <div class="form-group">
-                                <input type="submit" value="Save" class="btn btn-primary" />
-                            </div>
+
                             <mat-dialog-actions align="end">
                                 <button class="btn btn-primary"  mat-button mat-dialog-close>Cancel</button>
                                 <button class="btn btn-primary"  mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="saveData()">Save</button>
@@ -151,63 +144,75 @@
             </div>
 
 
-        </ng-template>
-</mat-dialog-content>
-      
+        </ng-template> -->
 
         <app-footer-dash></app-footer-dash>
     </div>
 </div>
 
 
-<!-- <ng-template #callUpdatDailog>
-    <form class="example-form" [formGroup]="" >
+<ng-template #callUpdatDailog>
+    <form class="example-form" [formGroup]="updateForm" >
         <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>Course Name</mat-label>
-          <input type="text" matInput formControlName="course_Name"
-          [(ngModel)]="p_data.course_Name"
-          >
-          <mat-error *ngIf="updateForm.controls['course_Name'].hasError('required')">
-            course_Name is <strong>required</strong>
-          </mat-error>
-        </mat-form-field>
+            <input class="form-control"
+                matInput formControlName="name"
+                [(ngModel)]="p_data.name"
+            />
+            <mat-error *ngIf="updateForm.controls['name'].hasError('required')">
+                name is <strong>required</strong>
+            </mat-error>
+            </mat-form-field>
         <br>
-     
-          <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Course Price</mat-label>
-            <input type="number" matInput formControlName="price"  
-            [(ngModel)]="p_data.price">
-            <mat-error *ngIf="updateForm.controls['price'].hasError('required')">
-                price is <strong>required</strong>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <input class="form-control" 
+            matInput formControlName="email"
+            [(ngModel)]="p_data.email"
+            />
+            <mat-error *ngIf="updateForm.controls['email'].hasError('required')">
+                email is <strong>required</strong>
             </mat-error>
-          </mat-form-field>
+            </mat-form-field>
     <br>
-          <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Start Date</mat-label>
-            <input type="date" matInput formControlName="start_Date" 
-            [(ngModel)]="p_data.start_Date">
-            <mat-error *ngIf="updateForm.controls['start_Date'].hasError('required')">
-                start_Date <strong>required</strong>
-            </mat-error>
-          </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+        <input  class="form-control" 
+        matInput formControlName="message"
+        [(ngModel)]="p_data.message"
+        />
+        <mat-error *ngIf="updateForm.controls['message'].hasError('required')">
+            message is <strong>required</strong>
+        </mat-error>
+        </mat-form-field>
           <br>
           <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Start Date</mat-label>
-            <input type="date" matInput formControlName="end_Date">
-            <mat-error *ngIf="updateForm.controls['end_Date'].hasError('required')"
-            [(ngModel)]="p_data.end_Date">
-                end_Date <strong>required</strong>
+            <input class="form-control" 
+            matInput formControlName="phonE_NUMBER"
+            [(ngModel)]="p_data.phonE_NUMBER"
+            />
+            <mat-error *ngIf="updateForm.controls['phonE_NUMBER'].hasError('required')">
+                phonE_NUMBER is <strong>required</strong>
             </mat-error>
-          </mat-form-field>
+            </mat-form-field>
           <br>
-          <input type="file" #file formControlName="image" (change)="uploadFile(file.files) " [(ngModel)]="p_data.image">
+
+          <mat-form-field class="example-full-width" appearance="fill">
+            <input class="form-control" 
+            matInput formControlName="address"
+            [(ngModel)]="p_data.address"
+            />
+            <mat-error *ngIf="updateForm.controls['address'].hasError('required')">
+                address is <strong>required</strong>
+            </mat-error>
+            </mat-form-field>
+
+        
         </form>
    
-    <mat-dialog-actions align="end">
-      <button mat-button mat-dialog-close>Cancel</button>
-      <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="saveData()">Save</button>
-    </mat-dialog-actions>
+        <mat-dialog-actions align="end">
+            <button class="btn btn-primary"  mat-button mat-dialog-close>Cancel</button>
+            <button class="btn btn-primary"  mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="saveData()">Save</button>
+        </mat-dialog-actions>
 
 
 
-</ng-template> -->
+</ng-template>
