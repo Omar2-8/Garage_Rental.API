@@ -18,7 +18,7 @@ const routes: Routes = [
   },
   //the defult
   {
-    path:'',
+    path:'home',
     component:HomeComponent
   },
   {

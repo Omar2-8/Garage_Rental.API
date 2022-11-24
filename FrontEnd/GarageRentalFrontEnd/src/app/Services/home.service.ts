@@ -19,6 +19,22 @@ export class HomeService {
   Aboutus :any[]=[];//عرفنا اريي عشان رح ترجعلي الداتا جيسون اوبجكت فبحتاج ارريي لحتى اخزن فيها الداتا الي جبتها من الإي بي اّي
   constructor(private http:HttpClient ,private spinner:NgxSpinnerService , private toster:ToastrService ) { }
  baseApiUrl:string = environment.baseApiUrl;
+<<<<<<< HEAD
+
+  constructor(private http:HttpClient) { }
+
+
+
+  getHomeList(): Observable<Home[]>{
+    return this.http.get<Home[]>(this.baseApiUrl +'Home/GetAll');
+  }
+
+  getHome(id:string):Observable<Home>{
+    return this.http.get<Home>(this.baseApiUrl +'Home/GetById?id=' + id);
+  }
+
+=======
+>>>>>>> 557d5158e1abdc2ec797bd6ba8df4d7d0de22ef5
   addHome(addHomeReq:Home):Observable<Home>{
     return this.http.post<Home>(this.baseApiUrl +'Home/Create',addHomeReq);
   }
@@ -215,3 +231,6 @@ deleteContactus(id:number)
 
 
 }
+
+
+

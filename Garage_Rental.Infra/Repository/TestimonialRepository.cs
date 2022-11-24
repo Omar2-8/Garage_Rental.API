@@ -38,11 +38,6 @@ namespace Garage_Rental.Infra.Repository
             else
                 return false;
 
-           
-                
-           
-
-
         }
 
         public void Delete(int id)
