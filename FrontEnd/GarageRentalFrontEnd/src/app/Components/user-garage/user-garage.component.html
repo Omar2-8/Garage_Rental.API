@@ -47,21 +47,32 @@
                 </div>
                 <div id="tab-2" class="tab-pane fade show p-0">
                     <div class="row g-4">
+
+                        garagE_NAME
+                        latitude
+                        longitude
+                        image1
+                        image2
+                        renT_PRICE
+                        status
+                        buildinG_NUMBER
+                        useR_ID
+
                         <h2 mat-dialog-title>Add aa</h2>
                         <mat-dialog-content class="mat-typography">
-                        <form class="example-form" [formGroup]="createFormContactUs" >
+                        <form class="example-form" [formGroup]="createFormGarage" >
                             <mat-form-field class="example-full-width" appearance="fill">
                             <mat-label>name</mat-label>
-                            <input type="text" matInput formControlName="name">
-                            <mat-error *ngIf="createFormContactUs.controls['name'].hasError('required')">
-                                name is <strong>required</strong>
+                            <input type="text" matInput formControlName="garagE_NAME">
+                            <mat-error *ngIf="createFormGarage.controls['garagE_NAME'].hasError('required')">
+                                garage Name is <strong>required</strong>
                             </mat-error>
                             </mat-form-field>
                             <br>
                             <mat-form-field class="example-full-width" appearance="fill">
                                 <mat-label>email</mat-label>
                                 <input type="text" matInput formControlName="email">
-                                <mat-error *ngIf="createFormContactUs.controls['email'].hasError('required')">
+                                <mat-error *ngIf="createFormGarage.controls['email'].hasError('required')">
                                 email is <strong>required</strong>
                                 </mat-error>
                             </mat-form-field>
@@ -69,7 +80,7 @@
                         <mat-form-field class="example-full-width" appearance="fill" >
                         <mat-label>phonE_NUMBER</mat-label>
                         <input type="number" matInput formControlName="phonE_NUMBER">
-                        <mat-error *ngIf="createFormContactUs.controls['phonE_NUMBER'].hasError('required')">
+                        <mat-error *ngIf="createFormGarage.controls['phonE_NUMBER'].hasError('required')">
                             phonE_NUMBER <strong>required</strong>
                         </mat-error>
                         </mat-form-field>
@@ -78,7 +89,7 @@
                             <mat-form-field class="example-full-width" appearance="fill"  >
                                 <mat-label>message</mat-label>
                                 <input type="text" matInput formControlName="message">
-                                <mat-error *ngIf="createFormContactUs.controls['message'].hasError('required')">
+                                <mat-error *ngIf="createFormGarage.controls['message'].hasError('required')">
                                 message <strong>required</strong>
                                 </mat-error>
                             </mat-form-field>
