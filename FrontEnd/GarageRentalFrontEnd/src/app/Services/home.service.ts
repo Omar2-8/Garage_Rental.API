@@ -12,7 +12,9 @@ import { Home } from '../Models/home.model';
 })
 export class HomeService {
   message: string = "Welcome :) ";
-  display_image: any;
+  display_image1: any;
+  display_image2: any;
+  display_image3: any;
   home :any[]=[];
   testimonial :any[]=[];
   Contactus :any[]=[];
@@ -176,7 +178,14 @@ deleteContactus(id:number)
 
     updateHome(body:any)
       {
-        body.image = this.display_image;
+        if(this.display_image1 != null) {  
+        body.imagE_1 = this.display_image1;
+        }
+        if(this.display_image2 != null) {
+        body.imagE_2 = this.display_image2;}
+        if(this.display_image3 != null) {
+        body.imagE_3 = this.display_image3;}
+        
         this.spinner.show();
         this.http.put('https://localhost:44391/api/Home/Update',body).subscribe((resp)=>{
           this.spinner.hide();
@@ -189,13 +198,33 @@ deleteContactus(id:number)
 
       uploadAttachmentHome(file: FormData) {
         this.http.post('https://localhost:44391/api/Home/UploadIMage/', file).subscribe((resp: any) => {
-          this.display_image = resp.image;
+          this.display_image1 = resp.imagE_1;
+          
         }, err => {
           this.toster.error('Can not Upload Image');
           console.log(err);
 
         })
       }
+      uploadAttachmentHome1(file: FormData) {
+        this.http.post('https://localhost:44391/api/Home/UploadIMage/', file).subscribe((resp: any) => {
+          this.display_image2 = resp.imagE_2;
+        }, err => {
+          this.toster.error('Can not Upload Image');
+          console.log(err);
+
+        })
+      }
+      uploadAttachmentHome2(file: FormData) {
+        this.http.post('https://localhost:44391/api/Home/UploadIMage/', file).subscribe((resp: any) => {
+          this.display_image3 = resp.imagE_3;
+        }, err => {
+          this.toster.error('Can not Upload Image');
+          console.log(err);
+
+        })
+      }
+
 
       //End Home
 

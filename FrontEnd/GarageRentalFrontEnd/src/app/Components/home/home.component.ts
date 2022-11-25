@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
     //this.dialog.open()
   }
   ngOnInit(): void {
-    // this.home.getAll();
+    this.home.getHome();
   }
   saveDataTestimonial()
   {

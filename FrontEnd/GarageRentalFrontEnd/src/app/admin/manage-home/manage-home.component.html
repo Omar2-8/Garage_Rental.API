@@ -68,7 +68,7 @@
         
         <form class="example-form" [formGroup]="UpdateHome" ><br>
             
-              <input type="file" #file formControlName="image" (change)="uploadFile(file.files) " [(ngModel)]="p_data.imagE_1">
+              <input type="file" #file formControlName="imagE_1" (change)="uploadFile(file.files) " [(ngModel)]="p_data.imagE_1">
               
             <br>
             <mat-form-field class="example-full-width" appearance="fill">
@@ -81,7 +81,7 @@
               </mat-form-field>
               <br>
               
-              <input type="file" #file formControlName="image" (change)="uploadFile(file.files) " [(ngModel)]="p_data.imagE_2">
+              <input type="file" #file1 formControlName="imagE_2" (change)="uploadFile1(file1.files) " [(ngModel)]="p_data.imagE_2">
                
               <br>
               <mat-form-field class="example-full-width" appearance="fill">
@@ -93,7 +93,7 @@
                 </mat-error>
               </mat-form-field>
               <br>
-              <input type="file" #file formControlName="image" (change)="uploadFile(file.files) " [(ngModel)]="p_data.imagE_3">
+              <input type="file" #file2 formControlName="imagE_3" (change)="uploadFile2(file2.files) " [(ngModel)]="p_data.imagE_3">
                 
                
               <br>

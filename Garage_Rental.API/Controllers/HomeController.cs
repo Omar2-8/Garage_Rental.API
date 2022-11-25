@@ -63,7 +63,8 @@ namespace Garage_Rental.API.Controllers
             Home item = new Home();
             
             item.IMAGE_1 = fileName;
-            
+            item.IMAGE_2 = fileName;
+            item.IMAGE_3 = fileName;
             return item;
         }
     }
