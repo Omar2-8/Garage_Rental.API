@@ -63,8 +63,8 @@ namespace Garage_Rental.API.Controllers
             Garage item = new Garage();
 
             item.Image1 = fileName;
-            
-            return item;//مش كامل الكود بدو تعديل
+            item.Image2 = fileName;
+            return item;
         }
     }
 }

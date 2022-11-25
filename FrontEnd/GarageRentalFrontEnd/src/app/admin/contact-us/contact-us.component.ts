@@ -11,6 +11,7 @@ export class ContactUsComponent implements OnInit {
 
   constructor(public home:HomeService, public dialog: MatDialog) { }
   @ViewChild('callDeleteDailog') callDelete!:TemplateRef<any>
+  name :string='';
   ngOnInit(): void {
     this.home.getAllContactus();
   }
@@ -30,4 +31,15 @@ export class ContactUsComponent implements OnInit {
       }
     })
   }
+
+
+  // SreachInput(ev:any)
+  // {
+  //   this.name= ev.target.value;
+  //   console.log(ev.target.value);
+  // }
+  // search()
+  // {
+  //   this.home.SearchByPrice(this.price);
+  // }
 }
