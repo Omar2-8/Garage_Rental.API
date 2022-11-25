@@ -1,0 +1,134 @@
+<div class="wrapper ">
+    <app-sidebar></app-sidebar>
+    <div class="main-panel">
+        <app-navbar></app-navbar>
+        <br><br><br>
+<div class="col-lg-12 col-md-12">
+    <div class="card">
+        <div class="card-header card-header-primary">
+            <h4 class="card-title">Testimonials</h4>
+            <p class="card-category"></p>
+        </div>
+        <div class="card-body table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            ID
+                            
+                        </th>
+                        <th>
+                            Opinion
+                        </th>
+                        <th>
+                            Rating
+                        </th>
+                        <th>
+                           Status
+                        </th>
+                        <th>
+                            USER ID
+                         </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+            
+                    <tr *ngFor="let obj of home.testimonial">
+                        <td>{{obj.id}}</td>
+                        <td>{{obj.opinion}}</td>
+                        <td>{{obj.rating}}</td>
+                        <td>{{obj.status}}</td>
+                        <td>{{obj.useR_ID}}</td>
+                        <td>
+                            <button (click)="openUpdateDailog(obj)">Update</button>
+                            <button (click)="openDeleteDailog(obj.id)">Delete</button>
+                            
+                        </td>
+                    </tr>
+            
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<h2 mat-dialog-title>Add Testimonial</h2>
+<mat-dialog-content class="mat-typography">
+   <form class="example-form" [formGroup]="createForm" >
+
+    
+      
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>opinion</mat-label>
+      <input type="text" matInput formControlName="opinion">
+      <mat-error *ngIf="createForm.controls['opinion'].hasError('required')">
+        opinion is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <br>
+ 
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Rating</mat-label>
+        <input type="number" matInput formControlName="rating">
+        <mat-error *ngIf="createForm.controls['rating'].hasError('required')">
+            rating is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+<br>
+      <mat-form-field class="example-full-width" appearance="fill"  >
+        <mat-label>Status</mat-label>
+        <input type="text" matInput formControlName="status">
+        <mat-error *ngIf="createForm.controls['status'].hasError('required')">
+            status <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-full-width" appearance="fill" >
+        <mat-label>useR_ID</mat-label>
+        <input type="number" matInput formControlName="useR_ID">
+        <mat-error *ngIf="createForm.controls['useR_ID'].hasError('required')">
+            useR_ID <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <br>
+      
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="saveData()">ADD</button>
+</mat-dialog-actions>
+
+<app-footer></app-footer>
+</div>
+</div>
+<ng-template #callDeleteDailog>
+    <h2>Are you sure you want to delete this item ? </h2>
+    <button mat-dialog-close="yes">Yes</button>
+    <button mat-dialog-close="no">No</button>
+    
+    
+     </ng-template>    
+
+
+     <ng-template #callUpdatDailog>
+        <form class="example-form" [formGroup]="updateForm" >
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Status</mat-label>
+              <input type="text" matInput formControlName="status"
+              [(ngModel)]="p_data.status">
+              <mat-error *ngIf="updateForm.controls['status'].hasError('required')">
+                status is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+            <br>
+              
+            </form>
+       
+        <mat-dialog-actions align="end">
+          <button mat-button mat-dialog-close>Cancel</button>
+          <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)=" saveDataTestimonial()">Save</button>
+        </mat-dialog-actions>
+    </ng-template>

@@ -36,8 +36,6 @@ namespace Garage_Rental.API.Controllers
         {
             return _TestimonialService.Create(Testimonial);
         }
-
-
         [HttpPut]
         public void Update(Testimonial Testimonial)
         {

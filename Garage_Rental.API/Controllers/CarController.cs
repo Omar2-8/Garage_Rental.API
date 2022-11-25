@@ -28,10 +28,10 @@ namespace Garage_Rental.API.Controllers
             return _carService.Create(car);
         }
 
-  
 
         [HttpDelete]
-        [Route("{id}")] 
+        [Route("{id}")]
+
         public void Delete(int id)
         {
             _carService.Delete(id);
