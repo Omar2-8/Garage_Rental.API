@@ -10,11 +10,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { SharedModule } from '../shared/shared.module';
-<<<<<<< HEAD
 import { ManageHomeComponent } from './manage-home/manage-home.component';
-=======
 import { ContactUsComponent } from './contact-us/contact-us.component';
->>>>>>> bdf6e294c32ea56d0777062fd5d9208461cb45aa
 
 
 @NgModule({
@@ -25,12 +22,9 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
       SidebarComponent,
       NavbarComponent,
       FooterComponent,
-<<<<<<< HEAD
       ManageTestimonialComponent,
-      ManageHomeComponent
-=======
+      ManageHomeComponent,
       ContactUsComponent
->>>>>>> bdf6e294c32ea56d0777062fd5d9208461cb45aa
   ],
   imports: [
     CommonModule,

@@ -1,10 +1,7 @@
-<<<<<<< HEAD
 import { ManageHomeComponent } from './manage-home/manage-home.component';
 import { ManageTestimonialComponent } from './manage-testimonial/manage-testimonial.component';
-=======
 import { ContactUsComponent } from './contact-us/contact-us.component';
 
->>>>>>> bdf6e294c32ea56d0777062fd5d9208461cb45aa
 import { AboutUsComponent } from './about-us/about-us.component';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -24,7 +21,6 @@ const routes: Routes = [
     component:AboutUsComponent
   },
   {
-<<<<<<< HEAD
     path:'testimonial',
     component:ManageTestimonialComponent
   },
@@ -32,12 +28,11 @@ const routes: Routes = [
     path:'home',
     component:ManageHomeComponent
   },
-=======
+  {
     path:'contactUs',
     component:ContactUsComponent
   }
 
->>>>>>> bdf6e294c32ea56d0777062fd5d9208461cb45aa
 
 ];
 
