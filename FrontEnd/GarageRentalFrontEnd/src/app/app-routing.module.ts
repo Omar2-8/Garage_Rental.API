@@ -1,3 +1,4 @@
+import { UserProfileModule } from './user-profile/user-profile.module';
 import { UserGarageComponent } from './Components/user-garage/user-garage.component';
 import { AdminModule } from './admin/admin.module';
 import { TestimonialComponent } from './Components/testimonial/testimonial.component';
@@ -42,7 +43,10 @@ const routes: Routes = [
     path:'garage',
     component:UserGarageComponent
   },
-
+  {
+    path:'userProfile',
+    loadChildren:()=>UserProfileModule
+  },
 ];
 
 @NgModule({
