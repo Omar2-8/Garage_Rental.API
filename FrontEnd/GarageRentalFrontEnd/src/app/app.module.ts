@@ -17,6 +17,7 @@ import { FormsModule } from '@angular/forms';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { ReserveGarageComponent } from './Components/reserve-garage/reserve-garage.component';
 import { ListGarageComponent } from './Components/list-garage/list-garage.component';
+import { UserGarageComponent } from './Components/user-garage/user-garage.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { ListGarageComponent } from './Components/list-garage/list-garage.compon
     TestimonialComponent,
     ReserveGarageComponent,
     ListGarageComponent,
+    UserGarageComponent,
     
 
   ],
