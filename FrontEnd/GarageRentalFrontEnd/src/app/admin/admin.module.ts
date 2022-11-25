@@ -10,6 +10,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { SharedModule } from '../shared/shared.module';
+import { ManageHomeComponent } from './manage-home/manage-home.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { SharedModule } from '../shared/shared.module';
       SidebarComponent,
       NavbarComponent,
       FooterComponent,
-      ManageTestimonialComponent
+      ManageTestimonialComponent,
+      ManageHomeComponent
   ],
   imports: [
     CommonModule,
