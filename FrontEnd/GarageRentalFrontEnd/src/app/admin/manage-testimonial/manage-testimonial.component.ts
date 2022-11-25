@@ -2,6 +2,7 @@ import { HomeService } from './../../Services/home.service';
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { Table } from 'primeng/table'
 @Component({
   selector: 'app-manage-testimonial',
   templateUrl: './manage-testimonial.component.html',
@@ -41,29 +42,31 @@ export class ManageTestimonialComponent implements OnInit {
           debugger
           this.home.deleteTestimonial(id);
         }
-          
+
           else if(result=='no')
           console.log('thank you ');
-          
+
       }
     })
   }
 
   p_data :any={};
   openUpdateDailog(obj:any){
-   
+
     console.log(obj);
     this.p_data={
       id:obj.id,
       status:obj.status
-  
+
     }
     this.updateForm.controls['id'].setValue(this.p_data.id);
     this.dialog.open(this.callUpdate);
-  
+
     }
 
     saveDataTestimonial(){
       this.home.updateTestimonial(this.updateForm.value);
     }
+
+
 }

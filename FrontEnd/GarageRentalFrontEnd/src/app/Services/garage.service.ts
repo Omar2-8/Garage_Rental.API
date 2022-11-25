@@ -24,6 +24,7 @@ export class GarageService {
   }
 
   addGarage(addGarageReq:Garage):Observable<Garage>{
+    debugger
     return this.http.post<Garage>(this.baseApiUrl +'Garage/Create',addGarageReq);
   }
 
