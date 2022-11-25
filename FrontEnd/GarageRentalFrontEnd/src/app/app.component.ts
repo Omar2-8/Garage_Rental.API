@@ -7,9 +7,8 @@ import { NgxSpinnerService } from "ngx-spinner";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private spinner :NgxSpinnerService){
-    this.spinner.show();
-    setTimeout(()=>{this.spinner.hide();},3000)
+  constructor( ){
+
   }
 
   title = 'GarageRentalFrontEnd';

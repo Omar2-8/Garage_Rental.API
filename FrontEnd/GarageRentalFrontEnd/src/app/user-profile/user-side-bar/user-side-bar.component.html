@@ -1,0 +1,113 @@
+<div class="sidebar" data-color="purple" style="     background: linear-gradient(to bottom, #ffffff 0%, #135240, #000000 100%); "  >
+    <!--background: linear-gradient(60deg, #167f5d, #000000);
+    Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+
+    Tip 2: you can also add an image using data-image tag
+-->
+    <!-- <div class="logo">
+      <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+        Creative Tim
+      </a>
+    </div>
+    <div class="sidebar-wrapper">
+      <ul class="nav">
+        <li class="nav-item active  ">
+          <a class="nav-link" href="javascript:void(0)" style="background-color:#065f45;">
+            <i class="material-icons">dashboard</i>
+            <p>Dashboard</p>
+          </a>
+        </li>
+      </ul>
+    </div> -->
+
+<!--
+      Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+      Tip 2: you can also add an image using data-image tag
+     -->
+     <div class="logo"><a href="#" class="simple-text logo-normal">
+
+       </a>
+     </div>
+     <div class="sidebar-wrapper">
+       <ul class="nav">
+        <li class="nav-item active  ">
+          <!-- <a class="nav-link"style="background: linear-gradient(60deg, #065f45, #065f45);"> -->
+          <a class="nav-link" href="javascript:void(0)" style="background-color:#065f45;">
+            <i class="material-icons">dashboard</i>
+            <p>Dashboard</p>
+          </a>
+        </li>
+
+         <li class="nav-item ">
+           <a  class="nav-link" routerLink="/Admin/home" >
+               <i class="material-icons">store</i>
+             <p>Homa</p>
+           </a>
+         </li>
+         <li class="nav-item ">
+
+             <a  class="nav-link" routerLink="/Admin/aboutUs"> 
+             <i class="fa fa-users" aria-hidden="true"></i>
+             <p>about us</p>
+             </a>
+         </li>
+         <li class="nav-item ">
+
+             <a class="nav-link" routerLink="/Admin/contactUs"> 
+                 <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                 <p>countact us</p>
+             </a>
+         </li>
+         <li class="nav-item ">
+
+          <a  class="nav-link" routerLink="/Admin/testimonial" > 
+              <i class="fa fa-check-square-o" aria-hidden="true"></i>
+              <p>testimonial</p>
+          </a>
+      </li>
+         <li class="nav-item  dropdown ">
+           <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Pages</a>
+              <div class="dropdown-menu dropdown-menu-dark" style="background-color:#1a2035;color:white;width:89%">
+                   <a asp-action="Index" asp-controller="Homes" class="nav-link" > 
+                       <i class="fa fa-home" aria-hidden="true"></i>
+                       <p>Home</p>
+                   </a>
+                   <a asp-action="Index" asp-controller="AboutUs" class="nav-link" > 
+                       <i class="fa fa-buysellads" aria-hidden="true"></i>
+                       <p>About Us </p>
+                   </a>
+                   <a asp-action="Index" asp-controller="ContactUs" class="nav-link" > 
+                       <i class="fa fa-connectdevelop" aria-hidden="true"></i>
+                       <p>Contact Us </p>
+                   </a>
+                   <a asp-action="Index" asp-controller="Testimonials" class="nav-link" > 
+                       <i class="fa fa-comment-o" aria-hidden="true"></i>
+                       <p>Testimonials </p>
+                   </a>
+              </div>
+         </li>
+         <li class="nav-item  dropdown ">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Reports</a>
+
+              <div class="dropdown-menu dropdown-menu-dark" style="background-color:#1a2035;color:white;width:89%">
+                 <a asp-action="Reports" asp-controller="DashBoard" class="nav-link" > 
+                    <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                     <p>Monthly</p>
+                 </a>
+                 <a asp-action="Reports_Annual" asp-controller="DashBoard" class="nav-link" > 
+                    <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                     <p>Annual</p>
+                 </a>                 
+              </div>
+         </li>
+         <li class="nav-item ">
+           <a asp-action="Index" asp-controller="Payments" class="nav-link" >
+               <i class="fa fa-money" aria-hidden="true"></i>
+             <p>Payments</p>
+           </a>
+         </li>
+  
+       </ul>
+     </div>
+
+  </div>

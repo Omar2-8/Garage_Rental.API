@@ -38,8 +38,6 @@ export class UserService {
     //Hits Api 
     //Hide Spinner
     //Resp=> Toastr 
-  
-  
     this.http.get('https://localhost:44391/api/Users/GetById/' + id).subscribe((resp: any) => {
       this.user = resp;
       console.log(this.user);

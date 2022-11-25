@@ -1,60 +1,113 @@
-<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
-  <div class="site-wrap">
-    <app-navbar></app-navbar>
-    <div class="m-5 p-5">
-      <form (ngSubmit)="saveGarage()">
-        <div class="my-5 p-5">
-          <h1>Choose your Garagee Location to add it to the list</h1>
-        </div>
-
-        <div class="mb-3">
-          <label>Garage Name</label>
-          <input
-            class="form-control form-control-lg form-control-solid"
-            type="text"
-            placeholder="Garage Name"
-            formControlName="name"
-            required
-          />
-        </div>
-
-        <div class="mb-3">
-          <label>Avalability</label>
-          <input formControlName="name" />
-        </div>
-
-        <div class="mb-3">
-          <label>price</label>
-          <input formControlName="price" />
-        </div>
-
-        <div class="mb-3">
-          <label>street</label>
-          <input formControlName="street" />
-        </div>
-
-        <div class="mb-3">
-          <label>building Number</label>
-          <input formControlName="building" />
-        </div>
-
-        <google-map
-          height="600px"
-          width="1900px"
-          [center]="center"
-          [zoom]="zoom"
-          (mapClick)="addMarker($event)"
-        >
-          <map-marker
-            *ngFor="let markerPosition of markerPositions"
-            [position]="markerPosition"
-            [options]="markerOptions"
-          ></map-marker>
-        </google-map>
-
-        <button type="submit" class="btn btn-primary btn-lg">Add Garage</button>
-      </form>
-      <app-footer></app-footer>
+<div class="m-5 p-5">
+  <form [formGroup]="garageForm" (ngSubmit)="saveGarage()">
+    <div class="my-5 p-5">
+      <h1>Choose your Garagee Location to add it to the list</h1>
     </div>
-  </div>
-</body>
+
+    <div class="mb-3">
+      <label>Garage Name</label>
+      <input
+        class="form-control form-control-lg form-control-solid"
+        type="text"
+        placeholder="Garage Name"
+        required
+        formControlName="name"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label>Avalable from</label>
+      <input
+        class="form-control form-control-lg form-control-solid"
+        type="text"
+        placeholder="Avalable from"
+        required
+        formControlName="from"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label>Avalable to</label>
+      <input
+        class="form-control form-control-lg form-control-solid"
+        type="text"
+        placeholder="Avalable to"
+        required
+        formControlName="to"
+      />
+    </div>
+    <!-- <div class="mb-3">
+          <label>Avalablabilty</label>
+          <p-slider [(ngModel)]="rangeValues" [range]="true"></p-slider>
+        </div> -->
+
+    <div class="mb-3">
+      <label>Price</label>
+      <input
+        class="form-control form-control-lg form-control-solid"
+        type="text"
+        placeholder="Price"
+        required
+        formControlName="price"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label>Street</label>
+      <input
+        class="form-control form-control-lg form-control-solid"
+        type="text"
+        placeholder="Street"
+        required
+        formControlName="street"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label>building Number</label>
+      <input
+        class="form-control form-control-lg form-control-solid"
+        type="text"
+        placeholder="building Number"
+        required
+        formControlName="building"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label>Garage Mode</label>
+      <select
+        class="form-control form-control-md form-control-solid"
+        type="text"
+        placeholder="Garage Mode"
+        required
+        formControlName="mode"
+      >
+        <option
+          class="select2-resultsoption select2-resultsoption--selectable select2-results__option--selected"
+          *ngFor="let m of mode"
+          [value]="m"
+        >
+          {{ m }}
+        </option>
+      </select>
+    </div>
+
+    <label>Choose the location of your Garage</label>
+    <google-map
+      height="600px"
+      width="750px"
+      [center]="center"
+      [zoom]="zoom"
+      (mapClick)="addMarker($event)"
+    >
+      <map-marker
+        *ngFor="let markerPosition of markerPositions"
+        [position]="markerPosition"
+        [options]="markerOptions"
+      ></map-marker>
+    </google-map>
+
+    <button type="submit" class="btn btn-primary btn-lg">Add Garage</button>
+  </form>
+</div>
