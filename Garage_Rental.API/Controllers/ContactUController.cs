@@ -36,10 +36,5 @@ namespace Garage_Rental.API.Controllers
         {
             _ContactUService.Delete(id);
         }
-
-     
-
-      
-        
     }
 }
