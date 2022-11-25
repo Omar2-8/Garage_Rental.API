@@ -9,38 +9,19 @@
       <div class="site-block-wrap">
       <div class="owl-carousel with-dots">
         <div class="site-blocks-cover overlay overlay-2" style="background-image: url(../../../assets/images/hero_1.jpg);" data-aos="fade" id="home-section">
-  
-  
           <div class="container">
             <div class="row align-items-center justify-content-center">
               <div class="col-md-6 mt-lg-5 text-center">
                 <h1 class="text-shadow">Buy &amp; Sell Property Here</h1>
                 <p class="mb-5 text-shadow">Free website template for Real Estate websites by the fine folks at <a href="https://free-template.co/" target="_blank">Free-Template.co</a>  </p>
-                <p><a href="https://free-template.co" target="_blank" class="btn btn-primary px-5 py-3">Get Started</a></p>
+                <p><a routerLink="/garage"  class="btn btn-primary px-5 py-3">Garage</a></p>
                 
               </div>
             </div>
-          </div>
-    
-          
+          </div>          
         </div>  
-    
-        <div class="site-blocks-cover overlay overlay-2" style="background-image: url(../../../assets/images/hero_2.jpg);" data-aos="fade" id="home-section">
-    
-    
-          <div class="container">
-            <div class="row align-items-center justify-content-center">
-              <div class="col-md-6 mt-lg-5 text-center">
-                <h1 class="text-shadow">Find Your Perfect Property For Your Home</h1>
-                <p class="mb-5 text-shadow">Free website template for Real Estate websites by the fine folks at <a href="https://free-template.co/" target="_blank">Free-Template.co</a>  </p>
-                <p><a href="https://free-template.co" target="_blank" class="btn btn-primary px-5 py-3">Get Started</a></p>
-                
-              </div>
-            </div>
-          </div>
-    
-          
-        </div>  
+
+ 
       </div>   
     </div>     
 <app-about-us></app-about-us>
@@ -534,10 +515,6 @@
           </div>
         </div>
       </section>
-  
-     
-  
-  
       <section class="site-section bg-light bg-image" id="contact-section">
         <div class="container">
           <div class="row mb-5">
@@ -547,62 +524,7 @@
           </div>
           <div class="row">
             <div class="col-md-7 mb-5">
-  
-              
-
-              <h2 mat-dialog-title>Add aa</h2>
-              <mat-dialog-content class="mat-typography">
-                 <form class="example-form" [formGroup]="createFormContactUs" >
-              
-                  
-                    
-                  <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>name</mat-label>
-                    <input type="text" matInput formControlName="name">
-                    <mat-error *ngIf="createFormContactUs.controls['name'].hasError('required')">
-                      name is <strong>required</strong>
-                    </mat-error>
-                  </mat-form-field>
-                  <br>
-               
-                    <mat-form-field class="example-full-width" appearance="fill">
-                      <mat-label>email</mat-label>
-                      <input type="text" matInput formControlName="email">
-                      <mat-error *ngIf="createFormContactUs.controls['email'].hasError('required')">
-                        email is <strong>required</strong>
-                      </mat-error>
-                    </mat-form-field>
-              <br>
-              <mat-form-field class="example-full-width" appearance="fill" >
-                <mat-label>phonE_NUMBER</mat-label>
-                <input type="number" matInput formControlName="phonE_NUMBER">
-                <mat-error *ngIf="createFormContactUs.controls['phonE_NUMBER'].hasError('required')">
-                  phonE_NUMBER <strong>required</strong>
-                </mat-error>
-              </mat-form-field>
-              <br>
-              
-                    <mat-form-field class="example-full-width" appearance="fill"  >
-                      <mat-label>message</mat-label>
-                      <input type="text" matInput formControlName="message">
-                      <mat-error *ngIf="createFormContactUs.controls['message'].hasError('required')">
-                        message <strong>required</strong>
-                      </mat-error>
-                    </mat-form-field>
-                    <br>
-
-                    <br>
-                    
-                  </form>
-              </mat-dialog-content>
-              <mat-dialog-actions align="end">
-                <button mat-button mat-dialog-close>Cancel</button>
-                <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="saveDataContactUs()">ADD</button>
-              </mat-dialog-actions>
-
-
-
-
+              <app-contact-us></app-contact-us>
             </div>
             <div class="col-md-5">
               
