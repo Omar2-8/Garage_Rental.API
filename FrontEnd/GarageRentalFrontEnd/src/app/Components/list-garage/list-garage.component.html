@@ -1,0 +1,60 @@
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+  <div class="site-wrap">
+    <app-navbar></app-navbar>
+    <div class="m-5 p-5">
+      <form (ngSubmit)="saveGarage()">
+        <div class="my-5 p-5">
+          <h1>Choose your Garagee Location to add it to the list</h1>
+        </div>
+
+        <div class="mb-3">
+          <label>Garage Name</label>
+          <input
+            class="form-control form-control-lg form-control-solid"
+            type="text"
+            placeholder="Garage Name"
+            formControlName="name"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <label>Avalability</label>
+          <input formControlName="name" />
+        </div>
+
+        <div class="mb-3">
+          <label>price</label>
+          <input formControlName="price" />
+        </div>
+
+        <div class="mb-3">
+          <label>street</label>
+          <input formControlName="street" />
+        </div>
+
+        <div class="mb-3">
+          <label>building Number</label>
+          <input formControlName="building" />
+        </div>
+
+        <google-map
+          height="600px"
+          width="1900px"
+          [center]="center"
+          [zoom]="zoom"
+          (mapClick)="addMarker($event)"
+        >
+          <map-marker
+            *ngFor="let markerPosition of markerPositions"
+            [position]="markerPosition"
+            [options]="markerOptions"
+          ></map-marker>
+        </google-map>
+
+        <button type="submit" class="btn btn-primary btn-lg">Add Garage</button>
+      </form>
+      <app-footer></app-footer>
+    </div>
+  </div>
+</body>

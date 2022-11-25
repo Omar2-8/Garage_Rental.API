@@ -15,6 +15,8 @@ import { ToastrModule, ToastNoAnimation, ToastNoAnimationModule } from 'ngx-toas
 import { FormsModule } from '@angular/forms';
 
 import { GoogleMapsModule } from '@angular/google-maps';
+import { ReserveGarageComponent } from './Components/reserve-garage/reserve-garage.component';
+import { ListGarageComponent } from './Components/list-garage/list-garage.component';
 
 
 @NgModule({
@@ -24,6 +26,8 @@ import { GoogleMapsModule } from '@angular/google-maps';
     ContactUsComponent,
     AboutUsComponent,
     TestimonialComponent,
+    ReserveGarageComponent,
+    ListGarageComponent,
     
 
   ],
