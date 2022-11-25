@@ -19,6 +19,7 @@ import { ReserveGarageComponent } from './Components/reserve-garage/reserve-gara
 import { ListGarageComponent } from './Components/list-garage/list-garage.component';
 import { UserGarageComponent } from './Components/user-garage/user-garage.component';
 
+import {SliderModule} from 'primeng/slider';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { UserGarageComponent } from './Components/user-garage/user-garage.compon
     ReserveGarageComponent,
     ListGarageComponent,
     UserGarageComponent,
-    
+
 
   ],
   imports: [
@@ -43,7 +44,10 @@ import { UserGarageComponent } from './Components/user-garage/user-garage.compon
     GoogleMapsModule,
     ToastrModule.forRoot(),
     ToastNoAnimationModule.forRoot(),
-    FormsModule
+    FormsModule,
+    SliderModule
+
+
 
   ],
   providers: [],

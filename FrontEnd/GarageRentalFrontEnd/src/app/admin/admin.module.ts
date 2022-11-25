@@ -12,7 +12,7 @@ import { FooterComponent } from './footer/footer.component';
 import { SharedModule } from '../shared/shared.module';
 import { ManageHomeComponent } from './manage-home/manage-home.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
-
+import {TableModule} from 'primeng/table';
 
 @NgModule({
   declarations: [
@@ -29,7 +29,8 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
   imports: [
     CommonModule,
     AdminRoutingModule,
-    SharedModule
+    SharedModule,
+    TableModule
   ]
 })
 export class AdminModule { }
