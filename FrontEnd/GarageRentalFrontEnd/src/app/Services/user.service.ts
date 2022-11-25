@@ -19,9 +19,9 @@ export class UserService {
   constructor(private http:HttpClient ,private spinner:NgxSpinnerService , private toster:ToastrService ) { }
   //--------Users
   createUser(body: any) {
-    body.image = this.display_image;
+    body.useR_IMAGE = this.display_image;
     this.spinner.show();
-   
+    
     this.http.post('https://localhost:44391/api/Users/Create', body).subscribe((resp) => {
       console.log(resp);
       this.spinner.hide();
@@ -143,7 +143,7 @@ export class UserService {
   }
   updateGarage(body:any)
   {
-    body.image = this.display_image;
+    body.useR_IMAGE = this.display_image;
     this.spinner.show();
     this.http.put('https://localhost:44391/api/Garage/Update',body).subscribe((resp)=>{
       this.spinner.hide();
@@ -156,7 +156,7 @@ export class UserService {
 
   uploadAttachmentGarage(file: FormData) {
     this.http.post('https://localhost:44391/api/Home/UploadIMage/', file).subscribe((resp: any) => {
-      this.display_image = resp.image;
+      this.display_image = resp.useR_IMAGE;
     }, err => {
       this.toster.error('Can not Upload Image');
       console.log(err);

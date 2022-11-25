@@ -29,63 +29,177 @@
                                 <h3>Sign In to <strong>Colorlib</strong></h3>
                                 <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p>
                             </div>
-                            <form action="#" method="post" enctype="multipart/form-data">
-                                <div class="form-group first">
-                                    <label asp-for="FullName" style="margin-top: -20px;" class="control-label">Full Name</label>
-                                    <input asp-for="FullName" class="form-control" />
 
+                            <h2 mat-dialog-title>Add Testimonial</h2>
+                            <mat-dialog-content class="mat-typography">
+                               <form class="example-form" [formGroup]="registerForm" >
+                            
+                                
+                                  
+                              
+                                <mat-form-field class="example-full-width" appearance="fill">
+                                  <mat-label>firsT_NAME</mat-label>
+                                  <input type="text" matInput formControlName="firsT_NAME">
+                                  <mat-error *ngIf="registerForm.controls['firsT_NAME'].hasError('required')">
+                                    firsT_NAME is <strong>required</strong>
+                                  </mat-error>
+                                </mat-form-field>
+                                <br>
+                                <mat-form-field class="example-full-width" appearance="fill">
+                                  <mat-label>lasT_NAME</mat-label>
+                                  <input type="text" matInput formControlName="lasT_NAME">
+                                  <mat-error *ngIf="registerForm.controls['lasT_NAME'].hasError('required')">
+                                    lasT_NAME is <strong>required</strong>
+                                  </mat-error>
+                                </mat-form-field>
+                                <br>
+                                  <mat-form-field class="example-full-width" appearance="fill">
+                                    <mat-label>email</mat-label>
+                                    <input type="text" matInput formControlName="email">
+                                    <mat-error *ngIf="registerForm.controls['email'].hasError('required')">
+                                      email is <strong>required</strong>
+                                    </mat-error>
+                                  </mat-form-field>
+                            <br>
+                                  <mat-form-field class="example-full-width" appearance="fill"  >
+                                    <mat-label>password</mat-label>
+                                    <input type="text" matInput formControlName="password">
+                                    <mat-error *ngIf="registerForm.controls['password'].hasError('required')">
+                                      password <strong>required</strong>
+                                    </mat-error>
+                                  </mat-form-field>
+                                  <br>
+
+                                  <br>
+                                  <mat-form-field class="example-full-width" appearance="fill"  >
+                                    <mat-label>phonenumber</mat-label>
+                                    <input type="number" matInput formControlName="phonenumber">
+                                    <mat-error *ngIf="registerForm.controls['phonenumber'].hasError('required')">
+                                      phonenumber <strong>required</strong>
+                                    </mat-error>
+                                  </mat-form-field>
+                                  <br>
+                                  <mat-form-field class="example-full-width" appearance="fill" >
+                                    <mat-label>useR_IDENTITY</mat-label>
+                                    <input type="text" matInput formControlName="useR_IDENTITY">
+                                    <mat-error *ngIf="registerForm.controls['useR_IDENTITY'].hasError('required')">
+                                      useR_IDENTITY <strong>required</strong>
+                                    </mat-error>
+                                  </mat-form-field>
+                                  <br>
+                                  
+                                  <br>
+                                </form>
+                            </mat-dialog-content>
+                            <mat-dialog-actions align="end">
+                              <button mat-button mat-dialog-close>Cancel</button>
+                              <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="submit()">ADD</button>
+                            </mat-dialog-actions>
+
+                            <!-- <form  [formGroup]="registerForm">
+                              
+                              
+                              <div class="form-group first">
+                                <mat-label>First Name</mat-label>
+                                <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
+                                  <mat-form-field class="example-full-width">
+                                    <input type="text" matInput  formControlName="firsT_NAME" />
+                                    <mat-error *ngIf="registerForm.controls['firsT_NAME'].hasError('required')">
+                                      First Name is <strong>required</strong>
+                                    </mat-error>
+                                  </mat-form-field>
+                                  
                                 </div>
-                                <div class="form-group last mb-4">
-                                    <label asp-for="Password" style="margin-top: -20px;" class="control-label">Password</label>
-                                    <input asp-for="Password" class="form-control" />
-
+                              </div>
+                               
+                              <div class="form-group first">
+                                <mat-label>Last Name</mat-label>
+                                <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
+                                  <mat-form-field class="example-full-width">
+                                    <input type="text" matInput  formControlName="lasT_NAME" />
+                                    <mat-error *ngIf="registerForm.controls['lasT_NAME'].hasError('required')">
+                                      Last Name is <strong>required</strong>
+                                    </mat-error>
+                                  </mat-form-field>
+                                  
                                 </div>
-                                <div class="form-group first">
-                                    <label asp-for="Email" style="margin-top: -20px;" class="control-label">Email</label>
-                                    <input asp-for="Email" class="form-control" />
+                              </div>
+                              
+                              <div class="form-group first">
+                                <mat-label>Email</mat-label>
+                                <div class="input_field"> <span aria-hidden="true" class="fa fa-envelope"></span>
+                                <mat-form-field class="example-full-width">
+                                <input type="email" matInput name="email" formControlName="email" />
+                                <mat-error *ngIf="registerForm.controls['email'].hasError('required') ">
+                                  Email is <strong>required</strong>
+                                </mat-error>
+                                <mat-error *ngIf="registerForm.controls['email'].hasError('email') ">
+                                  Please enter a valid email address
+                                </mat-error>
+                              </mat-form-field>
+                              </div>
+                              </div>
 
+                              <div class="form-group first">
+                                <mat-label>Password</mat-label>
+                           <div class="input_field"><span><i aria-hidden="true" class="fa fa-lock"></i></span>
+                             <mat-form-field class="example-full-width">
+                               <input matInput type="password" name="password" formControlName="password" />
+                               <mat-error *ngIf="registerForm.controls['password'].hasError('minlength')">
+                                 Please enter a strong password
+                               </mat-error>
+                               <mat-error *ngIf="registerForm.controls['password'].hasError('required')">
+                                 password is <strong>required</strong>
+                               </mat-error>
+                             </mat-form-field>
+                           </div>
+                              </div>
+
+                                
+                              <div class="form-group first">
+                                <mat-label>Phone Number</mat-label>
+                                <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
+                                  <mat-form-field class="example-full-width">
+                                    <input type="text" matInput  formControlName="phonenumber" />
+                                    <mat-error *ngIf="registerForm.controls['phonenumber'].hasError('required')">
+                                      Phone number is <strong>required</strong>
+                                    </mat-error>
+                                  </mat-form-field>
+                                  
                                 </div>
-                                <div class="form-group first">
-                                    <label asp-for="Phonenumber" style="margin-top: -20px;" class="control-label">Phone number</label>
-                                    <input asp-for="Phonenumber" class="form-control" />
+                              </div>
 
+                                <div>
+                                  <input type="file" #file formControlName="useR_IMAGE" (change)="uploadFile(file.files) " [(ngModel)]="p_data.useR_IMAGE">
+                                  
                                 </div>
-                                <div class="form-group first" style="margin-top: 32px;">
-                                  <label style="margin-top: -25px;" asp-for="ImageFile" class="label">Image File</label>
-                                    <input asp-for="ImageFile" class="input--style-4"  style="width: 20.5em;" />
-
+                              
+                              <div class="form-group first">
+                                <mat-label>User Identity</mat-label>
+                                <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
+                                  <mat-form-field class="example-full-width">
+                                    <input type="text" matInput  formControlName="useR_IDENTITY" />
+                                    <mat-error *ngIf="registerForm.controls['useR_IDENTITY'].hasError('required')">
+                                      User Identity is <strong>required</strong>
+                                    </mat-error>
+                                  </mat-form-field>
+                                  
+                                  
                                 </div>
-                                <div class="form-group first" style="margin-top: 32px;">
-
-
-                                    <label asp-for="Gender" style="margin-top: -20px;" class="control-label">Gender</label>
-                                    <div class="form-check form-check-inline">
-                                      <input asp-for="Gender" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                      <label style="margin-left: 16px; color: #000000;" class="form-check-label" asp-for="Gender">Male</label>
-                                    </div>
-                                    <div style="padding-left:10px;" class="form-check form-check-inline">
-                                      <input asp-for="Gender" style="margin-left:12px;" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                      <label style="margin-left: 27px; color: #000000;" class="form-check-label" asp-for="Gender">Female</label>
-                                    </div>
-
+                              </div>
+                              <div class="form-group first">
+                                <mat-label>roleS_ID</mat-label>
+                                <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
+                                  <mat-form-field class="example-full-width">
+                                    <input type="text" matInput  formControlName="roleS_ID" />
+                                    <mat-error *ngIf="registerForm.controls['roleS_ID'].hasError('required')">
+                                      roleS_ID is <strong>required</strong>
+                                    </mat-error>
+                                  </mat-form-field>
+                                  
+                                  
                                 </div>
-
-                                <div class="form-group first">
-                                    <label asp-for="Age" class="control-label"></label>
-                                    <input asp-for="Age" class="form-control" />
-
-                                </div>
-                                <div class="form-group first" style="margin-top: 32px;">
-
-
-                                  <label style="margin-top: -20px;" class="control-label">User Type</label>
-                                  <select asp-for="Usertype"  class="form-control">
-                                    <option asp-for="Usertype" class="form-control">Student</option>
-                                    <option asp-for="Usertype" class="form-control">Lessor</option>
-                                  </select>
-                                </div>
-
-  
+                              </div>
 
                                 <div class="d-flex mb-5 align-items-center">
                                     <label class="control control--checkbox mb-0">
@@ -94,10 +208,15 @@
                                         <div class="control__indicator"></div>
                                     </label>
                                     <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span>
-                                </div>
+                                  </div>
 
-                                <input type="submit" value="Log In" class="btn btn-pill text-white btn-block btn-primary">
+                              <mat-dialog-actions align="end">
 
+                                <button [disabled]="!registerForm.valid" mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="submit()"
+                                type="submit" value="Register" class="btn btn-pill text-white btn-block btn-primary">Register </button>
+
+                              </mat-dialog-actions>
+                                <p style="text-align: center;cursor: pointer;" (click)="goToLogin()">Already have account</p>
                                 <span class="d-block text-center my-4 text-muted"> or sign in with</span>
 
                                 <div class="social-login text-center">
@@ -111,7 +230,8 @@
                                         <span class="icon-google mr-3"></span>
                                     </a>
                                 </div>
-                            </form>
+
+                            </form> -->
                         </div>
                     </div>
                 </div>
@@ -121,6 +241,8 @@
         </div>
     </div>
 </div>
+
+
 
 <script>
     $(function() {
