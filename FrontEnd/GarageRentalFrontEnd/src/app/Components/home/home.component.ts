@@ -1,18 +1,25 @@
-import { HomeService } from './../../Services/home.service';
 import { Router } from '@angular/router';
-
+import { HomeService } from './../../Services/home.service';
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+
+
+
   constructor(public home:HomeService) { }
 
-  
+  createFormContactUs :FormGroup= new FormGroup({
+    name:new FormControl('',Validators.required),
+    email:new FormControl('',[Validators.required,Validators.email]),
+    message:new FormControl('',Validators.required),
+    phonE_NUMBER:new FormControl('',Validators.required),
+  })
   createFormTestimonial :FormGroup= new FormGroup({
     Rating:new FormControl('',Validators.required),
     Opinion:new FormControl('',Validators.required),
@@ -20,7 +27,10 @@ export class HomeComponent implements OnInit {
     USER_ID:new FormControl('',Validators.required),
   })
   
-
+  saveDataContactUs()
+  {
+    this.home.createContactus(this.createFormContactUs.value);
+  }
   opendialogTestimonial() {
     //this.dialog.open()
   }

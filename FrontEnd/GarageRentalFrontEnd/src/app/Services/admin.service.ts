@@ -34,6 +34,7 @@ export class AdminService {
 
   //-------End User
   //-------Garage 
+
   createGarage(body: any) {
     body.image = this.display_image;
     this.spinner.show();
@@ -49,14 +50,18 @@ export class AdminService {
     )
   }
   getAllGarage(){
+  
+    
     this.http.get('https://localhost:44391/api/Garage/GetAll').subscribe((Resp:any)=>{//السبسكرايب بتتكون من حالتين اول وحدة ترو والثانية اذا كانت ايرور ريسبونس
       this.garage=Resp;
-      this.toster.success('Data Retrieved')
+      
+       this.toster.success('Data Retrieved')
     },err=>{
       
       this.toster.error('something Wrong')
     })
   }
+  
   getGarageId(id: number) {
     //show Spinner 
     //Hits Api 

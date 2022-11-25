@@ -1,5 +1,3 @@
-import { UserGarageComponent } from './Components/user-garage/user-garage.component';
-
 import { AdminModule } from './admin/admin.module';
 import { TestimonialComponent } from './Components/testimonial/testimonial.component';
 import { AuthModule } from './auth/auth.module';
@@ -38,10 +36,6 @@ const routes: Routes = [
   {
     path:'Admin',
     loadChildren:()=>AdminModule
-  },
-  {
-    path:'garage',
-    component:UserGarageComponent
   }
 
 ];

@@ -13,8 +13,6 @@ import { SharedModule } from '../shared/shared.module';
 import { ManageHomeComponent } from './manage-home/manage-home.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 
-import { ManageGarageComponent } from './manage-garage/manage-garage.component';
-
 
 @NgModule({
   declarations: [
@@ -26,8 +24,7 @@ import { ManageGarageComponent } from './manage-garage/manage-garage.component';
       FooterComponent,
       ManageTestimonialComponent,
       ManageHomeComponent,
-      ContactUsComponent,
-      ManageGarageComponent
+      ContactUsComponent
   ],
   imports: [
     CommonModule,

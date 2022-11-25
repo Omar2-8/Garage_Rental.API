@@ -1,49 +1,58 @@
-<h2 mat-dialog-title>Add aa</h2>
-<mat-dialog-content class="mat-typography">
-  <form class="example-form" [formGroup]="createFormContactUs" >
-    <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>name</mat-label>
-      <input type="text" matInput formControlName="name">
-      <mat-error *ngIf="createFormContactUs.controls['name'].hasError('required')">
-        name is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>
-    <br>
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>email</mat-label>
-        <input type="text" matInput formControlName="email">
-        <mat-error *ngIf="createFormContactUs.controls['email'].hasError('required')">
-          email is <strong>required</strong>
-        </mat-error>
-      </mat-form-field>
-<br>
-<mat-form-field class="example-full-width" appearance="fill" >
-  <mat-label>phonE_NUMBER</mat-label>
-  <input type="number" matInput formControlName="phonE_NUMBER">
-  <mat-error *ngIf="createFormContactUs.controls['phonE_NUMBER'].hasError('required')">
-    phonE_NUMBER <strong>required</strong>
-  </mat-error>
-</mat-form-field>
-<br>
+<app-navbar></app-navbar>
+<body style="background-color:white">
+<div class="reservation-form">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div id="map">
+            
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <form id="reservation-form" name="gs" method="submit" role="search" action="#">
+            <div class="row">
+              <div class="col-lg-12">
+                <h4> <em>Contact Us</em></h4>
+              </div>
+              <div class="col-lg-6">
+                <fieldset>
+                    <label for="Name" class="form-label">Your Name</label>
+                    <input type="text" name="Name" class="Name" placeholder="Ex. John Smithee" autocomplete="on" required>
+                </fieldset>
+            </div>
+            <div class="col-lg-6">
+                <fieldset>
+                    <label for="Name" class="form-label">Your Email</label>
+                    <input type="text" name="Name" class="Name" placeholder="Example@ex.ex" autocomplete="on" required>
+                </fieldset>
+            </div>
 
-      <mat-form-field class="example-full-width" appearance="fill"  >
-        <mat-label>message</mat-label>
-        <input type="text" matInput formControlName="message">
-        <mat-error *ngIf="createFormContactUs.controls['message'].hasError('required')">
-          message <strong>required</strong>
-        </mat-error>
-      </mat-form-field>
-      <br>
-
-      <br>
-      
-    </form>
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="saveDataContactUs()">ADD</button>
-</mat-dialog-actions>
-
-
-
-
+              <div class="col-lg-6">
+                  <fieldset>
+                      <label for="Name" class="form-label">subject</label>
+                      <input type="text" name="Name" class="Name" placeholder="Ex. John Smithee" autocomplete="on" required>
+                  </fieldset>
+              </div>
+           
+            
+              <div class="col-lg-6">
+                <fieldset>
+                    <label for="Number" class="form-label">Your Phone Number</label>
+                    <input type="text" name="Number" class="Number" placeholder="Ex. +xxx xxx xxx" autocomplete="on" required>
+                </fieldset>
+              </div>
+              
+              
+              
+              <div class="col-lg-12">                        
+                  <fieldset>
+                      <button class="main-button">Send</button>
+                  </fieldset>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div></body>
+  <app-footer></app-footer>

@@ -69,10 +69,14 @@ updateAboutus(body:any)
 
  //Contact Us
  createContactus(body: any) {
+  this.spinner.show();
+  debugger
   this.http.post('https://localhost:44391/api/ContactU/Create', body).subscribe((resp) => {
     console.log(resp);
+    this.spinner.hide();
     this.toster.success('Created Successfuly!!');
   }, err => {
+    this.spinner.hide();
     this.toster.error(err.message, err.status);
   }
   )

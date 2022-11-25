@@ -1,4 +1,3 @@
-import { UserGarageComponent } from './Components/user-garage/user-garage.component';
 import { SharedModule } from './shared/shared.module';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { NgModule } from '@angular/core';
@@ -16,7 +15,8 @@ import { ToastrModule, ToastNoAnimation, ToastNoAnimationModule } from 'ngx-toas
 import { FormsModule } from '@angular/forms';
 
 import { GoogleMapsModule } from '@angular/google-maps';
-
+import { ReserveGarageComponent } from './Components/reserve-garage/reserve-garage.component';
+import { ListGarageComponent } from './Components/list-garage/list-garage.component';
 
 
 @NgModule({
@@ -26,7 +26,10 @@ import { GoogleMapsModule } from '@angular/google-maps';
     ContactUsComponent,
     AboutUsComponent,
     TestimonialComponent,
-    UserGarageComponent
+    ReserveGarageComponent,
+    ListGarageComponent,
+    
+
   ],
   imports: [
     BrowserModule,

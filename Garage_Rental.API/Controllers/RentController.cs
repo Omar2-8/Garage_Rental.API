@@ -37,6 +37,8 @@ namespace Garage_Rental.API.Controllers
         }
 
         [HttpGet]
+
+
         [Route("{id}")]
         public Rent GetById(int id)
         {
