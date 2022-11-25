@@ -550,14 +550,18 @@
   
               
   
-              <form action="#" class="p-5 bg-white">
+              <form class="p-5 bg-white" [formGroup]="createFormContactUs">
                 
                 <h2 class="h4 text-black mb-5">Get In Touch</h2> 
   
                 <div class="row form-group">
                   <div class="col-md-6 mb-3 mb-md-0">
                     <label class="text-black" for="fname">First Name</label>
-                    <input type="text" id="fname" class="form-control">
+                    <mat-form-field  appearance="fill">
+                    <input type="text" id="fname" class="form-control"
+                    matInput formControlName="name"
+                    >
+                    </mat-form-field>
                   </div>
                   <div class="col-md-6">
                     <label class="text-black" for="lname">Last Name</label>

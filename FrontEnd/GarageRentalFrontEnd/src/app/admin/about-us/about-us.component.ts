@@ -22,7 +22,7 @@ export class AboutUsComponent implements OnInit {
   updateForm :FormGroup= new FormGroup({
     id:new FormControl(),
     name:new FormControl('',Validators.required),
-    email:new FormControl('',Validators.required),
+    email:new FormControl('',[Validators.required,Validators.email]),
     message:new FormControl('',Validators.required),
     phonE_NUMBER:new FormControl('',Validators.required),
     address:new FormControl('',Validators.required),
@@ -34,7 +34,6 @@ export class AboutUsComponent implements OnInit {
   //Update
   p_data :any={};
   openUpdateDailog(obj:any){
-    debugger
     console.log(obj);
     this.p_data={
       id:obj.id,
