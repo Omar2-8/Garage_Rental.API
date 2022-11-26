@@ -1,0 +1,59 @@
+<div class="wrapper">
+    <app-sidebar></app-sidebar>
+    <div class="main-panel">
+        <app-navbar-dash></app-navbar-dash>
+        <div class="content">
+            <div class="container-fluid">
+            <div class="col-lg-12 col-md-12">
+                <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title">User page details</h4>
+                    <p class="card-category"></p>
+                </div>
+                <div class="card-body table-responsive">
+                    <p-table 
+                    #dt1
+                    [value]="admin.user"
+                    >
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Phone Number</th>
+                            <th>User Image</th>
+                            <th>user Identity</th>
+                            <th>role Id</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template  pTemplate="body" let-obj>
+                        <tr>
+                            <td>{{ obj.firsT_NAME }}</td>
+                            <td>{{ obj.lasT_NAME }}</td>
+                            <td>{{ obj.email }}</td>
+                            <td>{{ obj.phonE_NUMBER }}</td>
+                            <td>{{ obj.phonenumber }}</td>
+                            <td><img src="../../../assets/images/{{obj.useR_IMAGE}}" width="100px" height="100px"></td>
+                            <td>{{ obj.useR_IDENTITY }}</td>
+                            <td>{{ obj.roleS_ID }}</td>
+                            <!-- <td>
+                                <button
+                                class="btn btn-danger"
+                                (click)="openUpdateDailog(obj)"
+                                >
+                                Update
+                                </button>
+                            </td> -->
+                        </tr>
+                    </ng-template>
+                    </p-table>
+    
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <app-footer-dash></app-footer-dash>
+    </div>
+</div>  

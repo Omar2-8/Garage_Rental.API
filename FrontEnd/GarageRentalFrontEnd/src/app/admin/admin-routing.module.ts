@@ -1,3 +1,5 @@
+import { ManageGarageComponent } from './manage-garage/manage-garage.component';
+import { UserDetailsComponent } from './user-details/user-details.component';
 import { ManageHomeComponent } from './manage-home/manage-home.component';
 import { ManageTestimonialComponent } from './manage-testimonial/manage-testimonial.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
@@ -31,6 +33,14 @@ const routes: Routes = [
   {
     path:'contactUs',
     component:ContactUsComponent
+  },
+  {
+    path:'users',
+    component:UserDetailsComponent
+  },
+  {
+    path:'garage',
+    component:ManageGarageComponent
   }
 
 

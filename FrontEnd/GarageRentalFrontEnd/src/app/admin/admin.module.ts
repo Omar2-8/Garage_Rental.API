@@ -13,6 +13,8 @@ import { SharedModule } from '../shared/shared.module';
 import { ManageHomeComponent } from './manage-home/manage-home.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import {TableModule} from 'primeng/table';
+import { UserDetailsComponent } from './user-details/user-details.component';
+import { ManageGarageComponent } from './manage-garage/manage-garage.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import {TableModule} from 'primeng/table';
       FooterComponent,
       ManageTestimonialComponent,
       ManageHomeComponent,
-      ContactUsComponent
+      ContactUsComponent,
+      UserDetailsComponent,
+      ManageGarageComponent
   ],
   imports: [
     CommonModule,

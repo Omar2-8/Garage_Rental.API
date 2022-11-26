@@ -9,8 +9,6 @@ import {MatDialog, MatDialogRef} from '@angular/material/dialog';
   styleUrls: ['./about-us.component.css']
 })
 export class AboutUsComponent implements OnInit {
-
-
   // address
   // phonE_NUMBER
   // message
@@ -27,7 +25,6 @@ export class AboutUsComponent implements OnInit {
     phonE_NUMBER:new FormControl('',Validators.required),
     address:new FormControl('',Validators.required),
   })
-  
   ngOnInit(): void {
     this.home.getAboutUs();
   }
