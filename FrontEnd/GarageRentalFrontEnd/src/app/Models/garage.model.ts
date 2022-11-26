@@ -1,19 +1,19 @@
 import { Rent } from "./rent.model";
 
 export interface Garage{
-      GARAGE_ID :number;
-      GARAGE_NAME :string;
-      Latitude :string;
-      Longitude :string;
-      Image1 :string;
-      Image2 :string;
-      AVAILABLE_FROM :number;
-      AVAILABLE_TO :number;
-      RENT_PRICE :number;
-      Street :string;
-      BUILDING_NUMBER :number;
-      Status :string;
-      GARAGE_MODE :string;
-      USER_ID :number;
-      Rents:Rent[];
+      gARAGE_ID :number;
+      gARAGE_NAME :string;
+      latitude :string;
+      longitude :string;
+      image1 :string;
+      image2 :string;
+      aVAILABLE_FROM :number;
+      aVAILABLE_TO :number;
+      rENT_PRICE :number;
+      street :string;
+      buildinG_NUMBER :number;
+      status :string;
+      gARAGE_MODE :string;
+      // uSER_ID? :number;
+      // rents?:Rent[];
 }

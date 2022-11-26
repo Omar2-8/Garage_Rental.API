@@ -1,6 +1,6 @@
 import { GarageService } from './../../Services/garage.service';
 import { Garage } from './../../Models/garage.model';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -20,12 +20,28 @@ val: any;
 
   mode=["Available","NotAvailable"];
   rangeValues!:number[]
-  garageModel!:Garage;
+  garageModel:Garage={
+    gARAGE_ID: 0,
+    gARAGE_NAME: '',
+    latitude: '',
+    longitude: '',
+    image1: 'test',
+    image2: 'test',
+    aVAILABLE_FROM: 0,
+    aVAILABLE_TO: 0,
+    rENT_PRICE: 0,
+    street: '',
+    buildinG_NUMBER: 0,
+    status: 'test',
+    gARAGE_MODE: ''
+    // uSER_ID: 0,
+    // rents: []
+  };
 
 
   garageForm=new FormGroup({
 
-    name:new FormControl('',Validators.required),
+    name:new FormControl(''),
     from:new FormControl('',Validators.required),
     to:new FormControl('',Validators.required),
     price:new FormControl('',Validators.required),
@@ -59,19 +75,28 @@ val: any;
 
     }
 
-    saveGarage(){
+    saveInfo(){
       debugger
 
+      this.garageModel.gARAGE_NAME=""+this.garageForm.value.name;
 
-    this.garageModel.AVAILABLE_FROM=this.garageForm.value.from as unknown  as number;
-    this.garageModel.AVAILABLE_TO=this.garageForm.value.to as unknown as  number;
-    this.garageModel.RENT_PRICE=this.garageForm.value.price as unknown as  number;
-    this.garageModel.Street=this.garageForm.value.street as string;
-    this.garageModel.BUILDING_NUMBER=this.garageForm.value.building as unknown as number;
-    this.garageModel.Latitude=this.markerPositions[0]["lat"] as unknown as string;
-    this.garageModel.Longitude=this.markerPositions[0]["lng"] as unknown as string;
-    this.garageModel.GARAGE_MODE=this.garageForm.value.mode as string;
- this.garageModel.GARAGE_NAME=this.garageForm.value.name as string;debugger
+    this.garageModel.rENT_PRICE=Number(this.garageForm.value.price);
+    this.garageModel.street=""+this.garageForm.value.street ;
+    this.garageModel.buildinG_NUMBER=Number(this.garageForm.value.building);
+    this.garageModel.latitude=""+this.markerPositions[0]["lat"];
+    this.garageModel.longitude=""+this.markerPositions[0]["lng"];
+
+
+    }
+
+    saveGarage(form: FormGroup): void{
+
+      console.log('Valid?', form.valid);
+      debugger
+
+       this.saveInfo();
+
+
     this.garageService.addGarage(this.garageModel)
     .subscribe({
       next:()=>{
@@ -87,6 +112,14 @@ val: any;
 
 
 
+    }
+
+    uploadImage(file:any){
+      if(file.length==0)
+      return;
+      let fileToUpload=<File>file[0];//the first image
+      const formdata= new FormData();
+      formdata.append('file',fileToUpload,fileToUpload.name);
     }
 
 }
