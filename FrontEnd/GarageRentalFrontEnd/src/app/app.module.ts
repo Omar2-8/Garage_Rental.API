@@ -10,7 +10,7 @@ import { AboutUsComponent } from './Components/about-us/about-us.component';
 
 import { TestimonialComponent } from './Components/testimonial/testimonial.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule}from  '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS}from  '@angular/common/http'
 import { ToastrModule, ToastNoAnimation, ToastNoAnimationModule } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
 
@@ -20,6 +20,7 @@ import { ListGarageComponent } from './Components/list-garage/list-garage.compon
 import { UserGarageComponent } from './Components/user-garage/user-garage.component';
 
 import {SliderModule} from 'primeng/slider';
+import { TokenInterceptor } from 'src/Interceptor/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,11 @@ import {SliderModule} from 'primeng/slider';
 
 
   ],
-  providers: [],
+  providers: [{
+    provide:HTTP_INTERCEPTORS,
+    useClass:TokenInterceptor,
+    multi:true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

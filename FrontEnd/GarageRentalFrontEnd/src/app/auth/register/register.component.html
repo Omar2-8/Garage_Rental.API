@@ -79,6 +79,13 @@
                                     </mat-error>
                                   </mat-form-field>
                                   <br>
+
+                                  <br>
+              
+                                  <input type="file" #file formControlName="imagE_2" (change)="uploadFile(file.files) " [(ngModel)]="p_data.imagE_2">
+                                   
+                                
+                                  <br>
                                   <mat-form-field class="example-full-width" appearance="fill" >
                                     <mat-label>useR_IDENTITY</mat-label>
                                     <input type="text" matInput formControlName="useR_IDENTITY">

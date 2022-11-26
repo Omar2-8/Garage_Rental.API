@@ -1,5 +1,5 @@
 <div class="m-5 p-5">
-  <form [formGroup]="garageForm" (ngSubmit)="saveGarage()">
+  <form [formGroup]="garageForm" (ngSubmit)="saveGarage(garageForm)">
     <div class="my-5 p-5">
       <h1>Choose your Garagee Location to add it to the list</h1>
     </div>
@@ -15,7 +15,7 @@
       />
     </div>
 
-    <div class="mb-3">
+    <!-- <div class="mb-3">
       <label>Avalable from</label>
       <input
         class="form-control form-control-lg form-control-solid"
@@ -35,11 +35,11 @@
         required
         formControlName="to"
       />
-    </div>
+    </div> -->
     <!-- <div class="mb-3">
-          <label>Avalablabilty</label>
-          <p-slider [(ngModel)]="rangeValues" [range]="true"></p-slider>
-        </div> -->
+      <label>Avalablabilty</label>
+      <p-slider [(ngModel)]="rangeValues" [range]="true"></p-slider>
+    </div> -->
 
     <div class="mb-3">
       <label>Price</label>
@@ -75,25 +75,23 @@
     </div>
 
     <div class="mb-3">
-      <label>Garage Mode</label>
-      <select
-        class="form-control form-control-md form-control-solid"
-        type="text"
-        placeholder="Garage Mode"
-        required
-        formControlName="mode"
-      >
-        <option
-          class="select2-resultsoption select2-resultsoption--selectable select2-results__option--selected"
-          *ngFor="let m of mode"
-          [value]="m"
-        >
-          {{ m }}
-        </option>
-      </select>
+      <label>Upload 2 images </label>
+      <input
+        type="file"
+        #file1
+        (change)="uploadImage(file1.files)"
+        [(ngModel)]="garageModel.image1"
+      />
+      <input
+        type="file"
+        #file1
+        (change)="uploadImage(file1.files)"
+        [(ngModel)]="garageModel.image1"
+      />
     </div>
 
     <label>Choose the location of your Garage</label>
+
     <google-map
       height="600px"
       width="750px"
@@ -111,3 +109,121 @@
     <button type="submit" class="btn btn-primary btn-lg">Add Garage</button>
   </form>
 </div>
+
+<!-- <div class="m-5 p-5">
+  <form #garageForm="ngForm" (ngSubmit)="saveGarage(garageForm)">
+    <div class="my-5 p-5">
+      <h1>Choose your Garagee Location to add it to the list</h1>
+    </div>
+
+    <div class="mb-3">
+      <label>Garage Name</label>
+      <input
+        [(ngModel)]="garageModel.gARAGE_NAME"
+        class="form-control form-control-lg form-control-solid"
+        type="text"
+        placeholder="Garage Name"
+        required
+        #nameValue="ngModel"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label>Avalable from</label>
+      <input
+        [(ngModel)]="garageModel.aVAILABLE_FROM"
+        class="form-control form-control-lg form-control-solid"
+        type="number"
+        placeholder="Avalable from"
+        required
+        #fromValue="ngModel"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label>Avalable to</label>
+      <input
+        [(ngModel)]="garageModel.aVAILABLE_TO"
+        class="form-control form-control-lg form-control-solid"
+        type="number"
+        placeholder="Avalable to"
+        required
+        #toValue="ngModel"
+      />
+    </div>
+    <div class="mb-3">
+      <label>Avalablabilty</label>
+      <p-slider [(ngModel)]="rangeValues" [range]="true"></p-slider>
+    </div>
+    <div class="mb-3">
+      <label>Price</label>
+      <input
+        [(ngModel)]="garageModel.rENT_PRICE"
+        class="form-control form-control-lg form-control-solid"
+        type="number"
+        placeholder="Price"
+        required
+        #priceValue="ngModel"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label>Street</label>
+      <input
+        [(ngModel)]="garageModel.street"
+        class="form-control form-control-lg form-control-solid"
+        type="text"
+        placeholder="Street"
+        required
+        #streetValue="ngModel"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label>building Number</label>
+      <input
+        [(ngModel)]="garageModel.bUILDING_NUMBER"
+        class="form-control form-control-lg form-control-solid"
+        type="text"
+        placeholder="building Number"
+        required
+        #buildingValue="ngModel"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label>Garage Mode</label>
+      <select
+        [(ngModel)]="garageModel.gARAGE_MODE"
+        #modeValue="ngModel"
+        class="form-control form-control-md form-control-solid"
+        type="text"
+        placeholder="Garage Mode"
+        required
+      >
+        <option
+          class="select2-resultsoption select2-resultsoption--selectable select2-results__option--selected"
+          *ngFor="let m of mode"
+          [value]="m"
+        >
+          {{ m }}
+        </option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary btn-lg">Add Garage</button>
+  </form>
+</div>
+<label>Choose the location of your Garage</label>
+<google-map
+  height="600px"
+  width="750px"
+  [center]="center"
+  [zoom]="zoom"
+  (mapClick)="addMarker($event)"
+>
+  <map-marker
+    *ngFor="let markerPosition of markerPositions"
+    [position]="markerPosition"
+    [options]="markerOptions"
+  ></map-marker>
+</google-map> -->
