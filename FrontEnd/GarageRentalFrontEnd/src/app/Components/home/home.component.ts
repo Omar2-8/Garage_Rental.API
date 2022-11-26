@@ -36,6 +36,7 @@ export class HomeComponent implements OnInit {
   }
   ngOnInit(): void {
     this.home.getHome();
+    this.home.getAboutUs();
   }
   saveDataTestimonial()
   {

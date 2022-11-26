@@ -1,3 +1,4 @@
+import { HomeService } from './../../Services/home.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,9 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutUsComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(public home :HomeService) { }
   ngOnInit(): void {
+    this.home.getAboutUs();
   }
-
 }

@@ -1,11 +1,13 @@
   
-              <h2 mat-dialog-title>Add aa</h2>
+
               <mat-dialog-content class="mat-typography">
-                <form class="example-form" [formGroup]="createFormContactUs" >
-                  <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>name</mat-label>
-                    <input type="text" matInput formControlName="name">
-                    <mat-error *ngIf="createFormContactUs.controls['name'].hasError('required')">
+                <form class="example-form" [formGroup]="createFormContactUs" 
+                style="box-shadow: 0px 14px 59px -3px rgba(0,0,0,0.1); border-radius: 20px; width: 560px;">
+                <div style="padding: 50px; ">
+                  <mat-form-field class="example-form" appearance="fill" >
+                    <mat-label style="border-bottom: none; width:500px;">name</mat-label>
+                    <input style="color: black;" type="text" matInput formControlName="name">
+                    <mat-error style="border-bottom: none; width:500px;" *ngIf="createFormContactUs.controls['name'].hasError('required')">
                       name is <strong>required</strong>
                     </mat-error>
                   </mat-form-field>
@@ -17,7 +19,7 @@
                         email is <strong>required</strong>
                       </mat-error>
                     </mat-form-field>
-              <br>
+                  <br>
               <mat-form-field class="example-full-width" appearance="fill" >
                 <mat-label>phonE_NUMBER</mat-label>
                 <input type="number" matInput formControlName="phonE_NUMBER">
@@ -26,7 +28,6 @@
                 </mat-error>
               </mat-form-field>
               <br>
-              
                     <mat-form-field class="example-full-width" appearance="fill"  >
                       <mat-label>message</mat-label>
                       <input type="text" matInput formControlName="message">
@@ -35,13 +36,11 @@
                       </mat-error>
                     </mat-form-field>
                     <br>
-              
-                    <br>
-                    
+                  </div>
+                  <mat-dialog-actions style="padding: 20px; margin-left: 190px;" align="end">
+                    <button class="btn btn-primary px-5 py-3" style=" border-radius: 31px;line-height: 14px;" mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="saveDataContactUs()">ADD</button>
+                  </mat-dialog-actions><br><br><br><br>
                   </form>
               </mat-dialog-content>
-              <mat-dialog-actions align="end">
-              
-                <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="saveDataContactUs()">ADD</button>
-              </mat-dialog-actions>
-              
+
+

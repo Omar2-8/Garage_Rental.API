@@ -18,21 +18,30 @@
               </div>
 
         </div>
-        <div class="col-lg-6 ml-auto">
-          
-          <h2 class="section-title mb-3">Warehouse Real Estate Template</h2>
-              <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-              <p>Est qui eos quasi ratione nostrum excepturi id recusandae fugit omnis ullam pariatur itaque nisi voluptas impedit  Quo suscipit omnis iste velit maxime.</p>
+        <div class="col-lg-6 ml-auto" *ngFor="let obj of home.Aboutus" >
 
-              <ul class="list-unstyled ul-check success">
-                <li>Placeat maxime animi minus</li>
-                <li>Dolore qui placeat maxime</li>
-                <li>Consectetur adipisicing</li>
-                <li>Lorem ipsum dolor</li>
-                <li>Placeat molestias animi</li>
-              </ul>
+          <h2 class="section-title mb-3">{{obj.name}}</h2>
+              <p class="lead">{{obj.message}}.</p>
+              <!-- <p>Est qui eos quasi ratione nostrum excepturi id recusandae fugit omnis ullam pariatur itaque nisi voluptas impedit  Quo suscipit omnis iste velit maxime.</p> -->
+              <div class="col-md-5">
+                <div class="p-4 mb-3 bg-white">
+                  <p class="mb-0 font-weight-bold">Email Address</p>
+                  <p class="mb-4"><a href="">{{obj.email}}</a></p>
 
-              <p><a href="#" class="btn btn-primary mr-2 mb-2">Learn More</a></p>
+                  <p class="mb-0 font-weight-bold">Phone</p>
+                  <p class="mb-4"><a href="">{{obj.phonE_NUMBER}}</a></p>
+
+                  <p class="mb-0 font-weight-bold">Address</p>
+                  <p class="mb-0">{{obj.address}}</p>
+                </div>
+              </div>
+              <!-- <ul class="list-unstyled ul-check success">
+                <li>{{obj.email}}</li>
+                <li>{{obj.phonE_NUMBER}}</li>
+                <li>{{obj.address}}</li>
+              </ul> -->
+
+              <!-- <p><a href="#" class="btn btn-primary mr-2 mb-2">Learn More</a></p> -->
           
         </div>
       </div>
