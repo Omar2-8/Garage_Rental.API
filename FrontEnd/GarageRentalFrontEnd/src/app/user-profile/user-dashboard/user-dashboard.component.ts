@@ -1,5 +1,5 @@
 import { UserService } from './../../Services/user.service';
-import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild, ElementRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -10,7 +10,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class UserDashboardComponent implements OnInit {
 
-  constructor(public user:UserService,public dialog: MatDialog) {}
+
+  constructor(public users:UserService,public dialog: MatDialog) {}
   
    @ViewChild('callUpdatDailog') callUpdate!:TemplateRef<any>
   UpdateProfile :FormGroup= new FormGroup({
@@ -23,20 +24,30 @@ export class UserDashboardComponent implements OnInit {
     useR_IMAGE:new FormControl(),
     useR_IDENTITY:new FormControl('',Validators.required),
     roleS_ID:new FormControl(),
-
   })
 
 
-
-
+  @Input() useR_ID:number=0;
+  @Input() firsT_NAME :string='N/A';
+  @Input() lasT_NAME :string='N/A';
+  @Input() email :string='N/A';
+  @Input() password :number=0;
+  @Input() phonenumber :number=0;
+  @Input() useR_IMAGE: string|undefined;
+  @Output() openProfile =new EventEmitter();
   ngOnInit(): void {
-this.user.getUserId(4);
-
   }
 
+
+  goToProfile()
+  {
+    //this.home.getCourseById(this.courseid)
+    this.users.getUserId(4);
+    this.openProfile.emit();
+
+  }
   p_data :any={};
   openUpdateDailog(obj:any){
-   
     console.log(obj);
     this.p_data={
 
@@ -56,7 +67,7 @@ this.user.getUserId(4);
   
     }
     saveDataProfile(){
-      this.user.updateUser(this.UpdateProfile.value);
+      this.users.updateUser(this.UpdateProfile.value);
     }
     uploadFile(file:any){
       if(file.length==0)
@@ -65,7 +76,7 @@ this.user.getUserId(4);
       const formdata= new FormData();
       formdata.append('file',fileToUpload,fileToUpload.name);
       
-      this.user.uploadAttachmentUser(formdata);
+      this.users.uploadAttachmentUser(formdata);
     }
 
 
