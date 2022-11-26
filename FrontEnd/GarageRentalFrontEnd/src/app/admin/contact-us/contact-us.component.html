@@ -1,21 +1,25 @@
-<div class="wrapper ">
-    <app-sidebar></app-sidebar>
-    <div class="main-panel">
-        <app-navbar-dash></app-navbar-dash>
-        <div class="content">
-            <div class="container-fluid">
+<div class="wrapper">
+  <app-sidebar></app-sidebar>
+  <div class="main-panel">
+    <app-navbar-dash></app-navbar-dash>
+    <div class="content">
+      <div class="container-fluid">
         <div class="col-lg-12 col-md-12">
-            <div class="card">
-                <div class="card-header card-header-primary">
-                    <h4 class="card-title">Contact Us page</h4>
-                    <p class="card-category"></p>
-                </div>
-                <div class="card-body table-responsive">
-            <p-table #dt1 [value]="home.Contactus">
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <h4 class="card-title">Contact Us page</h4>
+              <p class="card-category"></p>
+            </div>
+            <div class="card-body table-responsive">
+              <p-table
+                #dt1
+                [value]="home.Contactus"
+                [globalFilterFields]="['name', 'email', 'messagee', 'phone']"
+              >
                 <ng-template pTemplate="caption">
                   <div class="p-d-flex">
                     <span class="p-input-icon-left p-ml-auto">
-                      <i class="pi pi-search"></i>
+                      
                       <input
                         #textInput
                         pInputText
@@ -28,10 +32,34 @@
                 </ng-template>
                 <ng-template pTemplate="header">
                   <tr>
-                    <th>Name</th>
-                    <th>email</th>
-                    <th>message</th>
-                    <th>phone Number</th>
+                    <th>
+                      Name<p-columnFilter
+                        type="number"
+                        field="name"
+                        display="menu"
+                      ></p-columnFilter>
+                    </th>
+                    <th>
+                      email<p-columnFilter
+                        type="number"
+                        field="email"
+                        display="menu"
+                      ></p-columnFilter>
+                    </th>
+                    <th>
+                      message<p-columnFilter
+                        type="number"
+                        field="messagee"
+                        display="menu"
+                      ></p-columnFilter>
+                    </th>
+                    <th>
+                      phone Number<p-columnFilter
+                        type="number"
+                        field="phone"
+                        display="menu"
+                      ></p-columnFilter>
+                    </th>
                   </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-obj>
@@ -42,16 +70,16 @@
                     <td>{{ obj.phonE_NUMBER }}</td>
                     <td>
                       <!-- <a (click)="openDeleteDailog(obj.id)"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>   -->
-                      <button (click)="openDeleteDailog(obj.id)"><i class="fa fa-trash" aria-hidden="true"></i>Delete</button>
-                      
+                      <button class="btn btn-danger"  (click)="openDeleteDailog(obj.id)">
+                        Delete
+                      </button>
                     </td>
                   </tr>
                 </ng-template>
               </p-table>
-
             </div>
-        </div>
-            <!-- <div class="card">
+          </div>
+          <!-- <div class="card">
                 <div class="card-header card-header-primary">
                     <h4 class="card-title">Contact Us page</h4>
                     <p class="card-category"></p>
@@ -59,7 +87,7 @@
                 <div class="card-body table-responsive">
 
 
-                    
+
                     <table class="table">
                         <thead>
                             <tr>
@@ -84,22 +112,22 @@
                                 <td>
                                     {{obj.phonE_NUMBER}}
                                 </td>
-                                <td>  
+                                <td>
 
                                     <a (click)="openDeleteDailog(obj.id)"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>                                </td>
                             </tr>
-                
+
                         </tbody>
                     </table>
                 </div>
             </div> -->
         </div>
-            </div>
-        </div>
-        <!-- <ng-template #callUpdatDailog >
+      </div>
+    </div>
+    <!-- <ng-template #callUpdatDailog >
             <form  [formGroup]="updateForm" >
                 <mat-form-field  appearance="fill">
-                    <input 
+                    <input
                         matInput formControlName="name"
                         [(ngModel)]="p_data.name"
                     />
@@ -108,9 +136,9 @@
                     </mat-error>
                     </mat-form-field>
                 <br>
-        
+
                 <mat-form-field  appearance="fill">
-                    <input 
+                    <input
                     matInput formControlName="email"
                     [(ngModel)]="p_data.email"
                     />
@@ -120,7 +148,7 @@
                     </mat-form-field>
             <br>
                 <mat-form-field  appearance="fill">
-                <input  
+                <input
                 matInput formControlName="message"
                 [(ngModel)]="p_data.message"
                 />
@@ -130,7 +158,7 @@
                 </mat-form-field>
                   <br>
                   <mat-form-field  appearance="fill">
-                    <input 
+                    <input
                     matInput formControlName="phonE_NUMBER"
                     [(ngModel)]="p_data.phonE_NUMBER"
                     />
@@ -139,7 +167,7 @@
                     </mat-error>
                     </mat-form-field>
                   <br>
-        
+
                   <mat-form-field  appearance="fill">
                     <input
                     matInput formControlName="address"
@@ -149,31 +177,25 @@
                         address is <strong>required</strong>
                     </mat-error>
                     </mat-form-field>
-        
-                
+
+
                 </form>
-           
+
                 <mat-dialog-actions align="end">
                     <button class="btn btn-primary"  mat-button mat-dialog-close>Cancel</button>
                     <button class="btn btn-primary"  mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="saveData()">Save</button>
                 </mat-dialog-actions>
-        
-        
-        
+
+
+
         </ng-template> -->
 
-        <ng-template #callDeleteDailog>
-            <h2>Are you sure you want to delete this item ? </h2>
-            <button mat-dialog-close="yes">Yes</button>
-            <button mat-dialog-close="no">No</button>
-        </ng-template>     
-        
-        <app-footer-dash></app-footer-dash>
-    </div>
+    <ng-template #callDeleteDailog>
+      <h2>Are you sure you want to delete this item ?</h2>
+      <button class="btn btn-primary" mat-dialog-close="yes">Yes</button>
+      <button class="btn btn-primary" mat-dialog-close="no">No</button>
+    </ng-template>
+
+    <app-footer-dash></app-footer-dash>
+  </div>
 </div>
-
-
-
-
-
-

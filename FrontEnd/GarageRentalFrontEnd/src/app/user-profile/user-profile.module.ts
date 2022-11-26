@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -6,6 +7,7 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 import { UserNavbarComponent } from './user-navbar/user-navbar.component';
 import { UserFooterComponent } from './user-footer/user-footer.component';
 import { UserSideBarComponent } from './user-side-bar/user-side-bar.component';
+import { AddTestimonialComponent } from './add-testimonial/add-testimonial.component';
 
 
 @NgModule({
@@ -13,11 +15,13 @@ import { UserSideBarComponent } from './user-side-bar/user-side-bar.component';
     UserDashboardComponent,
     UserNavbarComponent,
     UserFooterComponent,
-    UserSideBarComponent
-  ],
+    UserSideBarComponent,
+    AddTestimonialComponent,
+    ],
   imports: [
     CommonModule,
-    UserProfileRoutingModule
+    UserProfileRoutingModule,
+    SharedModule
   ]
 })
 export class UserProfileModule { }

@@ -44,10 +44,9 @@ export class HomeService {
 // }
 //About Us
 getAboutUs(){
-  this.http.get('https://localhost:44391/api/AboutU/GetAll').subscribe((resp: any) => {//السبسكرايب بتتكون من حالتين اول وحدة ترو والثانية اذا كانت ايرور ريسبونس
+  this.http.get(this.baseApiUrl+'AboutU/GetAll').subscribe((resp: any) => {//السبسكرايب بتتكون من حالتين اول وحدة ترو والثانية اذا كانت ايرور ريسبونس
     this.Aboutus = resp;
     //this.spinner.hide();
-    this.toster.success('Data Retrieved!');
   }, err => {
     this.toster.error('something Wrong')
   })

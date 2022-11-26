@@ -12,12 +12,7 @@ export class ManageTestimonialComponent implements OnInit {
   @ViewChild('callUpdatDailog') callUpdate!:TemplateRef<any>
   @ViewChild('callDeleteDailog') callDelete!:TemplateRef<any>
   constructor(public home:HomeService,public dialog: MatDialog) { }
-  createForm :FormGroup= new FormGroup({
-    opinion:new FormControl('',Validators.required),
-    rating:new FormControl('',Validators.required),
-    status:new FormControl('',Validators.required),
-    useR_ID:new FormControl('',Validators.required),
-  })
+
 
   updateForm :FormGroup= new FormGroup({
     id:new FormControl(),
@@ -27,10 +22,7 @@ export class ManageTestimonialComponent implements OnInit {
   ngOnInit(): void {
     this.home.getAllTestimonial();
   }
-  saveData()
-  {
-    this.home.createTestimonial(this.createForm.value);
-  }
+
   openDeleteDailog(id:number)
   {
     const dialogRef=  this.dialog.open(this.callDelete);
@@ -67,6 +59,14 @@ export class ManageTestimonialComponent implements OnInit {
     saveDataTestimonial(){
       this.home.updateTestimonial(this.updateForm.value);
     }
+  @ViewChild('dt') dt: Table | undefined;
 
+  applyFilterGlobal($event: any, stringVal: any) {
 
+    this.dt!.filterGlobal(($event.target as HTMLInputElement).value, stringVal);
+  }
+  getEventValue($event:any) :string {
+    debugger
+  return $event.target.value;
+}
 }
