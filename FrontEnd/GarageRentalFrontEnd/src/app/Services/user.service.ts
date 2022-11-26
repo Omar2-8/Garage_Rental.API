@@ -32,13 +32,24 @@ export class UserService {
     }
     )
   }
+  getAllUsers(){
   
+    
+    this.http.get('https://localhost:44391/api/Users/GetAll').subscribe((Resp:any)=>{//السبسكرايب بتتكون من حالتين اول وحدة ترو والثانية اذا كانت ايرور ريسبونس
+      this.user=Resp;
+      
+       this.toster.success('Data Retrieved')
+    },err=>{
+      
+      this.toster.error('something Wrong')
+    })
+  }
   getUserId(id: number) {
     //show Spinner 
     //Hits Api 
     //Hide Spinner
     //Resp=> Toastr 
-    this.http.get('https://localhost:44391/api/Users/GetById/' + id).subscribe((resp: any) => {
+    this.http.get('https://localhost:44391/api/Users/GetById/'+ id).subscribe((resp: any) => {
       this.user = resp;
       console.log(this.user);
       

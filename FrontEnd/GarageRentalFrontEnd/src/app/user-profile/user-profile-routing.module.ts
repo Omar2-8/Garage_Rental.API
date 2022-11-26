@@ -1,3 +1,4 @@
+import { AddTestimonialComponent } from './add-testimonial/add-testimonial.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 
 import { NgModule } from '@angular/core';
@@ -8,6 +9,10 @@ const routes: Routes = [
   {
     path:'Profile',
     component:UserDashboardComponent
+  },
+  {
+    path:'testimonial',
+    component:AddTestimonialComponent
   },
 ];
 

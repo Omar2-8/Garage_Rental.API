@@ -14,7 +14,7 @@
               <p-table
                 #dt1
                 [value]="home.Aboutus"
-                [globalFilterFields]="['name', 'email', 'messagee', 'phone']"
+                [globalFilterFields]="['name', 'email', 'messagee', 'phone','address']"
               >
                 <ng-template pTemplate="caption">
                   <div class="p-d-flex">
@@ -60,7 +60,13 @@
                         display="menu"
                       ></p-columnFilter>
                     </th>
-                    <th>address</th>
+                    <th>address
+                      <p-columnFilter
+                        type="number"
+                        field="address"
+                        display="menu"
+                      ></p-columnFilter>
+                    </th>
                     <th></th>
                   </tr>
                 </ng-template>

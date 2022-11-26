@@ -15,50 +15,51 @@
                             <p class="card-category"></p>
                         </div>
                         <div class="card-body table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>firsT_NAME</th>
-                                        <th>lasT_NAME</th>
-                                        <th>email</th>
-                                        <th>password </th>
-                                        <th>phonenumber</th>
-                                        <th>useR_IMAGE</th>
-                                        <th>useR_IDENTITY</th>
-                                      
-                                    </tr>
-                                </thead>
-                                <tbody>
 
-                                    <tr >
-                                        <td>
-                                            [value]="user.user.firsT_NAME"
-                                        </td>
-                                        <td>
-                                            [value]="user.user.lasT_NAME"
-                                        </td>
-                                        <td>
-                                            [value]="user.user.email"                                        </td>
-                                        <td>
-                                            [value]="user.user.password"
-                                        </td>
-                                        <td>
-                                            [value]="user.user.phonenumber"
-                                        </td>
-                                        <!-- <td><img src="../../../assets/images/{{obj.useR_IMAGE}}" width="100px" height="100px"></td> -->
+                          <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>firsT_NAME</th>
+                                    <th>lasT_NAME</th>
+                                    <th>email</th>
+                                    <th>password </th>
+                                    <th>phonenumber</th>
+                                    <th>useR_IMAGE</th>
+                                    <th>useR_IDENTITY</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngSwitch="let obj of users.user">
+                                    <td >
+                                      {{obj.firsT_NAME}}
+                                    </td>
+                                    <td>
+                                        {{obj.lasT_NAME}}
+                                    </td>
+                                    <td>
+                                      {{obj.email}}
+                                    </td>
+                                    <td>
+                                      {{obj.password}}
+                                    </td>
+                                    <td>
+                                      {{obj.phonenumber}}
+                                    </td>
+                                  <td><img src="../../../assets/images/{{obj.useR_IMAGE}}" width="100px" height="100px"></td> 
 
-                                        <td>
-                                            [value]="user.user.useR_IDENTITY.value"
-                                        </td>
-                                      
-                                        <td>  
-                 <!-- <a (click)="openUpdateDailog(obj)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Update</a> |*@ -->
-                                            <!-- <button (click)="openUpdateDailog(obj)"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i>Update</button> -->
-                                        </td>
-                                    </tr>
-                        
-                                </tbody>
-                            </table>
+                                    <td>
+                                      {{obj.useR_IDENTITY}}
+                                    </td>
+                                  
+                                    <td>  
+            /* <a (click)="openUpdateDailog(obj)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Update</a> |*@ 
+                                       <button (click)="openUpdateDailog(obj)"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i>Update</button> */
+                                    </td>
+                                </tr>
+                    
+                            </tbody>
+                        </table>
+
                         </div>
                     </div>
                 </div>
