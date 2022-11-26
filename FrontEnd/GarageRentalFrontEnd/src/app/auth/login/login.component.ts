@@ -1,6 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { NgxSpinnerService } from "ngx-spinner";
+import { AuthService } from 'src/app/Services/auth.service';
+import { HomeService } from 'src/app/Services/home.service';
 
 
 @Component({
@@ -10,11 +12,20 @@ import { NgxSpinnerService } from "ngx-spinner";
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
-
-  email = new FormControl('',[Validators.required,Validators.email]);
-  password = new FormControl('',[Validators.required,Validators.minLength(8)]);
+  constructor(private spinner:NgxSpinnerService,public home:HomeService, public auth:AuthService) { }
+  email =new FormControl('',[Validators.required,Validators.email]);
+  password =new FormControl('',[Validators.required,Validators.minLength(8)]);
   cheack= new FormControl('');
+  
+  login()
+  {
+    
+    this.auth.login(this.email,this.password);
+    
+  }
+
+ 
+ 
   
   ngOnInit(): void {
     localStorage.getItem('user info is saved');

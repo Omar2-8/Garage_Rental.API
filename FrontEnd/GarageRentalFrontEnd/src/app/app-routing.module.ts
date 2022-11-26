@@ -8,6 +8,7 @@ import { ContactUsComponent } from './Components/contact-us/contact-us.component
 import { HomeComponent } from './Components/home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthorizationGuard } from './authorization.guard';
 
 const routes: Routes = [
   {
@@ -37,7 +38,8 @@ const routes: Routes = [
   },
   {
     path:'Admin',
-    loadChildren:()=>AdminModule
+    loadChildren:()=>AdminModule,
+    canActivate:[AuthorizationGuard]
   },
   {
     path:'garage',

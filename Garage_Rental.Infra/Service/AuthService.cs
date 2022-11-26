@@ -35,7 +35,8 @@ namespace Garage_Rental.Infra.Service
                 var claims = new List<Claim>
                {
                  new Claim(ClaimTypes.Email, result.Email),
-                 new Claim(ClaimTypes.Role, result.ROLES_ID.ToString())
+                 new Claim(ClaimTypes.Role, result.ROLES_ID.ToString()),
+                 new Claim(ClaimTypes.NameIdentifier,result.USER_ID.ToString())
                };
                 var tokeOptions = new JwtSecurityToken(
                     claims: claims,
