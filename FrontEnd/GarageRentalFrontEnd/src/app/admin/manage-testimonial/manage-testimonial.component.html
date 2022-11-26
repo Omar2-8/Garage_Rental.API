@@ -4,57 +4,11 @@
     <app-navbar></app-navbar>
     <br /><br /><br /><br /><br /><br />
     <div class="col-lg-12 col-md-12">
-      <!--  <div class="card">
-        <div class="card-header card-header-primary">
-          <h4 class="card-title">Testimonials</h4>
-          <p class="card-category"></p>
-        </div>
-        <div class="card-body table-responsive">
-          <table class="table">
-                <thead>
-                    <tr>
-                        <th>
-                            ID
-
-                        </th>
-                        <th>
-                            Opinion
-                        </th>
-                        <th>
-                            Rating
-                        </th>
-                        <th>
-                           Status
-                        </th>
-                        <th>
-                            USER ID
-                         </th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <tr *ngFor="let obj of home.testimonial">
-                        <td>{{obj.id}}</td>
-                        <td>{{obj.opinion}}</td>
-                        <td>{{obj.rating}}</td>
-                        <td>{{obj.status}}</td>
-                        <td>{{obj.useR_ID}}</td>
-                        <td>
-                            <button (click)="openUpdateDailog(obj)">Update</button>
-                            <button (click)="openDeleteDailog(obj.id)">Delete</button>
-
-                        </td>
-                    </tr>
-
-                </tbody>
-            </table>
-
-
-        </div>
-      </div>
-    </div>-->
-      <p-table #dt1 [value]="home.testimonial">
+      <p-table
+        #dt1
+        [value]="home.testimonial"
+        [globalFilterFields]="['id', 'opinion', 'rating', 'status']"
+      >
         <ng-template pTemplate="caption">
           <div class="p-d-flex">
             <span class="p-input-icon-left p-ml-auto">
@@ -71,10 +25,35 @@
         </ng-template>
         <ng-template pTemplate="header">
           <tr>
-            <th>ID</th>
-            <th>Opinion</th>
-            <th>Rating</th>
-            <th>Status</th>
+            <th>
+              ID
+              <p-columnFilter
+                type="number"
+                field="id"
+                display="menu"
+              ></p-columnFilter>
+            </th>
+            <th>
+              Opinion<p-columnFilter
+                type="text"
+                field="opinion"
+                display="menu"
+              ></p-columnFilter>
+            </th>
+            <th>
+              Rating<p-columnFilter
+                type="number"
+                field="rating"
+                display="menu"
+              ></p-columnFilter>
+            </th>
+            <th>
+              Status<p-columnFilter
+                type="text"
+                field="status"
+                display="menu"
+              ></p-columnFilter>
+            </th>
             <th>USER ID</th>
             <th></th>
           </tr>
@@ -87,8 +66,12 @@
             <td>{{ obj.status }}</td>
             <td>{{ obj.useR_ID }}</td>
             <td>
-              <button (click)="openUpdateDailog(obj)">Update</button>
-              <button (click)="openDeleteDailog(obj.id)">Delete</button>
+              <button class="btn btn-primary" (click)="openUpdateDailog(obj)">
+                Update
+              </button>
+              <button class="btn btn-danger" (click)="openDeleteDailog(obj.id)">
+                Delete
+              </button>
             </td>
           </tr>
         </ng-template>

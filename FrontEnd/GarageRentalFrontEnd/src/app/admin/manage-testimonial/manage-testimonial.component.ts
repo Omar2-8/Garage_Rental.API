@@ -67,6 +67,14 @@ export class ManageTestimonialComponent implements OnInit {
     saveDataTestimonial(){
       this.home.updateTestimonial(this.updateForm.value);
     }
+  @ViewChild('dt') dt: Table | undefined;
 
+  applyFilterGlobal($event: any, stringVal: any) {
 
+    this.dt!.filterGlobal(($event.target as HTMLInputElement).value, stringVal);
+  }
+  getEventValue($event:any) :string {
+    debugger
+  return $event.target.value;
+}
 }
