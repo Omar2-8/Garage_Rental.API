@@ -39,7 +39,7 @@ const routes: Routes = [
   {
     path:'Admin',
     loadChildren:()=>AdminModule,
-    canActivate:[AuthorizationGuard]
+    // canActivate:[AuthorizationGuard]
   },
   {
     path:'garage',

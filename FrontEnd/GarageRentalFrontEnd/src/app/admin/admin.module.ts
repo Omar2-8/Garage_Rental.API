@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AdminRoutingModule } from './admin-routing.module';
-
+import { GoogleMapsModule } from '@angular/google-maps';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -34,7 +34,8 @@ import { ManageGarageComponent } from './manage-garage/manage-garage.component';
     CommonModule,
     AdminRoutingModule,
     SharedModule,
-    TableModule
+    TableModule,
+    GoogleMapsModule
   ]
 })
 export class AdminModule { }

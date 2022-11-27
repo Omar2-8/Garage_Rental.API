@@ -9,9 +9,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-garage.component.css']
 })
 export class ListGarageComponent implements OnInit {
- markerPositions: google.maps.LatLngLiteral[] = [];
-   display: any;
-val: any;
+  markerPositions: google.maps.LatLngLiteral[] = [];
+  display: any;
+  val: any;
 
   constructor(private garageService:GarageService) { }
 

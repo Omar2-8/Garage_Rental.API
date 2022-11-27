@@ -69,7 +69,7 @@ export class AdminService {
   deleteGarage(id:number)
   {
     this.spinner.show();    
-    this.http.delete('https://localhost:44391/api/Garage/Delete/'+id).subscribe((resp)=>{
+    this.http.delete(this.baseApiUrl+'Garage/Delete/'+id).subscribe((resp)=>{
         this.toster.success('Deleted Successfully !!');
     },err=>{
       this.toster.error(err.message, err.status);
@@ -77,12 +77,9 @@ export class AdminService {
   }
   updateGarage(body:any)
   {
-    this.spinner.show();
-    this.http.put('https://localhost:44391/api/Garage/Update',body).subscribe((resp)=>{
-      this.spinner.hide();
+    this.http.put(this.baseApiUrl+'Garage/Update',body).subscribe((resp)=>{
       this.toster.success('Accepted The Garage Successfully !!');
     },err=>{
-      this.spinner.hide();
       this.toster.error(err.message, err.status);
     })
   }
