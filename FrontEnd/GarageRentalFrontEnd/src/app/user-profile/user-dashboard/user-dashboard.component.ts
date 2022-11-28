@@ -25,23 +25,11 @@ export class UserDashboardComponent implements OnInit {
     useR_IDENTITY:new FormControl('',Validators.required),
     roleS_ID:new FormControl(),
   })
-  // @Input() useR_ID:number=0;
-  // @Input() firsT_NAME :string='N/A';
-  // @Input() lasT_NAME :string='N/A';
-  // @Input() email :string='N/A';
-  // @Input() password :number=0;
-  // @Input() phonenumber :number=0;
-  // @Input() useR_IMAGE: string|undefined;
-  // @Output() openProfile =new EventEmitter();
+
   ngOnInit(): void {
     this.users.getUserId(102);
   }
-  // goToProfile()
-  // {
-  //   //this.home.getCourseById(this.courseid)
-  //   this.users.getUserId(4);
-  //   // this.openProfile.emit();
-  // }
+
   p_data :any={};
   openUpdateDailog(obj:any){
     console.log(obj);
