@@ -7,7 +7,7 @@ namespace Garage_Rental.Core.Data
 {
     public partial class Payment
     {
-        public decimal PayId { get; set; }
+        public decimal PAY_ID { get; set; }
         public decimal? PAY_AMOUNT { get; set; }
         public string GARAGE_NAME { get; set; }
         public DateTime? PAY_DATE { get; set; }

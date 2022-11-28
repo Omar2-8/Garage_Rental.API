@@ -256,12 +256,12 @@ namespace Garage_Rental.Core.Data
 
             modelBuilder.Entity<Payment>(entity =>
             {
-                entity.HasKey(e => e.PayId)
+                entity.HasKey(e => e.PAY_ID)
                     .HasName("SYS_C00297973");
 
                 entity.ToTable("PAYMENT");
 
-                entity.Property(e => e.PayId)
+                entity.Property(e => e.PAY_ID)
                     .HasColumnType("NUMBER")
                     .ValueGeneratedOnAdd()
                     .HasColumnName("PAY_ID");

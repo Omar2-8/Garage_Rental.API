@@ -19,7 +19,7 @@
                 <ng-template pTemplate="caption">
                   <div class="p-d-flex">
                     <span class="p-input-icon-left p-ml-auto">
-                      <i class="pi pi-search"></i>
+
                       <input
                         #textInput
                         pInputText
@@ -78,12 +78,7 @@
                     <td>{{ obj.phonE_NUMBER }}</td>
                     <td>{{ obj.address }}</td>
                     <td>
-                      <button
-                        class="btn btn-danger"
-                        (click)="openUpdateDailog(obj)"
-                      >
-                        Update
-                      </button>
+                      <button class="btn btn-danger" (click)="openUpdateDailog(obj)" > Update</button>
                     </td>
                   </tr>
                 </ng-template>

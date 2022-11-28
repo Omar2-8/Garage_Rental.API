@@ -43,28 +43,26 @@
             </mat-menu>
             </div>
           </li>
-        <li class="nav-item  dropdown ">
-              <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Reports</a>
+          <li class="nav-item ">
+            <a routerLink="/Admin/payment" class="nav-link" >
+                <i class="fa fa-money" aria-hidden="true"></i>
+              <p>Payments</p>
+            </a>
+          </li>
+          <li class="nav-item  dropdown ">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Reports</a>
 
-              <div class="dropdown-menu dropdown-menu-dark" style="background-color:#1a2035;color:white;width:89%">
-                 <a asp-action="Reports" asp-controller="DashBoard" class="nav-link" > 
-                    <i class="fa fa-calendar-o" aria-hidden="true"></i>
-                     <p>Monthly</p>
-                 </a>
-                 <a asp-action="Reports_Annual" asp-controller="DashBoard" class="nav-link" > 
-                    <i class="fa fa-calendar-o" aria-hidden="true"></i>
-                     <p>Annual</p>
-                 </a>                 
-              </div>
-         </li>
-         <li class="nav-item ">
-           <a asp-action="Index" asp-controller="Payments" class="nav-link" >
-               <i class="fa fa-money" aria-hidden="true"></i>
-             <p>Payments</p>
-           </a>
-         </li>
-  
-       </ul>
-     </div>
-
+            <div class="dropdown-menu dropdown-menu-dark" style="background-color:#1a2035;color:white;width:89%">
+                <a asp-action="Reports" asp-controller="DashBoard" class="nav-link" > 
+                  <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                    <p>Monthly</p>
+                </a>
+                <a asp-action="Reports_Annual" asp-controller="DashBoard" class="nav-link" > 
+                  <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                    <p>Annual</p>
+                </a>                 
+            </div>
+        </li>
+      </ul>
   </div>
+</div>

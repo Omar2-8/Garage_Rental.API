@@ -1,5 +1,5 @@
 export interface Payment{
-  PayId :number;
+  paY_ID :number;
   PAY_AMOUNT :number;
   GARAGE_NAME :String;
   PAY_DATE :Date;

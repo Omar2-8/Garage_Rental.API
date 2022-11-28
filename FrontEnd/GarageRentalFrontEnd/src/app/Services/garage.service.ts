@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Garage } from '../Models/garage.model';
@@ -12,7 +13,7 @@ export class GarageService {
 
  baseApiUrl:string = environment.baseApiUrl;
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,private toster:ToastrService ) { }
 
 
   getGarageList(): Observable<Garage[]>{
@@ -26,6 +27,7 @@ export class GarageService {
   addGarage(addGarageReq:Garage):Observable<Garage>{
     debugger
     return this.http.post<Garage>(this.baseApiUrl +'Garage/Create',addGarageReq);
+    this.toster.show('Create Successfully !!');
   }
 
   updateGarage(id:number,updateGaragereq:Garage):Observable<Garage>{

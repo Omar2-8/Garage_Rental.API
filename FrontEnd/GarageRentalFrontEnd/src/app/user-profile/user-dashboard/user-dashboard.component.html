@@ -29,31 +29,33 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngSwitch="let obj of users.user">
+                                <tr >
                                     <td >
-                                      {{obj.firsT_NAME}}
+                                      {{ users.userid.firsT_NAME}}
                                     </td>
                                     <td>
-                                        {{obj.lasT_NAME}}
+                                        {{users.userid.lasT_NAME}}
                                     </td>
                                     <td>
-                                      {{obj.email}}
+                                      {{users.userid.email}}
                                     </td>
                                     <td>
-                                      {{obj.password}}
+                                      {{users.userid.password}}
                                     </td>
                                     <td>
-                                      {{obj.phonenumber}}
+                                      {{users.userid.phonenumber}}
                                     </td>
-                                  <td><img src="../../../assets/images/{{obj.useR_IMAGE}}" width="100px" height="100px"></td> 
+                                  <td><img src="../../../assets/images/{{users.userid.useR_IMAGE}}" width="100px" height="100px"></td> 
 
                                     <td>
-                                      {{obj.useR_IDENTITY}}
+                                      {{users.userid.useR_IDENTITY}}
                                     </td>
-                                  
+                                    <td>
+                                      {{users.userid.roleS_ID}}
+                                    </td>
                                     <td>  
-            /* <a (click)="openUpdateDailog(obj)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Update</a> |*@ 
-                                       <button (click)="openUpdateDailog(obj)"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i>Update</button> */
+                                      <button class="btn btn-primary" (click)="openUpdateDailog(users.userid)" > Update</button>|
+                                      <button class="btn btn-danger"  (click)="openDeleteDailog(users.userid.useR_ID)">Delete</button>
                                     </td>
                                 </tr>
                     
@@ -69,13 +71,112 @@
                     </div>
                 </div>
             </div>
-           
-    
+
+
+            <ng-template #callUpdatDailog>
+              <form [formGroup]="UpdateProfile">
+                <mat-form-field appearance="fill">
+                  <input matInput formControlName="firsT_NAME" [(ngModel)]="p_data.firsT_NAME" />
+                  <mat-error *ngIf="UpdateProfile.controls['firsT_NAME'].hasError('required')">
+                    firsT_NAME is <strong>required</strong>
+                  </mat-error>
+                </mat-form-field>
+                <br />
+                <mat-form-field appearance="fill">
+                  <input matInput formControlName="lasT_NAME" [(ngModel)]="p_data.lasT_NAME" />
+                  <mat-error *ngIf="UpdateProfile.controls['lasT_NAME'].hasError('required')">
+                    lasT_NAME is <strong>required</strong>
+                  </mat-error>
+                </mat-form-field>
+                <br />
+                <mat-form-field appearance="fill">
+                  <input matInput formControlName="email" [(ngModel)]="p_data.email" />
+                  <mat-error *ngIf="UpdateProfile.controls['email'].hasError('required')">
+                    email is <strong>required</strong>
+                  </mat-error>
+                  <mat-error *ngIf="UpdateProfile.controls['email'].hasError('email')">
+                    Please enter a valid email address
+                  </mat-error>
+                </mat-form-field>
+                <br />
+                <mat-form-field appearance="fill">
+                  <input
+                    matInput
+                    formControlName="password"
+                    [(ngModel)]="p_data.password"
+                  />
+                  <mat-error
+                    *ngIf="UpdateProfile.controls['password'].hasError('required')"
+                  >
+                  password is <strong>required</strong>
+                  </mat-error>
+                </mat-form-field>
+                <br />
+                <mat-form-field appearance="fill">
+                  <input
+                    matInput
+                    formControlName="phonenumber"
+                    [(ngModel)]="p_data.phonenumber"
+                  />
+                  <mat-error
+                    *ngIf="UpdateProfile.controls['phonenumber'].hasError('required')"
+                  >
+                  phone number is <strong>required</strong>
+                  </mat-error>
+                </mat-form-field>
+                <br />
+        
+                <mat-form-field appearance="fill">
+                  <input
+                    matInput
+                    formControlName="useR_IMAGE"
+                    [(ngModel)]="p_data.useR_IMAGE"
+                  />
+                  <mat-error
+                    *ngIf="UpdateProfile.controls['useR_IMAGE'].hasError('required')"
+                  >
+                  useR_IMAGE is <strong>required</strong>
+                  </mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill">
+                  <input
+                    matInput
+                    formControlName="useR_IDENTITY"
+                    [(ngModel)]="p_data.useR_IDENTITY"
+                  />
+                  <mat-error
+                    *ngIf="UpdateProfile.controls['useR_IDENTITY'].hasError('required')"
+                  >
+                  useR_IDENTITY is <strong>required</strong>
+                  </mat-error>
+                </mat-form-field>
+              </form>
+        
+              <mat-dialog-actions align="end">
+                <button class="btn btn-primary" mat-button mat-dialog-close>
+                  Cancel
+                </button>
+                <button
+                  class="btn btn-primary"
+                  mat-button
+                  [mat-dialog-close]="true"
+                  cdkFocusInitial
+                  (click)="saveDataProfile()"
+                >
+                  Save
+                </button>
+              </mat-dialog-actions>
+            </ng-template>
         <app-user-footer></app-user-footer>
       </div>
 
       
-    
+      <ng-template #callDeleteDailog>
+        <h2>Are you sure you want to delete this item ?</h2>
+        <button class="btn btn-primary" mat-dialog-close="yes">Yes</button>
+        <button class="btn btn-primary" mat-dialog-close="no">No</button>
+      </ng-template>
 
 
     <script>

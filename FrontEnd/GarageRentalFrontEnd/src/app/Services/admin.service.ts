@@ -99,7 +99,7 @@ export class AdminService {
 
   //--------- Payment
   getAllPayment(){
-    this.http.get('https://localhost:44391/api/Payment/GetAll').subscribe((Resp:any)=>{//السبسكرايب بتتكون من حالتين اول وحدة ترو والثانية اذا كانت ايرور ريسبونس
+    this.http.get(this.baseApiUrl+'Payment/GetAll').subscribe((Resp:any)=>{//السبسكرايب بتتكون من حالتين اول وحدة ترو والثانية اذا كانت ايرور ريسبونس
       this.payment=Resp;
       this.toster.success('Data Retrieved')
     },err=>{
@@ -109,8 +109,7 @@ export class AdminService {
   
   deletePayment(id:number)
   {
-    this.spinner.show();
-    this.http.delete('https://localhost:44391/api/Payment/Delete/'+id).subscribe((resp)=>{
+    this.http.delete(this.baseApiUrl+'Payment/Delete/'+id).subscribe((resp)=>{
         this.toster.success('Deleted Successfully !!');
     },err=>{
       this.toster.error(err.message, err.status);

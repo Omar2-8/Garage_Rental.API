@@ -2,18 +2,23 @@
 using Garage_Rental.Core.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
+
 namespace Garage_Rental.API.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
     public class RentController : ControllerBase
     {
+        private readonly ModelContext _context;
         private readonly IGenericService<Rent> _rentService;
 
-        public RentController(IGenericService<Rent> RentService)
+        public RentController(IGenericService<Rent> RentService, ModelContext context)
         {
             _rentService = RentService;
+            _context = context;
         }
 
 
@@ -26,6 +31,9 @@ namespace Garage_Rental.API.Controllers
         [HttpPost]
         public bool Create(Rent rent)
         {
+            //Payment payment = new Payment();
+            //var visa = _context.Visas.Include(r => r.Payments).Where(r => r.VISA_ID ==  && r.).FirstOrDefaultAsync();
+
             return _rentService.Create(rent);
         }
 

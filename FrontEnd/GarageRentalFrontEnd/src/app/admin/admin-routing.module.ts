@@ -1,3 +1,4 @@
+import { AdminPaymentComponent } from './admin-payment/admin-payment.component';
 import { ManageGarageComponent } from './manage-garage/manage-garage.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { ManageHomeComponent } from './manage-home/manage-home.component';
@@ -41,7 +42,11 @@ const routes: Routes = [
   {
     path:'garage',
     component:ManageGarageComponent
-  }
+  },
+  {
+    path:'payment',
+    component:AdminPaymentComponent
+  },
 
 
 ];

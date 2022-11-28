@@ -75,7 +75,6 @@ export class ManageGarageComponent implements OnInit {
     status:new FormControl('',Validators.required),
   });
 
-
   center: google.maps.LatLngLiteral = {
     lat: 31,
     lng: 36
@@ -114,7 +113,7 @@ saveGarage(form: FormGroup): void{
   console.log('Valid?', form.valid);
   debugger
 
-   this.saveInfo1();
+  this.saveInfo1();
 
 
 this.garageService.addGarage(this.garageModel)
@@ -128,13 +127,7 @@ this.garageService.addGarage(this.garageModel)
 
   }
 })
-
-
-
-
 }
-
-
   //Update
   p_data :any={};
   openUpdateDailog(obj:any){
