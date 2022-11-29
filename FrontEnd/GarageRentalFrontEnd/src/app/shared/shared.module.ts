@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatTableModule} from '@angular/material/table';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {MatMenuModule} from '@angular/material/menu';
     MatButtonModule,
     MatDialogModule,
     MatTableModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSelectModule,
   ],
   exports:[
     NavbarComponent,
@@ -41,7 +43,8 @@ import {MatMenuModule} from '@angular/material/menu';
     MatButtonModule,
     MatDialogModule,
     MatTableModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSelectModule,
   ]
 })
 export class SharedModule { }

@@ -103,8 +103,23 @@
   <form class="example-form" [formGroup]="updateForm">
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Status</mat-label>
+      <!-- <mat-select>
+        <mat-option *ngFor="let food of foods" [value]="food.value">
+          {{food.viewValue}}
+        </mat-option>
+      </mat-select> -->
+
+      <!-- <mat-label>Select an option</mat-label>
+  <mat-select  [(ngModel)]="p_data.status">
+    <mat-option>None</mat-option>
+    <mat-option value="option1">Accsept</mat-option>
+    <mat-option  matInput [(ngModel)]="p_data.status"
+    formControlName="status" value="option2">Reject</mat-option>
+    <mat-option  matInput [(ngModel)]="p_data.status"
+    formControlName="status" value="option3">Reject</mat-option>
+  </mat-select> -->
       <input
-        type="text"
+        type="text" mat-menu-item
         matInput
         formControlName="status"
         [(ngModel)]="p_data.status"

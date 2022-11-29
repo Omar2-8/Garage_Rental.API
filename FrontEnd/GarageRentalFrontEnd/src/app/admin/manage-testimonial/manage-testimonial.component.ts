@@ -3,6 +3,8 @@ import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Table } from 'primeng/table'
+import {MatMenuModule} from '@angular/material/menu';
+
 @Component({
   selector: 'app-manage-testimonial',
   templateUrl: './manage-testimonial.component.html',
