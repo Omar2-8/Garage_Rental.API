@@ -1,3 +1,4 @@
+import { AdminProfileComponent } from './admin-profile/admin-profile.component';
 import { AdminPaymentComponent } from './admin-payment/admin-payment.component';
 import { ManageGarageComponent } from './manage-garage/manage-garage.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
@@ -46,6 +47,10 @@ const routes: Routes = [
   {
     path:'payment',
     component:AdminPaymentComponent
+  },  
+  {
+    path:'profile',
+    component:AdminProfileComponent
   },
 
 

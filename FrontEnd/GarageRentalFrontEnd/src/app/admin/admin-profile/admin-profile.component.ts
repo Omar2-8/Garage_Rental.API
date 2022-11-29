@@ -1,15 +1,15 @@
-import { UserService } from './../../Services/user.service';
-import { Component, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild, ElementRef } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/Services/user.service';
 
 @Component({
-  selector: 'app-user-dashboard',
-  templateUrl: './user-dashboard.component.html',
-  styleUrls: ['./user-dashboard.component.css']
+  selector: 'app-admin-profile',
+  templateUrl: './admin-profile.component.html',
+  styleUrls: ['./admin-profile.component.css']
 })
-export class UserDashboardComponent implements OnInit {
+export class AdminProfileComponent implements OnInit {
 
   constructor(public users:UserService,public dialog: MatDialog,private router:Router) {}
   @ViewChild('callDeleteDailog') callDelete!:TemplateRef<any>
@@ -27,7 +27,7 @@ export class UserDashboardComponent implements OnInit {
   })
 
   ngOnInit(): void {
-    this.users.getUserId(109);
+    this.users.getUserId(41);
   }
 
   p_data :any={};
@@ -75,4 +75,5 @@ export class UserDashboardComponent implements OnInit {
         }
       })
     }
+
 }

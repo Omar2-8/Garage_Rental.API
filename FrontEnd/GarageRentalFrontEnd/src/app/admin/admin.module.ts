@@ -16,6 +16,7 @@ import {TableModule} from 'primeng/table';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { ManageGarageComponent } from './manage-garage/manage-garage.component';
 import { AdminPaymentComponent } from './admin-payment/admin-payment.component';
+import { AdminProfileComponent } from './admin-profile/admin-profile.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { AdminPaymentComponent } from './admin-payment/admin-payment.component';
       ContactUsComponent,
       UserDetailsComponent,
       ManageGarageComponent,
-      AdminPaymentComponent
+      AdminPaymentComponent,
+      AdminProfileComponent
   ],
   imports: [
     CommonModule,

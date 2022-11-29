@@ -45,11 +45,8 @@ export class UserService {
     )
   }
   getAllUsers(){
-  
-    
     this.http.get('https://localhost:44391/api/Users/GetAll').subscribe((Resp:any)=>{//السبسكرايب بتتكون من حالتين اول وحدة ترو والثانية اذا كانت ايرور ريسبونس
       this.user=Resp;
-      
        this.toster.success('Data Retrieved')
     },err=>{
       

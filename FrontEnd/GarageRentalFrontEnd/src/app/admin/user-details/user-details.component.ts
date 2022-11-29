@@ -1,5 +1,7 @@
+import { UserService } from './../../Services/user.service';
 import { AdminService } from './../../Services/admin.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-user-details',
@@ -8,10 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserDetailsComponent implements OnInit {
 
-  constructor(public admin:AdminService) { }
-
+  constructor(public admin:AdminService,public users:UserService,public dialog: MatDialog) { }
+  @ViewChild('callDeleteDailog') callDelete!:TemplateRef<any>
   ngOnInit(): void {
     this.admin.getAllUsers();
   }
-
+  openDeleteDailog(id:number)
+  {
+    const dialogRef=  this.dialog.open(this.callDelete);
+    dialogRef.afterClosed().subscribe((result)=>{
+      if(result!=undefined)
+      {
+        if(result=='yes')
+        {
+          this.users.deleteUser(id);
+        }
+          else if(result=='no')
+          console.log('thank you '); 
+      }
+    })
+  }
 }
