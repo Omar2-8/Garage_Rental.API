@@ -53,7 +53,7 @@ namespace Garage_Rental.API
                 ValidateAudience = true,
                 ValidateLifetime = true,
                 ValidateIssuerSigningKey = true,
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("follow your dreams, the sky is the limit"))
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"))
             };
         });
 
@@ -139,7 +139,7 @@ namespace Garage_Rental.API
             app.UseRouting();
 
             app.UseCors("policy");//-->موقعها هون اذا تغير error
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
