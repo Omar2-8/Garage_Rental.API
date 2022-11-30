@@ -15,13 +15,13 @@ export class AuthorizationGuard implements CanActivate {
    const token= localStorage.getItem('token');
    if(token)
 {
-  if(state.url.indexOf('admin')>=0)
+  if(state.url.indexOf('Admin')>=0)
   {
    let user:any= localStorage.getItem('user');
     if(user)
     {
       user=JSON.parse(user);
-      if(user.rolE_NAME=='Admin'){
+      if(user.Role==1){
         this.toastr.success('Welcome in admin pages ');
         return true;
       }

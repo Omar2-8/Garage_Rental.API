@@ -24,6 +24,25 @@ namespace Garage_Rental.Infra.Repository
             IEnumerable<LongLetGarages> result = _dbcontext.Connection.Query<LongLetGarages>("GARAGE_PACKAGE.GETLONGITUDELATITUDE", commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
-        
+
+        public List<LongLetGarages> GetLongitudeLatitudeByID(int id)
+        {
+            var p = new DynamicParameters();
+            p.Add("Id", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            IEnumerable<LongLetGarages> result = _dbcontext.Connection.Query<LongLetGarages>("GARAGE_PACKAGE.GetLongitudeLatitudeByID", p, commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
+
+        public void ChangeGragaeStatus(Garagestatus g)
+        {
+            var p = new DynamicParameters();
+            p.Add("G_ID", g.GARAGE_ID, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+            p.Add("G_STATUS", g.Status, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("result", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            _dbcontext.Connection.Execute("GARAGE_PACKAGE.ChangeGarageStatus", p, commandType: CommandType.StoredProcedure);
+            
+
+        }
+
     }
 }

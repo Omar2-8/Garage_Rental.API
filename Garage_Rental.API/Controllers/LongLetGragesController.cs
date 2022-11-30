@@ -23,5 +23,16 @@ namespace Garage_Rental.API.Controllers
         {
             return _LongitudeLatitudeService.GetLongitudeLatitude();
         }
+        [HttpGet]
+        [Route("{id}")]
+        public List<LongLetGarages> GetLongitudeLatitudeByID(int id)
+        {
+            return this._LongitudeLatitudeService.GetLongitudeLatitudeByID(id);
+        }
+        [HttpPut]
+        public void ChangeGragaeStatus(Garagestatus g)
+        {
+            _LongitudeLatitudeService.ChangeGragaeStatus(g);
+        }
     }
 }

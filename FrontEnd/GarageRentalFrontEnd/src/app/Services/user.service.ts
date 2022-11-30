@@ -27,7 +27,8 @@ export class UserService {
   roleS_ID:0
 };
 
-  garage :any[]=[];//عرفنا اريي عشان رح ترجعلي الداتا جيسون اوبجكت فبحتاج ارريي لحتى اخزن فيها الداتا الي جبتها من الإي بي اّي
+Longletgrage :any[]=[];
+garage :any[]=[];//عرفنا اريي عشان رح ترجعلي الداتا جيسون اوبجكت فبحتاج ارريي لحتى اخزن فيها الداتا الي جبتها من الإي بي اّي
   constructor(private http:HttpClient ,private spinner:NgxSpinnerService , private toster:ToastrService ) { }
   //--------Users
   createUser(body: any) {
@@ -153,7 +154,27 @@ export class UserService {
     })
   
   }
+
  
+  getLongLetById(id: number) {
+    //show Spinner 
+    //Hits Api 
+    //Hide Spinner
+    //Resp=> Toastr 
+  
+  
+    this.http.get('https://localhost:44391/api/LongLetGrages/GetLongitudeLatitudeByID/' + id).subscribe((resp: any) => {
+      this.Longletgrage = resp;
+      console.log(this.Longletgrage);
+      
+      this.toster.success('Data Retrieved!');
+  
+    }, err => {
+      
+      this.toster.error(err.message, err.status);
+    })
+  
+  }
   
   deleteGarage(id:number)
   {

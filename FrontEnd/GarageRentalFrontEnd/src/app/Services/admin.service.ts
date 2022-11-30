@@ -17,7 +17,7 @@ export class AdminService {
   user :any[]=[];
   garage :any[]=[];//عرفنا اريي عشان رح ترجعلي الداتا جيسون اوبجكت فبحتاج ارريي لحتى اخزن فيها الداتا الي جبتها من الإي بي اّي
   constructor(private http:HttpClient ,private spinner:NgxSpinnerService , private toster:ToastrService ) { }
-
+   
   //-------User
   getAllUsers(){
     this.http.get(this.baseApiUrl+'Users/GetAll').subscribe((Resp:any)=>{//السبسكرايب بتتكون من حالتين اول وحدة ترو والثانية اذا كانت ايرور ريسبونس
@@ -65,6 +65,14 @@ export class AdminService {
       this.toster.error(err.message, err.status);
     })
   }
+ 
+  ChangeStatusOfGrage(body:any) {this.http.put(this.baseApiUrl+'LongLetGrages/ChangeGarageStatus',body).subscribe((resp)=>{
+    this.toster.success('Accepted The Garage Successfully !!');
+  },err=>{
+    this.toster.error(err.message, err.status);
+  })
+  
+  }
 
   deleteGarage(id:number)
   {
@@ -78,7 +86,7 @@ export class AdminService {
   updateGarage(body:any)
   {
     this.http.put(this.baseApiUrl+'Garage/Update',body).subscribe((resp)=>{
-      this.toster.success('Accepted The Garage Successfully !!');
+      this.toster.success('Updated The Garage Successfully !!');
     },err=>{
       this.toster.error(err.message, err.status);
     })

@@ -21,5 +21,15 @@ namespace Garage_Rental.Infra.Service
         {
            return this._LongitudeLatitudeRepsitory.GetLongitudeLatitude();
         }
+
+        public List<LongLetGarages> GetLongitudeLatitudeByID(int id)
+        {
+            return this._LongitudeLatitudeRepsitory.GetLongitudeLatitudeByID(id);
+        }
+
+        public void ChangeGragaeStatus(Garagestatus g)
+        {
+            this._LongitudeLatitudeRepsitory.ChangeGragaeStatus(g);
+        }
     }
 }

@@ -9,5 +9,8 @@ namespace Garage_Rental.Core.Service
     public interface ILongitudeLatitudeService
     {
        public List<LongLetGarages> GetLongitudeLatitude();
+        public List<LongLetGarages> GetLongitudeLatitudeByID(int id);
+
+         void ChangeGragaeStatus(Garagestatus g);
     }
 }
