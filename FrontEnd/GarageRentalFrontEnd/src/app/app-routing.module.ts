@@ -43,7 +43,8 @@ const routes: Routes = [
   },
   {
     path:'garage',
-    component:UserGarageComponent
+    component:UserGarageComponent,
+    canActivate:[AuthorizationGuard]
   },
   {
     path:'userProfile',
