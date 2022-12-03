@@ -1,3 +1,4 @@
+import { ReserveGarageComponent } from './Components/reserve-garage/reserve-garage.component';
 import { UserProfileModule } from './user-profile/user-profile.module';
 import { UserGarageComponent } from './Components/user-garage/user-garage.component';
 import { AdminModule } from './admin/admin.module';
@@ -12,48 +13,48 @@ import { AuthorizationGuard } from './authorization.guard';
 
 const routes: Routes = [
   {
-    path:'about',
-    component:AboutUsComponent
+    path: 'about',
+    component: AboutUsComponent,
   },
   {
-    path:'contact',
-    component:ContactUsComponent
+    path: 'contact',
+    component: ContactUsComponent,
   },
   //the defult
   {
-    path:'',
-    component:HomeComponent
+    path: '',
+    component: HomeComponent,
   },
   {
-    path:'home',
-    component:HomeComponent
+    path: 'home',
+    component: HomeComponent,
   },
   {
-    path:'security',
-    loadChildren:()=>AuthModule //هان بدي احمل موديول كامل
+    path: 'security',
+    loadChildren: () => AuthModule, //هان بدي احمل موديول كامل
   },
   {
-    path:'testimonial',
-    component:TestimonialComponent
+    path: 'testimonial',
+    component: TestimonialComponent,
   },
   {
-    path:'Admin',
-    loadChildren:()=>AdminModule,
-    canActivate:[AuthorizationGuard]
+    path: 'Admin',
+    loadChildren: () => AdminModule,
+    canActivate: [AuthorizationGuard],
   },
   {
-    path:'garage',
-    component:UserGarageComponent,
-    canActivate:[AuthorizationGuard]
+    path: 'garage',
+    component: UserGarageComponent,
+    canActivate: [AuthorizationGuard],
   },
   {
-    path:'userProfile',
-    loadChildren:()=>UserProfileModule
+    path: 'userProfile',
+    loadChildren: () => UserProfileModule,
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

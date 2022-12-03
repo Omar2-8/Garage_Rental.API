@@ -1,26 +1,25 @@
 import { GarageService } from './../../Services/garage.service';
-import { Garage } from './../../Models/garage.model';
+import { GarageModel } from './../../Models/garage.model';
 import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-list-garage',
   templateUrl: './list-garage.component.html',
-  styleUrls: ['./list-garage.component.css']
+  styleUrls: ['./list-garage.component.css'],
 })
 export class ListGarageComponent implements OnInit {
   markerPositions: google.maps.LatLngLiteral[] = [];
   display: any;
   val: any;
 
-  constructor(private garageService:GarageService) { }
+  constructor(private garageService: GarageService) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  mode=["Available","NotAvailable"];
-  rangeValues!:number[]
-  garageModel:Garage={
+  mode = ['Available', 'NotAvailable'];
+  rangeValues!: number[];
+  garageModel: GarageModel = {
     gARAGE_ID: 0,
     gARAGE_NAME: '',
     latitude: '',
@@ -33,93 +32,70 @@ export class ListGarageComponent implements OnInit {
     street: '',
     buildinG_NUMBER: 0,
     status: 'test',
-    gARAGE_MODE: ''
+    gARAGE_MODE: '',
     // uSER_ID: 0,
     // rents: []
   };
 
-
-  garageForm=new FormGroup({
-
-    name:new FormControl(''),
-    from:new FormControl('',Validators.required),
-    to:new FormControl('',Validators.required),
-    price:new FormControl('',Validators.required),
-    street:new FormControl('',Validators.required),
-    building:new FormControl('',Validators.required),
-    mode:new FormControl('',Validators.required),
-    status:new FormControl('',Validators.required),
-
-
+  garageForm = new FormGroup({
+    name: new FormControl(''),
+    from: new FormControl('', Validators.required),
+    to: new FormControl('', Validators.required),
+    price: new FormControl('', Validators.required),
+    street: new FormControl('', Validators.required),
+    building: new FormControl('', Validators.required),
+    mode: new FormControl('', Validators.required),
+    status: new FormControl('', Validators.required),
   });
 
+  center: google.maps.LatLngLiteral = {
+    lat: 31,
+    lng: 36,
+  };
+  zoom = 7;
+  markerOptions: google.maps.MarkerOptions = {
+    draggable: false,
+  };
 
-
-   center: google.maps.LatLngLiteral = {
-        lat: 31,
-        lng: 36
-    };
-    zoom = 7;
-     markerOptions: google.maps.MarkerOptions = {
-        draggable: false
-    };
-
-    addMarker(event: google.maps.MapMouseEvent) {
-
-        if (event.latLng != null)
-      {
-        this.markerPositions[0]=(event.latLng.toJSON());
-        console.log(this.markerPositions[0]);
-
-}
-
+  addMarker(event: google.maps.MapMouseEvent) {
+    if (event.latLng != null) {
+      this.markerPositions[0] = event.latLng.toJSON();
+      console.log(this.markerPositions[0]);
     }
+  }
 
-    saveInfo(){
-      debugger
+  saveInfo() {
+    debugger;
 
-      this.garageModel.gARAGE_NAME=""+this.garageForm.value.name;
+    this.garageModel.gARAGE_NAME = '' + this.garageForm.value.name;
 
-    this.garageModel.rENT_PRICE=Number(this.garageForm.value.price);
-    this.garageModel.street=""+this.garageForm.value.street ;
-    this.garageModel.buildinG_NUMBER=Number(this.garageForm.value.building);
-    this.garageModel.latitude=""+this.markerPositions[0]["lat"];
-    this.garageModel.longitude=""+this.markerPositions[0]["lng"];
+    this.garageModel.rENT_PRICE = Number(this.garageForm.value.price);
+    this.garageModel.street = '' + this.garageForm.value.street;
+    this.garageModel.buildinG_NUMBER = Number(this.garageForm.value.building);
+    this.garageModel.latitude = '' + this.markerPositions[0]['lat'];
+    this.garageModel.longitude = '' + this.markerPositions[0]['lng'];
+  }
 
+  saveGarage(form: FormGroup): void {
+    console.log('Valid?', form.valid);
+    debugger;
 
-    }
+    this.saveInfo();
 
-    saveGarage(form: FormGroup): void{
-
-      console.log('Valid?', form.valid);
-      debugger
-
-       this.saveInfo();
-
-
-    this.garageService.addGarage(this.garageModel)
-    .subscribe({
-      next:()=>{
-        console.log("adding Garagee succeful");
-
+    this.garageService.addGarage(this.garageModel).subscribe({
+      next: () => {
+        console.log('adding Garagee succeful');
       },
-      error:(er)=>{
+      error: (er) => {
         console.log(er);
+      },
+    });
+  }
 
-      }
-    })
-
-
-
-
-    }
-
-    uploadImage(file:any){
-      if(file.length==0)
-      return;
-      let fileToUpload=<File>file[0];//the first image
-      const formdata= new FormData();
-      formdata.append('file',fileToUpload,fileToUpload.name);
-    }
-
+  uploadImage(file: any) {
+    if (file.length == 0) return;
+    let fileToUpload = <File>file[0]; //the first image
+    const formdata = new FormData();
+    formdata.append('file', fileToUpload, fileToUpload.name);
+  }
 }

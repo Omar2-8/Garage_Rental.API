@@ -1,1 +1,41 @@
-<app-navbar></app-navbar> <app-footer></app-footer>
+<h3 class="my-5">Choose the location of your Garage</h3>
+
+<input
+  type="text"
+  pInputText
+  placeholder="Search Location"
+  (keydown.enter)="$event.preventDefault()"
+  #search
+/>
+
+<google-map height="600px" width="900px" [center]="center" [zoom]="zoom">
+  <map-marker
+    *ngFor="let markerPosition of markerPositions"
+    [position]="markerPosition"
+    [options]="options"
+    (mapClick)="showCard(markerPosition)"
+  ></map-marker>
+</google-map>
+<span *ngIf="showCardPanel">
+  <p-card
+    header="{{ garageCard.gARAGE_NAME }}"
+    subheader="{{ garageCard.rENT_PRICE }}"
+    [style]="{ width: '360px' }"
+    styleClass="p-card-shadow"
+  >
+    <ng-template pTemplate="header">
+      <img alt="Card" src="garageCard." />
+    </ng-template>
+    <p>
+      Rent Price: {{ garageCard.rENT_PRICE }} <br />
+      available from {{ garageCard.aVAILABLE_FROM }} to
+      {{ garageCard.aVAILABLE_TO }}<br />
+      building Number {{ garageCard.buildinG_NUMBER }} in street{{
+        garageCard.street
+      }}
+    </p>
+    <ng-template pTemplate="footer">
+      <p-button label="Reserve" icon="pi pi-check"></p-button>
+    </ng-template>
+  </p-card>
+</span>

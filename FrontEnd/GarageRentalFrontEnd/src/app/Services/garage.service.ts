@@ -3,37 +3,47 @@ import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Garage } from '../Models/garage.model';
+import { GarageModel } from '../Models/garage.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class GarageService {
+  baseApiUrl: string = environment.baseApiUrl;
 
+  constructor(private http: HttpClient, private toster: ToastrService) {}
 
- baseApiUrl:string = environment.baseApiUrl;
-
-  constructor(private http:HttpClient,private toster:ToastrService ) { }
-
-
-  getGarageList(): Observable<Garage[]>{
-    return this.http.get<Garage[]>(this.baseApiUrl +'Garage/GetAll');
+  getGarageList(): Observable<GarageModel[]> {
+    return this.http.get<GarageModel[]>(this.baseApiUrl + 'Garage/GetAll');
   }
 
-  getGarage(id:string):Observable<Garage>{
-    return this.http.get<Garage>(this.baseApiUrl +'Garage/GetById?id=' + id);
+  getGarage(id: string): Observable<GarageModel> {
+    return this.http.get<GarageModel>(
+      this.baseApiUrl + 'Garage/GetById?id=' + id
+    );
   }
 
-  addGarage(addGarageReq:Garage):Observable<Garage>{
-    debugger
-    return this.http.post<Garage>(this.baseApiUrl +'Garage/Create',addGarageReq);
+  addGarage(addGarageReq: GarageModel): Observable<GarageModel> {
+    debugger;
+    return this.http.post<GarageModel>(
+      this.baseApiUrl + 'Garage/Create',
+      addGarageReq
+    );
     this.toster.show('Create Successfully !!');
   }
 
-  updateGarage(id:number,updateGaragereq:Garage):Observable<Garage>{
-    return this.http.post<Garage>(this.baseApiUrl +'Garage/Update?id='+ id ,updateGaragereq)
+  updateGarage(
+    id: number,
+    updateGaragereq: GarageModel
+  ): Observable<GarageModel> {
+    return this.http.post<GarageModel>(
+      this.baseApiUrl + 'Garage/Update?id=' + id,
+      updateGaragereq
+    );
   }
-  deleteGarage(id:number):Observable<Garage>{
-    return this.http.delete<Garage>(this.baseApiUrl +'Garage/Delete?id=' + id);
+  deleteGarage(id: number): Observable<GarageModel> {
+    return this.http.delete<GarageModel>(
+      this.baseApiUrl + 'Garage/Delete?id=' + id
+    );
   }
 }

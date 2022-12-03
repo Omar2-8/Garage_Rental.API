@@ -10,8 +10,12 @@ import { AboutUsComponent } from './Components/about-us/about-us.component';
 
 import { TestimonialComponent } from './Components/testimonial/testimonial.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule, HTTP_INTERCEPTORS}from  '@angular/common/http'
-import { ToastrModule, ToastNoAnimation, ToastNoAnimationModule } from 'ngx-toastr';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {
+  ToastrModule,
+  ToastNoAnimation,
+  ToastNoAnimationModule,
+} from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
 
 import { GoogleMapsModule } from '@angular/google-maps';
@@ -19,9 +23,11 @@ import { ReserveGarageComponent } from './Components/reserve-garage/reserve-gara
 import { ListGarageComponent } from './Components/list-garage/list-garage.component';
 import { UserGarageComponent } from './Components/user-garage/user-garage.component';
 
-import {SliderModule} from 'primeng/slider';
+import { SliderModule } from 'primeng/slider';
 import { TokenInterceptor } from 'src/Interceptor/token.interceptor';
-
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,8 +38,6 @@ import { TokenInterceptor } from 'src/Interceptor/token.interceptor';
     ReserveGarageComponent,
     ListGarageComponent,
     UserGarageComponent,
-
-
   ],
   imports: [
     BrowserModule,
@@ -46,16 +50,18 @@ import { TokenInterceptor } from 'src/Interceptor/token.interceptor';
     ToastrModule.forRoot(),
     ToastNoAnimationModule.forRoot(),
     FormsModule,
-    SliderModule
-
-
-
+    SliderModule,
+    InputTextModule,
+    ButtonModule,
+    CardModule,
   ],
-  providers: [{
-    provide:HTTP_INTERCEPTORS,
-    useClass:TokenInterceptor,
-    multi:true
-  }],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
+    },
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
