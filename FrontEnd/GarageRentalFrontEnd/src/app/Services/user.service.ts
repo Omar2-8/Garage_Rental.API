@@ -16,9 +16,9 @@ export class UserService {
   display_image2: any;
   car :any[]=[];
   testimonial :any[]=[];
-  visa :any[]=[];
+  visa :any={};
   payment :any[]=[];
-  rent :any[]=[];
+  rent :any={};
   user :any[]=[];
   userName :any={};
   userid :any={};
@@ -221,9 +221,14 @@ garage :any={};//عرفنا اريي عشان رح ترجعلي الداتا ج�
 
     //-------Rent 
     createRent(body: any) {
+      debugger
       
       this.spinner.show();
-     
+     this.getVisaId(1);
+      if(this.garage.availablE_FROM <=body.starT_TIME && this.garage.availablE_TO >=body.enD_TIME ){
+        if(this.visa.visA_AMOUNT>this.garage.renT_PRICE*(body.enD_TIME-body.starT_TIME)){
+          this.visa.visA_AMOUNT=this.visa.visA_AMOUNT-this.garage.renT_PRICE*(body.enD_TIME-body.starT_TIME);
+        
       this.http.post('https://localhost:44391/api/Rent/Create', body).subscribe((resp) => {
         console.log(resp);
         this.spinner.hide();
@@ -232,7 +237,11 @@ garage :any={};//عرفنا اريي عشان رح ترجعلي الداتا ج�
         this.spinner.hide();
         this.toster.error(err.message, err.status);
       }
-      )
+      )}
+      else
+      this.toster.error('Amount of visa not enoug ');
+    }else
+      this.toster.error('The time of rent garage is not available');
     }
     
     getRentId(id: number) {

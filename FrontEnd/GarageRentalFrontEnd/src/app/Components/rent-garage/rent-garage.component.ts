@@ -2,6 +2,7 @@ import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/Services/user.service';
 
 @Component({
@@ -14,7 +15,8 @@ export class RentGarageComponent implements OnInit {
   @ViewChild('callDeleteDailog') callDelete!:TemplateRef<any>;
   @ViewChild('callCreateDailog') callCreateRent!: TemplateRef<any>;
   garageid :any;
-  constructor(public userService:UserService,public dialog: MatDialog,private route: ActivatedRoute) {
+  userid:any;
+  constructor(public userService:UserService,public dialog: MatDialog,private route: ActivatedRoute,private toastr: ToastrService) {
    this.garageid =this.route.snapshot.params['id'];
    }
 
@@ -31,13 +33,13 @@ export class RentGarageComponent implements OnInit {
 
    user:any;
   ngOnInit(): void {
-    this.userService.getGarageId(this.garageid);
+    this.userService.getSingleGarageId(this.garageid);
+    
    this.user = localStorage.getItem('user');
     this.user = JSON.parse(this.user);
-    this.userService.getUserId(this.user.USER_ID);
-
+    this.userid=this.user.USER_ID;
   }
-
+  
 
   openCreateDailog() {
     this.dialog.open(this.callCreateRent);
@@ -45,9 +47,12 @@ export class RentGarageComponent implements OnInit {
   }
   saveData() {
     debugger
-    this.createForm.value.garagE_ID=this.garageid;
-    this.createForm.value.useR_ID=this.user.USER_ID;
+    if(this.userService.garage.garagE_MODE !='unavailable'){
+    
     this.userService.createRent(this.createForm.value);
+  }
+  else
+   this.toastr.error('the garage is rented ');
   }
  
   openDeleteDailog(id: number) {

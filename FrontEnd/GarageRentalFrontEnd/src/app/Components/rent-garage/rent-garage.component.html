@@ -47,7 +47,7 @@
                     </th>
                     <th>Building Number
                     </th>
-                   
+                    
                     <th>Garage Mode
                    </th>
                     
@@ -126,9 +126,27 @@
           </mat-error>
         </mat-form-field>
         <br />
-       
-    
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Gragae Id</mat-label>
+          <input type="number"  matInput formControlName="garagE_ID"  />
+          <mat-error *ngIf="createForm.controls['garagE_ID'].hasError('required')">
+              garagE_ID <strong>required</strong>
+          </mat-error>
+          
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>useR_ID</mat-label>
+          <input type="number" matInput formControlName="useR_ID" />
+          <mat-error *ngIf="createForm.controls['useR_ID'].hasError('required')">
+            useR_ID <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
   
+        <br />
+       
+  
+        <br />
       </form>
   
     </mat-dialog-content>
