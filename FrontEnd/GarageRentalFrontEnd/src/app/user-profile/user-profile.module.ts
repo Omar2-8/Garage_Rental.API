@@ -9,7 +9,9 @@ import { UserFooterComponent } from './user-footer/user-footer.component';
 import { UserSideBarComponent } from './user-side-bar/user-side-bar.component';
 import { AddTestimonialComponent } from './add-testimonial/add-testimonial.component';
 import { UserGarageComponent } from './user-garage/user-garage.component';
+import { GoogleMapsModule } from '@angular/google-maps';
 
+import {TableModule} from 'primeng/table';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { UserGarageComponent } from './user-garage/user-garage.component';
   imports: [
     CommonModule,
     UserProfileRoutingModule,
-    SharedModule
+    SharedModule,
+    TableModule,
+    GoogleMapsModule
   ]
 })
 export class UserProfileModule { }

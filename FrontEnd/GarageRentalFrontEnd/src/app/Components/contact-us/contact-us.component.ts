@@ -16,6 +16,7 @@ export class ContactUsComponent implements OnInit {
     email:new FormControl('',[Validators.required,Validators.email]),
     message:new FormControl('',Validators.required),
     phonE_NUMBER:new FormControl('',Validators.required),
+    
   })
   ngOnInit(): void {
   }
