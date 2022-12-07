@@ -414,21 +414,21 @@
         />
       </div>
   
-      <!-- <div class="mb-3">
+      <div class="mb-3">
         <label>Upload 2 images </label>
         <input
           type="file"
-          #file1
-          (change)="uploadImage(file1.files)"
+          #file
+          (change)="uploadFile1(file.files)"
           [(ngModel)]="garageModel.image1"
         />
         <input
           type="file"
           #file1
-          (change)="uploadImage(file1.files)"
+          (change)="uploadFile2(file1.files)"
           [(ngModel)]="garageModel.image1"
         />
-      </div> -->
+      </div> 
   
       <label>Choose the location of your Garage</label>
   
@@ -446,7 +446,7 @@
         ></map-marker>
       </google-map>
   
-      <button type="submit" class="btn btn-primary btn-lg">Add Garage</button>
+      <button type="submit" class="btn btn-primary btn-lg" >Add Garage</button>
     </form>
 </div>
 </ng-template>

@@ -12,13 +12,13 @@ namespace Garage_Rental.API.Controllers
     [ApiController]
     public class RentController : ControllerBase
     {
-        private readonly ModelContext _context;
+       
         private readonly IGenericService<Rent> _rentService;
 
-        public RentController(IGenericService<Rent> RentService, ModelContext context)
+        public RentController(IGenericService<Rent> RentService)
         {
             _rentService = RentService;
-            _context = context;
+            
         }
 
 

@@ -1,3 +1,4 @@
+
 import { ReserveGarageComponent } from './Components/reserve-garage/reserve-garage.component';
 import { UserProfileModule } from './user-profile/user-profile.module';
 import { UserGarageComponent } from './Components/user-garage/user-garage.component';
@@ -50,7 +51,9 @@ const routes: Routes = [
   {
     path: 'userProfile',
     loadChildren: () => UserProfileModule,
+    //canActivate: [AuthorizationGuard],
   },
+  
 ];
 
 @NgModule({

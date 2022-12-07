@@ -40,6 +40,23 @@ export class ManageGarageComponent implements OnInit {
     garagE_MODE: new FormControl('', Validators.required),
     useR_ID: new FormControl('', Validators.required),
   });
+
+  createForm: FormGroup = new FormGroup({
+
+    garagE_NAME: new FormControl(''),
+    latitude: new FormControl(''),
+    longitude: new FormControl(''),
+    image1: new FormControl(''),
+    image2: new FormControl(''),
+    availablE_FROM: new FormControl('', Validators.required),
+    availablE_TO: new FormControl('', Validators.required),
+    renT_PRICE: new FormControl('', Validators.required),
+    street: new FormControl('', Validators.required),
+    buildinG_NUMBER: new FormControl('', Validators.required),
+    garagE_MODE: new FormControl('', Validators.required),
+    useR_ID: new FormControl('', Validators.required),
+  });
+
   ngOnInit(): void {
     this.admin.getAllGarage();
   }
@@ -49,19 +66,19 @@ export class ManageGarageComponent implements OnInit {
   mode = ['Available', 'NotAvailable'];
   rangeValues!: number[];
   garageModel: GarageModel = {
-    gARAGE_ID: 0,
-    gARAGE_NAME: '',
+    garagE_ID: 0,
+    garagE_NAME: '',
     latitude: '',
     longitude: '',
     image1: 'test',
     image2: 'test',
-    aVAILABLE_FROM: 0,
-    aVAILABLE_TO: 0,
-    rENT_PRICE: 0,
+    availablE_FROM: 0,
+    availablE_TO: 0,
+    renT_PRICE: 0,
     street: '',
     buildinG_NUMBER: 0,
     status: 'test',
-    gARAGE_MODE: '',
+    garagE_MODE: '',
     // uSER_ID: 0,
     // rents: []
   };
@@ -95,9 +112,9 @@ export class ManageGarageComponent implements OnInit {
   saveInfo1() {
     debugger;
 
-    this.garageModel.gARAGE_NAME = '' + this.garageForm1.value.name;
+    this.garageModel.garagE_NAME = '' + this.garageForm1.value.name;
 
-    this.garageModel.rENT_PRICE = Number(this.garageForm1.value.price);
+    this.garageModel.renT_PRICE = Number(this.garageForm1.value.price);
     this.garageModel.street = '' + this.garageForm1.value.street;
     this.garageModel.buildinG_NUMBER = Number(this.garageForm1.value.building);
     this.garageModel.latitude = '' + this.markerPositions[0]['lat'];
@@ -157,4 +174,29 @@ export class ManageGarageComponent implements OnInit {
       }
     });
   }
+
+  uploadFile1(file:any){
+    if(file.length==0)
+    return;
+    let fileToUpload=<File>file[0];//the first image 
+    const formdata= new FormData();
+    formdata.append('file',fileToUpload,fileToUpload.name);
+    
+    this.admin.uploadAttachmentGarage(formdata);
+  }
+  uploadFile2(file:any){
+    if(file.length==0)
+    return;
+    let fileToUpload=<File>file[0];//the first image 
+    const formdata= new FormData();
+    formdata.append('file',fileToUpload,fileToUpload.name);
+    
+    this.admin.uploadAttachmentGarage2(formdata);
+  }
+
+ //* submit(){
+  //  this.admin.createGarage(this.createForm.value);
+  
+ //   console.log(this.createForm.value);
+// }
 }

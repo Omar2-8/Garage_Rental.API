@@ -11,6 +11,8 @@ export class AdminService {
   baseApiUrl:string = environment.baseApiUrl;
   message: string = "Welcome :) ";
   display_image: any;
+  display_image1: any;
+  display_image2: any;
   visa :any[]=[];
   payment :any[]=[];
   rent :any[]=[];
@@ -31,7 +33,8 @@ export class AdminService {
 
   //-------Garage 
   createGarage(body: any) {
-    body.image = this.display_image;
+    body.image1 = this.display_image1;
+    body.image2 = this.display_image2;
     this.spinner.show();
     this.http.post('https://localhost:44391/api/Garage/Create', body).subscribe((resp) => {
       console.log(resp);
@@ -89,6 +92,25 @@ export class AdminService {
       this.toster.success('Updated The Garage Successfully !!');
     },err=>{
       this.toster.error(err.message, err.status);
+    })
+  }
+
+  uploadAttachmentGarage(file: FormData) {
+    this.http.post('https://localhost:44391/api/Home/UploadIMage/', file).subscribe((resp: any) => {
+      this.display_image1 = resp.image1;
+    }, err => {
+      this.toster.error('Can not Upload Image');
+      console.log(err);
+
+    })
+  }
+  uploadAttachmentGarage2(file: FormData) {
+    this.http.post('https://localhost:44391/api/Home/UploadIMage/', file).subscribe((resp: any) => {
+      this.display_image2 = resp.image2;
+    }, err => {
+      this.toster.error('Can not Upload Image');
+      console.log(err);
+
     })
   }
   //-------End Garage 

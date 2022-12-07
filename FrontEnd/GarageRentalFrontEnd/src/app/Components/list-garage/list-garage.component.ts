@@ -20,19 +20,19 @@ export class ListGarageComponent implements OnInit {
   mode = ['Available', 'NotAvailable'];
   rangeValues!: number[];
   garageModel: GarageModel = {
-    gARAGE_ID: 0,
-    gARAGE_NAME: '',
+    garagE_ID: 0,
+    garagE_NAME: '',
     latitude: '',
     longitude: '',
     image1: 'test',
     image2: 'test',
-    aVAILABLE_FROM: 0,
-    aVAILABLE_TO: 0,
-    rENT_PRICE: 0,
+    availablE_FROM: 0,
+    availablE_TO: 0,
+    renT_PRICE: 0,
     street: '',
     buildinG_NUMBER: 0,
     status: 'test',
-    gARAGE_MODE: '',
+    garagE_MODE: '',
     // uSER_ID: 0,
     // rents: []
   };
@@ -67,9 +67,9 @@ export class ListGarageComponent implements OnInit {
   saveInfo() {
     debugger;
 
-    this.garageModel.gARAGE_NAME = '' + this.garageForm.value.name;
+    this.garageModel.garagE_NAME = '' + this.garageForm.value.name;
 
-    this.garageModel.rENT_PRICE = Number(this.garageForm.value.price);
+    this.garageModel.renT_PRICE = Number(this.garageForm.value.price);
     this.garageModel.street = '' + this.garageForm.value.street;
     this.garageModel.buildinG_NUMBER = Number(this.garageForm.value.building);
     this.garageModel.latitude = '' + this.markerPositions[0]['lat'];
