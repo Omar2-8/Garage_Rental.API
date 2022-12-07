@@ -63,7 +63,8 @@ namespace Garage_Rental.API.Controllers
             }
             User item = new User();
             item.USER_IMAGE = fileName;
-            
+           
+
 
             return item;
         }

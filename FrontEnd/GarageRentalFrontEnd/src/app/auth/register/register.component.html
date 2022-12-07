@@ -82,7 +82,9 @@
 
                                   <br>
               
-                                  <input type="file" #file formControlName="imagE_2" (change)="uploadFile(file.files) " [(ngModel)]="p_data.imagE_2">
+                                  <input type="file" #file formControlName="useR_IMAGE" (change)="uploadFile(file.files) " >
+                                   
+                                
                                   <br>
                                   <mat-form-field class="example-full-width" appearance="fill" >
                                     <mat-label>useR_IDENTITY</mat-label>
@@ -92,13 +94,13 @@
                                     </mat-error>
                                   </mat-form-field>
                                   <br>
-                                  
+                                  <p style="text-align: center;cursor: pointer;" (click)="goToLogin()">Already have account</p>
                                   <br>
                                 </form>
                             </mat-dialog-content>
                             <mat-dialog-actions align="end">
                               <button mat-button mat-dialog-close>Cancel</button>
-                              <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="submit()">ADD</button>
+                              <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="submit()" >ADD</button>
                             </mat-dialog-actions>
 
                             <!-- <form  [formGroup]="registerForm">
