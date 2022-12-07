@@ -32,13 +32,8 @@ export class ListGarageComponent implements OnInit {
     street: '',
     buildinG_NUMBER: 0,
     status: 'test',
-<<<<<<< HEAD
     garagE_MODE: '',
     // uSER_ID: 0,
-=======
-    gARAGE_MODE: '',
-    uSER_ID: 0,
->>>>>>> 2a18819b79ce8c9be1b6aea58a0f493e3f9471bb
     // rents: []
   };
 
@@ -83,7 +78,7 @@ export class ListGarageComponent implements OnInit {
     this.garageModel.longitude = '' + this.markerPositions[0]['lng'];
     let user:any= localStorage.getItem('user');
     user = JSON.parse(user);
-    this.garageModel.uSER_ID=Number(user.USER_ID);
+    this.garageModel.useR_ID=Number(user.USER_ID);
   }
 
   saveGarage(form: FormGroup): void {

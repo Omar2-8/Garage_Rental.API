@@ -1,3 +1,4 @@
+import { UserService } from 'src/app/Services/user.service';
 import { AdminService } from './../../Services/admin.service';
 
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
@@ -16,14 +17,10 @@ export class ManageGarageComponent implements OnInit {
   display: any;
   val: any;
 
-  constructor(
-    public admin: AdminService,
-    private dialog: MatDialog,
-    private garageService: GarageService
-  ) {}
+  constructor(public admin: AdminService,private dialog: MatDialog, private garageService: GarageService, public user:UserService){}
   @ViewChild('callUpdatDailog') callUpdate!: TemplateRef<any>;
+  @ViewChild('ChangeStatusOfGrage') ChangeStatuse!: TemplateRef<any>;
   @ViewChild('callCreteDailog') CreateGarage!: TemplateRef<any>;
-
   @ViewChild('callDeleteDailog') callDelete!: TemplateRef<any>;
   updateForm: FormGroup = new FormGroup({
     garagE_ID: new FormControl(),
@@ -40,21 +37,9 @@ export class ManageGarageComponent implements OnInit {
     garagE_MODE: new FormControl('', Validators.required),
     useR_ID: new FormControl('', Validators.required),
   });
-
-  createForm: FormGroup = new FormGroup({
-
-    garagE_NAME: new FormControl(''),
-    latitude: new FormControl(''),
-    longitude: new FormControl(''),
-    image1: new FormControl(''),
-    image2: new FormControl(''),
-    availablE_FROM: new FormControl('', Validators.required),
-    availablE_TO: new FormControl('', Validators.required),
-    renT_PRICE: new FormControl('', Validators.required),
-    street: new FormControl('', Validators.required),
-    buildinG_NUMBER: new FormControl('', Validators.required),
-    garagE_MODE: new FormControl('', Validators.required),
-    useR_ID: new FormControl('', Validators.required),
+  ChangeStatus: FormGroup = new FormGroup({
+    garagE_ID: new FormControl(),
+    status: new FormControl(''),
   });
 
   ngOnInit(): void {
@@ -120,13 +105,10 @@ export class ManageGarageComponent implements OnInit {
     this.garageModel.latitude = '' + this.markerPositions[0]['lat'];
     this.garageModel.longitude = '' + this.markerPositions[0]['lng'];
   }
-
   saveGarage(form: FormGroup): void {
     console.log('Valid?', form.valid);
     debugger;
-
     this.saveInfo1();
-
     this.garageService.addGarage(this.garageModel).subscribe({
       next: () => {
         console.log('adding Garagee succeful');
@@ -136,15 +118,27 @@ export class ManageGarageComponent implements OnInit {
       },
     });
   }
+  //
+  p_data_c: any = {};
+  openChangeStatDailog(obj: any) {
+    console.log(obj);
+    this.p_data_c = {
+    garagE_ID: obj.garagE_ID,
+    status:obj.status,
+    }
+    this.ChangeStatus.controls['garagE_ID'].setValue(this.p_data_c.garagE_ID);
+    this.dialog.open(this.ChangeStatuse);
+  }
+
   //Update
   p_data: any = {};
-  openUpdateDailog(obj: any) {
+  openUpdateDailog(obj: { garagE_ID: any; garagE_NAME: any; image1: any; image2: any; availablE_FROM: any; availablE_TO: any; renT_PRICE: any; street: any; buildinG_NUMBER: any; garagE_MODE: any; useR_ID: any; }) {
     console.log(obj);
     this.p_data = {
       garagE_ID: obj.garagE_ID,
       garagE_NAME: obj.garagE_NAME,
-      latitude: this.markerPositions[0]['lat'],
-      longitude: this.markerPositions[0]['lng'],
+      // latitude: obj.markerPositions[0]['lat'],
+      // longitude: obj.markerPositions[0]['lng'],
       image1: obj.image1,
       image2: obj.image2,
       availablE_FROM: obj.availablE_FROM,
@@ -160,10 +154,19 @@ export class ManageGarageComponent implements OnInit {
   }
 
   saveData() {
-    this.garageService.updateGarage(41, this.updateForm.value);
+    this.user.updateGarage(this.updateForm.value);
     // this.admin.updateGarage();
   }
-
+  saveDataUsers(){
+    this.admin.ChangeStatusOfGrage(this.ChangeStatus.value)
+  }
+  // location(){
+  //   let user:any= localStorage.getItem('user');
+  //   user = JSON.parse(user);
+  //   this.user.getLongLetById(user.USER_ID);
+  //   console.log( this.user.getLongLetById(user.USER_ID));
+    
+  // }
   openDeleteDailog(id: number) {
     const dialogRef = this.dialog.open(this.callDelete);
     dialogRef.afterClosed().subscribe((result) => {
