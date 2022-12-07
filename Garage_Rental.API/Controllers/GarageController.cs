@@ -43,6 +43,7 @@ namespace Garage_Rental.API.Controllers
         {
             return _garageService.GetById(id);
         }
+
         [HttpPut]
         public void Update(Garage garage)
         {

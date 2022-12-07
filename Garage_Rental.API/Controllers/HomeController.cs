@@ -53,9 +53,11 @@ namespace Garage_Rental.API.Controllers
         [HttpPost]
         public Home UploadIMage()
         {
+            //C: \\Users\\2001\\Desktop\\Trining\\API\\finalProject\\Garage_Rental.API\\FrontEnd\\GarageRentalFrontEnd\\src\\assets\\images
+            //D:\\Final Project\\FrontEnd\\GarageRentalFrontEnd\\src\\assets\\images
             var file = Request.Form.Files[0]; 
             var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
-            var fullPath = Path.Combine("D:\\Final Project\\FrontEnd\\GarageRentalFrontEnd\\src\\assets\\images", fileName);
+            var fullPath = Path.Combine("C:\\Users\\2001\\Desktop\\Trining\\API\\finalProject\\Garage_Rental.API\\FrontEnd\\GarageRentalFrontEnd\\src\\assets\\images", fileName);
             using (var stream = new FileStream(fullPath, FileMode.Create))
             {
                 file.CopyTo(stream);

@@ -1,3 +1,4 @@
+import { UserGarageComponent } from './user-garage/user-garage.component';
 import { AddTestimonialComponent } from './add-testimonial/add-testimonial.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 
@@ -13,6 +14,10 @@ const routes: Routes = [
   {
     path:'testimonial',
     component:AddTestimonialComponent
+  },
+  {
+    path:'garage',
+    component:UserGarageComponent
   },
 ];
 
