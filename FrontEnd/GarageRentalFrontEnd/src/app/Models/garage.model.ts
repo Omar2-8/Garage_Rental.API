@@ -14,6 +14,6 @@ export interface GarageModel {
   buildinG_NUMBER: number;
   status: string;
   gARAGE_MODE: string;
-  // uSER_ID? :number;
+  uSER_ID? :number;
   // rents?:Rent[];
 }

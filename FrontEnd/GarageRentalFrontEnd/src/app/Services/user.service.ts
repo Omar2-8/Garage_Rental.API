@@ -15,17 +15,8 @@ export class UserService {
   payment :any[]=[];
   rent :any[]=[];
   user :any[]=[];
-  userid :any={
-  useR_ID : 0,
-  firsT_NAME:'',
-  lasT_NAME:'',
-  email:'',
-  password:'',
-  phonenumber:0,
-  useR_IMAGE:'',
-  useR_IDENTITY:'',
-  roleS_ID:0
-};
+  userName :any={};
+  userid :any={};
 
 Longletgrage :any[]=[];
 garage :any[]=[];//عرفنا اريي عشان رح ترجعلي الداتا جيسون اوبجكت فبحتاج ارريي لحتى اخزن فيها الداتا الي جبتها من الإي بي اّي
@@ -48,12 +39,14 @@ garage :any[]=[];//عرفنا اريي عشان رح ترجعلي الداتا �
   getAllUsers(){
     this.http.get('https://localhost:44391/api/Users/GetAll').subscribe((Resp:any)=>{//السبسكرايب بتتكون من حالتين اول وحدة ترو والثانية اذا كانت ايرور ريسبونس
       this.user=Resp;
+      // this.userName=Resp;
        this.toster.success('Data Retrieved')
     },err=>{
       
       this.toster.error('something Wrong')
     })
   }
+
   getUserId(id: number) {
     //show Spinner 
     //Hits Api 
@@ -62,15 +55,7 @@ garage :any[]=[];//عرفنا اريي عشان رح ترجعلي الداتا �
     this.http.get('https://localhost:44391/api/Users/GetById/'+ id).subscribe((resp: any) => {
       this.userid = resp;
       console.log(this.userid);
-      this.userid.useR_ID=resp.useR_ID,
-      this.userid.firsT_NAME=resp.firsT_NAME,
-      this.userid.lasT_NAME=resp.lasT_NAME,
-      this.userid.email=resp.email,
-      this.userid.password=resp.password,
-      this.userid.phonenumber=resp.phonenumber,
-      this.userid.useR_IMAGE=resp.useR_IMAGE,
-      this.userid.useR_IDENTITY=resp.useR_IDENTITY,
-      this.userid.roleS_ID=resp.roleS_ID,
+     
       this.toster.success('Data Retrieved!');
   
     }, err => {
@@ -160,15 +145,11 @@ garage :any[]=[];//عرفنا اريي عشان رح ترجعلي الداتا �
     //show Spinner 
     //Hits Api 
     //Hide Spinner
-    //Resp=> Toastr 
-  
-  
+    //Resp=> Toastr   
     this.http.get('https://localhost:44391/api/LongLetGrages/GetLongitudeLatitudeByID/' + id).subscribe((resp: any) => {
       this.Longletgrage = resp;
       console.log(this.Longletgrage);
-      
       this.toster.success('Data Retrieved!');
-  
     }, err => {
       
       this.toster.error(err.message, err.status);

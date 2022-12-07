@@ -33,7 +33,7 @@ export class ListGarageComponent implements OnInit {
     buildinG_NUMBER: 0,
     status: 'test',
     gARAGE_MODE: '',
-    // uSER_ID: 0,
+    uSER_ID: 0,
     // rents: []
   };
 
@@ -46,6 +46,8 @@ export class ListGarageComponent implements OnInit {
     building: new FormControl('', Validators.required),
     mode: new FormControl('', Validators.required),
     status: new FormControl('', Validators.required),
+    user_ID: new FormControl(''),
+
   });
 
   center: google.maps.LatLngLiteral = {
@@ -74,6 +76,9 @@ export class ListGarageComponent implements OnInit {
     this.garageModel.buildinG_NUMBER = Number(this.garageForm.value.building);
     this.garageModel.latitude = '' + this.markerPositions[0]['lat'];
     this.garageModel.longitude = '' + this.markerPositions[0]['lng'];
+    let user:any= localStorage.getItem('user');
+    user = JSON.parse(user);
+    this.garageModel.uSER_ID=Number(user.USER_ID);
   }
 
   saveGarage(form: FormGroup): void {

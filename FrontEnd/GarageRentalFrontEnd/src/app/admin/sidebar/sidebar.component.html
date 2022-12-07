@@ -12,6 +12,12 @@
           </a>
         </li>
         <li class="nav-item ">
+          <a class="nav-link" routerLink="/Admin/profile" >
+            <i class="material-icons">dashboard</i>
+            <p>Admin Profile</p>
+          </a>
+        </li>
+        <li class="nav-item ">
           <a class="nav-link" routerLink="/Admin/users" >
             <i class="material-icons">dashboard</i>
             <p>User Details</p>
@@ -23,8 +29,29 @@
             <p>Manage Garage</p>
           </a>
         </li>
-        <li class="nav-item  ">
-            <button style="
+  
+          <li class="nav-item  dropdown ">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Pages</a>
+               <div class="dropdown-menu dropdown-menu-dark" style="background-color:#1a2035;color:white;width:89%">
+                    <a routerLink="/Admin/home" class="nav-link" > 
+                        <i class="fa fa-home" aria-hidden="true"></i>
+                        <p>Home</p>
+                    </a>
+                    <a routerLink="/Admin/aboutUs" class="nav-link" > 
+                        <i class="fa fa-buysellads" aria-hidden="true"></i>
+                        <p>About Us </p>
+                    </a>
+                    <a routerLink="/Admin/contactUs" class="nav-link" > 
+                        <i class="fa fa-connectdevelop" aria-hidden="true"></i>
+                        <p>Contact Us </p>
+                    </a>
+                    <a routerLink="/Admin/testimonial" class="nav-link" > 
+                        <i class="fa fa-comment-o" aria-hidden="true"></i>
+                        <p>Testimonials </p>
+                    </a>
+               </div>
+ 
+            <!-- <button style="
           margin: 10px 16px 0;
           border-radius: 3px;
           color: #ffffff;
@@ -41,8 +68,8 @@
               <button class="nav-link" routerLink="/Admin/contactUs" mat-menu-item><i class="fa fa-connectdevelop" aria-hidden="true"></i>Countact us</button>
               <button class="nav-link" routerLink="/Admin/testimonial" mat-menu-item><i class="fa fa-check-square-o" aria-hidden="true"></i>Testimonial</button>
             </mat-menu>
-            </div>
-          </li>
+            </div> -->
+ 
           <li class="nav-item ">
             <a routerLink="/Admin/payment" class="nav-link" >
                 <i class="fa fa-money" aria-hidden="true"></i>
@@ -53,11 +80,11 @@
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Reports</a>
 
             <div class="dropdown-menu dropdown-menu-dark" style="background-color:#1a2035;color:white;width:89%">
-                <a asp-action="Reports" asp-controller="DashBoard" class="nav-link" > 
+                <a routerLink="/Admin/reports-monthly" class="nav-link" > 
                   <i class="fa fa-calendar-o" aria-hidden="true"></i>
                     <p>Monthly</p>
                 </a>
-                <a asp-action="Reports_Annual" asp-controller="DashBoard" class="nav-link" > 
+                <a routerLink="/Admin/reports-annual" class="nav-link" > 
                   <i class="fa fa-calendar-o" aria-hidden="true"></i>
                     <p>Annual</p>
                 </a>                 

@@ -1,3 +1,4 @@
+import { RentGarageComponent } from './Components/rent-garage/rent-garage.component';
 import { ReserveGarageComponent } from './Components/reserve-garage/reserve-garage.component';
 import { UserProfileModule } from './user-profile/user-profile.module';
 import { UserGarageComponent } from './Components/user-garage/user-garage.component';
@@ -51,6 +52,10 @@ const routes: Routes = [
     path: 'userProfile',
     loadChildren: () => UserProfileModule,
   },
+  {
+    path: 'rent',
+    component: RentGarageComponent,
+    },
 ];
 
 @NgModule({

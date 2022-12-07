@@ -28,6 +28,7 @@ import { TokenInterceptor } from 'src/Interceptor/token.interceptor';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
+import { RentGarageComponent } from './Components/rent-garage/rent-garage.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +39,7 @@ import { CardModule } from 'primeng/card';
     ReserveGarageComponent,
     ListGarageComponent,
     UserGarageComponent,
+    RentGarageComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,6 +56,7 @@ import { CardModule } from 'primeng/card';
     InputTextModule,
     ButtonModule,
     CardModule,
+    
   ],
   providers: [
     {

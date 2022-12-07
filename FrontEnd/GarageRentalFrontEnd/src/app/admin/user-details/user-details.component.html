@@ -11,33 +11,33 @@
                     <p class="card-category"></p>
                 </div>
                 <div class="card-body table-responsive">
+
+
                     <p-table 
                     #dt1
                     [value]="admin.user"
                     >
                     <ng-template pTemplate="header">
                         <tr>
-                            <th>ID</th>
-
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>Email</th>
                             <th>Phone Number</th>
                             <th>User Image</th>
-                            <th>user Identity</th>
-                            <th>role Id</th>
+                            <th>Identity number</th>
+                            <th></th>
+                            <!-- <th>role Id</th> -->
                         </tr>
                     </ng-template>
                     <ng-template  pTemplate="body" let-obj>
                         <tr>
-                            <td>{{ obj.useR_ID }}</td>
                             <td>{{ obj.firsT_NAME }}</td>
                             <td>{{ obj.lasT_NAME }}</td>
                             <td>{{ obj.email }}</td>
                             <td>{{ obj.phonenumber }}</td>
                             <td><img src="../../../assets/images/{{obj.useR_IMAGE}}" width="100px" height="100px"></td>
                             <td>{{ obj.useR_IDENTITY }}</td>
-                            <td>{{ obj.roleS_ID }}</td>
+                            <!-- <td>{{ obj.roleS_ID }}</td> -->
                             <td>
                                 <button class="btn btn-danger"  (click)="openDeleteDailog(obj.useR_ID)">
                                 Delete
@@ -61,7 +61,7 @@
             </div>
         </div>
         <ng-template #callDeleteDailog>
-            <h2>Are you sure you want to delete this item ?</h2>
+            <h2>Are you sure you want to delete this User ?</h2>
             <button class="btn btn-primary" mat-dialog-close="yes">Yes</button>
             <button class="btn btn-primary" mat-dialog-close="no">No</button>
           </ng-template>

@@ -14,6 +14,9 @@ export class AdminPaymentComponent implements OnInit {
   ngOnInit(): void {
     this.admin.getAllPayment();
   }
+
+
+  
   openDeleteDailog(id:number)
   {
     const dialogRef=  this.dialog.open(this.callDelete);

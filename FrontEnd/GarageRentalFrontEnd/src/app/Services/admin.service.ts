@@ -66,7 +66,7 @@ export class AdminService {
     })
   }
  
-  ChangeStatusOfGrage(body:any) {this.http.put(this.baseApiUrl+'LongLetGrages/ChangeGarageStatus',body).subscribe((resp)=>{
+  ChangeStatusOfGrage(body:any) {this.http.put(this.baseApiUrl+'LongLetGrages/ChangeGragaeStatus',body).subscribe((resp)=>{
     this.toster.success('Accepted The Garage Successfully !!');
   },err=>{
     this.toster.error(err.message, err.status);

@@ -42,7 +42,6 @@ export class ManageHomeComponent implements OnInit {
       titlE_2:obj.titlE_2,
       imagE_3:obj.imagE_3,
       titlE_3:obj.titlE_3
-  
     }
     this.UpdateHome.controls['id'].setValue(this.p_data.id);
     this.dialog.open(this.callUpdate);
