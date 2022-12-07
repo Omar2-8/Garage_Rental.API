@@ -2,10 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from 'src/environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  baseApiUrl:string = environment.baseApiUrl;
 
   message: string = "Welcome :) ";
   display_image: any;
@@ -129,20 +132,28 @@ garage :any[]=[];//عرفنا اريي عشان رح ترجعلي الداتا �
     //Hits Api 
     //Hide Spinner
     //Resp=> Toastr 
-  
-  
-    this.http.get('https://localhost:44391/api/Garage/GetById/' + id).subscribe((resp: any) => {
+    this.http.get('https://localhost:44391/api/LongLetGrages/GetByIdList/'+ id).subscribe((resp: any) => {
       this.garage = resp;
       console.log(this.garage);
-      
       this.toster.success('Data Retrieved!');
-  
     }, err => {
-      
       this.toster.error(err.message, err.status);
     })
-  
   }
+  getSingleGarageId(id: number) {
+    //show Spinner 
+    //Hits Api 
+    //Hide Spinner
+    //Resp=> Toastr 
+    this.http.get('https://localhost:44391/api/Garage/GetById/'+ id).subscribe((resp: any) => {
+      this.garage = resp;
+      console.log(this.garage);
+      this.toster.success('Data Retrieved!');
+    }, err => {
+      this.toster.error(err.message, err.status);
+    })
+  }
+
 
  
   getLongLetById(id: number) {
