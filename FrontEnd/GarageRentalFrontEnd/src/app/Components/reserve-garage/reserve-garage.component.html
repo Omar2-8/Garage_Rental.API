@@ -18,24 +18,24 @@
 </google-map>
 <span *ngIf="showCardPanel">
   <p-card
-    header="{{ garageCard.gARAGE_NAME }}"
-    subheader="{{ garageCard.rENT_PRICE }}"
+    header="{{ garageCard.garagE_NAME }}"
+    subheader="{{ garageCard.renT_PRICE }}"
     [style]="{ width: '360px' }"
     styleClass="p-card-shadow"
   >
     <ng-template pTemplate="header">
-      <img alt="Card" src="garageCard." />
+      <img alt="Card" src="../../../assets/images/{{garageCard.image1}}"/>
     </ng-template>
     <p>
-      Rent Price: {{ garageCard.rENT_PRICE }} <br />
-      available from {{ garageCard.aVAILABLE_FROM }} to
-      {{ garageCard.aVAILABLE_TO }}<br />
+      Rent Price: {{ garageCard.renT_PRICE }} <br />
+      available from {{ garageCard.availablE_FROM }} to
+      {{ garageCard.availablE_TO }}<br />
       building Number {{ garageCard.buildinG_NUMBER }} in street{{
         garageCard.street
       }}
     </p>
     <ng-template pTemplate="footer">
-      <p-button label="Reserve" icon="pi pi-check"></p-button>
+      <p-button label="Reserve" icon="pi pi-check" routerLink="/Rent"></p-button>
     </ng-template>
   </p-card>
 </span>

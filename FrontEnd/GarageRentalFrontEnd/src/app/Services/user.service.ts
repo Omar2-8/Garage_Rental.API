@@ -9,30 +9,23 @@ export class UserService {
 
   message: string = "Welcome :) ";
   display_image: any;
+  display_image1: any;
+  display_image2: any;
   car :any[]=[];
   testimonial :any[]=[];
   visa :any[]=[];
   payment :any[]=[];
   rent :any[]=[];
   user :any[]=[];
-  userid :any={
-  useR_ID : 0,
-  firsT_NAME:'',
-  lasT_NAME:'',
-  email:'',
-  password:'',
-  phonenumber:0,
-  useR_IMAGE:'',
-  useR_IDENTITY:'',
-  roleS_ID:0
-};
+  userName :any={};
+  userid :any={};
 
 Longletgrage :any[]=[];
 garage :any[]=[];//عرفنا اريي عشان رح ترجعلي الداتا جيسون اوبجكت فبحتاج ارريي لحتى اخزن فيها الداتا الي جبتها من الإي بي اّي
   constructor(private http:HttpClient ,private spinner:NgxSpinnerService , private toster:ToastrService ) { }
   //--------Users
   createUser(body: any) {
-    body.useR_IMAGE = this.display_image;
+    body.useR_IMAGE = this.display_image1;
     this.spinner.show();
     
     this.http.post('https://localhost:44391/api/Users/Create', body).subscribe((resp) => {
@@ -48,12 +41,14 @@ garage :any[]=[];//عرفنا اريي عشان رح ترجعلي الداتا �
   getAllUsers(){
     this.http.get('https://localhost:44391/api/Users/GetAll').subscribe((Resp:any)=>{//السبسكرايب بتتكون من حالتين اول وحدة ترو والثانية اذا كانت ايرور ريسبونس
       this.user=Resp;
+      // this.userName=Resp;
        this.toster.success('Data Retrieved')
     },err=>{
       
       this.toster.error('something Wrong')
     })
   }
+
   getUserId(id: number) {
     //show Spinner 
     //Hits Api 
@@ -62,15 +57,7 @@ garage :any[]=[];//عرفنا اريي عشان رح ترجعلي الداتا �
     this.http.get('https://localhost:44391/api/Users/GetById/'+ id).subscribe((resp: any) => {
       this.userid = resp;
       console.log(this.userid);
-      this.userid.useR_ID=resp.useR_ID,
-      this.userid.firsT_NAME=resp.firsT_NAME,
-      this.userid.lasT_NAME=resp.lasT_NAME,
-      this.userid.email=resp.email,
-      this.userid.password=resp.password,
-      this.userid.phonenumber=resp.phonenumber,
-      this.userid.useR_IMAGE=resp.useR_IMAGE,
-      this.userid.useR_IDENTITY=resp.useR_IDENTITY,
-      this.userid.roleS_ID=resp.roleS_ID,
+     
       this.toster.success('Data Retrieved!');
   
     }, err => {
@@ -96,7 +83,7 @@ garage :any[]=[];//عرفنا اريي عشان رح ترجعلي الداتا �
    
   updateUser(body:any)
     {
-      body.image = this.display_image;
+      body.useR_IMAGE = this.display_image1;
       this.spinner.show();
       this.http.put('https://localhost:44391/api/Users/Update',body).subscribe((resp)=>{
         this.spinner.hide();
@@ -108,8 +95,9 @@ garage :any[]=[];//عرفنا اريي عشان رح ترجعلي الداتا �
     }
    
     uploadAttachmentUser(file: FormData) {
+      
       this.http.post('https://localhost:44391/api/Users/UploadIMage/', file).subscribe((resp: any) => {
-        this.display_image = resp.image;
+        this.display_image1 = resp.useR_IMAGE;
       }, err => {
         this.toster.error('Can not Upload Image');
         console.log(err);
@@ -122,7 +110,8 @@ garage :any[]=[];//عرفنا اريي عشان رح ترجعلي الداتا �
    //-------Garage 
    
    createGarage(body: any) {
-    body.image = this.display_image;
+    body.image1 = this.display_image;
+    body.image2 = this.display_image2;
     this.spinner.show();
     debugger
     this.http.post('https://localhost:44391/api/Garage/Create', body).subscribe((resp) => {
@@ -160,15 +149,11 @@ garage :any[]=[];//عرفنا اريي عشان رح ترجعلي الداتا �
     //show Spinner 
     //Hits Api 
     //Hide Spinner
-    //Resp=> Toastr 
-  
-  
+    //Resp=> Toastr   
     this.http.get('https://localhost:44391/api/LongLetGrages/GetLongitudeLatitudeByID/' + id).subscribe((resp: any) => {
       this.Longletgrage = resp;
       console.log(this.Longletgrage);
-      
       this.toster.success('Data Retrieved!');
-  
     }, err => {
       
       this.toster.error(err.message, err.status);
@@ -191,6 +176,7 @@ garage :any[]=[];//عرفنا اريي عشان رح ترجعلي الداتا �
   updateGarage(body:any)
   {
     body.useR_IMAGE = this.display_image;
+    body.useR_IMAGE = this.display_image2;
     this.spinner.show();
     this.http.put('https://localhost:44391/api/Garage/Update',body).subscribe((resp)=>{
       this.spinner.hide();
@@ -203,7 +189,16 @@ garage :any[]=[];//عرفنا اريي عشان رح ترجعلي الداتا �
 
   uploadAttachmentGarage(file: FormData) {
     this.http.post('https://localhost:44391/api/Home/UploadIMage/', file).subscribe((resp: any) => {
-      this.display_image = resp.useR_IMAGE;
+      this.display_image = resp.image1;
+    }, err => {
+      this.toster.error('Can not Upload Image');
+      console.log(err);
+
+    })
+  }
+  uploadAttachmentGarage2(file: FormData) {
+    this.http.post('https://localhost:44391/api/Home/UploadIMage/', file).subscribe((resp: any) => {
+      this.display_image2 = resp.image2;
     }, err => {
       this.toster.error('Can not Upload Image');
       console.log(err);

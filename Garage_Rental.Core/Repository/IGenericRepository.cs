@@ -9,6 +9,7 @@ namespace Garage_Rental.Core.Repository
     {
         List<T> GetAll();
         T GetById(int id);
+
         bool Create(T t);
         void Update(T t);
         void Delete(int id);

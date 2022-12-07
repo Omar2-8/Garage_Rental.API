@@ -17,6 +17,9 @@ import { UserDetailsComponent } from './user-details/user-details.component';
 import { ManageGarageComponent } from './manage-garage/manage-garage.component';
 import { AdminPaymentComponent } from './admin-payment/admin-payment.component';
 import { AdminProfileComponent } from './admin-profile/admin-profile.component';
+import { ReportsMonthlyComponent } from './reports-monthly/reports-monthly.component';
+import { ReportsAnnualComponent } from './reports-annual/reports-annual.component';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +35,10 @@ import { AdminProfileComponent } from './admin-profile/admin-profile.component';
       UserDetailsComponent,
       ManageGarageComponent,
       AdminPaymentComponent,
-      AdminProfileComponent
+      AdminProfileComponent,
+      ReportsMonthlyComponent,
+      ReportsAnnualComponent,
+
   ],
   imports: [
     CommonModule,

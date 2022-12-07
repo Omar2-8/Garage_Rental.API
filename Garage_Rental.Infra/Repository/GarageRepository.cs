@@ -57,10 +57,12 @@ namespace Garage_Rental.Infra.Repository
         public Garage GetById(int id)
         {
             var p = new DynamicParameters();
-            p.Add("Id", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("ID", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             IEnumerable<Garage> result = _dbcontext.Connection.Query<Garage>("GARAGE_PACKAGE.GetGARAGESById", p, commandType: CommandType.StoredProcedure);
             return result.FirstOrDefault();
         }
+
+
 
         public void Update(Garage t)
         {

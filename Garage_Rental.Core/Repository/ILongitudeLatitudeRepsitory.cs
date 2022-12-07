@@ -10,8 +10,9 @@ namespace Garage_Rental.Core.Repository
     {
         public List<LongLetGarages> GetLongitudeLatitude();
         public List<LongLetGarages> GetLongitudeLatitudeByID(int id);
+        List<Garage> GetByIdList(int id);
 
-         void ChangeGragaeStatus(Garagestatus g);
+        void ChangeGragaeStatus(Garagestatus g);
 
     }
 }

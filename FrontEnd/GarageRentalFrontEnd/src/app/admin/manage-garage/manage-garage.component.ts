@@ -1,3 +1,4 @@
+import { UserService } from 'src/app/Services/user.service';
 import { AdminService } from './../../Services/admin.service';
 
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
@@ -16,14 +17,10 @@ export class ManageGarageComponent implements OnInit {
   display: any;
   val: any;
 
-  constructor(
-    public admin: AdminService,
-    private dialog: MatDialog,
-    private garageService: GarageService
-  ) {}
+  constructor(public admin: AdminService,private dialog: MatDialog, private garageService: GarageService, public user:UserService){}
   @ViewChild('callUpdatDailog') callUpdate!: TemplateRef<any>;
+  @ViewChild('ChangeStatusOfGrage') ChangeStatuse!: TemplateRef<any>;
   @ViewChild('callCreteDailog') CreateGarage!: TemplateRef<any>;
-
   @ViewChild('callDeleteDailog') callDelete!: TemplateRef<any>;
   updateForm: FormGroup = new FormGroup({
     garagE_ID: new FormControl(),
@@ -40,6 +37,11 @@ export class ManageGarageComponent implements OnInit {
     garagE_MODE: new FormControl('', Validators.required),
     useR_ID: new FormControl('', Validators.required),
   });
+  ChangeStatus: FormGroup = new FormGroup({
+    garagE_ID: new FormControl(),
+    status: new FormControl(''),
+  });
+
   ngOnInit(): void {
     this.admin.getAllGarage();
   }
@@ -49,19 +51,19 @@ export class ManageGarageComponent implements OnInit {
   mode = ['Available', 'NotAvailable'];
   rangeValues!: number[];
   garageModel: GarageModel = {
-    gARAGE_ID: 0,
-    gARAGE_NAME: '',
+    garagE_ID: 0,
+    garagE_NAME: '',
     latitude: '',
     longitude: '',
     image1: 'test',
     image2: 'test',
-    aVAILABLE_FROM: 0,
-    aVAILABLE_TO: 0,
-    rENT_PRICE: 0,
+    availablE_FROM: 0,
+    availablE_TO: 0,
+    renT_PRICE: 0,
     street: '',
     buildinG_NUMBER: 0,
     status: 'test',
-    gARAGE_MODE: '',
+    garagE_MODE: '',
     // uSER_ID: 0,
     // rents: []
   };
@@ -95,21 +97,18 @@ export class ManageGarageComponent implements OnInit {
   saveInfo1() {
     debugger;
 
-    this.garageModel.gARAGE_NAME = '' + this.garageForm1.value.name;
+    this.garageModel.garagE_NAME = '' + this.garageForm1.value.name;
 
-    this.garageModel.rENT_PRICE = Number(this.garageForm1.value.price);
+    this.garageModel.renT_PRICE = Number(this.garageForm1.value.price);
     this.garageModel.street = '' + this.garageForm1.value.street;
     this.garageModel.buildinG_NUMBER = Number(this.garageForm1.value.building);
     this.garageModel.latitude = '' + this.markerPositions[0]['lat'];
     this.garageModel.longitude = '' + this.markerPositions[0]['lng'];
   }
-
   saveGarage(form: FormGroup): void {
     console.log('Valid?', form.valid);
     debugger;
-
     this.saveInfo1();
-
     this.garageService.addGarage(this.garageModel).subscribe({
       next: () => {
         console.log('adding Garagee succeful');
@@ -119,15 +118,27 @@ export class ManageGarageComponent implements OnInit {
       },
     });
   }
+  //
+  p_data_c: any = {};
+  openChangeStatDailog(obj: any) {
+    console.log(obj);
+    this.p_data_c = {
+    garagE_ID: obj.garagE_ID,
+    status:obj.status,
+    }
+    this.ChangeStatus.controls['garagE_ID'].setValue(this.p_data_c.garagE_ID);
+    this.dialog.open(this.ChangeStatuse);
+  }
+
   //Update
   p_data: any = {};
-  openUpdateDailog(obj: any) {
+  openUpdateDailog(obj: { garagE_ID: any; garagE_NAME: any; image1: any; image2: any; availablE_FROM: any; availablE_TO: any; renT_PRICE: any; street: any; buildinG_NUMBER: any; garagE_MODE: any; useR_ID: any; }) {
     console.log(obj);
     this.p_data = {
       garagE_ID: obj.garagE_ID,
       garagE_NAME: obj.garagE_NAME,
-      latitude: this.markerPositions[0]['lat'],
-      longitude: this.markerPositions[0]['lng'],
+      // latitude: obj.markerPositions[0]['lat'],
+      // longitude: obj.markerPositions[0]['lng'],
       image1: obj.image1,
       image2: obj.image2,
       availablE_FROM: obj.availablE_FROM,
@@ -143,10 +154,19 @@ export class ManageGarageComponent implements OnInit {
   }
 
   saveData() {
-    this.garageService.updateGarage(41, this.updateForm.value);
+    this.user.updateGarage(this.updateForm.value);
     // this.admin.updateGarage();
   }
-
+  saveDataUsers(){
+    this.admin.ChangeStatusOfGrage(this.ChangeStatus.value)
+  }
+  // location(){
+  //   let user:any= localStorage.getItem('user');
+  //   user = JSON.parse(user);
+  //   this.user.getLongLetById(user.USER_ID);
+  //   console.log( this.user.getLongLetById(user.USER_ID));
+    
+  // }
   openDeleteDailog(id: number) {
     const dialogRef = this.dialog.open(this.callDelete);
     dialogRef.afterClosed().subscribe((result) => {
@@ -157,4 +177,29 @@ export class ManageGarageComponent implements OnInit {
       }
     });
   }
+
+  uploadFile1(file:any){
+    if(file.length==0)
+    return;
+    let fileToUpload=<File>file[0];//the first image 
+    const formdata= new FormData();
+    formdata.append('file',fileToUpload,fileToUpload.name);
+    
+    this.admin.uploadAttachmentGarage(formdata);
+  }
+  uploadFile2(file:any){
+    if(file.length==0)
+    return;
+    let fileToUpload=<File>file[0];//the first image 
+    const formdata= new FormData();
+    formdata.append('file',fileToUpload,fileToUpload.name);
+    
+    this.admin.uploadAttachmentGarage2(formdata);
+  }
+
+ //* submit(){
+  //  this.admin.createGarage(this.createForm.value);
+  
+ //   console.log(this.createForm.value);
+// }
 }
