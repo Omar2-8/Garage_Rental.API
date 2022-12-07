@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="NETCore.MailKit" Version="2.1.0" />
     <PackageReference Include="Oracle.EntityFrameworkCore" Version="5.21.4" />
   </ItemGroup>
 

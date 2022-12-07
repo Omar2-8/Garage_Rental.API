@@ -1,7 +1,9 @@
 ﻿using Garage_Rental.Core.Data;
 using Garage_Rental.Core.Service;
+using MailKit.Net.Smtp;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MimeKit;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -68,5 +70,36 @@ namespace Garage_Rental.API.Controllers
 
             return item;
         }
+
+
+        [HttpGet]
+        [Route("{ParentEmail}")]
+        public void SendEmail(String ParentEmail)
+        {
+
+
+            MimeMessage message = new MimeMessage();
+            MailboxAddress from = new MailboxAddress("Garage Rental", "s.moe12@yahoo.com");
+            message.From.Add(from);
+            MailboxAddress to = new MailboxAddress("User", ParentEmail);
+            message.To.Add(to);
+            message.Subject = "Your son Near of you";
+            BodyBuilder bodyBuilder = new BodyBuilder();
+            bodyBuilder.HtmlBody =
+            "<p style=\"color:#7fb685\">quastion approve </p>" + "The Date" + "<p> Thank you for trusting us </p>" + "<p>Your son </p>";
+            message.Body = bodyBuilder.ToMessageBody();
+            using (var clinte = new SmtpClient())
+            {
+                clinte.Connect("smtp.mail.yahoo.com", 465, true);
+                clinte.Authenticate("s.moe12@yahoo.com", "rxlhovtglvjibneg");
+                clinte.Send(message);
+                clinte.Disconnect(true);
+            }
+
+
+        }
+
+
+
     }
 }
