@@ -21,7 +21,7 @@ export class UserService {
   userid :any={};
 
 Longletgrage :any[]=[];
-garage :any[]=[];//عرفنا اريي عشان رح ترجعلي الداتا جيسون اوبجكت فبحتاج ارريي لحتى اخزن فيها الداتا الي جبتها من الإي بي اّي
+garage :any={};//عرفنا اريي عشان رح ترجعلي الداتا جيسون اوبجكت فبحتاج ارريي لحتى اخزن فيها الداتا الي جبتها من الإي بي اّي
   constructor(private http:HttpClient ,private spinner:NgxSpinnerService , private toster:ToastrService ) { }
   //--------Users
   createUser(body: any) {
@@ -82,8 +82,9 @@ garage :any[]=[];//عرفنا اريي عشان رح ترجعلي الداتا �
   }
    
   updateUser(body:any)
-    {
+    {if(this.display_image1 != null) {  
       body.useR_IMAGE = this.display_image1;
+      }
       this.spinner.show();
       this.http.put('https://localhost:44391/api/Users/Update',body).subscribe((resp)=>{
         this.spinner.hide();

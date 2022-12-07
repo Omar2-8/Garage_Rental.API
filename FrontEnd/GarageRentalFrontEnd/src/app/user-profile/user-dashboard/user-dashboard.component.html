@@ -11,7 +11,7 @@
  <div class="col-lg-12 col-md-12">
                     <div class="card">
                         <div class="card-header card-header-primary">
-                            <h4 class="card-title">Details About Us page</h4>
+                            <h4 class="card-title">Details User page</h4>
                             <p class="card-category"></p>
                         </div>
                         <div class="card-body table-responsive">
@@ -43,7 +43,7 @@
                                       {{users.userid.password}}
                                     </td>
                                     <td>
-                                      {{users.userid.phonenumber}}
+                                      {{users.userid.phonenumbe}}
                                     </td>
                                   <td><img src="../../../assets/images/{{users.userid.useR_IMAGE}}" width="100px" height="100px"></td> 
 
@@ -76,7 +76,7 @@
             <ng-template #callUpdatDailog>
               <form [formGroup]="UpdateProfile">
                 <mat-form-field appearance="fill">
-                  <input matInput formControlName="firsT_NAME" [(ngModel)]="p_data.firsT_NAME" />
+                  <input type="text" matInput formControlName="firsT_NAME" [(ngModel)]="p_data.firsT_NAME" />
                   <mat-error *ngIf="UpdateProfile.controls['firsT_NAME'].hasError('required')">
                     firsT_NAME is <strong>required</strong>
                   </mat-error>
@@ -90,17 +90,17 @@
                 </mat-form-field>
                 <br />
                 <mat-form-field appearance="fill">
-                  <input matInput formControlName="email" [(ngModel)]="p_data.email" />
+                  <input type="text" matInput formControlName="email" [(ngModel)]="p_data.email" />
                   <mat-error *ngIf="UpdateProfile.controls['email'].hasError('required')">
                     email is <strong>required</strong>
                   </mat-error>
-                  <mat-error *ngIf="UpdateProfile.controls['email'].hasError('email')">
+                  <mat-error  *ngIf="UpdateProfile.controls['email'].hasError('email')">
                     Please enter a valid email address
                   </mat-error>
                 </mat-form-field>
                 <br />
                 <mat-form-field appearance="fill">
-                  <input
+                  <input type="text"
                     matInput
                     formControlName="password"
                     [(ngModel)]="p_data.password"
@@ -126,18 +126,9 @@
                 </mat-form-field>
                 <br />
         
-                <mat-form-field appearance="fill">
-                  <input
-                    matInput
-                    formControlName="useR_IMAGE"
-                    [(ngModel)]="p_data.useR_IMAGE"
-                  />
-                  <mat-error
-                    *ngIf="UpdateProfile.controls['useR_IMAGE'].hasError('required')"
-                  >
-                  useR_IMAGE is <strong>required</strong>
-                  </mat-error>
-                </mat-form-field>
+              
+                 <input type="file" #file formControlName="useR_IMAGE" (change)="uploadFile(file.files) " [(ngModel)]="p_data.useR_IMAGE">
+                 
                 <br>
                 <mat-form-field appearance="fill">
                   <input

@@ -27,7 +27,8 @@ namespace Garage_Rental.Infra.Repository
                 p.Add("ENDTimes", t.END_TIME, dbType: DbType.Int32, direction: ParameterDirection.Input);
                 p.Add("G_ID", t.GARAGE_ID, dbType: DbType.Int32, direction: ParameterDirection.Input);
                 p.Add("U_ID", t.USER_ID, dbType: DbType.Int32, direction: ParameterDirection.Input);
-                p.Add("R_date", t.RENT_DATE, dbType: DbType.DateTime, direction: ParameterDirection.Input);
+                
+            
                 p.Add("result", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 dBContext.Connection.ExecuteAsync("Rent_Package.CreatRent",p, commandType: CommandType.StoredProcedure);
                 int id = p.Get<int>("result");

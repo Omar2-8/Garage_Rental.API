@@ -87,7 +87,11 @@ export class AdminService {
     })
   }
   updateGarage(body:any)
-  {
+  { if(this.display_image1 != null) {  
+    body.image1 = this.display_image1;
+    }
+    if(this.display_image2 != null) {
+    body.image2 = this.display_image2;}
     this.http.put(this.baseApiUrl+'Garage/Update',body).subscribe((resp)=>{
       this.toster.success('Updated The Garage Successfully !!');
     },err=>{

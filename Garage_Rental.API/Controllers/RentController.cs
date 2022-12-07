@@ -33,7 +33,7 @@ namespace Garage_Rental.API.Controllers
         {
             //Payment payment = new Payment();
             //var visa = _context.Visas.Include(r => r.Payments).Where(r => r.VISA_ID ==  && r.).FirstOrDefaultAsync();
-
+            
             return _rentService.Create(rent);
         }
 
