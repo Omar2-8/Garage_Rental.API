@@ -9,6 +9,7 @@ export class UserService {
 
   message: string = "Welcome :) ";
   display_image: any;
+  display_image1: any;
   car :any[]=[];
   testimonial :any[]=[];
   visa :any[]=[];
@@ -32,7 +33,7 @@ garage :any[]=[];//عرفنا اريي عشان رح ترجعلي الداتا �
   constructor(private http:HttpClient ,private spinner:NgxSpinnerService , private toster:ToastrService ) { }
   //--------Users
   createUser(body: any) {
-    body.useR_IMAGE = this.display_image;
+    body.USER_IMAGE = this.display_image;
     this.spinner.show();
     
     this.http.post('https://localhost:44391/api/Users/Create', body).subscribe((resp) => {
@@ -96,7 +97,7 @@ garage :any[]=[];//عرفنا اريي عشان رح ترجعلي الداتا �
    
   updateUser(body:any)
     {
-      body.image = this.display_image;
+      body.useR_IMAGE = this.display_image1;
       this.spinner.show();
       this.http.put('https://localhost:44391/api/Users/Update',body).subscribe((resp)=>{
         this.spinner.hide();
@@ -108,8 +109,9 @@ garage :any[]=[];//عرفنا اريي عشان رح ترجعلي الداتا �
     }
    
     uploadAttachmentUser(file: FormData) {
+      
       this.http.post('https://localhost:44391/api/Users/UploadIMage/', file).subscribe((resp: any) => {
-        this.display_image = resp.image;
+        this.display_image1 = resp.useR_IMAGE;
       }, err => {
         this.toster.error('Can not Upload Image');
         console.log(err);
@@ -122,7 +124,8 @@ garage :any[]=[];//عرفنا اريي عشان رح ترجعلي الداتا �
    //-------Garage 
    
    createGarage(body: any) {
-    body.image = this.display_image;
+    body.image1 = this.display_image;
+    body.image2 = this.display_image1;
     this.spinner.show();
     debugger
     this.http.post('https://localhost:44391/api/Garage/Create', body).subscribe((resp) => {
@@ -203,7 +206,16 @@ garage :any[]=[];//عرفنا اريي عشان رح ترجعلي الداتا �
 
   uploadAttachmentGarage(file: FormData) {
     this.http.post('https://localhost:44391/api/Home/UploadIMage/', file).subscribe((resp: any) => {
-      this.display_image = resp.useR_IMAGE;
+      this.display_image = resp.image1;
+    }, err => {
+      this.toster.error('Can not Upload Image');
+      console.log(err);
+
+    })
+  }
+  uploadAttachmentGarage2(file: FormData) {
+    this.http.post('https://localhost:44391/api/Home/UploadIMage/', file).subscribe((resp: any) => {
+      this.display_image1 = resp.image2;
     }, err => {
       this.toster.error('Can not Upload Image');
       console.log(err);
