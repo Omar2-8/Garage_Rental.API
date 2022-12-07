@@ -37,7 +37,7 @@ export class GarageService {
     updateGaragereq: GarageModel
   ): Observable<GarageModel> {
     return this.http.post<GarageModel>(
-      this.baseApiUrl + 'Garage/Update?id=' + id,
+      'https://localhost:44391/api/Garage/Update' + id,
       updateGaragereq
     );
   }

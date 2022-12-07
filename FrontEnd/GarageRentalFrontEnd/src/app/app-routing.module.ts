@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 
+=======
+import { RentGarageComponent } from './Components/rent-garage/rent-garage.component';
+>>>>>>> 2a18819b79ce8c9be1b6aea58a0f493e3f9471bb
 import { ReserveGarageComponent } from './Components/reserve-garage/reserve-garage.component';
 import { UserProfileModule } from './user-profile/user-profile.module';
 import { UserGarageComponent } from './Components/user-garage/user-garage.component';
@@ -53,7 +57,14 @@ const routes: Routes = [
     loadChildren: () => UserProfileModule,
     //canActivate: [AuthorizationGuard],
   },
+<<<<<<< HEAD
   
+=======
+  {
+    path: 'rent',
+    component: RentGarageComponent,
+    },
+>>>>>>> 2a18819b79ce8c9be1b6aea58a0f493e3f9471bb
 ];
 
 @NgModule({

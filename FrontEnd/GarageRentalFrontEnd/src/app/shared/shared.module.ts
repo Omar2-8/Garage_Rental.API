@@ -12,6 +12,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatTableModule} from '@angular/material/table';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSelectModule} from '@angular/material/select';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import {MatSelectModule} from '@angular/material/select';
     MatTableModule,
     MatMenuModule,
     MatSelectModule,
+    MatRadioModule,
   ],
   exports:[
     NavbarComponent,
@@ -45,6 +47,7 @@ import {MatSelectModule} from '@angular/material/select';
     MatTableModule,
     MatMenuModule,
     MatSelectModule,
+    MatRadioModule,
   ]
 })
 export class SharedModule { }

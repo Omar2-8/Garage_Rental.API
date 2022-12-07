@@ -27,7 +27,9 @@ export class AdminProfileComponent implements OnInit {
   })
 
   ngOnInit(): void {
-    this.users.getUserId(41);
+    let user:any= localStorage.getItem('user');
+    user = JSON.parse(user);
+    this.users.getUserId(user.USER_ID);
   }
 
   p_data :any={};

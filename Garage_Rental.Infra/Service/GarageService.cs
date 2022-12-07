@@ -37,6 +37,7 @@ namespace Garage_Rental.Infra.Service
             return _garageRepository.GetById(id);
         }
 
+
         public void Update(Garage garage)
         {
             _garageRepository.Update(garage);

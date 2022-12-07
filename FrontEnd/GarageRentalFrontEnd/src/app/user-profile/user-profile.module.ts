@@ -8,6 +8,7 @@ import { UserNavbarComponent } from './user-navbar/user-navbar.component';
 import { UserFooterComponent } from './user-footer/user-footer.component';
 import { UserSideBarComponent } from './user-side-bar/user-side-bar.component';
 import { AddTestimonialComponent } from './add-testimonial/add-testimonial.component';
+import { UserGarageComponent } from './user-garage/user-garage.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { AddTestimonialComponent } from './add-testimonial/add-testimonial.compo
     UserFooterComponent,
     UserSideBarComponent,
     AddTestimonialComponent,
+    UserGarageComponent,
     ],
   imports: [
     CommonModule,

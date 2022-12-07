@@ -68,7 +68,7 @@ export class AdminService {
       this.toster.error(err.message, err.status);
     })
   }
-  
+ 
   ChangeStatusOfGrage(body:any) {this.http.put(this.baseApiUrl+'LongLetGrages/ChangeGragaeStatus',body).subscribe((resp)=>{
     this.toster.success('Accepted The Garage Successfully !!');
   },err=>{
