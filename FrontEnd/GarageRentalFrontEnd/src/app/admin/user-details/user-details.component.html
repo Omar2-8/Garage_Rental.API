@@ -11,22 +11,44 @@
                     <p class="card-category"></p>
                 </div>
                 <div class="card-body table-responsive">
-
-
                     <p-table
                     #dt1
                     [value]="admin.user"
-                     [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
-        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]"
+                    [globalFilterFields]="['firsT_NAME','lasT_NAME', 'email', 'phonenumber', 'useR_IDENTITY']"
+                    [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+                    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]"
                     >
+                    <ng-template pTemplate="caption">
+                        <div class="p-d-flex">
+                          <span class="p-input-icon-left p-ml-auto">
+                            <i class="pi pi-search"></i>
+                            <input style="padding-left: 2rem; border-radius: 8px;" pInputText type="text" (input)="dt1.filterGlobal($event.target.value, 'contains')" placeholder="Search keyword" />
+                          </span>
+                        </div>
+                      </ng-template>
                     <ng-template pTemplate="header">
                         <tr>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Email</th>
-                            <th>Phone Number</th>
+                            <th>
+                                First Name
+                                <p-columnFilter type="text" field="firsT_NAME" display="menu"></p-columnFilter>
+                            </th>
+                            <th>
+                                Last Name
+                                <p-columnFilter type="text" field="lasT_NAME" display="menu"></p-columnFilter>
+                            </th>
+                            <th>
+                                Email
+                                <p-columnFilter type="email" field="email" display="menu"></p-columnFilter>
+                            </th>
+                            <th>
+                                Phone
+                                <p-columnFilter type="number" field="phonenumber" display="menu"></p-columnFilter>
+                            </th>
                             <th>User Image</th>
-                            <th>Identity number</th>
+                            <th>
+                                Identity number
+                                <p-columnFilter type="number" field="useR_IDENTITY" display="menu"></p-columnFilter>
+                            </th>
                             <th></th>
                             <!-- <th>role Id</th> -->
                         </tr>
@@ -55,13 +77,6 @@
                             </td> -->
                         </tr>
                     </ng-template>
-                     <ng-template pTemplate="paginatorleft">
-            <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
-        </ng-template>
-        <ng-template pTemplate="paginatorright">
-            <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
-        </ng-template>
-
 
                     </p-table>
 

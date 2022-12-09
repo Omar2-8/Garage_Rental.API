@@ -15,12 +15,14 @@
                 #dt1
                 [value]="home.Contactus"
                 [globalFilterFields]="['name', 'email', 'messagee', 'phone']"
+                [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]"
               >
                 <ng-template pTemplate="caption">
                   <div class="p-d-flex">
                     <span class="p-input-icon-left p-ml-auto">
-                      
-                      <input
+                      <i class="pi pi-search"></i>
+                      <input style="padding-left: 2rem; border-radius: 8px; "
                         #textInput
                         pInputText
                         type="text"
@@ -40,26 +42,27 @@
                       ></p-columnFilter>
                     </th>
                     <th>
-                      email<p-columnFilter
+                      Email<p-columnFilter
                         type="number"
                         field="email"
                         display="menu"
                       ></p-columnFilter>
                     </th>
                     <th>
-                      message<p-columnFilter
+                      Message<p-columnFilter
                         type="number"
                         field="messagee"
                         display="menu"
                       ></p-columnFilter>
                     </th>
                     <th>
-                      phone Number<p-columnFilter
+                      Phone<p-columnFilter
                         type="number"
                         field="phone"
                         display="menu"
                       ></p-columnFilter>
                     </th>
+                    <th></th>
                   </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-obj>
@@ -76,6 +79,7 @@
                     </td>
                   </tr>
                 </ng-template>
+                
               </p-table>
             </div>
           </div>

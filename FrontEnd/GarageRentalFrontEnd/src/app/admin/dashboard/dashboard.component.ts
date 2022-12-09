@@ -1,3 +1,4 @@
+import { AdminService } from 'src/app/Services/admin.service';
 import { UserService } from 'src/app/Services/user.service';
 import { HomeService } from './../../Services/home.service';
 import { Component, OnInit } from '@angular/core';
@@ -9,10 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(public home:HomeService,public user:UserService) { }
-
+  constructor(public home:HomeService,public user:UserService,public admin:AdminService) { }
+  userNumber:any;
   ngOnInit(): void {
-    // const userNumber =this.user.length.getAllUsers();
+    debugger
+    this.admin.getAllUsers();
+    console.log(this.admin.getAllUsers());
+    
+    this.userNumber =this.admin.user.length;
+    console.log(this.userNumber);
+    
     this.home.getAboutUs();
   }
 

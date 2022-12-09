@@ -11,6 +11,8 @@ import {MatMenuModule} from '@angular/material/menu';
   styleUrls: ['./manage-testimonial.component.css']
 })
 export class ManageTestimonialComponent implements OnInit {
+  first = 0;
+  rows = 10;
   @ViewChild('callUpdatDailog') callUpdate!:TemplateRef<any>
   @ViewChild('callDeleteDailog') callDelete!:TemplateRef<any>
   constructor(public home:HomeService,public dialog: MatDialog) { }
@@ -71,4 +73,24 @@ export class ManageTestimonialComponent implements OnInit {
     debugger
   return $event.target.value;
 }
+
+
+    //for table
+    next() {
+      this.first = this.first + this.rows;
+    }
+    prev() {
+      this.first = this.first - this.rows;
+    }
+    reset() {
+      this.first = 0;
+    }
+    isLastPage(): boolean {
+      return this.home.testimonial
+        ? this.first === this.home.testimonial.length - this.rows
+        : true;
+    }
+    isFirstPage(): boolean {
+      return this.home.testimonial ? this.first === 0 : true;
+    }
 }

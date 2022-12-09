@@ -27,37 +27,90 @@
                             #dt1
                             [value]="admin.payment"
                             [globalFilterFields]=
-                            "['paY_ID','paY_AMOUNT', 'garagE_NAME', 'paY_DATE', 'commissioN_RATE','useR_ID',
-                            'visA_ID','renT_ID']">
+                            "['paY_AMOUNT', 'garagE_NAME', 'paY_DATE', 'commissioN_RATE','useR_ID',
+                            'visA_ID','renT_ID']"
+                            [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+                            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]"
+                            >
                             <ng-template pTemplate="caption">
                                 <div class="p-d-flex">
                                 <span class="p-input-icon-left p-ml-auto">
-                                    <input
+                                    <i class="pi pi-search"></i>
+                                    <input style="padding-left: 2rem; border-radius: 8px; " pInputText type="text" (input)="dt1.filterGlobal($event.target.value, 'contains')" placeholder="Search keyword" />
+                                    <!-- <input
                                     #textInput
                                     pInputText
                                     type="text"
                                     (input)="dt1.filterGlobal(textInput.value, 'contains')"
                                     placeholder="Search keyword"
-                                    />
+                                    /> -->
                                 </span>
                                 </div>
                             </ng-template>
                             <ng-template pTemplate="header">
                                 <tr>
-                                    <th>Pay ID</th> 
-                                    <th>User ID</th> 
-                                    <th>Rent ID</th>
-                                    <th>Visa ID</th>
-                                    <th>Garage Name</th>
-                                    <th>pay Amount</th>
-                                    <th>pay Date</th>
-                                    <th>commission Rate</th>
+                                    <!-- <th>Pay ID
+                                        <p-columnFilter
+                                            type="text"
+                                            field="Name"
+                                            display="menu"
+                                        ></p-columnFilter>
+                                    </th>  -->
+                                    <th>User ID
+                                        <p-columnFilter
+                                        type="number"
+                                        field="useR_ID"
+                                        display="menu"
+                                    ></p-columnFilter>
+                                    </th> 
+                                    <th>Rent ID
+                                        <p-columnFilter
+                                        type="number"
+                                        field="renT_ID"
+                                        display="menu"
+                                    ></p-columnFilter>
+                                    </th>
+                                    <th>Visa ID
+                                        <p-columnFilter
+                                        type="number"
+                                        field="visA_ID"
+                                        display="menu"
+                                    ></p-columnFilter>
+                                    </th>
+                                    <th>Garage Name
+                                        <p-columnFilter
+                                        type="text"
+                                        field="garagE_NAME"
+                                        display="menu"
+                                    ></p-columnFilter>
+                                    </th>
+                                    <th>pay Amount
+                                        <p-columnFilter
+                                        type="number"
+                                        field="paY_AMOUNT"
+                                        display="menu"
+                                    ></p-columnFilter>
+                                    </th>
+                                    <th>pay Date
+                                        <p-columnFilter
+                                        type="Date"
+                                        field="paY_DATE"
+                                        display="menu"
+                                    ></p-columnFilter>
+                                    </th>
+                                    <th>commission Rate
+                                        <p-columnFilter
+                                        type="number"
+                                        field="commissioN_RATE"
+                                        display="menu"
+                                    ></p-columnFilter>
+                                    </th>
                                     <th></th>
                                 </tr>
                             </ng-template>
                             <ng-template pTemplate="body" let-obj>
                                 <tr>
-                                    <td>{{ obj.paY_ID }}</td>
+                                    <!-- <td>{{ obj.paY_ID }}</td> -->
                                     <td>{{ obj.useR_ID }}</td>
                                     <td>{{ obj.renT_ID }}</td>
                                     <td>{{ obj.visA_ID }}</td>
@@ -70,6 +123,7 @@
                                     </td>
                                 </tr>
                             </ng-template>
+                            
                             </p-table>
                         </div>
                     </div>

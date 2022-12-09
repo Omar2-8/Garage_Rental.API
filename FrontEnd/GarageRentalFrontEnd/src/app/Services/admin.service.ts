@@ -16,7 +16,7 @@ export class AdminService {
   visa :any[]=[];
   payment :any[]=[];
   rent :any[]=[];
-  user :any[]=[];
+  user :any={};
   garage :any[]=[];//عرفنا اريي عشان رح ترجعلي الداتا جيسون اوبجكت فبحتاج ارريي لحتى اخزن فيها الداتا الي جبتها من الإي بي اّي
   constructor(private http:HttpClient ,private spinner:NgxSpinnerService , private toster:ToastrService ) { }
    

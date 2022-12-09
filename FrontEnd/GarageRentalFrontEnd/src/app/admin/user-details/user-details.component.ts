@@ -10,7 +10,6 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class UserDetailsComponent implements OnInit {
   first = 0;
-
   rows = 10;
 
   constructor(

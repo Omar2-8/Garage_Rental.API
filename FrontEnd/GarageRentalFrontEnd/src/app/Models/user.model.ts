@@ -7,7 +7,7 @@ export interface User{
   USER_ID :number;
   FIRST_NAME :string;
   LAST_NAME :string;
-  Email :string;
+  email :string;
   Password :string;
   Phonenumber :number;
   USER_IMAGE :string;

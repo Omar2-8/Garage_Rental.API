@@ -14,6 +14,8 @@ import { User } from 'src/app/Models/user.model';
   styleUrls: ['./manage-garage.component.css'],
 })
 export class ManageGarageComponent implements OnInit {
+  first = 0;
+  rows = 10;
   markerPositions: google.maps.LatLngLiteral[] = [];
   display: any;
   val: any;
@@ -21,7 +23,7 @@ export class ManageGarageComponent implements OnInit {
     USER_ID: 0,
     FIRST_NAME: '',
     LAST_NAME: '',
-    Email: '',
+    email: '',
     Password: '',
     Phonenumber: 0,
     USER_IMAGE: '',
@@ -144,27 +146,29 @@ export class ManageGarageComponent implements OnInit {
   //
   p_data_c: any = {};
   openChangeStatDailog(obj: any) {
+    debugger;
     console.log(obj);
     this.p_data_c = {
       garagE_ID: obj.garagE_ID,
       status: obj.status,
       useR_ID: obj.useR_ID,
     };
-    //getting user email
-    this.user.getUserById(obj.useR_ID).subscribe({
-      next: (value) => {
-        debugger;
-        this.UserData = value;
-        if (obj.status == 'Accept') {
-          this.admin.SendEmail(this.UserData.Email, 'Accept');
-        } else {
-          this.admin.SendEmail(this.UserData.Email, 'Reject');
-        }
-      },
-    });
+
 
     this.ChangeStatus.controls['garagE_ID'].setValue(this.p_data_c.garagE_ID);
     this.dialog.open(this.ChangeStatuse);
+        //getting user email
+        this.user.getUserById(obj.useR_ID).subscribe({
+          next: (value) => {
+            debugger;
+            this.UserData = value;
+            if (obj.status == "Accept") {
+              this.admin.SendEmail(this.UserData.email, "Accept");
+            } else {
+              this.admin.SendEmail(this.UserData.email, "Accept");
+            }
+          },
+        });
   }
 
   //Update
@@ -249,4 +253,23 @@ export class ManageGarageComponent implements OnInit {
 
   //   console.log(this.createForm.value);
   // }
+
+      //for table
+      next() {
+        this.first = this.first + this.rows;
+      }
+      prev() {
+        this.first = this.first - this.rows;
+      }
+      reset() {
+        this.first = 0;
+      }
+      isLastPage(): boolean {
+        return this.admin.garage
+          ? this.first === this.admin.garage.length - this.rows
+          : true;
+      }
+      isFirstPage(): boolean {
+        return this.admin.garage ? this.first === 0 : true;
+      }
 }

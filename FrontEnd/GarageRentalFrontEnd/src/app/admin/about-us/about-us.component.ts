@@ -15,6 +15,8 @@ export class AboutUsComponent implements OnInit {
   // email
   // name
   // id
+  first = 0;
+  rows = 10;
   constructor(public home:HomeService,private dialog: MatDialog) { }
   @ViewChild('callUpdatDailog') callUpdate!:TemplateRef<any>
   updateForm :FormGroup= new FormGroup({
@@ -48,4 +50,22 @@ export class AboutUsComponent implements OnInit {
       this.home.updateAboutus(this.updateForm.value);
     }
 
+    //for table
+    next() {
+      this.first = this.first + this.rows;
+    }
+    prev() {
+      this.first = this.first - this.rows;
+    }
+    reset() {
+      this.first = 0;
+    }
+    isLastPage(): boolean {
+      return this.home.Aboutus
+        ? this.first === this.home.Aboutus.length - this.rows
+        : true;
+    }
+    isFirstPage(): boolean {
+      return this.home.Aboutus ? this.first === 0 : true;
+    }
 }

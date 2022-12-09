@@ -8,7 +8,8 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./contact-us.component.css']
 })
 export class ContactUsComponent implements OnInit {
-
+  first = 0;
+  rows = 10;
   constructor(public home:HomeService, public dialog: MatDialog) { }
   @ViewChild('callDeleteDailog') callDelete!:TemplateRef<any>
   ngOnInit(): void {
@@ -30,4 +31,22 @@ export class ContactUsComponent implements OnInit {
       }
     })
   }
+      //for table
+      next() {
+        this.first = this.first + this.rows;
+      }
+      prev() {
+        this.first = this.first - this.rows;
+      }
+      reset() {
+        this.first = 0;
+      }
+      isLastPage(): boolean {
+        return this.home.Contactus
+          ? this.first === this.home.Contactus.length - this.rows
+          : true;
+      }
+      isFirstPage(): boolean {
+        return this.home.Contactus ? this.first === 0 : true;
+      }
 }
