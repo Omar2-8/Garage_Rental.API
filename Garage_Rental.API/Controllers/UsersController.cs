@@ -86,7 +86,7 @@ namespace Garage_Rental.API.Controllers
             if (status== "Accept")
             {
                 bodyBuilder.HtmlBody =
-                "<p>Your Garage Status is: <b style=\"color:red\">Accept</b></p> ";
+                "<p>Your Garage Status is: <b style=\"color:#7fb685\">Accept</b></p> ";
             }
             else {
                 bodyBuilder.HtmlBody =
