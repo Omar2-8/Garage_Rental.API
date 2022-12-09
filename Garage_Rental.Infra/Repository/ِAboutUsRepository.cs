@@ -31,8 +31,7 @@ public bool Create(AboutU t)
 
         public List<AboutU> GetAll()
         {
-            IEnumerable<AboutU> result = dBContext.Connection.Query<AboutU>("ABOUT_PACKAGE.GETALLABOUT",
-                                                            commandType: CommandType.StoredProcedure);
+            IEnumerable<AboutU> result = dBContext.Connection.Query<AboutU>("ABOUT_PACKAGE.GETALLABOUT",commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
 

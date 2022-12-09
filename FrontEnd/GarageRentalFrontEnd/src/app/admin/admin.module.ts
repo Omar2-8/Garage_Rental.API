@@ -12,40 +12,39 @@ import { FooterComponent } from './footer/footer.component';
 import { SharedModule } from '../shared/shared.module';
 import { ManageHomeComponent } from './manage-home/manage-home.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
-import {TableModule} from 'primeng/table';
+import { TableModule } from 'primeng/table';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { ManageGarageComponent } from './manage-garage/manage-garage.component';
 import { AdminPaymentComponent } from './admin-payment/admin-payment.component';
 import { AdminProfileComponent } from './admin-profile/admin-profile.component';
 import { ReportsMonthlyComponent } from './reports-monthly/reports-monthly.component';
 import { ReportsAnnualComponent } from './reports-annual/reports-annual.component';
-
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [
-
     DashboardComponent,
-      AboutUsComponent,
-      SidebarComponent,
-      NavbarComponent,
-      FooterComponent,
-      ManageTestimonialComponent,
-      ManageHomeComponent,
-      ContactUsComponent,
-      UserDetailsComponent,
-      ManageGarageComponent,
-      AdminPaymentComponent,
-      AdminProfileComponent,
-      ReportsMonthlyComponent,
-      ReportsAnnualComponent,
-
+    AboutUsComponent,
+    SidebarComponent,
+    NavbarComponent,
+    FooterComponent,
+    ManageTestimonialComponent,
+    ManageHomeComponent,
+    ContactUsComponent,
+    UserDetailsComponent,
+    ManageGarageComponent,
+    AdminPaymentComponent,
+    AdminProfileComponent,
+    ReportsMonthlyComponent,
+    ReportsAnnualComponent,
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     SharedModule,
     TableModule,
-    GoogleMapsModule
-  ]
+    GoogleMapsModule,
+    ButtonModule,
+  ],
 })
-export class AdminModule { }
+export class AdminModule {}

@@ -54,7 +54,7 @@ const routes: Routes = [
     //canActivate: [AuthorizationGuard],
   },
   {
-    path: 'rent',
+    path: 'rent/:id',
     component: RentGarageComponent,
     canActivate: [AuthorizationGuard],
     },

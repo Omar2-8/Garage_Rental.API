@@ -16,15 +16,15 @@ export class UserService {
   display_image2: any;
   car :any[]=[];
   testimonial :any[]=[];
-  visa :any[]=[];
+  visa :any={};
   payment :any[]=[];
-  rent :any[]=[];
+  rent :any={};
   user :any[]=[];
   userName :any={};
   userid :any={};
 
 Longletgrage :any[]=[];
-garage :any[]=[];//عرفنا اريي عشان رح ترجعلي الداتا جيسون اوبجكت فبحتاج ارريي لحتى اخزن فيها الداتا الي جبتها من الإي بي اّي
+garage :any={};//عرفنا اريي عشان رح ترجعلي الداتا جيسون اوبجكت فبحتاج ارريي لحتى اخزن فيها الداتا الي جبتها من الإي بي اّي
   constructor(private http:HttpClient ,private spinner:NgxSpinnerService , private toster:ToastrService ) { }
   //--------Users
   createUser(body: any) {
@@ -85,8 +85,9 @@ garage :any[]=[];//عرفنا اريي عشان رح ترجعلي الداتا �
   }
    
   updateUser(body:any)
-    {
+    {if(this.display_image1 != null) {  
       body.useR_IMAGE = this.display_image1;
+      }
       this.spinner.show();
       this.http.put('https://localhost:44391/api/Users/Update',body).subscribe((resp)=>{
         this.spinner.hide();
@@ -220,9 +221,14 @@ garage :any[]=[];//عرفنا اريي عشان رح ترجعلي الداتا �
 
     //-------Rent 
     createRent(body: any) {
+      debugger
       
       this.spinner.show();
-     
+     this.getVisaId(1);
+      if(this.garage.availablE_FROM <=body.starT_TIME && this.garage.availablE_TO >=body.enD_TIME ){
+        if(this.visa.visA_AMOUNT>this.garage.renT_PRICE*(body.enD_TIME-body.starT_TIME)){
+          this.visa.visA_AMOUNT=this.visa.visA_AMOUNT-this.garage.renT_PRICE*(body.enD_TIME-body.starT_TIME);
+        
       this.http.post('https://localhost:44391/api/Rent/Create', body).subscribe((resp) => {
         console.log(resp);
         this.spinner.hide();
@@ -231,7 +237,11 @@ garage :any[]=[];//عرفنا اريي عشان رح ترجعلي الداتا �
         this.spinner.hide();
         this.toster.error(err.message, err.status);
       }
-      )
+      )}
+      else
+      this.toster.error('Amount of visa not enoug ');
+    }else
+      this.toster.error('The time of rent garage is not available');
     }
     
     getRentId(id: number) {

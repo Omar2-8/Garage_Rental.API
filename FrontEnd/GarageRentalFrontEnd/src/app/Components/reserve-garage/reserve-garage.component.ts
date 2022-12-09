@@ -1,3 +1,4 @@
+import { UserService } from 'src/app/Services/user.service';
 import { GarageModel } from './../../Models/garage.model';
 import { GarageService } from './../../Services/garage.service';
 import {
@@ -8,6 +9,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { GoogleMap } from '@angular/google-maps';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reserve-garage',
@@ -29,7 +31,7 @@ export class ReserveGarageComponent implements OnInit {
   garages: GarageModel[] = [];
   garageCard!: GarageModel;
   showCardPanel: boolean = false;
-  constructor(private ngZone: NgZone, private GarageService: GarageService) {}
+  constructor(private ngZone: NgZone, private GarageService: GarageService,private user:UserService,private router:Router) {}
 
   ngOnInit(): void {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -117,5 +119,10 @@ export class ReserveGarageComponent implements OnInit {
     console.log(this.garageCard);
 
     return '';
+  }
+
+  rent(){
+      this.router.navigateByUrl('/rent/'+this.garageCard.garagE_ID);
+
   }
 }
