@@ -19,9 +19,24 @@ export class UserGarageComponent implements OnInit {
   display: any;
   val: any;
   constructor(public user:UserService,private dialog: MatDialog,private router:Router,private garageService: GarageService,public admin: AdminService) { }
-
   @ViewChild('callDeleteDailog') callDelete!: TemplateRef<any>;
   @ViewChild('callCreteDailog') CreateGarage!: TemplateRef<any>;
+  @ViewChild('callUpdatDailog') callUpdate!: TemplateRef<any>;
+  updateForm: FormGroup = new FormGroup({
+    garagE_ID: new FormControl(),
+    garagE_NAME: new FormControl(''),
+    latitude: new FormControl(''),
+    longitude: new FormControl(''),
+    image1: new FormControl(''),
+    image2: new FormControl(''),
+    availablE_FROM: new FormControl('', Validators.required),
+    availablE_TO: new FormControl('', Validators.required),
+    renT_PRICE: new FormControl('', Validators.required),
+    street: new FormControl('', Validators.required),
+    buildinG_NUMBER: new FormControl('', Validators.required),
+    garagE_MODE: new FormControl('', Validators.required),
+    useR_ID: new FormControl('', Validators.required),
+  });
 
 
   ngOnInit(): void {
@@ -39,7 +54,36 @@ export class UserGarageComponent implements OnInit {
       }
     });
   }
-//
+//Update
+  p_data: any = {};
+  openUpdateDailog(obj: { garagE_ID: any; garagE_NAME: any; image1: any; image2: any; availablE_FROM: any; availablE_TO: any; renT_PRICE: any; street: any; buildinG_NUMBER: any; garagE_MODE: any; useR_ID: any; }) {
+    console.log(obj);
+    this.p_data = {
+      garagE_ID: obj.garagE_ID,
+      garagE_NAME: obj.garagE_NAME,
+      // latitude: obj.markerPositions[0]['lat'],
+      // longitude: obj.markerPositions[0]['lng'],
+      image1: obj.image1,
+      image2: obj.image2,
+      availablE_FROM: obj.availablE_FROM,
+      availablE_TO: obj.availablE_TO,
+      renT_PRICE: obj.renT_PRICE,
+      street: obj.street,
+      buildinG_NUMBER: obj.buildinG_NUMBER,
+      garagE_MODE: obj.garagE_MODE,
+      useR_ID: obj.useR_ID,
+    };
+    this.updateForm.controls['garagE_ID'].setValue(this.p_data.garagE_ID);
+    this.dialog.open(this.callUpdate);
+  }
+  
+  saveData() {
+    this.user.updateGarage(this.updateForm.value);
+    // this.admin.updateGarage();
+  }
+
+
+//create
 openCreateDailog() {
   this.dialog.open(this.CreateGarage);
 }

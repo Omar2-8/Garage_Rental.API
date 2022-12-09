@@ -92,19 +92,13 @@
                                     </button>
                                 </td> -->
                                 <!-- <td  >{{users}}</td> -->
-                                <td><!--
+                                <td>
                                     <button
                                     class="btn btn-primary"
                                     (click)="openUpdateDailog(obj)"
                                     >
                                     Update
                                     </button>
-                                    <button style="padding:-10px;"
-                                    class="btn btn-pill"
-                                    (click)="openChangeStatDailog(obj)"
-                                    >
-                                    Status
-                                    </button>-->
                                     <button  class="btn btn-danger" (click)="openDeleteDailog(obj.garagE_ID)">
                                         Delete
                                     </button>
@@ -232,3 +226,131 @@
         </div>
     </div>
 </div>
+
+<!-- /////////// -->
+
+<ng-template #callUpdatDailog>
+    <form [formGroup]="updateForm">
+        <mat-form-field appearance="fill">
+        <input matInput formControlName="" [(ngModel)]="p_data.garagE_NAME" />
+        <mat-error *ngIf="updateForm.controls['garagE_NAME'].hasError('required')">
+            garagE_NAME is <strong>required</strong>
+        </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" style="margin-left:10px ;">
+        <input matInput formControlName="latitude" [(ngModel)]="p_data.latitude" />
+        <mat-error *ngIf="updateForm.controls['latitude'].hasError('required')">
+            latitude is <strong>required</strong>
+        </mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field appearance="fill">
+        <input
+            matInput
+            formControlName="longitude"
+            [(ngModel)]="p_data.longitude"
+        />
+        <mat-error
+          *ngIf="updateForm.controls['longitude'].hasError('required')"
+        >
+        longitude is <strong>required</strong>
+        </mat-error>
+        </mat-form-field>
+
+        <br>
+        <label>Choose the location of your Garage</label>
+
+        <google-map
+          height="600px"
+          width="750px"
+          [center]="center"
+          [zoom]="zoom"
+          (mapClick)="addMarker($event)"
+        >
+          <map-marker
+            *ngFor="let markerPosition of markerPositions"
+            [position]="markerPosition"
+            [options]="markerOptions"
+          ></map-marker>
+        </google-map>
+    
+        <br />
+        <mat-form-field appearance="fill">
+        <input
+            matInput
+            formControlName="image1"
+            [(ngModel)]="p_data.image1"
+        />
+        </mat-form-field>
+        <br />
+        <mat-form-field appearance="fill">
+        <input
+            matInput
+            formControlName="image2"
+            [(ngModel)]="p_data.image2"
+        />
+
+        </mat-form-field>
+        <br>
+
+        <mat-form-field appearance="fill">
+            <input matInput formControlName="availablE_FROM" [(ngModel)]="p_data.availablE_FROM" />
+            <mat-error *ngIf="updateForm.controls['availablE_FROM'].hasError('required')">
+                availablE_FROM is <strong>required</strong>
+            </mat-error>
+            </mat-form-field>
+            <br />
+        <mat-form-field appearance="fill">
+        <input matInput formControlName="availablE_TO" [(ngModel)]="p_data.availablE_TO" />
+        <mat-error *ngIf="updateForm.controls['availablE_TO'].hasError('required')">
+            availablE_TO is <strong>required</strong>
+        </mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field appearance="fill">
+            <input matInput formControlName="renT_PRICE" [(ngModel)]="p_data.renT_PRICE" />
+            <mat-error *ngIf="updateForm.controls['renT_PRICE'].hasError('required')">
+                renT_PRICE is <strong>required</strong>
+            </mat-error>
+            </mat-form-field>
+            <br />
+            <mat-form-field appearance="fill">
+        <input matInput formControlName="street" [(ngModel)]="p_data.street" />
+        <mat-error *ngIf="updateForm.controls['street'].hasError('required')">
+            street is <strong>required</strong>
+        </mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field appearance="fill">
+            <input matInput formControlName="buildinG_NUMBER" [(ngModel)]="p_data.buildinG_NUMBER" />
+            <mat-error *ngIf="updateForm.controls['buildinG_NUMBER'].hasError('required')">
+                buildinG_NUMBER is <strong>required</strong>
+            </mat-error>
+            </mat-form-field>
+            <br />
+            <mat-form-field appearance="fill">
+                <input matInput formControlName="useR_ID" [(ngModel)]="p_data.useR_ID" />
+                <mat-error *ngIf="updateForm.controls['useR_ID'].hasError('required')">
+                    useR_ID is <strong>required</strong>
+                </mat-error>
+                </mat-form-field>
+                <br />
+    </form>
+
+
+    <mat-dialog-actions align="end">
+        <button class="btn btn-primary" mat-button mat-dialog-close>
+        Cancel
+        </button>
+        <button
+        class="btn btn-primary"
+        mat-button
+        [mat-dialog-close]="true"
+        cdkFocusInitial
+        (click)="saveData()"
+        > 
+        Save
+        </button>
+    </mat-dialog-actions>
+</ng-template> 
+<br>
