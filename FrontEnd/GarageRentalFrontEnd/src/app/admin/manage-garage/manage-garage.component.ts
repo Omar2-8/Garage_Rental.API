@@ -17,7 +17,7 @@ export class ManageGarageComponent implements OnInit {
   markerPositions: google.maps.LatLngLiteral[] = [];
   display: any;
   val: any;
-  value:User={
+  UserData: User = {
     USER_ID: 0,
     FIRST_NAME: '',
     LAST_NAME: '',
@@ -31,10 +31,15 @@ export class ManageGarageComponent implements OnInit {
     Garages: [],
     Payments: [],
     Rents: [],
-    Testimonials: []
+    Testimonials: [],
   };
 
-  constructor(public admin: AdminService,private dialog: MatDialog, private garageService: GarageService, public user:UserService){}
+  constructor(
+    public admin: AdminService,
+    private dialog: MatDialog,
+    private garageService: GarageService,
+    public user: UserService
+  ) {}
   @ViewChild('callUpdatDailog') callUpdate!: TemplateRef<any>;
   @ViewChild('ChangeStatusOfGrage') ChangeStatuse!: TemplateRef<any>;
   @ViewChild('callCreteDailog') CreateGarage!: TemplateRef<any>;
@@ -57,7 +62,7 @@ export class ManageGarageComponent implements OnInit {
   ChangeStatus: FormGroup = new FormGroup({
     garagE_ID: new FormControl(),
     status: new FormControl(''),
-    useR_ID: new FormControl('')
+    useR_ID: new FormControl(''),
   });
 
   ngOnInit(): void {
@@ -141,34 +146,42 @@ export class ManageGarageComponent implements OnInit {
   openChangeStatDailog(obj: any) {
     console.log(obj);
     this.p_data_c = {
-    garagE_ID: obj.garagE_ID,
-    status:obj.status,
-    useR_ID:obj.useR_ID,
-    }
-    this.user.getRent(obj.useR_ID).subscribe({
-      next(vall) {
-        // value=vall;
+      garagE_ID: obj.garagE_ID,
+      status: obj.status,
+      useR_ID: obj.useR_ID,
+    };
+    //getting user email
+    this.user.getUserById(obj.useR_ID).subscribe({
+      next: (value) => {
+        debugger;
+        this.UserData = value;
+        if (obj.status == 'Accept') {
+          this.admin.SendEmail(this.UserData.Email, 'Accept');
+        } else {
+          this.admin.SendEmail(this.UserData.Email, 'Reject');
+        }
       },
     });
-    if(obj.status=="Accept")
-    {
-      let userEmail:any= localStorage.getItem('Email');
-      userEmail = JSON.parse(userEmail);
-      this.admin.SendEmail(userEmail.Email,"Accept");
-    }
-    else
-    {
-      let userEmail:any= localStorage.getItem('Email');
-      userEmail = JSON.parse(userEmail);
-      this.admin.SendEmail(userEmail.Email,"Reject");
-    }
+
     this.ChangeStatus.controls['garagE_ID'].setValue(this.p_data_c.garagE_ID);
     this.dialog.open(this.ChangeStatuse);
   }
 
   //Update
   p_data: any = {};
-  openUpdateDailog(obj: { garagE_ID: any; garagE_NAME: any; image1: any; image2: any; availablE_FROM: any; availablE_TO: any; renT_PRICE: any; street: any; buildinG_NUMBER: any; garagE_MODE: any; useR_ID: any; }) {
+  openUpdateDailog(obj: {
+    garagE_ID: any;
+    garagE_NAME: any;
+    image1: any;
+    image2: any;
+    availablE_FROM: any;
+    availablE_TO: any;
+    renT_PRICE: any;
+    street: any;
+    buildinG_NUMBER: any;
+    garagE_MODE: any;
+    useR_ID: any;
+  }) {
     console.log(obj);
     this.p_data = {
       garagE_ID: obj.garagE_ID,
@@ -193,15 +206,15 @@ export class ManageGarageComponent implements OnInit {
     this.user.updateGarage(this.updateForm.value);
     // this.admin.updateGarage();
   }
-  saveDataUsers(){
-    this.admin.ChangeStatusOfGrage(this.ChangeStatus.value)
+  saveDataUsers() {
+    this.admin.ChangeStatusOfGrage(this.ChangeStatus.value);
   }
   // location(){
   //   let user:any= localStorage.getItem('user');
   //   user = JSON.parse(user);
   //   this.user.getLongLetById(user.USER_ID);
   //   console.log( this.user.getLongLetById(user.USER_ID));
-    
+
   // }
   openDeleteDailog(id: number) {
     const dialogRef = this.dialog.open(this.callDelete);
@@ -214,28 +227,26 @@ export class ManageGarageComponent implements OnInit {
     });
   }
 
-  uploadFile1(file:any){
-    if(file.length==0)
-    return;
-    let fileToUpload=<File>file[0];//the first image 
-    const formdata= new FormData();
-    formdata.append('file',fileToUpload,fileToUpload.name);
-    
+  uploadFile1(file: any) {
+    if (file.length == 0) return;
+    let fileToUpload = <File>file[0]; //the first image
+    const formdata = new FormData();
+    formdata.append('file', fileToUpload, fileToUpload.name);
+
     this.admin.uploadAttachmentGarage(formdata);
   }
-  uploadFile2(file:any){
-    if(file.length==0)
-    return;
-    let fileToUpload=<File>file[0];//the first image 
-    const formdata= new FormData();
-    formdata.append('file',fileToUpload,fileToUpload.name);
-    
+  uploadFile2(file: any) {
+    if (file.length == 0) return;
+    let fileToUpload = <File>file[0]; //the first image
+    const formdata = new FormData();
+    formdata.append('file', fileToUpload, fileToUpload.name);
+
     this.admin.uploadAttachmentGarage2(formdata);
   }
 
- //* submit(){
+  //* submit(){
   //  this.admin.createGarage(this.createForm.value);
-  
- //   console.log(this.createForm.value);
-// }
+
+  //   console.log(this.createForm.value);
+  // }
 }
