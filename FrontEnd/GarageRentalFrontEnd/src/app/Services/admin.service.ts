@@ -76,6 +76,13 @@ export class AdminService {
   })
   
   }
+  SendEmail(email: string,status:string) {
+    this.http.get(this.baseApiUrl+'Users/SendEmail/'+ email+"/"+status).subscribe((resp: any) => {
+      this.toster.success('Successfully !!');
+    }, err => {
+      this.toster.error(err.message, err.status);
+    })
+  }
 
   deleteGarage(id:number)
   {

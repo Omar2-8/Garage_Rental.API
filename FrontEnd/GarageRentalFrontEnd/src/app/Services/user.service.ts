@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
+import { User } from '../Models/user.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -51,23 +53,17 @@ garage :any={};//عرفنا اريي عشان رح ترجعلي الداتا ج�
       this.toster.error('something Wrong')
     })
   }
-
+  getRent(id:string):Observable<User>{
+    return this.http.get<User>(this.baseApiUrl +'Users/GetById/' + id);
+  }
   getUserId(id: number) {
-    //show Spinner 
-    //Hits Api 
-    //Hide Spinner
-    //Resp=> Toastr 
     this.http.get('https://localhost:44391/api/Users/GetById/'+ id).subscribe((resp: any) => {
       this.userid = resp;
       console.log(this.userid);
-     
       this.toster.success('Data Retrieved!');
-  
     }, err => {
-      
       this.toster.error(err.message, err.status);
     })
-  
   }
  
   

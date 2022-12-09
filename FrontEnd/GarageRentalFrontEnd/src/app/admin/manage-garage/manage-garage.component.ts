@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { FormControl, FormGroup, Validators, NgForm } from '@angular/forms';
 import { GarageService } from './../../Services/garage.service';
 import { GarageModel } from './../../Models/garage.model';
+import { User } from 'src/app/Models/user.model';
 
 @Component({
   selector: 'app-manage-garage',
@@ -16,6 +17,22 @@ export class ManageGarageComponent implements OnInit {
   markerPositions: google.maps.LatLngLiteral[] = [];
   display: any;
   val: any;
+  value:User={
+    USER_ID: 0,
+    FIRST_NAME: '',
+    LAST_NAME: '',
+    Email: '',
+    Password: '',
+    Phonenumber: 0,
+    USER_IMAGE: '',
+    USER_IDENTITY: '',
+    ROLES_ID: 0,
+    Cars: [],
+    Garages: [],
+    Payments: [],
+    Rents: [],
+    Testimonials: []
+  };
 
   constructor(public admin: AdminService,private dialog: MatDialog, private garageService: GarageService, public user:UserService){}
   @ViewChild('callUpdatDailog') callUpdate!: TemplateRef<any>;
@@ -40,6 +57,7 @@ export class ManageGarageComponent implements OnInit {
   ChangeStatus: FormGroup = new FormGroup({
     garagE_ID: new FormControl(),
     status: new FormControl(''),
+    useR_ID: new FormControl('')
   });
 
   ngOnInit(): void {
@@ -125,6 +143,24 @@ export class ManageGarageComponent implements OnInit {
     this.p_data_c = {
     garagE_ID: obj.garagE_ID,
     status:obj.status,
+    useR_ID:obj.useR_ID,
+    }
+    this.user.getRent(obj.useR_ID).subscribe({
+      next(vall) {
+        // value=vall;
+      },
+    });
+    if(obj.status=="Accept")
+    {
+      let userEmail:any= localStorage.getItem('Email');
+      userEmail = JSON.parse(userEmail);
+      this.admin.SendEmail(userEmail.Email,"Accept");
+    }
+    else
+    {
+      let userEmail:any= localStorage.getItem('Email');
+      userEmail = JSON.parse(userEmail);
+      this.admin.SendEmail(userEmail.Email,"Reject");
     }
     this.ChangeStatus.controls['garagE_ID'].setValue(this.p_data_c.garagE_ID);
     this.dialog.open(this.ChangeStatuse);

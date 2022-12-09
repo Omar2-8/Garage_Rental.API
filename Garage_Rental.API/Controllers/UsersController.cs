@@ -73,20 +73,26 @@ namespace Garage_Rental.API.Controllers
 
 
         [HttpGet]
-        [Route("{ParentEmail}")]
-        public void SendEmail(String ParentEmail)
+        [Route("{ParentEmail}/{status}")]
+        public void SendEmail(String ParentEmail,String status )
         {
-
-
             MimeMessage message = new MimeMessage();
             MailboxAddress from = new MailboxAddress("Garage Rental", "s.moe12@yahoo.com");
             message.From.Add(from);
             MailboxAddress to = new MailboxAddress("User", ParentEmail);
             message.To.Add(to);
-            message.Subject = "Your son Near of you";
+            message.Subject = "Status of Garage";
             BodyBuilder bodyBuilder = new BodyBuilder();
-            bodyBuilder.HtmlBody =
-            "<p style=\"color:#7fb685\">quastion approve </p>" + "The Date" + "<p> Thank you for trusting us </p>" + "<p>Your son </p>";
+            if (status== "Accept")
+            {
+                bodyBuilder.HtmlBody =
+                "<p>Your Garage Status is: <b style=\"color:red\">Accept</b></p> ";
+            }
+            else {
+                bodyBuilder.HtmlBody =
+                "<p>Your Garage Status is: <b style=\"color:red\">Reject</b></p> ";
+
+            }
             message.Body = bodyBuilder.ToMessageBody();
             using (var clinte = new SmtpClient())
             {
@@ -95,11 +101,6 @@ namespace Garage_Rental.API.Controllers
                 clinte.Send(message);
                 clinte.Disconnect(true);
             }
-
-
         }
-
-
-
     }
 }
