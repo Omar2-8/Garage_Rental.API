@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using Garage_Rental.Core.Common;
 using Garage_Rental.Core.Data;
+using Garage_Rental.Core.DTO;
 using Garage_Rental.Core.Repository;
 using System;
 using System.Collections.Generic;
@@ -49,5 +50,7 @@ namespace Garage_Rental.Infra.Repository
         {
             throw new NotImplementedException();
         }
+
+       
     }
 }

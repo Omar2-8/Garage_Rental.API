@@ -15,8 +15,10 @@ export class UserService {
   display_image1: any;
   display_image2: any;
   car :any[]=[];
+  car2 :any={};
   testimonial :any[]=[];
   visa :any={};
+  visa1 :any[]=[];
   payment :any[]=[];
   rent :any={};
   user :any[]=[];
@@ -224,24 +226,18 @@ garage :any={};//عرفنا اريي عشان رح ترجعلي الداتا ج�
       debugger
       
       this.spinner.show();
-     this.getVisaId(1);
-      if(this.garage.availablE_FROM <=body.starT_TIME && this.garage.availablE_TO >=body.enD_TIME ){
-        if(this.visa.visA_AMOUNT>this.garage.renT_PRICE*(body.enD_TIME-body.starT_TIME)){
-          this.visa.visA_AMOUNT=this.visa.visA_AMOUNT-this.garage.renT_PRICE*(body.enD_TIME-body.starT_TIME);
+     
+      
         
       this.http.post('https://localhost:44391/api/Rent/Create', body).subscribe((resp) => {
         console.log(resp);
         this.spinner.hide();
-        this.toster.success('Created Successfuly!!');
+        this.toster.success('ٌRent completed successfully!!');
       }, err => {
         this.spinner.hide();
         this.toster.error(err.message, err.status);
       }
-      )}
-      else
-      this.toster.error('Amount of visa not enoug ');
-    }else
-      this.toster.error('The time of rent garage is not available');
+      )
     }
     
     getRentId(id: number) {
@@ -281,18 +277,29 @@ garage :any={};//عرفنا اريي عشان رح ترجعلي الداتا ج�
     //-------End Rent 
     
     //-------Visa
+    getAllVisa(){
+      this.http.get('https://localhost:44391/api/Visa/GetAll').subscribe((Resp:any)=>{//السبسكرايب بتتكون من حالتين اول وحدة ترو والثانية اذا كانت ايرور ريسبونس
+        this.visa=Resp;   
+        console.log(this.visa);   
+        this.toster.success('The visa has been selected')
+      },err=>{
+        this.toster.error('something Wrong')
+      })
+    }
+
+
     getVisaId(id: number) {
       //show Spinner 
       //Hits Api 
       //Hide Spinner
       //Resp=> Toastr 
     
-    
+   
       this.http.get('https://localhost:44391/api/Visa/GetById/' + id).subscribe((resp: any) => {
-        this.visa = resp;
+        this.visa1 = resp;
         console.log(this.visa);
         
-        this.toster.success('Data Retrieved!');
+        this.toster.success('The visa has been selected!');
     
       }, err => {
         
@@ -313,6 +320,14 @@ garage :any={};//عرفنا اريي عشان رح ترجعلي الداتا ج�
         
        this.toster.error(err.message, err.status);
       })
+    }
+
+    ChangeAmountVisa(body:any) {this.http.put(this.baseApiUrl+'General/ChangeAmount',body).subscribe((resp)=>{
+      this.toster.success('The deduction has been made from the visa !!');
+    },err=>{
+      this.toster.error(err.message, err.status);
+    })
+    
     }
 
     //-------End Visa 
@@ -342,9 +357,10 @@ garage :any={};//عرفنا اريي عشان رح ترجعلي الداتا ج�
   
     this.http.get('https://localhost:44391/api/Car/GetById/' + id).subscribe((resp: any) => {
       this.car = resp;
+      this.car2 = resp;
       console.log(this.car);
       
-      this.toster.success('Data Retrieved!');
+      this.toster.success('The car has been selected!');
   
     }, err => {
       

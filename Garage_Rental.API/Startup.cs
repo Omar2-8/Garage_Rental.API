@@ -78,6 +78,8 @@ namespace Garage_Rental.API
             services.AddScoped<IGenericService<Visa>, VisaService>();
             services.AddScoped<ILongitudeLatitudeRepsitory, LongitudeLatitudeRepsitory>();
             services.AddScoped<ILongitudeLatitudeService, LongitudeLatitudeService>();
+            services.AddScoped<IGeneralRepository, GeneralRepository>();
+            services.AddScoped<IGeneralService, GeneralService>();
 
             //by Omar Master :)
             services.AddScoped<IGenericRepository<Payment>, PaymentRepository>();
