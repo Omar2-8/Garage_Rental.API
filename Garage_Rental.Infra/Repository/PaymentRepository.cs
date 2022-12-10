@@ -25,9 +25,9 @@ namespace Garage_Rental.Infra.Repository
             {
                 var p = new DynamicParameters();
                 p.Add("Pay_Amount", t.PAY_AMOUNT, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-                p.Add("Garagee_Name", t.GARAGE_NAME, dbType: DbType.String, direction: ParameterDirection.Input);
-                p.Add("Pay_Date", t.PAY_DATE, dbType: DbType.DateTime, direction: ParameterDirection.Input);
-                p.Add("Commission_Rate", t.COMMISSION_RATE, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+                p.Add("Garagee_Name", t.GARAGE_NAME, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+                
+              
                 p.Add("User_Id", t.USER_ID, dbType: DbType.Decimal, direction: ParameterDirection.Input);
                 p.Add("Visa_Id", t.VISA_ID, dbType: DbType.Decimal, direction: ParameterDirection.Input);
                 p.Add("Rent_Id", t.RENT_ID, dbType: DbType.Decimal, direction: ParameterDirection.Input);

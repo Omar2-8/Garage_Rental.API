@@ -13,7 +13,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
-
+import {DropdownModule} from 'primeng/dropdown';
 @NgModule({
   declarations: [
     NavbarComponent,
@@ -33,6 +33,7 @@ import {MatRadioModule} from '@angular/material/radio';
     MatMenuModule,
     MatSelectModule,
     MatRadioModule,
+    DropdownModule,
   ],
   exports:[
     NavbarComponent,
@@ -48,6 +49,7 @@ import {MatRadioModule} from '@angular/material/radio';
     MatMenuModule,
     MatSelectModule,
     MatRadioModule,
+    DropdownModule,
   ]
 })
 export class SharedModule { }
