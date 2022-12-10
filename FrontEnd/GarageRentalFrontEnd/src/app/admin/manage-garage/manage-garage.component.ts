@@ -157,18 +157,7 @@ export class ManageGarageComponent implements OnInit {
 
     this.ChangeStatus.controls['garagE_ID'].setValue(this.p_data_c.garagE_ID);
     this.dialog.open(this.ChangeStatuse);
-        //getting user email
-        this.user.getUserById(obj.useR_ID).subscribe({
-          next: (value) => {
-            debugger;
-            this.UserData = value;
-            if (obj.status == "Accept") {
-              this.admin.SendEmail(this.UserData.email, "Accept");
-            } else {
-              this.admin.SendEmail(this.UserData.email, "Accept");
-            }
-          },
-        });
+
   }
 
   //Update
@@ -211,6 +200,18 @@ export class ManageGarageComponent implements OnInit {
     // this.admin.updateGarage();
   }
   saveDataUsers() {
+            //getting user email
+            this.user.getUserById(this.p_data_c.useR_ID).subscribe({
+              next: (value) => {
+                debugger;
+                this.UserData = value;
+                if (this.p_data_c.status == "Accept") {
+                  this.admin.SendEmail(this.UserData.email, "Accept");
+                } else {
+                  this.admin.SendEmail(this.UserData.email, "Reject");
+                }
+              },
+            });
     this.admin.ChangeStatusOfGrage(this.ChangeStatus.value);
   }
   // location(){
