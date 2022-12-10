@@ -1,89 +1,99 @@
 <div class="wrapper">
-    <app-user-side-bar></app-user-side-bar>
-    <div class="main-panel">
-        <app-user-navbar></app-user-navbar>
-        <div class="content">
-            <div class="container-fluid">
-                <!-- content here -->
-                <div class="col-lg-12 col-md-12">
-                    <div class="card">
-                        <div class="card-header card-header-primary">
-                        <h4 class="card-title">Details About Us page</h4>
-                        <p class="card-category"></p>
-                        </div>
-                        <div class="card-body table-responsive">
-                            <!-- "latitude": "1584",
-                            "longitude": "23456" -->
-                            <p-table
-                            #dt1
-                            [value]="user.garage"
-                            [globalFilterFields]=
-                            "['garagE_NAME', 'image1', 'image2', 'availablE_FROM','availablE_TO',
-                            'renT_PRICE','street','buildinG_NUMBER','status','garagE_MODE','useR_ID']">
-                            <ng-template pTemplate="caption">
-                                <div class="p-d-flex">
-                                <span class="p-input-icon-left p-ml-auto ">
-                                    <input
-                                    #textInput 
-                                    pInputText
-                                    type="text"
-                                    (input)="dt1.filterGlobal(textInput.value, 'contains')"
-                                    placeholder="Search keyword"
-                                    />
-                                </span>
-                                <button style="margin-left:600px ;"
-                                class="btn btn-pill col-md-4"
-                                (click)="openCreateDailog()"
-                                >
-                                Create
-                                </button>    
-                                </div> 
-                            </ng-template>
-                            <ng-template pTemplate="header">
-                                <tr>
-                                <th>
-                                    Garage Name
-                                </th>
-                                <th>
-                                    Image1
-                                </th>
-                                <th>
-                                    Image2
-                                </th>
-                                <th>
-                                    Available From
-                                </th>
-                                <th>Available To
-                                </th>
-                                <th>Rent Price
-                                </th>
-                                <th>Street
-                                </th>
-                                <th>Building Number
-                                </th>
-                                <th>Status
-                                </th>
-                                <th>Garage Mode
-                                </th>
-                                <!-- <th>Location
+  <app-user-side-bar></app-user-side-bar>
+  <div class="main-panel">
+    <app-user-navbar></app-user-navbar>
+    <div class="content">
+      <div class="container-fluid">
+        <!-- content here -->
+        <div class="col-lg-12 col-md-12">
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <h4 class="card-title">Details About Us page</h4>
+              <p class="card-category"></p>
+            </div>
+            <div class="card-body table-responsive">
+              <p-table
+                #dt1
+                [value]="user.garage"
+                [globalFilterFields]="[
+                  'garagE_NAME',
+                  'image1',
+                  'image2',
+                  'availablE_FROM',
+                  'availablE_TO',
+                  'renT_PRICE',
+                  'street',
+                  'buildinG_NUMBER',
+                  'status',
+                  'garagE_MODE',
+                  'useR_ID'
+                ]"
+              >
+                <ng-template pTemplate="caption">
+                  <div class="p-d-flex">
+                    <span class="p-input-icon-left p-ml-auto">
+                      <input
+                        #textInput
+                        pInputText
+                        type="text"
+                        (input)="dt1.filterGlobal(textInput.value, 'contains')"
+                        placeholder="Search keyword"
+                      />
+                    </span>
+                    <button
+                      style="margin-left: 600px"
+                      class="btn btn-pill col-md-4"
+                      (click)="openCreateDailog()"
+                    >
+                      Create
+                    </button>
+                  </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                  <tr>
+                    <th>Garage Name</th>
+                    <th>Image1</th>
+                    <th>Image2</th>
+                    <th>Available From</th>
+                    <th>Available To</th>
+                    <th>Rent Price</th>
+                    <th>Street</th>
+                    <th>Building Number</th>
+                    <th>Status</th>
+                    <th>Garage Mode</th>
+                    <!-- <th>Location
                                 </th> -->
-                                <!-- <th>User Name</th> -->
-                                <th></th>
-                                </tr>
-                            </ng-template>
-                            <ng-template pTemplate="body" let-obj>
-                                <tr>
-                                <td>{{ obj.garagE_NAME }}</td>
-                                <td><img src="../../../assets/images/{{obj.image1}}" width="100px" height="100px" style="border-radius: 10px;"></td>
-                                <td><img src="../../../assets/images/{{obj.image2}}" width="100px" height="100px" style="border-radius: 10px;"></td>
-                                <td>{{ obj.availablE_FROM }}</td>
-                                <td>{{ obj.availablE_TO }}</td>
-                                <td>{{ obj.renT_PRICE }}</td>
-                                <td>{{ obj.street }}</td>
-                                <td>{{ obj.buildinG_NUMBER }}</td>
-                                <td>{{ obj.status }}</td>
-                                <td>{{ obj.garagE_MODE }}</td>
-                                <!-- <td>                                   
+                    <!-- <th>User Name</th> -->
+                    <th></th>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-obj>
+                  <tr>
+                    <td>{{ obj.garagE_NAME }}</td>
+                    <td>
+                      <img
+                        src="../../../assets/images/{{ obj.image1 }}"
+                        width="100px"
+                        height="100px"
+                        style="border-radius: 10px"
+                      />
+                    </td>
+                    <td>
+                      <img
+                        src="../../../assets/images/{{ obj.image2 }}"
+                        width="100px"
+                        height="100px"
+                        style="border-radius: 10px"
+                      />
+                    </td>
+                    <td>{{ obj.availablE_FROM }}</td>
+                    <td>{{ obj.availablE_TO }}</td>
+                    <td>{{ obj.renT_PRICE }}</td>
+                    <td>{{ obj.street }}</td>
+                    <td>{{ obj.buildinG_NUMBER }}</td>
+                    <td>{{ obj.status }}</td>
+                    <td>{{ obj.garagE_MODE }}</td>
+                    <!-- <td>
                                     <button
                                     class="btn btn-lg"
                                     (click)="location()"
@@ -91,48 +101,53 @@
                                     Update
                                     </button>
                                 </td> -->
-                                <!-- <td  >{{users}}</td> -->
-                                <td>
-                                    <button
-                                    class="btn btn-primary"
-                                    (click)="openUpdateDailog(obj)"
-                                    >
-                                    Update
-                                    </button>
-                                    <button  class="btn btn-danger" (click)="openDeleteDailog(obj.garagE_ID)">
-                                        Delete
-                                    </button>
-                                </td> 
-                                </tr>
-                            </ng-template>
-                            </p-table>
-                        </div>
-                    </div>
-                </div>
-                <ng-template #callDeleteDailog>
-                    <h2>Are you sure you want to delete this item ?</h2>
-                    <button class="btn btn-primary" mat-dialog-close="yes">Yes</button>
-                    <button class="btn btn-primary" mat-dialog-close="no">No</button>
+                    <!-- <td  >{{users}}</td> -->
+                    <td>
+                      <button
+                        class="btn btn-primary"
+                        (click)="openUpdateDailog(obj)"
+                      >
+                        Update
+                      </button>
+                      <button
+                        class="btn btn-danger"
+                        (click)="openDeleteDailog(obj.garagE_ID)"
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
                 </ng-template>
+              </p-table>
+            </div>
+          </div>
+        </div>
+        <ng-template #callDeleteDailog>
+          <h2>Are you sure you want to delete this item ?</h2>
+          <button class="btn btn-primary" mat-dialog-close="yes">Yes</button>
+          <button class="btn btn-primary" mat-dialog-close="no">No</button>
+        </ng-template>
 
-
-                <ng-template #callCreteDailog >
-                    <div class="m-5 p-5">
-                        <form [formGroup]="garageForm1" (ngSubmit)="saveGarage(garageForm1)">
-                            <div class="my-5 p-5">
-                                <h1>Choose your Garagee Location to add it to the list</h1>
-                            </div>
-                            <div class="mb-3">
-                                <label>Garage Name</label>
-                                <input
-                                    class="form-control form-control-lg form-control-solid"
-                                    type="text"
-                                    placeholder="Garage Name"
-                                    required
-                                    formControlName="name"
-                                />
-                            </div>
-                            <!-- <div class="mb-3">
+        <ng-template #callCreteDailog>
+          <div class="m-5 p-5">
+            <form
+              [formGroup]="garageForm1"
+              (ngSubmit)="saveGarage(garageForm1)"
+            >
+              <div class="my-5 p-5">
+                <h1>Choose your Garagee Location to add it to the list</h1>
+              </div>
+              <div class="mb-3">
+                <label>Garage Name</label>
+                <input
+                  class="form-control form-control-lg form-control-solid"
+                  type="text"
+                  placeholder="Garage Name"
+                  required
+                  formControlName="name"
+                />
+              </div>
+              <!-- <div class="mb-3">
                                 <label>Avalable from</label>
                                 <input
                                 class="form-control form-control-lg form-control-solid"
@@ -142,7 +157,7 @@
                                 formControlName="from"
                                 />
                             </div>
-                        
+
                             <div class="mb-3">
                                 <label>Avalable to</label>
                                 <input
@@ -153,204 +168,168 @@
                                 formControlName="to"
                                 />
                             </div> -->
-                            <!-- <div class="mb-3">
+              <!-- <div class="mb-3">
                                 <label>Avalablabilty</label>
                                 <p-slider [(ngModel)]="rangeValues" [range]="true"></p-slider>
                             </div> -->
-                            <div class="mb-3">
-                                <label>Price</label>
-                                <input
-                                    class="form-control form-control-lg form-control-solid"
-                                    type="text"
-                                    placeholder="Price"
-                                    required
-                                    formControlName="price"
-                                />
-                            </div>
-                            <div class="mb-3">
-                                <label>Street</label>
-                                <input
-                                    class="form-control form-control-lg form-control-solid"
-                                    type="text"
-                                    placeholder="Street"
-                                    required
-                                    formControlName="street"
-                                />
-                            </div>
-                            <div class="mb-3">
-                                <label>building Number</label>
-                                <input
-                                    class="form-control form-control-lg form-control-solid"
-                                    type="text"
-                                    placeholder="building Number"
-                                    required
-                                    formControlName="building"
-                                />
-                            </div>
-                            <div class="mb-3">
-                                <label>Upload 2 images </label>
-                                <input
-                                    type="file"
-                                    #file
-                                    (change)="uploadFile1(file.files)"
-                                    [(ngModel)]="garageModel.image1"
-                                />
-                                <input
-                                    type="file"
-                                    #file1
-                                    (change)="uploadFile2(file1.files)"
-                                    [(ngModel)]="garageModel.image1"
-                                />
-                            </div> 
+              <div class="mb-3">
+                <label>Price</label>
+                <input
+                  class="form-control form-control-lg form-control-solid"
+                  type="text"
+                  placeholder="Price"
+                  required
+                  formControlName="price"
+                />
+              </div>
+              <div class="mb-3">
+                <label>Street</label>
+                <input
+                  class="form-control form-control-lg form-control-solid"
+                  type="text"
+                  placeholder="Street"
+                  required
+                  formControlName="street"
+                />
+              </div>
+              <div class="mb-3">
+                <label>building Number</label>
+                <input
+                  class="form-control form-control-lg form-control-solid"
+                  type="text"
+                  placeholder="building Number"
+                  required
+                  formControlName="building"
+                />
+              </div>
+              <div class="mb-3">
+                <label>Upload 2 images </label>
+                <input
+                  type="file"
+                  #file
+                  (change)="uploadFile1(file.files)"
+                  [(ngModel)]="garageModel.image1"
+                />
+                <input
+                  type="file"
+                  #file1
+                  (change)="uploadFile2(file1.files)"
+                  [(ngModel)]="garageModel.image1"
+                />
+              </div>
 
-                            <label>Choose the location of your Garage</label>
-                            <google-map
-                                height="600px"
-                                width="750px"
-                                [center]="center"
-                                [zoom]="zoom"
-                                (mapClick)="addMarker($event)"
-                            >
-                                <map-marker
-                                    *ngFor="let markerPosition of markerPositions"
-                                    [position]="markerPosition"
-                                    [options]="markerOptions"
-                                ></map-marker>
-                            </google-map>
-                            <button type="submit" class="btn btn-primary btn-lg" >Add Garage</button>
-                        </form>
-                    </div>
-                    </ng-template>
-                <app-user-footer></app-user-footer>
-            </div>
-        </div>
+              <label>Choose the location of your Garage</label>
+              <google-map
+                height="600px"
+                width="750px"
+                [center]="center"
+                [zoom]="zoom"
+                (mapClick)="addMarker($event)"
+              >
+                <map-marker
+                  *ngFor="let markerPosition of markerPositions"
+                  [position]="markerPosition"
+                  [options]="markerOptions"
+                ></map-marker>
+              </google-map>
+              <button type="submit" class="btn btn-primary btn-lg">
+                Add Garage
+              </button>
+            </form>
+          </div>
+        </ng-template>
+        <app-user-footer></app-user-footer>
+      </div>
     </div>
+  </div>
 </div>
 
 <!-- /////////// -->
 
 <ng-template #callUpdatDailog>
-    <form [formGroup]="updateForm">
-        <mat-form-field appearance="fill">
-        <input matInput formControlName="" [(ngModel)]="p_data.garagE_NAME" />
-        <mat-error *ngIf="updateForm.controls['garagE_NAME'].hasError('required')">
-            garagE_NAME is <strong>required</strong>
-        </mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="fill" style="margin-left:10px ;">
-        <input matInput formControlName="latitude" [(ngModel)]="p_data.latitude" />
-        <mat-error *ngIf="updateForm.controls['latitude'].hasError('required')">
-            latitude is <strong>required</strong>
-        </mat-error>
-        </mat-form-field>
-        <br />
-        <mat-form-field appearance="fill">
-        <input
-            matInput
-            formControlName="longitude"
-            [(ngModel)]="p_data.longitude"
-        />
-        <mat-error
-          *ngIf="updateForm.controls['longitude'].hasError('required')"
-        >
-        longitude is <strong>required</strong>
-        </mat-error>
-        </mat-form-field>
+  <form [formGroup]="updateForm">
+    <mat-label>Choose Images For Garage </mat-label>
+    <br /><br />
+    <input type="file" formControlName="image1" [(ngModel)]="p_data.image1" />
+    <input type="file" formControlName="image2" [(ngModel)]="p_data.image2" />
+    <br />
+    <br />
 
-        <br>
-        <label>Choose the location of your Garage</label>
+    <mat-form-field appearance="fill">
+      <mat-label>Available From</mat-label>
+      <input
+        matInput
+        formControlName="availablE_FROM"
+        [(ngModel)]="p_data.availablE_FROM"
+      />
+      <mat-error
+        *ngIf="updateForm.controls['availablE_FROM'].hasError('required')"
+      >
+        availablE_FROM is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="fill">
+      <mat-label>Available To </mat-label>
+      <input
+        matInput
+        formControlName="availablE_TO"
+        [(ngModel)]="p_data.availablE_TO"
+      />
+      <mat-error
+        *ngIf="updateForm.controls['availablE_TO'].hasError('required')"
+      >
+        availablE_TO is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="fill">
+      <mat-label>Rent Price</mat-label>
+      <input
+        matInput
+        formControlName="renT_PRICE"
+        [(ngModel)]="p_data.renT_PRICE"
+      />
+      <mat-error *ngIf="updateForm.controls['renT_PRICE'].hasError('required')">
+        renT_PRICE is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="fill">
+      <mat-label>Street Name</mat-label>
+      <input matInput formControlName="street" [(ngModel)]="p_data.street" />
+      <mat-error *ngIf="updateForm.controls['street'].hasError('required')">
+        street is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="fill">
+      <mat-label>Building Number </mat-label>
+      <input
+        matInput
+        formControlName="buildinG_NUMBER"
+        [(ngModel)]="p_data.buildinG_NUMBER"
+      />
+      <mat-error
+        *ngIf="updateForm.controls['buildinG_NUMBER'].hasError('required')"
+      >
+        buildinG_NUMBER is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <br />
+  </form>
 
-        <google-map
-          height="600px"
-          width="750px"
-          [center]="center"
-          [zoom]="zoom"
-          (mapClick)="addMarker($event)"
-        >
-          <map-marker
-            *ngFor="let markerPosition of markerPositions"
-            [position]="markerPosition"
-            [options]="markerOptions"
-          ></map-marker>
-        </google-map>
-    
-        <br />
-        <mat-form-field appearance="fill">
-        <input
-            matInput
-            formControlName="image1"
-            [(ngModel)]="p_data.image1"
-        />
-        </mat-form-field>
-        <br />
-        <mat-form-field appearance="fill">
-        <input
-            matInput
-            formControlName="image2"
-            [(ngModel)]="p_data.image2"
-        />
-
-        </mat-form-field>
-        <br>
-
-        <mat-form-field appearance="fill">
-            <input matInput formControlName="availablE_FROM" [(ngModel)]="p_data.availablE_FROM" />
-            <mat-error *ngIf="updateForm.controls['availablE_FROM'].hasError('required')">
-                availablE_FROM is <strong>required</strong>
-            </mat-error>
-            </mat-form-field>
-            <br />
-        <mat-form-field appearance="fill">
-        <input matInput formControlName="availablE_TO" [(ngModel)]="p_data.availablE_TO" />
-        <mat-error *ngIf="updateForm.controls['availablE_TO'].hasError('required')">
-            availablE_TO is <strong>required</strong>
-        </mat-error>
-        </mat-form-field>
-        <br />
-        <mat-form-field appearance="fill">
-            <input matInput formControlName="renT_PRICE" [(ngModel)]="p_data.renT_PRICE" />
-            <mat-error *ngIf="updateForm.controls['renT_PRICE'].hasError('required')">
-                renT_PRICE is <strong>required</strong>
-            </mat-error>
-            </mat-form-field>
-            <br />
-            <mat-form-field appearance="fill">
-        <input matInput formControlName="street" [(ngModel)]="p_data.street" />
-        <mat-error *ngIf="updateForm.controls['street'].hasError('required')">
-            street is <strong>required</strong>
-        </mat-error>
-        </mat-form-field>
-        <br />
-        <mat-form-field appearance="fill">
-            <input matInput formControlName="buildinG_NUMBER" [(ngModel)]="p_data.buildinG_NUMBER" />
-            <mat-error *ngIf="updateForm.controls['buildinG_NUMBER'].hasError('required')">
-                buildinG_NUMBER is <strong>required</strong>
-            </mat-error>
-            </mat-form-field>
-            <br />
-            <mat-form-field appearance="fill">
-                <input matInput formControlName="useR_ID" [(ngModel)]="p_data.useR_ID" />
-                <mat-error *ngIf="updateForm.controls['useR_ID'].hasError('required')">
-                    useR_ID is <strong>required</strong>
-                </mat-error>
-                </mat-form-field>
-                <br />
-    </form>
-
-
-    <mat-dialog-actions align="end">
-        <button class="btn btn-primary" mat-button mat-dialog-close>
-        Cancel
-        </button>
-        <button
-        class="btn btn-primary"
-        mat-button
-        [mat-dialog-close]="true"
-        cdkFocusInitial
-        (click)="saveData()"
-        > 
-        Save
-        </button>
-    </mat-dialog-actions>
-</ng-template> 
-<br>
+  <mat-dialog-actions align="end">
+    <button class="btn btn-primary" mat-button mat-dialog-close>Cancel</button>
+    <button
+      class="btn btn-primary"
+      mat-button
+      [mat-dialog-close]="true"
+      cdkFocusInitial
+      (click)="saveData()"
+    >
+      Save
+    </button>
+  </mat-dialog-actions>
+</ng-template>
+<br />

@@ -14,56 +14,60 @@
               <p-table
                 #dt1
                 [value]="home.Aboutus"
-                [globalFilterFields]="['name', 'email', 'messagee', 'phone','address']"
+                [globalFilterFields]="['name', 'Email', 'messagee', 'Phone','Address']"
+                [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]"
               >
                 <ng-template pTemplate="caption">
                   <div class="p-d-flex">
                     <span class="p-input-icon-left p-ml-auto">
-
-                      <input
+                      <i class="pi pi-search"></i>
+                      <input style="padding-left: 2rem; border-radius: 8px;" pInputText type="text" (input)="dt1.filterGlobal($event.target.value, 'contains')" placeholder="Search keyword" />
+                      <!-- <input
                         #textInput
                         pInputText
                         type="text"
                         (input)="dt1.filterGlobal(textInput.value, 'contains')"
                         placeholder="Search keyword"
-                      />
+                      /> -->
                     </span>
                   </div>
                 </ng-template>
                 <ng-template pTemplate="header">
                   <tr>
                     <th>
-                      Name<p-columnFilter
-                        type="number"
-                        field="name"
+                      Name
+                      <p-columnFilter
+                        type="text"
+                        field="Name"
                         display="menu"
                       ></p-columnFilter>
                     </th>
                     <th>
-                      email<p-columnFilter
-                        type="number"
-                        field="email"
+                      Email<p-columnFilter
+                        type="email"
+                        field="Email"
                         display="menu"
                       ></p-columnFilter>
                     </th>
                     <th>
                       message<p-columnFilter
-                        type="number"
+                        type="text"
                         field="messagee"
                         display="menu"
                       ></p-columnFilter>
                     </th>
                     <th>
-                      phone Number<p-columnFilter
+                      Phone<p-columnFilter
                         type="number"
-                        field="phone"
+                        field="Phone"
                         display="menu"
                       ></p-columnFilter>
                     </th>
-                    <th>address
+                    <th>Address
                       <p-columnFilter
-                        type="number"
-                        field="address"
+                        type="text"
+                        field="Address"
                         display="menu"
                       ></p-columnFilter>
                     </th>
@@ -78,9 +82,15 @@
                     <td>{{ obj.phonE_NUMBER }}</td>
                     <td>{{ obj.address }}</td>
                     <td>
-                      <button class="btn btn-danger" (click)="openUpdateDailog(obj)" > Update</button>
+                      <button class="btn btn-primary" (click)="openUpdateDailog(obj)" > Update</button>
                     </td>
                   </tr>
+                </ng-template>
+                <ng-template pTemplate="paginatorleft">
+                  <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+                </ng-template>
+                <ng-template pTemplate="paginatorright">
+                    <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
                 </ng-template>
               </p-table>
 

@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { FormControl, FormGroup, Validators, NgForm } from '@angular/forms';
 import { GarageService } from './../../Services/garage.service';
 import { GarageModel } from './../../Models/garage.model';
+import { User } from 'src/app/Models/user.model';
 
 @Component({
   selector: 'app-manage-garage',
@@ -13,11 +14,34 @@ import { GarageModel } from './../../Models/garage.model';
   styleUrls: ['./manage-garage.component.css'],
 })
 export class ManageGarageComponent implements OnInit {
+  first = 0;
+  rows = 10;
   markerPositions: google.maps.LatLngLiteral[] = [];
   display: any;
   val: any;
+  UserData: User = {
+    USER_ID: 0,
+    FIRST_NAME: '',
+    LAST_NAME: '',
+    email: '',
+    Password: '',
+    Phonenumber: 0,
+    USER_IMAGE: '',
+    USER_IDENTITY: '',
+    ROLES_ID: 0,
+    Cars: [],
+    Garages: [],
+    Payments: [],
+    Rents: [],
+    Testimonials: [],
+  };
 
-  constructor(public admin: AdminService,private dialog: MatDialog, private garageService: GarageService, public user:UserService){}
+  constructor(
+    public admin: AdminService,
+    private dialog: MatDialog,
+    private garageService: GarageService,
+    public user: UserService
+  ) {}
   @ViewChild('callUpdatDailog') callUpdate!: TemplateRef<any>;
   @ViewChild('ChangeStatusOfGrage') ChangeStatuse!: TemplateRef<any>;
   @ViewChild('callCreteDailog') CreateGarage!: TemplateRef<any>;
@@ -40,6 +64,7 @@ export class ManageGarageComponent implements OnInit {
   ChangeStatus: FormGroup = new FormGroup({
     garagE_ID: new FormControl(),
     status: new FormControl(''),
+    useR_ID: new FormControl(''),
   });
 
   ngOnInit(): void {
@@ -121,18 +146,46 @@ export class ManageGarageComponent implements OnInit {
   //
   p_data_c: any = {};
   openChangeStatDailog(obj: any) {
+    debugger;
     console.log(obj);
     this.p_data_c = {
-    garagE_ID: obj.garagE_ID,
-    status:obj.status,
-    }
+      garagE_ID: obj.garagE_ID,
+      status: obj.status,
+      useR_ID: obj.useR_ID,
+    };
+
+
     this.ChangeStatus.controls['garagE_ID'].setValue(this.p_data_c.garagE_ID);
     this.dialog.open(this.ChangeStatuse);
+        //getting user email
+        this.user.getUserById(obj.useR_ID).subscribe({
+          next: (value) => {
+            debugger;
+            this.UserData = value;
+            if (obj.status == "Accept") {
+              this.admin.SendEmail(this.UserData.email, "Accept");
+            } else {
+              this.admin.SendEmail(this.UserData.email, "Accept");
+            }
+          },
+        });
   }
 
   //Update
   p_data: any = {};
-  openUpdateDailog(obj: { garagE_ID: any; garagE_NAME: any; image1: any; image2: any; availablE_FROM: any; availablE_TO: any; renT_PRICE: any; street: any; buildinG_NUMBER: any; garagE_MODE: any; useR_ID: any; }) {
+  openUpdateDailog(obj: {
+    garagE_ID: any;
+    garagE_NAME: any;
+    image1: any;
+    image2: any;
+    availablE_FROM: any;
+    availablE_TO: any;
+    renT_PRICE: any;
+    street: any;
+    buildinG_NUMBER: any;
+    garagE_MODE: any;
+    useR_ID: any;
+  }) {
     console.log(obj);
     this.p_data = {
       garagE_ID: obj.garagE_ID,
@@ -157,15 +210,15 @@ export class ManageGarageComponent implements OnInit {
     this.user.updateGarage(this.updateForm.value);
     // this.admin.updateGarage();
   }
-  saveDataUsers(){
-    this.admin.ChangeStatusOfGrage(this.ChangeStatus.value)
+  saveDataUsers() {
+    this.admin.ChangeStatusOfGrage(this.ChangeStatus.value);
   }
   // location(){
   //   let user:any= localStorage.getItem('user');
   //   user = JSON.parse(user);
   //   this.user.getLongLetById(user.USER_ID);
   //   console.log( this.user.getLongLetById(user.USER_ID));
-    
+
   // }
   openDeleteDailog(id: number) {
     const dialogRef = this.dialog.open(this.callDelete);
@@ -178,28 +231,45 @@ export class ManageGarageComponent implements OnInit {
     });
   }
 
-  uploadFile1(file:any){
-    if(file.length==0)
-    return;
-    let fileToUpload=<File>file[0];//the first image 
-    const formdata= new FormData();
-    formdata.append('file',fileToUpload,fileToUpload.name);
-    
+  uploadFile1(file: any) {
+    if (file.length == 0) return;
+    let fileToUpload = <File>file[0]; //the first image
+    const formdata = new FormData();
+    formdata.append('file', fileToUpload, fileToUpload.name);
+
     this.admin.uploadAttachmentGarage(formdata);
   }
-  uploadFile2(file:any){
-    if(file.length==0)
-    return;
-    let fileToUpload=<File>file[0];//the first image 
-    const formdata= new FormData();
-    formdata.append('file',fileToUpload,fileToUpload.name);
-    
+  uploadFile2(file: any) {
+    if (file.length == 0) return;
+    let fileToUpload = <File>file[0]; //the first image
+    const formdata = new FormData();
+    formdata.append('file', fileToUpload, fileToUpload.name);
+
     this.admin.uploadAttachmentGarage2(formdata);
   }
 
- //* submit(){
+  //* submit(){
   //  this.admin.createGarage(this.createForm.value);
-  
- //   console.log(this.createForm.value);
-// }
+
+  //   console.log(this.createForm.value);
+  // }
+
+      //for table
+      next() {
+        this.first = this.first + this.rows;
+      }
+      prev() {
+        this.first = this.first - this.rows;
+      }
+      reset() {
+        this.first = 0;
+      }
+      isLastPage(): boolean {
+        return this.admin.garage
+          ? this.first === this.admin.garage.length - this.rows
+          : true;
+      }
+      isFirstPage(): boolean {
+        return this.admin.garage ? this.first === 0 : true;
+      }
 }

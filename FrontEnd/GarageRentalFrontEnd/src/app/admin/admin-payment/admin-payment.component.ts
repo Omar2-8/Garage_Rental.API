@@ -8,7 +8,8 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./admin-payment.component.css']
 })
 export class AdminPaymentComponent implements OnInit {
-
+  first = 0;
+  rows = 10;
   constructor(public admin:AdminService, public dialog: MatDialog) { }
   @ViewChild('callDeleteDailog') callDelete!:TemplateRef<any>
   ngOnInit(): void {
@@ -32,4 +33,22 @@ export class AdminPaymentComponent implements OnInit {
       }
     })
   }
+      //for table
+      next() {
+        this.first = this.first + this.rows;
+      }
+      prev() {
+        this.first = this.first - this.rows;
+      }
+      reset() {
+        this.first = 0;
+      }
+      isLastPage(): boolean {
+        return this.admin.payment
+          ? this.first === this.admin.payment.length - this.rows
+          : true;
+      }
+      isFirstPage(): boolean {
+        return this.admin.payment ? this.first === 0 : true;
+      }
 }
