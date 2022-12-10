@@ -218,8 +218,8 @@ export class UserService {
       );
   }
   updateGarage(body: any) {
-    body.useR_IMAGE = this.display_image;
-    body.useR_IMAGE = this.display_image2;
+    body.image1 = this.display_image;
+    body.image2 = this.display_image2;
     this.spinner.show();
     this.http.put('https://localhost:44391/api/Garage/Update', body).subscribe(
       (resp) => {

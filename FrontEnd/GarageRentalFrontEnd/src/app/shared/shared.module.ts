@@ -14,6 +14,8 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
 import {DropdownModule} from 'primeng/dropdown';
+import {FileUploadModule} from 'primeng/fileupload';
+import {HttpClientModule} from '@angular/common/http';
 @NgModule({
   declarations: [
     NavbarComponent,
@@ -34,6 +36,8 @@ import {DropdownModule} from 'primeng/dropdown';
     MatSelectModule,
     MatRadioModule,
     DropdownModule,
+    FileUploadModule,
+    HttpClientModule
   ],
   exports:[
     NavbarComponent,
@@ -50,6 +54,8 @@ import {DropdownModule} from 'primeng/dropdown';
     MatSelectModule,
     MatRadioModule,
     DropdownModule,
+    FileUploadModule,
+    HttpClientModule
   ]
 })
 export class SharedModule { }

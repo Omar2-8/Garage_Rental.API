@@ -1,6 +1,6 @@
 import { UserService } from 'src/app/Services/user.service';
 import { AdminService } from './../../Services/admin.service';
-
+import { ScrollStrategy, ScrollStrategyOptions } from '@angular/cdk/overlay';
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { FormControl, FormGroup, Validators, NgForm } from '@angular/forms';
@@ -8,6 +8,7 @@ import { GarageService } from './../../Services/garage.service';
 import { GarageModel } from './../../Models/garage.model';
 import { User } from 'src/app/Models/user.model';
 
+import { Overlay } from '@angular/cdk/overlay';
 @Component({
   selector: 'app-manage-garage',
   templateUrl: './manage-garage.component.html',
@@ -36,12 +37,16 @@ export class ManageGarageComponent implements OnInit {
     Testimonials: [],
   };
 
+  scrollStrategy: ScrollStrategy;
+
+
   constructor(
     public admin: AdminService,
     private dialog: MatDialog,
     private garageService: GarageService,
-    public user: UserService
-  ) {}
+    public user: UserService,
+    private readonly sso: ScrollStrategyOptions
+  ) {this.scrollStrategy = this.sso.noop();}
   @ViewChild('callUpdatDailog') callUpdate!: TemplateRef<any>;
   @ViewChild('ChangeStatusOfGrage') ChangeStatuse!: TemplateRef<any>;
   @ViewChild('callCreteDailog') CreateGarage!: TemplateRef<any>;
@@ -159,6 +164,7 @@ export class ManageGarageComponent implements OnInit {
     this.dialog.open(this.ChangeStatuse);
 
   }
+  
 
   //Update
   p_data: any = {};
@@ -238,7 +244,7 @@ export class ManageGarageComponent implements OnInit {
     const formdata = new FormData();
     formdata.append('file', fileToUpload, fileToUpload.name);
 
-    this.admin.uploadAttachmentGarage(formdata);
+    this.user.uploadAttachmentGarage(formdata);
   }
   uploadFile2(file: any) {
     if (file.length == 0) return;
@@ -246,7 +252,7 @@ export class ManageGarageComponent implements OnInit {
     const formdata = new FormData();
     formdata.append('file', fileToUpload, fileToUpload.name);
 
-    this.admin.uploadAttachmentGarage2(formdata);
+    this.user.uploadAttachmentGarage2(formdata);
   }
 
   //* submit(){

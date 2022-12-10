@@ -283,113 +283,95 @@
                     </mat-dialog-content>
                 </ng-template> -->
                 <ng-template #callUpdatDailog>
+                    <div class="m-3 p-3">
                     <form [formGroup]="updateForm">
-                        <mat-form-field appearance="fill">
-                        <input matInput formControlName="" [(ngModel)]="p_data.garagE_NAME" />
+                      
+               
+                      
+                        <mat-form-field  appearance="fill">
+                            <mat-label>garage name</mat-label>  <div > <input   matInput formControlName="" [(ngModel)]="p_data.garagE_NAME" />
                         <mat-error *ngIf="updateForm.controls['garagE_NAME'].hasError('required')">
                             garagE_NAME is <strong>required</strong>
-                        </mat-error>
+                        </mat-error></div>
                         </mat-form-field>
-                        <mat-form-field appearance="fill" style="margin-left:10px ;">
-                        <input matInput formControlName="latitude" [(ngModel)]="p_data.latitude" />
-                        <mat-error *ngIf="updateForm.controls['latitude'].hasError('required')">
-                            latitude is <strong>required</strong>
-                        </mat-error>
-                        </mat-form-field>
+                   
+                  
                         <br />
-                        <mat-form-field appearance="fill">
-                        <input
-                            matInput
-                            formControlName="longitude"
-                            [(ngModel)]="p_data.longitude"
-                        />
-                        <mat-error
-                          *ngIf="updateForm.controls['longitude'].hasError('required')"
-                        >
-                        longitude is <strong>required</strong>
-                        </mat-error>
-                        </mat-form-field>
+                 
 
-                        <br>
-                        <label>Choose the location of your Garage</label>
 
-                        <google-map
-                          height="600px"
-                          width="750px"
-                          [center]="center"
-                          [zoom]="zoom"
-                          (mapClick)="addMarker($event)"
-                        >
-                          <map-marker
-                            *ngFor="let markerPosition of markerPositions"
-                            [position]="markerPosition"
-                            [options]="markerOptions"
-                          ></map-marker>
-                        </google-map>
-                    
-                        <br />
-                        <mat-form-field appearance="fill">
-                        <input
-                            matInput
-                            formControlName="image1"
-                            [(ngModel)]="p_data.image1"
-                        />
-                        </mat-form-field>
-                        <br />
-                        <mat-form-field appearance="fill">
-                        <input
-                            matInput
-                            formControlName="image2"
-                            [(ngModel)]="p_data.image2"
-                        />
-
-                        </mat-form-field>
-                        <br>
-
-                        <mat-form-field appearance="fill">
-                            <input matInput formControlName="availablE_FROM" [(ngModel)]="p_data.availablE_FROM" />
+                     
+                            <br /><div >
+      <mat-form-field appearance="fill" style="margin: 2px;">
+                          <mat-label>Available From</mat-label> <input matInput formControlName="availablE_FROM" [(ngModel)]="p_data.availablE_FROM" />
                             <mat-error *ngIf="updateForm.controls['availablE_FROM'].hasError('required')">
                                 availablE_FROM is <strong>required</strong>
                             </mat-error>
                             </mat-form-field>
-                            <br />
+                  
+
+
                         <mat-form-field appearance="fill">
-                        <input matInput formControlName="availablE_TO" [(ngModel)]="p_data.availablE_TO" />
+                            <mat-label>Available To</mat-label> <input matInput formControlName="availablE_TO" [(ngModel)]="p_data.availablE_TO" />
                         <mat-error *ngIf="updateForm.controls['availablE_TO'].hasError('required')">
                             availablE_TO is <strong>required</strong>
                         </mat-error>
                         </mat-form-field>
-                        <br />
-                        <mat-form-field appearance="fill">
-                            <input matInput formControlName="renT_PRICE" [(ngModel)]="p_data.renT_PRICE" />
-                            <mat-error *ngIf="updateForm.controls['renT_PRICE'].hasError('required')">
-                                renT_PRICE is <strong>required</strong>
-                            </mat-error>
-                            </mat-form-field>
+                      
+                     </div>
                             <br />
+                            <div>
+                                <mat-form-field appearance="fill" style="margin: 2px;">
+                                    <mat-label>Rent Price</mat-label> <input matInput formControlName="renT_PRICE" [(ngModel)]="p_data.renT_PRICE" />
+                                    <mat-error *ngIf="updateForm.controls['renT_PRICE'].hasError('required')">
+                                        RENT PRICE is <strong>Required</strong>
+                                    </mat-error>
+                                    </mat-form-field>
+
+
                             <mat-form-field appearance="fill">
-                        <input matInput formControlName="street" [(ngModel)]="p_data.street" />
+                                <mat-label>Street</mat-label><input matInput formControlName="street" [(ngModel)]="p_data.street" />
                         <mat-error *ngIf="updateForm.controls['street'].hasError('required')">
                             street is <strong>required</strong>
                         </mat-error>
                         </mat-form-field>
-                        <br />
-                        <mat-form-field appearance="fill">
-                            <input matInput formControlName="buildinG_NUMBER" [(ngModel)]="p_data.buildinG_NUMBER" />
+                    </div>
+                        <mat-form-field appearance="fill" style="margin: 2px;">
+                            <mat-label>Building Number</mat-label><input matInput formControlName="buildinG_NUMBER" [(ngModel)]="p_data.buildinG_NUMBER" />
                             <mat-error *ngIf="updateForm.controls['buildinG_NUMBER'].hasError('required')">
                                 buildinG_NUMBER is <strong>required</strong>
                             </mat-error>
                             </mat-form-field>
-                            <br />
+                         
                             <mat-form-field appearance="fill">
-                                <input matInput formControlName="useR_ID" [(ngModel)]="p_data.useR_ID" />
+                                <mat-label>User ID</mat-label>  <input matInput formControlName="useR_ID" [(ngModel)]="p_data.useR_ID" />
                                 <mat-error *ngIf="updateForm.controls['useR_ID'].hasError('required')">
                                     useR_ID is <strong>required</strong>
                                 </mat-error>
                                 </mat-form-field>
                                 <br />
-                    </form>
 
+                                <div >
+                                    <label>Upload 2 images </label>
+                                    <!-- <p-fileUpload name="myfile[]" [customUpload]="true" (change)="uploadFile2(file1.files)"[(ngModel)]="garageModel.image1"></p-fileUpload> -->
+                                    
+                                    <!-- <p-fileUpload name="myfile[]" 
+                                    (change)="uploadFile2(file1.files)"[(ngModel)]="garageModel.image1"></p-fileUpload> -->
+                                    <input class="form-control-lg"
+                                      type="file"
+                                      #file
+                                      (change)="uploadFile1(file.files)"
+                                      [(ngModel)]="garageModel.image1"
+                                    />
+                                    <input class="form-control-lg"
+                                      type="file"
+                                      #file1
+                                      (change)="uploadFile2(file1.files)"
+                                      [(ngModel)]="garageModel.image2"
+                                    />
+                                  </div> 
+                              </form>
+                </div>
 
                     <mat-dialog-actions align="end">
                         <button class="btn btn-primary" mat-button mat-dialog-close>
@@ -419,14 +401,21 @@
     </div>
 </div>
 
-<ng-template #callCreteDailog>
-<div class="m-5 p-5">
+
+<ng-template #callCreteDailog style="padding:0px; margin:0px ;">
+   
+<div class="m-3 p-3">
     <form [formGroup]="garageForm1" (ngSubmit)="saveGarage(garageForm1)">
-      <div class="my-5 p-5">
-        <h1>Choose your Garagee Location to add it to the list</h1>
+        
+      <div class="my-2 p-2">
+      <h4 style="text-align: center;">Choose your Garagee Location to add it to the list</h4>
       </div>
-  
-      <div class="mb-3">
+      <div class="row ">
+        <div class="col-sm-6">
+
+
+            <div class="row mb-3">
+    
         <label>Garage Name</label>
         <input
           class="form-control form-control-lg form-control-solid"
@@ -435,7 +424,45 @@
           required
           formControlName="name"
         />
-      </div>
+    </div>
+        <div class="row mb-3">
+            <label>Price</label>
+            <input
+              class="form-control form-control-lg form-control-solid"
+              type="text"
+              placeholder="Price"
+              required
+              formControlName="price"
+            />
+          </div>
+
+        
+      </div> 
+      <div class="col-sm-6">
+        <div class="row mb-3">
+            
+                <label>Street</label>
+                <input
+                  class="form-control form-control-lg form-control-solid"
+                  type="text"
+                  placeholder="Street"
+                  required
+                  formControlName="street"
+                />
+              </div>
+          
+              <div class="row mb-3">
+                <label>building Number</label>
+                <input
+                  class="form-control form-control-lg form-control-solid"
+                  type="text"
+                  placeholder="building Number"
+                  required
+                  formControlName="building"
+                />
+              </div>
+    
+    </div>  </div>
   
       <!-- <div class="mb-3">
         <label>Avalable from</label>
@@ -463,59 +490,34 @@
         <p-slider [(ngModel)]="rangeValues" [range]="true"></p-slider>
       </div> -->
   
-      <div class="mb-3">
-        <label>Price</label>
-        <input
-          class="form-control form-control-lg form-control-solid"
-          type="text"
-          placeholder="Price"
-          required
-          formControlName="price"
-        />
-      </div>
+     
   
-      <div class="mb-3">
-        <label>Street</label>
-        <input
-          class="form-control form-control-lg form-control-solid"
-          type="text"
-          placeholder="Street"
-          required
-          formControlName="street"
-        />
-      </div>
-  
-      <div class="mb-3">
-        <label>building Number</label>
-        <input
-          class="form-control form-control-lg form-control-solid"
-          type="text"
-          placeholder="building Number"
-          required
-          formControlName="building"
-        />
-      </div>
+      
   
       <div class="mb-3">
         <label>Upload 2 images </label>
-        <input
+        <!-- <p-fileUpload name="myfile[]" [customUpload]="true" (change)="uploadFile2(file1.files)"[(ngModel)]="garageModel.image1"></p-fileUpload> -->
+        
+        <!-- <p-fileUpload name="myfile[]" 
+        (change)="uploadFile2(file1.files)"[(ngModel)]="garageModel.image1"></p-fileUpload> -->
+        <input class="form-control-solid"
           type="file"
           #file
           (change)="uploadFile1(file.files)"
           [(ngModel)]="garageModel.image1"
         />
-        <input
+        <input class="form-control-lg"
           type="file"
           #file1
           (change)="uploadFile2(file1.files)"
-          [(ngModel)]="garageModel.image1"
+          [(ngModel)]="garageModel.image2"
         />
       </div> 
   
       <label>Choose the location of your Garage</label>
   
       <google-map
-        height="600px"
+        height="500px"
         width="750px"
         [center]="center"
         [zoom]="zoom"
