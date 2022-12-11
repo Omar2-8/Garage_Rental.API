@@ -240,12 +240,12 @@ export class ManageGarageComponent implements OnInit {
   }
 
   uploadFile1(file: any) {
-    debugger
+    debugger;
     if (file.length == 0) return;
     let fileToUpload = <File>file[0]; //the first image
     const formdata = new FormData();
     formdata.append('file', fileToUpload, fileToUpload.name);
-    this.garageModel.image1=fileToUpload.name;
+    this.garageModel.image1 = fileToUpload.name;
     this.user.uploadAttachmentGarage(formdata);
   }
   uploadFile2(file: any) {
@@ -253,7 +253,7 @@ export class ManageGarageComponent implements OnInit {
     let fileToUpload = <File>file[0]; //the first image
     const formdata = new FormData();
     formdata.append('file', fileToUpload, fileToUpload.name);
-    this.garageModel.image2=fileToUpload.name;
+    this.garageModel.image2 = fileToUpload.name;
     this.user.uploadAttachmentGarage2(formdata);
   }
 
