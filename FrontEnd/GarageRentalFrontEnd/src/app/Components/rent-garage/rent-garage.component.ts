@@ -71,7 +71,7 @@ export class RentGarageComponent implements OnInit {
     this.userService.getAllVisa();
   }
   Visa(num:number) {
-    
+    debugger;
     this.userService.getAllVisa();
   }
   Car() {
