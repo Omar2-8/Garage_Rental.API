@@ -39,14 +39,15 @@ export class ManageGarageComponent implements OnInit {
 
   scrollStrategy: ScrollStrategy;
 
-
   constructor(
     public admin: AdminService,
     private dialog: MatDialog,
     private garageService: GarageService,
     public user: UserService,
     private readonly sso: ScrollStrategyOptions
-  ) {this.scrollStrategy = this.sso.noop();}
+  ) {
+    this.scrollStrategy = this.sso.noop();
+  }
   @ViewChild('callUpdatDailog') callUpdate!: TemplateRef<any>;
   @ViewChild('ChangeStatusOfGrage') ChangeStatuse!: TemplateRef<any>;
   @ViewChild('callCreteDailog') CreateGarage!: TemplateRef<any>;
@@ -159,12 +160,12 @@ export class ManageGarageComponent implements OnInit {
       useR_ID: obj.useR_ID,
     };
 
-
     this.ChangeStatus.controls['garagE_ID'].setValue(this.p_data_c.garagE_ID);
     this.dialog.open(this.ChangeStatuse);
-
   }
-  
+  onBasicUploadAuto(event: any) {
+    //
+  }
 
   //Update
   p_data: any = {};
@@ -206,18 +207,18 @@ export class ManageGarageComponent implements OnInit {
     // this.admin.updateGarage();
   }
   saveDataUsers() {
-            //getting user email
-            this.user.getUserById(this.p_data_c.useR_ID).subscribe({
-              next: (value) => {
-                debugger;
-                this.UserData = value;
-                if (this.p_data_c.status == "Accept") {
-                  this.admin.SendEmail(this.UserData.email, "Accept");
-                } else {
-                  this.admin.SendEmail(this.UserData.email, "Reject");
-                }
-              },
-            });
+    //getting user email
+    this.user.getUserById(this.p_data_c.useR_ID).subscribe({
+      next: (value) => {
+        debugger;
+        this.UserData = value;
+        if (this.p_data_c.status == 'Accept') {
+          this.admin.SendEmail(this.UserData.email, 'Accept');
+        } else {
+          this.admin.SendEmail(this.UserData.email, 'Reject');
+        }
+      },
+    });
     this.admin.ChangeStatusOfGrage(this.ChangeStatus.value);
   }
   // location(){
@@ -261,22 +262,22 @@ export class ManageGarageComponent implements OnInit {
   //   console.log(this.createForm.value);
   // }
 
-      //for table
-      next() {
-        this.first = this.first + this.rows;
-      }
-      prev() {
-        this.first = this.first - this.rows;
-      }
-      reset() {
-        this.first = 0;
-      }
-      isLastPage(): boolean {
-        return this.admin.garage
-          ? this.first === this.admin.garage.length - this.rows
-          : true;
-      }
-      isFirstPage(): boolean {
-        return this.admin.garage ? this.first === 0 : true;
-      }
+  //for table
+  next() {
+    this.first = this.first + this.rows;
+  }
+  prev() {
+    this.first = this.first - this.rows;
+  }
+  reset() {
+    this.first = 0;
+  }
+  isLastPage(): boolean {
+    return this.admin.garage
+      ? this.first === this.admin.garage.length - this.rows
+      : true;
+  }
+  isFirstPage(): boolean {
+    return this.admin.garage ? this.first === 0 : true;
+  }
 }
