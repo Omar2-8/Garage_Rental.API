@@ -71,7 +71,8 @@ export class RentGarageComponent implements OnInit {
     this.userService.getAllVisa();
   }
   Visa(num:number) {
-    this.userService.getVisaId(num);
+    
+    this.userService.getAllVisa();
   }
   Car() {
     this.userService.getCarId(this.userService.car2.caR_ID);
@@ -84,8 +85,8 @@ export class RentGarageComponent implements OnInit {
     
     if(this.userService.garage.garagE_MODE !='unavailable'){
       if(this.userService.garage.availablE_FROM <=this.createForm.value.starT_TIME && this.userService.garage.availablE_TO >=this.createForm.value.enD_TIME ){
-      if( this.userService.car2.caR_ID!=""){
-        if( this.ChangeAmount.value.visA_NUMBER!=""){
+      
+        if( this.visA_NUMBER.visA_AMOUNT!=0){
         if(this.userService.visa.visA_AMOUNT>this.userService.garage.renT_PRICE*(this.createForm.value.enD_TIME-this.createForm.value.starT_TIME)){
           this.ChangeAmount.value.visA_AMOUNT=this.userService.visa.visA_AMOUNT-this.userService.garage.renT_PRICE*(this.createForm.value.enD_TIME-this.createForm.value.starT_TIME);
           
@@ -97,9 +98,7 @@ export class RentGarageComponent implements OnInit {
   }
   else
   this.toastr.error('Please Add Visa For Rent ');
-}
-else
-this.toastr.error('Please Select Your Car To Rent');
+
   }
   else
   this.toastr.error('The time of rent garage is not available');
