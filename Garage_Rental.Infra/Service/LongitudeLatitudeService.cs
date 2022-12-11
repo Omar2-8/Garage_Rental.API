@@ -37,5 +37,10 @@ namespace Garage_Rental.Infra.Service
             return this._LongitudeLatitudeRepsitory.GetByIdList(id);
 
         }
+
+        public List<Payment> GetByIdListPay(int id)
+        {
+            return this._LongitudeLatitudeRepsitory.GetByIdListPay(id);
+        }
     }
 }

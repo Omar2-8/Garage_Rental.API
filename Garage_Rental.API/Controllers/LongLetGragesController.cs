@@ -41,5 +41,11 @@ namespace Garage_Rental.API.Controllers
             return this._LongitudeLatitudeService.GetByIdList(id);
 
         }
+        [HttpGet]
+        [Route("{id}")]
+        public List<Payment> GetByIdListPay(int id)
+        {
+            return this._LongitudeLatitudeService.GetByIdListPay(id);
+        }
     }
 }

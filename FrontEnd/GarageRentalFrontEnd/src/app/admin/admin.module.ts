@@ -20,6 +20,7 @@ import { AdminProfileComponent } from './admin-profile/admin-profile.component';
 import { ReportsMonthlyComponent } from './reports-monthly/reports-monthly.component';
 import { ReportsAnnualComponent } from './reports-annual/reports-annual.component';
 import { ButtonModule } from 'primeng/button';
+import { AllRentsComponent } from './all-rents/all-rents.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { ButtonModule } from 'primeng/button';
     AdminProfileComponent,
     ReportsMonthlyComponent,
     ReportsAnnualComponent,
+    AllRentsComponent,
   ],
   imports: [
     CommonModule,

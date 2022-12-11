@@ -18,6 +18,9 @@ export class UserGarageComponent implements OnInit {
   markerPositions: google.maps.LatLngLiteral[] = [];
   display: any;
   val: any;
+
+  first = 0;
+  rows = 10;
   constructor(public user:UserService,private dialog: MatDialog,private router:Router,private garageService: GarageService,public admin: AdminService) { }
   @ViewChild('callDeleteDailog') callDelete!: TemplateRef<any>;
   @ViewChild('callCreteDailog') CreateGarage!: TemplateRef<any>;
@@ -178,4 +181,23 @@ uploadFile2(file:any){
   this.admin.uploadAttachmentGarage2(formdata);
 }
 
+      //for table
+      next() {
+        this.first = this.first + this.rows;
+      }
+      prev() {
+        this.first = this.first - this.rows;
+      }
+      reset() {
+        this.first = 0;
+      }
+      isLastPage(): boolean {
+        return this.user.garage
+          ? this.first === this.user.garage.length - this.rows
+          : true;
+      }
+      isFirstPage(): boolean {
+        return this.user.garage ? this.first === 0 : true;
+      }
 }
+

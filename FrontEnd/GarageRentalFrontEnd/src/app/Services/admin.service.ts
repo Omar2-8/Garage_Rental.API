@@ -135,6 +135,15 @@ export class AdminService {
       this.toster.error('something Wrong')
     })
   }
+  deleteRent(id:number)
+  {
+    this.spinner.show();
+    this.http.delete('https://localhost:44391/api/Rent/Delete/'+id).subscribe((resp)=>{
+        this.toster.success('Deleted Successfully !!');
+    },err=>{
+      this.toster.error(err.message, err.status);
+    })
+  }
   //--------- End Rent
   
 
