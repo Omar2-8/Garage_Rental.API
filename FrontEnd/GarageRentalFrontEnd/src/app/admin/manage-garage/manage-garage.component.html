@@ -470,20 +470,37 @@
 
                 <!-- <p-fileUpload name="myfile[]"
         (change)="uploadFile2(file1.files)"[(ngModel)]="garageModel.image1"></p-fileUpload> -->
-                <input class="form-control-solid" type="file" #file (change)="uploadFile1(file.files)"
-                    [(ngModel)]="garageModel.image1" />
-                <input class="form-control-lg" type="file" #file1 (change)="uploadFile2(file1.files)"
-                    [(ngModel)]="garageModel.image2" />
-            </div>
-
-            <label>Choose the location of your Garage</label>
-
-            <google-map height="500px" width="750px" [center]="center" [zoom]="zoom" (mapClick)="addMarker($event)">
-                <map-marker *ngFor="let markerPosition of markerPositions" [position]="markerPosition"
-                    [options]="markerOptions"></map-marker>
-            </google-map>
-
-            <button type="submit" class="btn btn-primary btn-lg">Add Garage</button>
-        </form>
-    </div>
+        <input class="form-control-solid"
+          type="file"
+          #file
+          (change)="uploadFile1(file.files)"
+          
+        />
+        <input class="form-control-lg"
+          type="file"
+          #file1
+          (change)="uploadFile2(file1.files)"
+          
+        />
+      </div> 
+  
+      <label>Choose the location of your Garage</label>
+  
+      <google-map
+        height="500px"
+        width="750px"
+        [center]="center"
+        [zoom]="zoom"
+        (mapClick)="addMarker($event)"
+      >
+        <map-marker
+          *ngFor="let markerPosition of markerPositions"
+          [position]="markerPosition"
+          [options]="markerOptions"
+        ></map-marker>
+      </google-map>
+  
+      <button type="submit" class="btn btn-primary btn-lg" >Add Garage</button>
+    </form>
+</div>
 </ng-template>

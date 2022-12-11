@@ -1,8 +1,10 @@
-﻿using Garage_Rental.Core.DTO;
+﻿using Garage_Rental.Core.Data;
+using Garage_Rental.Core.DTO;
 using Garage_Rental.Core.Service;
 using Garage_Rental.Infra.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace Garage_Rental.API.Controllers
 {
@@ -21,6 +23,13 @@ namespace Garage_Rental.API.Controllers
         {
             
             this._GeneralService.ChangeAmount(g);
+        }
+
+        [HttpGet]
+        [Route("{id}")]
+        public List<Car> GetAllCarById(int id)
+        {
+            return this._GeneralService.GetAllCarById(id);
         }
     }
 }

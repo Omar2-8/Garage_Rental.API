@@ -10,5 +10,6 @@ namespace Garage_Rental.Core.Service
     public interface IGeneralService
     {
        public void ChangeAmount(ChangeAmount g);
+        List<Car> GetAllCarById(int id);
     }
 }
