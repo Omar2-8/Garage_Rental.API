@@ -14,7 +14,11 @@ import { Overlay } from '@angular/cdk/overlay';
   templateUrl: './manage-garage.component.html',
   styleUrls: ['./manage-garage.component.css'],
 })
+
 export class ManageGarageComponent implements OnInit {
+  Mode: any[]=["available","unavailable"];
+
+
   first = 0;
   rows = 10;
   markerPositions: google.maps.LatLngLiteral[] = [];
@@ -57,8 +61,8 @@ export class ManageGarageComponent implements OnInit {
     garagE_NAME: new FormControl(''),
     latitude: new FormControl(''),
     longitude: new FormControl(''),
-    image1: new FormControl(''),
-    image2: new FormControl(''),
+    image1: new FormControl(),
+    image2: new FormControl(),
     availablE_FROM: new FormControl('', Validators.required),
     availablE_TO: new FormControl('', Validators.required),
     renT_PRICE: new FormControl('', Validators.required),
@@ -86,8 +90,8 @@ export class ManageGarageComponent implements OnInit {
     garagE_NAME: '',
     latitude: '',
     longitude: '',
-    image1: 'test',
-    image2: 'test',
+    image1: '',
+    image2: '',
     availablE_FROM: 0,
     availablE_TO: 0,
     renT_PRICE: 0,
@@ -169,19 +173,7 @@ export class ManageGarageComponent implements OnInit {
 
   //Update
   p_data: any = {};
-  openUpdateDailog(obj: {
-    garagE_ID: any;
-    garagE_NAME: any;
-    image1: any;
-    image2: any;
-    availablE_FROM: any;
-    availablE_TO: any;
-    renT_PRICE: any;
-    street: any;
-    buildinG_NUMBER: any;
-    garagE_MODE: any;
-    useR_ID: any;
-  }) {
+  openUpdateDailog(obj:any) {
     console.log(obj);
     this.p_data = {
       garagE_ID: obj.garagE_ID,
@@ -203,6 +195,7 @@ export class ManageGarageComponent implements OnInit {
   }
 
   saveData() {
+    debugger
     this.user.updateGarage(this.updateForm.value);
     // this.admin.updateGarage();
   }
@@ -240,12 +233,12 @@ export class ManageGarageComponent implements OnInit {
   }
 
   uploadFile1(file: any) {
-    debugger
+    debugger;
     if (file.length == 0) return;
     let fileToUpload = <File>file[0]; //the first image
     const formdata = new FormData();
     formdata.append('file', fileToUpload, fileToUpload.name);
-    this.garageModel.image1=fileToUpload.name;
+    this.garageModel.image1 = fileToUpload.name;
     this.user.uploadAttachmentGarage(formdata);
   }
   uploadFile2(file: any) {
@@ -253,7 +246,7 @@ export class ManageGarageComponent implements OnInit {
     let fileToUpload = <File>file[0]; //the first image
     const formdata = new FormData();
     formdata.append('file', fileToUpload, fileToUpload.name);
-    this.garageModel.image2=fileToUpload.name;
+    this.garageModel.image2 = fileToUpload.name;
     this.user.uploadAttachmentGarage2(formdata);
   }
 

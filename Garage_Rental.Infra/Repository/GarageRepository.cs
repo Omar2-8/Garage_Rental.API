@@ -71,7 +71,9 @@ namespace Garage_Rental.Infra.Repository
             p.Add("Name", t.GARAGE_NAME, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("G_Latitude", t.Latitude, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("G_Longitude", t.Longitude, dbType: DbType.String, direction: ParameterDirection.Input);
+            
             p.Add("Img1", t.Image1, dbType: DbType.String, direction: ParameterDirection.Input);
+            
             p.Add("Img2", t.Image2, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("Available_Start", t.AVAILABLE_FROM, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("Available_End", t.AVAILABLE_TO, dbType: DbType.Int32, direction: ParameterDirection.Input);

@@ -31,5 +31,17 @@ namespace Garage_Rental.API.Controllers
         {
             return this._GeneralService.GetAllCarById(id);
         }
+
+        [HttpGet]
+        [Route("{id}")]
+        public List<Rent> GetAllRentById(int id)
+        {
+            return _GeneralService.GetAllRentById(id);
+        }
+        [HttpPut]
+        public void ChangeGarageMode(ChangeGarageMode g)
+        {
+            this._GeneralService.ChangeGarageMode(g);
+        }
     }
 }

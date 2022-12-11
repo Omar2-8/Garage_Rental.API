@@ -12,20 +12,20 @@ import { User } from '../Models/user.model';
 export class UserService {
   baseApiUrl: string = environment.baseApiUrl;
 
-  message: string = "Welcome :) ";
+  message: string = 'Welcome :) ';
   display_image: any;
   display_image1: any;
   display_image2: any;
-  car :any[]=[];
-  car2 :any={};
-  testimonial :any[]=[];
-  visa :any={};
-  visa1 :any[]=[];
-  payment :any[]=[];
-  rent :any={};
-  user :any[]=[];
-  userName :any={};
-  userid :any={};
+  car: any[] = [];
+  car2: any = {};
+  testimonial: any[] = [];
+  visa: any = {};
+  visa1: any[] = [];
+  payment: any[] = [];
+  rent: any = {};
+  user: any[] = [];
+  userName: any = {};
+  userid: any = {};
 
   Longletgrage: any[] = [];
   garage: any = {}; //عرفنا اريي عشان رح ترجعلي الداتا جيسون اوبجكت فبحتاج ارريي لحتى اخزن فيها الداتا الي جبتها من الإي بي اّي
@@ -218,8 +218,13 @@ export class UserService {
       );
   }
   updateGarage(body: any) {
-    body.image1 = this.display_image;
-    body.image2 = this.display_image2;
+debugger
+    if(this.display_image !=null ) {  
+      body.image1 = this.display_image;
+      }
+      if(this.display_image2 != null) {
+        body.image2 = this.display_image2;}
+    
     this.spinner.show();
     this.http.put('https://localhost:44391/api/Garage/Update', body).subscribe(
       (resp) => {
@@ -235,7 +240,7 @@ export class UserService {
 
   uploadAttachmentGarage(file: FormData) {
     this.http
-      .post('https://localhost:44391/api/Home/UploadIMage/', file)
+      .post('https://localhost:44391/api/Garage/UploadIMage/', file)
       .subscribe(
         (resp: any) => {
           this.display_image = resp.image1;
@@ -248,7 +253,7 @@ export class UserService {
   }
   uploadAttachmentGarage2(file: FormData) {
     this.http
-      .post('https://localhost:44391/api/Home/UploadIMage/', file)
+      .post('https://localhost:44391/api/Garage/UploadIMage/', file)
       .subscribe(
         (resp: any) => {
           this.display_image2 = resp.image2;
@@ -259,114 +264,123 @@ export class UserService {
         }
       );
   }
+  ChangeModeOfGrage(body:any) {this.http.put(this.baseApiUrl+'General/ChangeGarageMode',body).subscribe((resp)=>{
+    this.toster.success('Change Mode Of Garage Successfully !!');
+  },err=>{
+    this.toster.error(err.message, err.status);
+  })}
   //-------End Garage
 
   //-------Rent
   createRent(body: any) {
-    debugger
-    
+    debugger;
+
     this.spinner.show();
-   
-    
-      
-    this.http.post('https://localhost:44391/api/Rent/Create', body).subscribe((resp) => {
-      console.log(resp);
-      this.spinner.hide();
-      this.toster.success('ٌRent completed successfully!!');
-    }, err => {
-      this.spinner.hide();
-      this.toster.error(err.message, err.status);
-    }
-    )
+
+    this.http.post('https://localhost:44391/api/Rent/Create', body).subscribe(
+      (resp) => {
+        console.log(resp);
+        this.spinner.hide();
+        this.toster.success('ٌRent completed successfully!!');
+      },
+      (err) => {
+        this.spinner.hide();
+        this.toster.error(err.message, err.status);
+      }
+    );
   }
-  
+
   getRentId(id: number) {
-    //show Spinner 
-    //Hits Api 
+    //show Spinner
+    //Hits Api
     //Hide Spinner
-    //Resp=> Toastr 
-  
-  
-    this.http.get('https://localhost:44391/api/Rent/GetById/' + id).subscribe((resp: any) => {
-      this.rent = resp;
-      console.log(this.user);
-      
-      this.toster.success('Data Retrieved!');
-  
-    }, err => {
-      
-      this.toster.error(err.message, err.status);
-    })
-  
+    //Resp=> Toastr
+
+    this.http.get('https://localhost:44391/api/General/GetAllRentById/' + id).subscribe(
+      (resp: any) => {
+        this.rent = resp;
+        console.log(this.user);
+
+        this.toster.success('Data Retrieved!');
+      },
+      (err) => {
+        this.toster.error(err.message, err.status);
+      }
+    );
   }
- 
+
   
-  deleteRent(id:number)
-  {
+  deleteRent(id: number) {
     this.spinner.show();
-    this.http.delete('https://localhost:44391/api/Rent/Delete/'+id).subscribe((resp)=>{
-      
+
+    this.http.delete('https://localhost:44391/api/Rent/Delete/' + id).subscribe(
+      (resp) => {
         this.toster.success('Deleted Successfully !!');
-    },err=>{
-      
-     this.toster.error(err.message, err.status);
-    })
+      },
+      (err) => {
+        this.toster.error(err.message, err.status);
+      }
+    );
   }
 
   //-------End Rent
 
   //-------Visa
-  getAllVisa(){
-    this.http.get('https://localhost:44391/api/Visa/GetAll').subscribe((Resp:any)=>{//السبسكرايب بتتكون من حالتين اول وحدة ترو والثانية اذا كانت ايرور ريسبونس
-      this.visa=Resp;   
-      console.log(this.visa);   
-      this.toster.success('The visa has been selected!')
-    },err=>{
-      this.toster.error('something Wrong')
-    })
+  getAllVisa() {
+    this.http.get('https://localhost:44391/api/Visa/GetAll').subscribe(
+      (Resp: any) => {
+        //السبسكرايب بتتكون من حالتين اول وحدة ترو والثانية اذا كانت ايرور ريسبونس
+        this.visa = Resp;
+        console.log(this.visa);
+        this.toster.success('The visa has been selected!');
+      },
+      (err) => {
+        this.toster.error('something Wrong');
+      }
+    );
   }
-
 
   getVisaId(id: number) {
-    //show Spinner 
-    //Hits Api 
+    //show Spinner
+    //Hits Api
     //Hide Spinner
-    //Resp=> Toastr 
-  
- 
-    this.http.get('https://localhost:44391/api/Visa/GetById/' + id).subscribe((resp: any) => {
-      this.visa1 = resp;
-      console.log(this.visa);
-      
-      this.toster.success('The visa has been selected!');
-  
-    }, err => {
-      
-      this.toster.error(err.message, err.status);
-    })
-  
-  }
- 
-  
-  deleteVisa(id:number)
-  {
-    this.spinner.show();
-   
-    this.http.delete('https://localhost:44391/api/Visa/Delete/'+id).subscribe((resp)=>{
-      
-        this.toster.success('Deleted Successfully !!');
-    },err=>{
-      
-     this.toster.error(err.message, err.status);
-    })
+    //Resp=> Toastr
+
+    this.http.get('https://localhost:44391/api/Visa/GetById/' + id).subscribe(
+      (resp: any) => {
+        this.visa1 = resp;
+        console.log(this.visa);
+
+        this.toster.success('The visa has been selected!');
+      },
+      (err) => {
+        this.toster.error(err.message, err.status);
+      }
+    );
   }
 
-  ChangeAmountVisa(body:any) {this.http.put(this.baseApiUrl+'General/ChangeAmount',body).subscribe((resp)=>{
-    this.toster.success('The deduction has been made from the visa !!');
-  },err=>{
-    this.toster.error(err.message, err.status);
-  })
-  
+  deleteVisa(id: number) {
+    this.spinner.show();
+
+    this.http.delete('https://localhost:44391/api/Visa/Delete/' + id).subscribe(
+      (resp) => {
+        this.toster.success('Deleted Successfully !!');
+      },
+      (err) => {
+        this.toster.error(err.message, err.status);
+      }
+    );
+  }
+
+  ChangeAmountVisa(body: any) {
+    this.http.put(this.baseApiUrl + 'General/ChangeAmount', body).subscribe(
+      (resp) => {
+        this.toster.success('The deduction has been made from the visa !!');
+      },
+      (err) => {
+        this.toster.error(err.message, err.status);
+      }
+    );
   }
 
   //-------End Visa
@@ -395,6 +409,24 @@ export class UserService {
     //Resp=> Toastr
 
     this.http.get('https://localhost:44391/api/Car/GetById/' + id).subscribe(
+      (resp: any) => {
+        this.car = resp;
+        console.log(this.car);
+
+        this.toster.success('Data Retrieved!');
+      },
+      (err) => {
+        this.toster.error(err.message, err.status);
+      }
+    );
+  }
+  getListCarId(id: number) {
+    //show Spinner
+    //Hits Api
+    //Hide Spinner
+    //Resp=> Toastr
+
+    this.http.get('https://localhost:44391/api/General/GetAllCarById/' + id).subscribe(
       (resp: any) => {
         this.car = resp;
         console.log(this.car);
@@ -445,7 +477,7 @@ export class UserService {
     //Resp=> Toastr
 
     this.http
-      .get('https://localhost:44391/api/Payment/GetById/' + id)
+      .get('https://localhost:44391/api/LongLetGrages/GetByIdListPay/' + id)
       .subscribe(
         (resp: any) => {
           this.payment = resp;
