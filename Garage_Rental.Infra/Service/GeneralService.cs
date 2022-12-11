@@ -1,4 +1,5 @@
-﻿using Garage_Rental.Core.DTO;
+﻿using Garage_Rental.Core.Data;
+using Garage_Rental.Core.DTO;
 using Garage_Rental.Core.Repository;
 using Garage_Rental.Core.Service;
 using System;
@@ -19,6 +20,11 @@ namespace Garage_Rental.Infra.Service
         public void ChangeAmount(ChangeAmount g)
         {
             this._GeneralRepository.ChangeAmount(g);
+        }
+
+        public List<Car> GetAllCarById(int id)
+        {
+            return _GeneralRepository.GetAllCarById(id);
         }
     }
 }
