@@ -148,6 +148,7 @@ export class RentGarageComponent implements OnInit {
           
           this.userService.ChangeAmountVisa(this.ChangeAmount.value)
           this.userService.createRent(this.createForm.value);}
+          
           else{
             this.toastr.error('Amount of visa not enoug ');
           }

@@ -21,23 +21,20 @@ namespace Garage_Rental.Infra.Repository
 
         public bool Create(Payment t)
         {
-            try
-            {
-                var p = new DynamicParameters();
-                p.Add("Pay_Amount", t.PAY_AMOUNT, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-                p.Add("Garagee_Name", t.GARAGE_NAME, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-                
-              
-                p.Add("User_Id", t.USER_ID, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-                p.Add("Visa_Id", t.VISA_ID, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-                p.Add("Rent_Id", t.RENT_ID, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+           
+
+            var p = new DynamicParameters();
+                p.Add("P_Amount", t.PAY_AMOUNT, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+                p.Add("G_NAME", t.GARAGE_NAME, dbType: DbType.String, direction: ParameterDirection.Input);
+
+                p.Add("c_RATE", t.COMMISSION_RATE, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+                p.Add("U_ID", t.USER_ID, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+                p.Add("V_ID", t.VISA_ID, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+                p.Add("R_ID", t.RENT_ID, dbType: DbType.Decimal, direction: ParameterDirection.Input);
                 p.Add("result", dbType: DbType.Int32, direction: ParameterDirection.Output);
-                var result = dBContext.Connection.ExecuteAsync("Payment_Package.CreatePayment", p, commandType: CommandType.StoredProcedure);
+                var result = dBContext.Connection.ExecuteAsync("Payment_Package.CreatePAYMENT", p, commandType: CommandType.StoredProcedure);
                 return true;
-            }
-            catch (Exception ex) {
-                throw ex;
-            }
+           
 
         }
                 
