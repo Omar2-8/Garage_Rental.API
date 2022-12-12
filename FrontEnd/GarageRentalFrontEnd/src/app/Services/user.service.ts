@@ -22,7 +22,7 @@ export class UserService {
   visa: any[] = [];
   visa1: any[] = [];
   payment: any[] = [];
-  rent: any = {};
+  rent: any[] = [];
   user: any[] = [];
   userName: any = {};
   userid: any = {};
@@ -493,7 +493,7 @@ debugger
    createpay(body: any) {
     this.spinner.show();
 
-    this.http.post('https://localhost:44391/api/Car/Create', body).subscribe(
+    this.http.post('https://localhost:44391/api/Payment/Create', body).subscribe(
       (resp) => {
         console.log(resp);
         this.spinner.hide();

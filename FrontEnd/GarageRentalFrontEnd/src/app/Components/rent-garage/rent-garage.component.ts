@@ -1,3 +1,4 @@
+import { AdminService } from 'src/app/Services/admin.service';
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -31,7 +32,7 @@ export class RentGarageComponent implements OnInit {
     visA_ID: 0,
     visA_AMOUNT: 0,
   };
-  constructor(public userService:UserService,public dialog: MatDialog,private route: ActivatedRoute,private toastr: ToastrService) {
+  constructor(public userService:UserService,public adminService:AdminService,public dialog: MatDialog,private route: ActivatedRoute,private toastr: ToastrService) {
    this.garageid =this.route.snapshot.params['id'];
    }
 
@@ -42,6 +43,18 @@ export class RentGarageComponent implements OnInit {
     enD_TIME: new FormControl('', Validators.required),
     garagE_ID: new FormControl('', Validators.required),
     useR_ID: new FormControl('', Validators.required),
+    
+    
+  });
+  createPaym: FormGroup = new FormGroup({
+
+    paY_AMOUNT: new FormControl('', Validators.required),
+    garagE_NAME: new FormControl('', Validators.required),
+    paY_DATE: new FormControl('', Validators.required),
+    commissioN_RATE: new FormControl('', Validators.required),
+    useR_ID: new FormControl('', Validators.required),
+    visA_ID: new FormControl('', Validators.required),
+    renT_ID: new FormControl('', Validators.required),
     
     
   });
@@ -74,11 +87,18 @@ export class RentGarageComponent implements OnInit {
     this.userid=this.user.USER_ID;
   }
   
-
+  temp_r:any;
   openCreateDailog() {
+    let uid:number=parseInt(this.userid);
+    let gid:number=parseInt(this.garageid);
     this.dialog.open(this.callCreateRent);
-    
+    this.adminService.getAllRents();
+    this.temp_r= this.adminService.rent.filter(x=> x.useR_ID==uid && x.garagE_ID==gid);
   }
+
+
+
+
   openVisaDailog() {
     this.dialog.open(this.callVisaRent);
     this.userService.getAllVisa();
@@ -133,7 +153,7 @@ export class RentGarageComponent implements OnInit {
 }
 
   saveData() {
-
+   
     debugger
     this.createForm.value.garagE_ID=parseInt(this.garageid)
      this.createForm.value.useR_ID=parseInt(this.userid)
@@ -145,10 +165,30 @@ export class RentGarageComponent implements OnInit {
         if(this.visa_t[0].visA_AMOUNT>this.userService.garage.renT_PRICE*(this.createForm.value.enD_TIME-this.createForm.value.starT_TIME)){
           this.ChangeAmount.value.visA_NUMBER=this.visa_t[0].visA_NUMBER;
           this.ChangeAmount.value.visA_AMOUNT=this.visa_t[0].visA_AMOUNT-this.userService.garage.renT_PRICE*(this.createForm.value.enD_TIME-this.createForm.value.starT_TIME);
+       
           
-          this.userService.ChangeAmountVisa(this.ChangeAmount.value)
-          this.userService.createRent(this.createForm.value);}
-          
+          {//payment create
+            
+            
+        
+            
+            
+
+
+          this.createPaym.value.paY_AMOUNT=this.visa_t[0].visA_AMOUNT-this.userService.garage.renT_PRICE*(this.createForm.value.enD_TIME-this.createForm.value.starT_TIME);
+          this.createPaym.value.garagE_NAME=this.userService.garage.garagE_NAME; 
+          this.createPaym.value.paY_DATE=this.temp_r[0].renT_DATE
+          this.createPaym.value.commissioN_RATE=20;
+          this.createPaym.value.useR_ID=parseInt(this.userid)
+          this.createPaym.value.visA_ID=null;
+          this.createPaym.value.renT_ID=this.temp_r[0].renT_ID
+
+          this.userService.ChangeAmountVisa(this.ChangeAmount.value);
+        this.userService.createRent(this.createForm.value);
+  //  this.userService.createpay(this.createPaym.value);
+        }//end payment create
+
+        }
           else{
             this.toastr.error('Amount of visa not enoug ');
           }

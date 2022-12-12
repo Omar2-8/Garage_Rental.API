@@ -338,10 +338,15 @@
 
             <div class="row mb-3">
                 <label>Upload 2 images </label>
-                <p-fileUpload #file mode="basic" accept="image/*" class="mb-3" (change)="uploadFile1(file.files)"
-                    [auto]="true" class="col-6 text-left" chooseLabel="Photo 1 "></p-fileUpload>
-                <p-fileUpload #file1 mode="basic" accept="image/*" class="mb-3" (change)="uploadFile2(file1.files)"
-                    [auto]="true" class="col-6 text-left" chooseLabel="Photo 2"></p-fileUpload>
+               
+                     
+                                    <input style=" font-weight: bold;border-radius: 0.2em;
+                                    color: dodgerblue;"
+                                    class="col-6 text-left" type="file" #file formControlName="image1" (change)="uploadFile1(file.files) " >
+                                    
+                                    <input  style=" font-weight: bold;
+                                    color: dodgerblue;" 
+                                    class="col-6 text-left"type="file" #file1 formControlName="image2" (change)="uploadFile2(file1.files) " > 
 
             </div>
 

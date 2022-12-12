@@ -186,18 +186,20 @@ export class ManageGarageComponent implements OnInit {
 
   saveData() {
     debugger;
-    this.garageModel.latitude = this.p_data.latitude;
-    this.garageModel.longitude = this.p_data.longitude;
+    this.updateForm.value.latitude= this.p_data.latitude;
+    this.updateForm.value.longitude= this.p_data.longitude;
+    //this.garageModel.latitude = this.p_data.latitude;
+    //this.garageModel.longitude = this.p_data.longitude;
 
-    this.garageService
-      .updateGarage(this.garageModel.garagE_ID, this.garageModel)
-      .subscribe({
-        next(value) {
-          console.log(value);
-        },
-      });
+    // this.garageService
+    //   .updateGarage(this.garageModel.garagE_ID, this.garageModel)
+    //   .subscribe({
+    //     next(value) {
+    //       console.log(value);
+    //     },
+    //   });
 
-    //this.user.updateGarage(this.updateForm.value);
+    this.user.updateGarage(this.updateForm.value);
     // this.admin.updateGarage();
   }
   saveDataUsers() {
