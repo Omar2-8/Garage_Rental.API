@@ -21,6 +21,9 @@ import { ReportsMonthlyComponent } from './reports-monthly/reports-monthly.compo
 import { ReportsAnnualComponent } from './reports-annual/reports-annual.component';
 import { ButtonModule } from 'primeng/button';
 import { AllRentsComponent } from './all-rents/all-rents.component';
+import { SidebarModule } from 'primeng/sidebar';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { ChartModule } from 'primeng/chart';
 
 @NgModule({
   declarations: [
@@ -47,6 +50,9 @@ import { AllRentsComponent } from './all-rents/all-rents.component';
     TableModule,
     GoogleMapsModule,
     ButtonModule,
+    SidebarModule,
+    RadioButtonModule,
+    ChartModule,
   ],
 })
 export class AdminModule {}

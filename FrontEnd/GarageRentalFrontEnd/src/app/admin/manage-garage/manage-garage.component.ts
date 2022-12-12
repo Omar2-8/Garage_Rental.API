@@ -14,16 +14,42 @@ import { Overlay } from '@angular/cdk/overlay';
   templateUrl: './manage-garage.component.html',
   styleUrls: ['./manage-garage.component.css'],
 })
-
 export class ManageGarageComponent implements OnInit {
-  Mode: any[]=["available","unavailable"];
-
-
+  Mode: any[] = ['available', 'unavailable'];
+  isreeateDialogOpen: boolean = false;
+  city!: string;
   first = 0;
   rows = 10;
   markerPositions: google.maps.LatLngLiteral[] = [];
   display: any;
   val: any;
+  scrollStrategy: ScrollStrategy;
+  mode = ['Available', 'NotAvailable'];
+  rangeValues!: number[];
+  zoom = 7;
+
+  @ViewChild('callUpdatDailog') callUpdate!: TemplateRef<any>;
+  @ViewChild('ChangeStatusOfGrage') ChangeStatuse!: TemplateRef<any>;
+  @ViewChild('callCreteDailog') CreateGarage!: TemplateRef<any>;
+  @ViewChild('callDeleteDailog') callDelete!: TemplateRef<any>;
+
+  p_data_c: any = {};
+
+  p_data: GarageModel = {
+    garagE_ID: 0,
+    garagE_NAME: '',
+    latitude: '',
+    longitude: '',
+    image1: '',
+    image2: '',
+    availablE_FROM: 0,
+    availablE_TO: 0,
+    renT_PRICE: 0,
+    street: '',
+    buildinG_NUMBER: 0,
+    status: '',
+    garagE_MODE: '',
+  };
   UserData: User = {
     USER_ID: 0,
     FIRST_NAME: '',
@@ -55,22 +81,6 @@ export class ManageGarageComponent implements OnInit {
     status: '',
     garagE_MODE: '',
   };
-
-  scrollStrategy: ScrollStrategy;
-
-  constructor(
-    public admin: AdminService,
-    private dialog: MatDialog,
-    private garageService: GarageService,
-    public user: UserService,
-    private readonly sso: ScrollStrategyOptions
-  ) {
-    this.scrollStrategy = this.sso.noop();
-  }
-  @ViewChild('callUpdatDailog') callUpdate!: TemplateRef<any>;
-  @ViewChild('ChangeStatusOfGrage') ChangeStatuse!: TemplateRef<any>;
-  @ViewChild('callCreteDailog') CreateGarage!: TemplateRef<any>;
-  @ViewChild('callDeleteDailog') callDelete!: TemplateRef<any>;
   updateForm: FormGroup = new FormGroup({
     garagE_ID: new FormControl(),
     garagE_NAME: new FormControl(''),
@@ -92,14 +102,19 @@ export class ManageGarageComponent implements OnInit {
     useR_ID: new FormControl(''),
   });
 
+  constructor(
+    public admin: AdminService,
+    private dialog: MatDialog,
+    private garageService: GarageService,
+    public user: UserService,
+    private readonly sso: ScrollStrategyOptions
+  ) {
+    this.scrollStrategy = this.sso.noop();
+  }
   ngOnInit(): void {
     this.admin.getAllGarage();
   }
-  openCreateDailog() {
-    this.dialog.open(this.CreateGarage);
-  }
-  mode = ['Available', 'NotAvailable'];
-  rangeValues!: number[];
+
   garageModel: GarageModel = {
     garagE_ID: 0,
     garagE_NAME: '',
@@ -132,7 +147,7 @@ export class ManageGarageComponent implements OnInit {
     lat: 31,
     lng: 36,
   };
-  zoom = 7;
+
   markerOptions: google.maps.MarkerOptions = {
     draggable: false,
   };
@@ -168,8 +183,53 @@ export class ManageGarageComponent implements OnInit {
       },
     });
   }
-  //
-  p_data_c: any = {};
+
+  saveData() {
+    debugger;
+    this.garageModel.latitude = this.p_data.latitude;
+    this.garageModel.longitude = this.p_data.longitude;
+
+    this.garageService
+      .updateGarage(this.garageModel.garagE_ID, this.garageModel)
+      .subscribe({
+        next(value) {
+          console.log(value);
+        },
+      });
+
+    //this.user.updateGarage(this.updateForm.value);
+    // this.admin.updateGarage();
+  }
+  saveDataUsers() {
+    //getting user email
+    this.user.getUserById(this.p_data_c.useR_ID).subscribe({
+      next: (value) => {
+        debugger;
+        this.UserData = value;
+        if (this.p_data_c.status == 'Accept') {
+          this.admin.SendEmail(this.UserData.email, 'Accept');
+        } else {
+          this.admin.SendEmail(this.UserData.email, 'Reject');
+        }
+      },
+    });
+    this.admin.ChangeStatusOfGrage(this.ChangeStatus.value);
+  }
+
+  //Dialogs
+  openCreateDailog() {
+    this.dialog.open(this.CreateGarage);
+  }
+  openDeleteDailog(id: number) {
+    const dialogRef = this.dialog.open(this.callDelete);
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result != undefined) {
+        if (result == 'yes') {
+          this.admin.deleteGarage(id);
+        } else if (result == 'no') console.log('thank you ');
+      }
+    });
+  }
   openChangeStatDailog(obj: any) {
     debugger;
     console.log(obj);
@@ -182,26 +242,6 @@ export class ManageGarageComponent implements OnInit {
     this.ChangeStatus.controls['garagE_ID'].setValue(this.p_data_c.garagE_ID);
     this.dialog.open(this.ChangeStatuse);
   }
-  onBasicUploadAuto(event: any) {
-    //
-  }
-
-  //Update
-  p_data: GarageModel = {
-    garagE_ID: 0,
-    garagE_NAME: '',
-    latitude: '',
-    longitude: '',
-    image1: '',
-    image2: '',
-    availablE_FROM: 0,
-    availablE_TO: 0,
-    renT_PRICE: 0,
-    street: '',
-    buildinG_NUMBER: 0,
-    status: '',
-    garagE_MODE: '',
-  };
   openUpdateDailog(obj: {
     garagE_ID: any;
     garagE_NAME: any;
@@ -240,55 +280,7 @@ export class ManageGarageComponent implements OnInit {
     this.dialog.open(this.callUpdate);
   }
 
-  saveData() {
-    debugger;
-    this.garageModel.latitude = this.p_data.latitude;
-    this.garageModel.longitude = this.p_data.longitude;
-
-    this.garageService
-      .updateGarage(this.garageModel.garagE_ID, this.garageModel)
-      .subscribe({
-        next(value) {
-          console.log(value);
-        },
-      });
-
-    //this.user.updateGarage(this.updateForm.value);
-    // this.admin.updateGarage();
-  }
-  saveDataUsers() {
-    //getting user email
-    this.user.getUserById(this.p_data_c.useR_ID).subscribe({
-      next: (value) => {
-        debugger;
-        this.UserData = value;
-        if (this.p_data_c.status == 'Accept') {
-          this.admin.SendEmail(this.UserData.email, 'Accept');
-        } else {
-          this.admin.SendEmail(this.UserData.email, 'Reject');
-        }
-      },
-    });
-    this.admin.ChangeStatusOfGrage(this.ChangeStatus.value);
-  }
-  // location(){
-  //   let user:any= localStorage.getItem('user');
-  //   user = JSON.parse(user);
-  //   this.user.getLongLetById(user.USER_ID);
-  //   console.log( this.user.getLongLetById(user.USER_ID));
-
-  // }
-  openDeleteDailog(id: number) {
-    const dialogRef = this.dialog.open(this.callDelete);
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result != undefined) {
-        if (result == 'yes') {
-          this.admin.deleteGarage(id);
-        } else if (result == 'no') console.log('thank you ');
-      }
-    });
-  }
-
+  //upload images
   uploadFile1(file: any) {
     debugger;
     if (file.length == 0) return;
@@ -307,13 +299,7 @@ export class ManageGarageComponent implements OnInit {
     this.user.uploadAttachmentGarage2(formdata);
   }
 
-  //* submit(){
-  //  this.admin.createGarage(this.createForm.value);
-
-  //   console.log(this.createForm.value);
-  // }
-
-  //for table
+  //indixing for data table
   next() {
     this.first = this.first + this.rows;
   }
@@ -331,4 +317,5 @@ export class ManageGarageComponent implements OnInit {
   isFirstPage(): boolean {
     return this.admin.garage ? this.first === 0 : true;
   }
+  //
 }

@@ -1,8 +1,8 @@
 <div class="wrapper ">
-<app-sidebar></app-sidebar>
+  <app-sidebar></app-sidebar>
   <div class="main-panel">
     <!-- Navbar -->
-      <app-navbar-dash></app-navbar-dash>
+    <app-navbar-dash></app-navbar-dash>
     <!-- End Navbar -->
     <div class="content">
       <div class="container-fluid">
@@ -13,10 +13,10 @@
             <div class="card card-stats">
               <div class="card-header card-header-warning card-header-icon">
                 <div class="card-icon">
-                      <i class="material-icons">store</i>
+                  <i class="material-icons">store</i>
                 </div>
-                <p class="card-category">Number Of Hall</p>
-                <h3 class="card-title">@AllHall
+                <p class="card-category">Number Of Users</p>
+                <h3 class="card-title">{{usersNumber}}
 
                 </h3>
               </div>
@@ -31,10 +31,10 @@
             <div class="card card-stats">
               <div class="card-header card-header-success card-header-icon">
                 <div class="card-icon">
-                      <i class="material-icons">content_copy</i> 
+                  <i class="material-icons">content_copy</i>
                 </div>
-                <p class="card-category">Number Of Hall Booked</p>
-                <h3 class="card-title">@HallBooked</h3>
+                <p class="card-category">Number Of Garages</p>
+                <h3 class="card-title">{{gargesNumber}}</h3>
               </div>
               <div class="card-footer">
                 <div class="stats">
@@ -49,8 +49,8 @@
                 <div class="card-icon">
                   <i class="material-icons">info_outline</i>
                 </div>
-                <p class="card-category">Hall Not Booked</p>
-                <h3 class="card-title">@HallNotBooked</h3>
+                <p class="card-category">Nuumber of Waiting Garages</p>
+                <h3 class="card-title">{{watingGargesNumber}}</h3>
               </div>
               <div class="card-footer">
                 <div class="stats">
@@ -63,10 +63,10 @@
             <div class="card card-stats">
               <div class="card-header card-header-info card-header-icon">
                 <div class="card-icon">
-                    <i class="fa fa-users"></i>
+                  <i class="fa fa-users"></i>
                 </div>
-                <p class="card-category">Number Of Users</p>
-                <h3 class="card-title">+@NumberOfUser</h3>
+                <p class="card-category">Total Profits</p>
+                <h3 class="card-title">{{profitsCount}}$</h3>
               </div>
               <div class="card-footer">
                 <div class="stats">
@@ -75,286 +75,192 @@
               </div>
             </div>
           </div>
-</div>
-
-<div class="col-lg-12 col-md-12">
-            <div class="card">
-                <div class="card-header card-header-primary" style="background: linear-gradient(60deg, #167f5d, #913f9e);">
-                   <div class="row">
-                       <form action="Admin" method="post" class="navbar-form">
-                          <span class="bmd-form-group">
-                              <div class="input-group no-border">
-                                  <div class="col-5">
-                                      <div class="form-group">
-                                          <label for="startDate" style="color:white;"><b>Start Date</b></label>
-                                          <input type="date" value="" class="form-control" name="startDate" placeholder="Start Date">
-                                      </div>
-                                  </div>
-                                  <br />
-                                  <div class="col-5">
-                                      <div class="form-group" >
-                                          <label  for="endDate" style="color:white;"><b>End Date</b></label>
-                                          <input type="date" value="" class="form-control" name="endDate" placeholder="End Date">
-                                      </div>
-                                  </div>
-                                  <div class="col-2">
-                                      <div class="form-group" style="margin-top:25px;">
-                                          <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                                              <i class="material-icons">search</i>
-                               
-                                          </button>
-                                      </div>
-                                  </div>
-                              </div>
-                          </span>
-                       </form>
-                   </div>
-
-                </div>
-                <div class="card-body table-responsive">
-                    <table class="table" >
-                           <thead >
-                              <tr>
-                                  <th>Start Date</th>
-                                  <th>End Date</th>
-                                  <th>Hall Name</th>
-                                  <th>User Name</th>
-                                  <th>Status</th>
-                              </tr>
-                           </thead>
-                          <tbody>
-
-                                  <tr>
-                                      <td>
-                                          @Html.DisplayFor(modelItem => item.Booking.StartDate)
-                                      </td>
-                                      <td>
-                                          @Html.DisplayFor(modelItem => item.Booking.EndDate)
-                                      </td>
-                                        <td>
-                                          @Html.DisplayFor(modelItem => item.Hall.HallName)
-                                      </td>
-                                         <td>
-                                          @Html.DisplayFor(modelItem => item.User.UserName)
-                                      </td>
-                                      <td>
-                                   
-                                            <p> Accepted</p>
-                                        
-                                      </td>
-                                  </tr>
-                              }
-                          </tbody>
-                    </table>
-
-                </div>
-           </div>
-</div>
+        </div>
 
 
-
- <br />
- <br />
-<div class="col-lg-12 col-md-12">
-            <div class="card">
-              <div class="card-header card-header-primary" style="background: linear-gradient(60deg, #167f5d, #913f9e);">
-                <h4 class="card-title">Categories And Halls</h4>
-                <p class="card-category"></p>
-              </div>
-              <div class="card-body table-responsive">
-                  <table class="table" style="width:80%;margin-left:50px;">
-                         
-                              <thead style="background: linear-gradient(60deg, #fff0, #fff0); ">
-                                  <tr>
-                                  <th>Categories Name</th>
-                                  <th>Hall name</th>
-                                  </tr>
-                              </thead>
-                         
-                              <tbody>
-             
-                              <tr>
-                                  <td>@item.CatName</td>
-                              
-                                                  <td>
-                                                      @item2.HallName
-                                                  </td>
-   
-                              </tr>
-                          
-                      </tbody>
-                  </table>
-              </div>
+        <div class="row gy-5">
+          <div class="col-6">
+            <div class="p-3 bg-light">
+              <mat-card class="mx-auto">
+                <p-chart type="doughnut" [data]="data" [style]="{'width': '10%'}"></p-chart>
+              </mat-card>
             </div>
-</div>
-      </div>
-    </div>
-
-    <app-footer-dash></app-footer-dash>
-  </div>
-</div>
-
-<script>
- $(document).ready(function() {
-   $().ready(function() {
-     $sidebar = $('.sidebar');
-
-     $sidebar_img_container = $sidebar.find('.sidebar-background');
-
-     $full_page = $('.full-page');
-
-     $sidebar_responsive = $('body > .navbar-collapse');
-
-     window_width = $(window).width();
-
-     $('.fixed-plugin a').click(function(event) {
-       // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
-       if ($(this).hasClass('switch-trigger')) {
-         if (event.stopPropagation) {
-           event.stopPropagation();
-         } else if (window.event) {
-           window.event.cancelBubble = true;
-         }
-       }
-     });
-
-     $('.fixed-plugin .active-color span').click(function() {
-       $full_page_background = $('.full-page-background');
-
-       $(this).siblings().removeClass('active');
-       $(this).addClass('active');
-
-       var new_color = $(this).data('color');
-
-       if ($sidebar.length != 0) {
-         $sidebar.attr('data-color', new_color);
-       }
-
-       if ($full_page.length != 0) {
-         $full_page.attr('filter-color', new_color);
-       }
-
-       if ($sidebar_responsive.length != 0) {
-         $sidebar_responsive.attr('data-color', new_color);
-       }
-     });
-
-     $('.fixed-plugin .background-color .badge').click(function() {
-       $(this).siblings().removeClass('active');
-       $(this).addClass('active');
-
-       var new_color = $(this).data('background-color');
-
-       if ($sidebar.length != 0) {
-         $sidebar.attr('data-background-color', new_color);
-       }
-     });
-
-     $('.fixed-plugin .img-holder').click(function() {
-       $full_page_background = $('.full-page-background');
-
-       $(this).parent('li').siblings().removeClass('active');
-       $(this).parent('li').addClass('active');
+          </div>
+          <div class="col-6">
+            <div class="p-3 bg-light">
+              <mat-card class="mx-auto">
+                <p-chart type="pie" [data]="pieData" [style]="{'width': '10%'}"></p-chart>
+              </mat-card>
+            </div>
+          </div>
+        </div>
 
 
-       var new_image = $(this).find("img").attr('src');
-
-       if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
-         $sidebar_img_container.fadeOut('fast', function() {
-           $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
-           $sidebar_img_container.fadeIn('fast');
-         });
-       }
-
-       if ($full_page_background.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
-         var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
-
-         $full_page_background.fadeOut('fast', function() {
-           $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
-           $full_page_background.fadeIn('fast');
-         });
-       }
-
-       if ($('.switch-sidebar-image input:checked').length == 0) {
-         var new_image = $('.fixed-plugin li.active .img-holder').find("img").attr('src');
-         var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
-
-         $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
-         $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
-       }
-
-       if ($sidebar_responsive.length != 0) {
-         $sidebar_responsive.css('background-image', 'url("' + new_image + '")');
-       }
-     });
-
-     $('.switch-sidebar-image input').change(function() {
-       $full_page_background = $('.full-page-background');
-
-       $input = $(this);
-
-       if ($input.is(':checked')) {
-         if ($sidebar_img_container.length != 0) {
-           $sidebar_img_container.fadeIn('fast');
-           $sidebar.attr('data-image', '#');
-         }
-
-         if ($full_page_background.length != 0) {
-           $full_page_background.fadeIn('fast');
-           $full_page.attr('data-image', '#');
-         }
-
-         background_image = true;
-       } else {
-         if ($sidebar_img_container.length != 0) {
-           $sidebar.removeAttr('data-image');
-           $sidebar_img_container.fadeOut('fast');
-         }
-
-         if ($full_page_background.length != 0) {
-           $full_page.removeAttr('data-image', '#');
-           $full_page_background.fadeOut('fast');
-         }
-
-         background_image = false;
-       }
-     });
-
-     $('.switch-sidebar-mini input').change(function() {
-       $body = $('body');
-
-       $input = $(this);
-
-       if (md.misc.sidebar_mini_active == true) {
-         $('body').removeClass('sidebar-mini');
-         md.misc.sidebar_mini_active = false;
-
-         $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
-
-       } else {
-
-         $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar('destroy');
-
-         setTimeout(function() {
-           $('body').addClass('sidebar-mini');
-
-           md.misc.sidebar_mini_active = true;
-         }, 300);
-       }
-
-       // we simulate the window Resize so the charts will get updated in realtime.
-       var simulateWindowResize = setInterval(function() {
-         window.dispatchEvent(new Event('resize'));
-       }, 180);
-
-       // we stop the simulation of Window Resize after the animations are completed
-       setTimeout(function() {
-         clearInterval(simulateWindowResize);
-       }, 1000);
-
-     });
-   });
- });
-</script>
 
 
+
+
+
+
+        <script>
+          $(document).ready(function () {
+            $().ready(function () {
+              $sidebar = $('.sidebar');
+
+              $sidebar_img_container = $sidebar.find('.sidebar-background');
+
+              $full_page = $('.full-page');
+
+              $sidebar_responsive = $('body > .navbar-collapse');
+
+              window_width = $(window).width();
+
+              $('.fixed-plugin a').click(function (event) {
+                // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
+                if ($(this).hasClass('switch-trigger')) {
+                  if (event.stopPropagation) {
+                    event.stopPropagation();
+                  } else if (window.event) {
+                    window.event.cancelBubble = true;
+                  }
+                }
+              });
+
+              $('.fixed-plugin .active-color span').click(function () {
+                $full_page_background = $('.full-page-background');
+
+                $(this).siblings().removeClass('active');
+                $(this).addClass('active');
+
+                var new_color = $(this).data('color');
+
+                if ($sidebar.length != 0) {
+                  $sidebar.attr('data-color', new_color);
+                }
+
+                if ($full_page.length != 0) {
+                  $full_page.attr('filter-color', new_color);
+                }
+
+                if ($sidebar_responsive.length != 0) {
+                  $sidebar_responsive.attr('data-color', new_color);
+                }
+              });
+
+              $('.fixed-plugin .background-color .badge').click(function () {
+                $(this).siblings().removeClass('active');
+                $(this).addClass('active');
+
+                var new_color = $(this).data('background-color');
+
+                if ($sidebar.length != 0) {
+                  $sidebar.attr('data-background-color', new_color);
+                }
+              });
+
+              $('.fixed-plugin .img-holder').click(function () {
+                $full_page_background = $('.full-page-background');
+
+                $(this).parent('li').siblings().removeClass('active');
+                $(this).parent('li').addClass('active');
+
+
+                var new_image = $(this).find("img").attr('src');
+
+                if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
+                  $sidebar_img_container.fadeOut('fast', function () {
+                    $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
+                    $sidebar_img_container.fadeIn('fast');
+                  });
+                }
+
+                if ($full_page_background.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
+                  var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+
+                  $full_page_background.fadeOut('fast', function () {
+                    $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
+                    $full_page_background.fadeIn('fast');
+                  });
+                }
+
+                if ($('.switch-sidebar-image input:checked').length == 0) {
+                  var new_image = $('.fixed-plugin li.active .img-holder').find("img").attr('src');
+                  var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+
+                  $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
+                  $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
+                }
+
+                if ($sidebar_responsive.length != 0) {
+                  $sidebar_responsive.css('background-image', 'url("' + new_image + '")');
+                }
+              });
+
+              $('.switch-sidebar-image input').change(function () {
+                $full_page_background = $('.full-page-background');
+
+                $input = $(this);
+
+                if ($input.is(':checked')) {
+                  if ($sidebar_img_container.length != 0) {
+                    $sidebar_img_container.fadeIn('fast');
+                    $sidebar.attr('data-image', '#');
+                  }
+
+                  if ($full_page_background.length != 0) {
+                    $full_page_background.fadeIn('fast');
+                    $full_page.attr('data-image', '#');
+                  }
+
+                  background_image = true;
+                } else {
+                  if ($sidebar_img_container.length != 0) {
+                    $sidebar.removeAttr('data-image');
+                    $sidebar_img_container.fadeOut('fast');
+                  }
+
+                  if ($full_page_background.length != 0) {
+                    $full_page.removeAttr('data-image', '#');
+                    $full_page_background.fadeOut('fast');
+                  }
+
+                  background_image = false;
+                }
+              });
+
+              $('.switch-sidebar-mini input').change(function () {
+                $body = $('body');
+
+                $input = $(this);
+
+                if (md.misc.sidebar_mini_active == true) {
+                  $('body').removeClass('sidebar-mini');
+                  md.misc.sidebar_mini_active = false;
+
+                  $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
+
+                } else {
+
+                  $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar('destroy');
+
+                  setTimeout(function () {
+                    $('body').addClass('sidebar-mini');
+
+                    md.misc.sidebar_mini_active = true;
+                  }, 300);
+                }
+
+                // we simulate the window Resize so the charts will get updated in realtime.
+                var simulateWindowResize = setInterval(function () {
+                  window.dispatchEvent(new Event('resize'));
+                }, 180);
+
+                // we stop the simulation of Window Resize after the animations are completed
+                setTimeout(function () {
+                  clearInterval(simulateWindowResize);
+                }, 1000);
+
+              });
+            });
+          });
+        </script>
