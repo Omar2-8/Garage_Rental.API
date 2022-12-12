@@ -304,7 +304,7 @@
                                 <mat-label>Garage Mode  </mat-label>
 
                              
-                                    <mat-radio-group aria-label="Select an option">
+                                    <mat-radio-group aria-label="Select an option" >
                                         <mat-radio-button matInput formControlName="garagE_MODE" [(ngModel)]="p_data.garagE_MODE"
                                             value="available">Available</mat-radio-button>
                                         <mat-radio-button style="margin-left: 20px" matInput formControlName="garagE_MODE"
@@ -375,18 +375,22 @@
                             <br />
 
                             <div class="row">
-                                <label>Upload 2 images </label>
-                                <p-fileUpload  #file formControlName="image1" mode="basic" name="demo[]" accept="image/*" class="m-2"
-                                    (change)="uploadFile1(file.files)" [auto]="true" [(ngModel)]="p_data.image1"
+                                 <label>Upload 2 images </label>
+                                <!-- <p-fileUpload type="file" #file formControlName="image1" mode="basic"  accept="image/*" class="m-2"
+                                    (change)="uploadFile1(file.files)"  [(ngModel)]="p_data.image1"
                                     class="col-6 text-left" chooseLabel="Photo 1 "></p-fileUpload>
-                                <p-fileUpload #file6 formControlName="image2" mode="basic" name="demo[]" accept="image/*" class="m-2"
-                                    (change)="uploadFile2(file6.files)" [auto]="true" [(ngModel)]="p_data.image2"
-                                    class="col-6 text-left" chooseLabel="Photo 2"></p-fileUpload>
-
-                                <!-- <input class="form-control-lg" type="file" #file (change)="uploadFile1(file.files)"
-                                    [(ngModel)]="garageModel.image1" />
-                                <input class="form-control-lg" type="file" #file1 (change)="uploadFile2(file1.files)"
-                                    [(ngModel)]="garageModel.image2" />   -->
+                                <p-fileUpload type="file" #file6 formControlName="image2" mode="basic"  accept="image/*" class="m-2"
+                                    (change)="uploadFile2(file6.files)"  [(ngModel)]="p_data.image2"
+                                    class="col-6 text-left" chooseLabel="Photo 2"></p-fileUpload>  -->
+                                    
+                                    <input style=" font-weight: bold;border-radius: 0.2em;
+                                    color: dodgerblue;"
+                                    class="col-6 text-left" type="file" #file formControlName="image1" (change)="uploadFile1(file.files) " [(ngModel)]="p_data.image1">
+                                    
+                                    <input  style=" font-weight: bold;
+                                    color: dodgerblue;" 
+                                    class="col-6 text-left"type="file" #file2 formControlName="image2" (change)="uploadFile2(file2.files) " [(ngModel)]="p_data.image2"> 
+                               
                             </div>
                         </form>
                     </div>
