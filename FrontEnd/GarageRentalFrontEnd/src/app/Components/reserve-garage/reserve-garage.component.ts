@@ -20,7 +20,7 @@ export class ReserveGarageComponent implements OnInit {
   markerPositions: google.maps.LatLngLiteral[] = [];
   index!: google.maps.LatLngLiteral;
   serachMap!: string;
-  zoom = 7;
+  zoom = 13;
   @ViewChild('search')
   public searchElementRef!: ElementRef;
   @ViewChild(GoogleMap)
@@ -88,7 +88,7 @@ export class ReserveGarageComponent implements OnInit {
           lat: this.latitude,
           lng: this.longitude,
         };
-        this.zoom = 12;
+        this.zoom = 10;
       });
     });
   }
