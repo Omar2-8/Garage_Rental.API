@@ -15,30 +15,16 @@
               <p-table
                 #dt1
                 [value]="user.garage"
-                [globalFilterFields]="[
-                  'garagE_NAME',
-                  'image1',
-                  'image2',
-                  'availablE_FROM',
-                  'availablE_TO',
-                  'renT_PRICE',
-                  'street',
-                  'buildinG_NUMBER',
-                  'status',
-                  'garagE_MODE',
-                  'useR_ID'
-                ]"
+                [globalFilterFields]="['garagE_NAME','image1','image2','availablE_FROM','availablE_TO','renT_PRICE','street','buildinG_NUMBER','status','garagE_MODE']"
+                [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]"
               >
                 <ng-template pTemplate="caption">
                   <div class="p-d-flex">
                     <span class="p-input-icon-left p-ml-auto">
-                      <input
-                        #textInput
-                        pInputText
-                        type="text"
-                        (input)="dt1.filterGlobal(textInput.value, 'contains')"
-                        placeholder="Search keyword"
-                      />
+                      <i class="pi pi-search"></i>
+                      <input style="padding-left: 2rem; border-radius: 8px;" pInputText type="text" 
+                      (input)="dt1.filterGlobal($event.target.value, 'contains')" placeholder="Search keyword" />
                     </span>
                     <button
                       style="margin-left: 600px"
@@ -51,19 +37,16 @@
                 </ng-template>
                 <ng-template pTemplate="header">
                   <tr>
-                    <th>Garage Name</th>
+                    <th>Garage Name<p-columnFilter type="text" field="garagE_NAME" display="menu"></p-columnFilter></th>
                     <th>Image1</th>
                     <th>Image2</th>
                     <th>Available From</th>
                     <th>Available To</th>
-                    <th>Rent Price</th>
-                    <th>Street</th>
-                    <th>Building Number</th>
-                    <th>Status</th>
-                    <th>Garage Mode</th>
-                    <!-- <th>Location
-                                </th> -->
-                    <!-- <th>User Name</th> -->
+                    <th>Rent Price<p-columnFilter type="number" field="renT_PRICE" display="menu"></p-columnFilter></th>
+                    <th>Street<p-columnFilter type="text" field="street" display="menu"></p-columnFilter></th>
+                    <th>Building Number<p-columnFilter type="number" field="buildinG_NUMBER" display="menu"></p-columnFilter></th>
+                    <th>Status<p-columnFilter type="text" field="status" display="menu"></p-columnFilter></th>
+                    <th>Garage Mode<p-columnFilter type="text" field="garagE_MODE" display="menu"></p-columnFilter></th>
                     <th></th>
                   </tr>
                 </ng-template>
@@ -93,15 +76,6 @@
                     <td>{{ obj.buildinG_NUMBER }}</td>
                     <td>{{ obj.status }}</td>
                     <td>{{ obj.garagE_MODE }}</td>
-                    <!-- <td>
-                                    <button
-                                    class="btn btn-lg"
-                                    (click)="location()"
-                                    >
-                                    Update
-                                    </button>
-                                </td> -->
-                    <!-- <td  >{{users}}</td> -->
                     <td>
                       <button
                         class="btn btn-primary"
@@ -117,6 +91,14 @@
                       </button>
                     </td>
                   </tr>
+                </ng-template>
+                <ng-template pTemplate="paginatorleft">
+                  <p-button type="button" icon="pi pi-plus" (click)="openCreateDailog()"
+                      styleClass="p-button-text"></p-button>
+                </ng-template>
+                <ng-template pTemplate="paginatorright">
+                    <p-button type="button" icon="pi pi-cloud" (click)="openCreateDailog()"
+                        styleClass="p-button-text"></p-button>
                 </ng-template>
               </p-table>
             </div>
@@ -147,31 +129,6 @@
                   formControlName="name"
                 />
               </div>
-              <!-- <div class="mb-3">
-                                <label>Avalable from</label>
-                                <input
-                                class="form-control form-control-lg form-control-solid"
-                                type="text"
-                                placeholder="Avalable from"
-                                required
-                                formControlName="from"
-                                />
-                            </div>
-
-                            <div class="mb-3">
-                                <label>Avalable to</label>
-                                <input
-                                class="form-control form-control-lg form-control-solid"
-                                type="text"
-                                placeholder="Avalable to"
-                                required
-                                formControlName="to"
-                                />
-                            </div> -->
-              <!-- <div class="mb-3">
-                                <label>Avalablabilty</label>
-                                <p-slider [(ngModel)]="rangeValues" [range]="true"></p-slider>
-                            </div> -->
               <div class="mb-3">
                 <label>Price</label>
                 <input

@@ -1,0 +1,111 @@
+<div class="wrapper">
+    <app-user-side-bar></app-user-side-bar>
+    <div class="main-panel">
+        <app-user-navbar></app-user-navbar>
+        <div class="content">
+            <div class="container-fluid">
+            <!-- content here -->
+            <div class="col-lg-12 col-md-12">
+                <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title">Details About Us page</h4>
+                    <p class="card-category"></p>
+                </div>
+                <div class="card-body table-responsive">
+                    <p-table
+                    #dt1
+
+                    [globalFilterFields]="['garagE_NAME','image1','image2','availablE_FROM','availablE_TO','renT_PRICE','street','buildinG_NUMBER','status','garagE_MODE']"
+                    [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+                    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]"
+                    >
+                    <ng-template pTemplate="caption">
+                        <div class="p-d-flex">
+                        <span class="p-input-icon-left p-ml-auto">
+                            <i class="pi pi-search"></i>
+                            <input style="padding-left: 2rem; border-radius: 8px;" pInputText type="text" 
+                            (input)="dt1.filterGlobal($event.target.value, 'contains')" placeholder="Search keyword" />
+                        </span>
+                        <!-- <button
+                            style="margin-left: 600px"
+                            class="btn btn-pill col-md-4"
+                            (click)="openCreateDailog()"
+                        >
+                            Create
+                        </button> -->
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="header">
+                        <tr>
+                        <th>Garage Name<p-columnFilter type="text" field="garagE_NAME" display="menu"></p-columnFilter></th>
+                        <th>Image1</th>
+                        <th>Image2</th>
+                        <th>Available From</th>
+                        <th>Available To</th>
+                        <th>Rent Price<p-columnFilter type="number" field="renT_PRICE" display="menu"></p-columnFilter></th>
+                        <th>Street<p-columnFilter type="text" field="street" display="menu"></p-columnFilter></th>
+                        <th>Building Number<p-columnFilter type="number" field="buildinG_NUMBER" display="menu"></p-columnFilter></th>
+                        <th>Status<p-columnFilter type="text" field="status" display="menu"></p-columnFilter></th>
+                        <th>Garage Mode<p-columnFilter type="text" field="garagE_MODE" display="menu"></p-columnFilter></th>
+                        <th></th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-obj>
+                        <tr>
+                        <td>{{ obj.garagE_NAME }}</td>
+                        <td>
+                            <img
+                            src="../../../assets/images/{{ obj.image1 }}"
+                            width="100px"
+                            height="100px"
+                            style="border-radius: 10px"
+                            />
+                        </td>
+                        <td>
+                            <img
+                            src="../../../assets/images/{{ obj.image2 }}"
+                            width="100px"
+                            height="100px"
+                            style="border-radius: 10px"
+                            />
+                        </td>
+                        <td>{{ obj.availablE_FROM }}</td>
+                        <td>{{ obj.availablE_TO }}</td>
+                        <td>{{ obj.renT_PRICE }}</td>
+                        <td>{{ obj.street }}</td>
+                        <td>{{ obj.buildinG_NUMBER }}</td>
+                        <td>{{ obj.status }}</td>
+                        <td>{{ obj.garagE_MODE }}</td>
+                        <td>
+                            <!-- <button
+                            class="btn btn-primary"
+                            (click)="openUpdateDailog(obj)"
+                            >
+                            Update
+                            </button>
+                            <button
+                            class="btn btn-danger"
+                            (click)="openDeleteDailog(obj.garagE_ID)"
+                            >
+                            Delete
+                            </button> -->
+                        </td>
+                        </tr>
+                    </ng-template>
+                    <!-- <ng-template pTemplate="paginatorleft">
+                        <p-button type="button" icon="pi pi-plus" (click)="openCreateDailog()"
+                            styleClass="p-button-text"></p-button>
+                    </ng-template>
+                    <ng-template pTemplate="paginatorright">
+                        <p-button type="button" icon="pi pi-cloud" (click)="openCreateDailog()"
+                            styleClass="p-button-text"></p-button>
+                    </ng-template> -->
+                    </p-table>
+                </div>
+                </div>
+            </div>
+            <app-user-footer></app-user-footer>
+            </div>
+        </div>
+    </div>
+</div>

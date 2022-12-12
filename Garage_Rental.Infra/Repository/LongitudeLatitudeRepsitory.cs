@@ -51,5 +51,13 @@ namespace Garage_Rental.Infra.Repository
             IEnumerable<Garage> result = _dbcontext.Connection.Query<Garage>("GARAGE_PACKAGE.GetGARAGESById", p, commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
+
+        public List<Payment> GetByIdListPay(int id)
+        {
+            var p = new DynamicParameters();
+            p.Add("Id", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            IEnumerable<Payment> result = _dbcontext.Connection.Query<Payment>("PAYMENT_PACKAGE.GetPAYMENTById", p, commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
     }
 }

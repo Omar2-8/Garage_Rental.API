@@ -1,3 +1,6 @@
+import { UserCarsComponent } from './user-cars/user-cars.component';
+import { UserPaymentsComponent } from './user-payments/user-payments.component';
+import { UserRentsComponent } from './user-rents/user-rents.component';
 import { UserGarageComponent } from './user-garage/user-garage.component';
 import { AddTestimonialComponent } from './add-testimonial/add-testimonial.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
@@ -18,6 +21,18 @@ const routes: Routes = [
   {
     path:'garage',
     component:UserGarageComponent
+  },
+  {
+    path:'u-rents',
+    component:UserRentsComponent
+  },
+  {
+    path:'payments',
+    component:UserPaymentsComponent
+  },
+  {
+    path:'cars',
+    component:UserCarsComponent
   },
 ];
 

@@ -1,0 +1,62 @@
+<div class="wrapper">
+    <app-user-side-bar></app-user-side-bar>
+    <div class="main-panel">
+        <app-user-navbar></app-user-navbar>
+        <div class="content">
+            <div class="container-fluid">
+            <!-- content here -->
+                <div class="col-lg-12 col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title">Details Payments page</h4>
+                            <p class="card-category"></p>
+                        </div>
+                        <div class="card-body table-responsive">
+                            <p-table
+                            #dt1
+                            [value]="user.car"
+                            [globalFilterFields]="['paY_ID','paY_AMOUNT','garagE_NAME','paY_DATE','useR_ID','visA_ID','renT_ID']"
+                            [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+                            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]"
+                            >
+                                <ng-template pTemplate="caption">
+                                    <div class="p-d-flex">
+                                    <span class="p-input-icon-left p-ml-auto">
+                                        <i class="pi pi-search"></i>
+                                        <input style="padding-left: 2rem; border-radius: 8px;" pInputText type="text" 
+                                        (input)="dt1.filterGlobal($event.target.value, 'contains')" placeholder="Search keyword" />
+                                    </span>
+                                    </div>
+                                </ng-template>
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                        <th>Payment Number<p-columnFilter type="number" field="paY_ID" display="menu"></p-columnFilter></th>
+                                        <th>Payment Amount<p-columnFilter type="number" field="paY_AMOUNT" display="menu"></p-columnFilter></th>
+                                        <th>Garage Number<p-columnFilter type="number" field="garagE_NAME" display="menu"></p-columnFilter></th>
+                                        <th>Payment Date<p-columnFilter type="number" field="paY_DATE" display="menu"></p-columnFilter></th>
+                                        <th>User Id<p-columnFilter type="number" field="useR_ID" display="menu"></p-columnFilter></th>
+                                        <th>Visa Id<p-columnFilter type="number" field="visA_ID" display="menu"></p-columnFilter></th>
+                                        <th>Rent Number<p-columnFilter type="number" field="renT_ID" display="menu"></p-columnFilter></th>
+                                        <th></th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-obj>
+                                    <tr>
+                                        <td>{{ obj.paY_ID }}</td>
+                                        <td>{{ obj.paY_AMOUNT }}</td>
+                                        <td>{{ obj.garagE_NAME }}</td>
+                                        <td>{{ obj.paY_DATE }}</td>
+                                        <td>{{ obj.useR_ID }}</td>
+                                        <td>{{ obj.visA_ID }}</td>
+                                        <td>{{ obj.renT_ID }}</td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
+                </div>
+                <app-user-footer></app-user-footer>
+            </div>
+        </div>
+    </div>
+</div>
