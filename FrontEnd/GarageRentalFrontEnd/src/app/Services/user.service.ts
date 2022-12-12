@@ -19,7 +19,7 @@ export class UserService {
   car: any[] = [];
   car2: any = {};
   testimonial: any[] = [];
-  visa: any = {};
+  visa: any[] = [];
   visa1: any[] = [];
   payment: any[] = [];
   rent: any = {};
@@ -332,7 +332,7 @@ debugger
         //السبسكرايب بتتكون من حالتين اول وحدة ترو والثانية اذا كانت ايرور ريسبونس
         this.visa = Resp;
         console.log(this.visa);
-        this.toster.success('The visa has been selected!');
+        this.toster.success('Data Retrieved!');
       },
       (err) => {
         this.toster.error('something Wrong');

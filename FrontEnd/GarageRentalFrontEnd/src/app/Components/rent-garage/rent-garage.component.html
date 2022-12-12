@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-    <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(../../../assets/images/03bca134-20df-4ebf-a998-c075e4ef3e1a_wallhaven-x8ye3z_1920x1080.png);" data-aos="fade">
+    <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(../../../assets/images/wallhaven-pk8dye_1920x1080.png);" data-aos="fade">
         <div class="container">
           <div class="row align-items-center justify-content-center">
             <div class="col-md-5 mx-auto mt-lg-5 text-center">
@@ -76,6 +76,7 @@
                 
                 <p><button href="#" class="btn btn-primary"(click)="openCreateDailog()">Rent</button></p>
                 <p><button href="#" class="btn btn-primary"(click)="openVisaDailog()">Add Visa</button></p>
+                <p><button href="#" class="btn btn-primary"(click)="openCarDailog()">Select Car</button></p>
               </div>
   
               <div class="mb-5">
@@ -167,24 +168,26 @@
 
 <h2 mat-dialog-title>ADD VISA</h2>
   <mat-dialog-content class="mat-typography">
-    <form class="example-form" [formGroup]="ChangeAmount" >
+    <form class="example-form" [formGroup]="CheckVisa" >
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>visA_NUMBER</mat-label>
         <input type="number" matInput formControlName="visA_NUMBER" />
+
         
       </mat-form-field>
-      <p-dropdown [options]="userService.visa" [(ngModel)]="visA_NUMBER" optionLabel="visA_NUMBER"></p-dropdown>
+
+    
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>CVC/CVV</mat-label>
+            <input type="number" matInput formControlName="cvC_CVV" />
+    
+            
+          </mat-form-field>
      
     </form>
 
     <br />
-    <br />
-    <br />
-    <br /><br />
-    <br /><br />
-    <br />
-    <br />
-    <br />
+    
     
 
   
@@ -195,10 +198,11 @@
       mat-button
       [mat-dialog-close]="true"
       cdkFocusInitial
-      (click)="Visa(userService.visa.visA_ID)"class="btn btn-primary"
+      (click)="Visa()"class="btn btn-primary"
     >
-      Add Visa
-    </button>
+    Add Visa
+  </button>
+    
   </mat-dialog-actions>
 
 
@@ -210,7 +214,76 @@
   
   </ng-template>
 
-  <ng-template #callVisaDailog>
+  <!-- car  -->
+  <ng-template #callCarDailog>
+        
+
+        
+    <div class="content">
+      <div class="container-fluid">
+
+<h2 mat-dialog-title>Select Car For Rent</h2>
+<mat-dialog-content class="mat-typography">
+  <form class="example-form" [formGroup]="CheckCar" >
+    <!-- <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>visA_NUMBER</mat-label>
+      <input type="number" matInput formControlName="visA_NUMBER" />
+      
+      
+    </mat-form-field> -->
+    
+<mat-form-field appearance="fill">
+  <mat-label>Select Car Type </mat-label>
+  <mat-select formControlName="caR_TYPE">
+    <mat-option type="text" *ngFor="let obj of userService.car"  [value]="obj.caR_TYPE">
+      {{obj.caR_TYPE}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+   
+
+<mat-form-field appearance="fill">
+  <mat-label>Select Car Plate</mat-label>
+  <mat-select formControlName="caR_PLATE">
+    <mat-option type="text" *ngFor="let obj of userService.car"  [value]="obj.caR_PLATE">
+      {{obj.caR_PLATE}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+        
+   
+  </form>
+
+  <br />
+  
+  
+
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close class="btn btn-danger">Cancel</button>
+ 
+  <button
+    mat-button
+    [mat-dialog-close]="true"
+    cdkFocusInitial
+    (click)="Car()"class="btn btn-primary"
+  >
+  Select
+</button>
+  
+</mat-dialog-actions>
+
+
+
+</div>
+</div>
+
+
+
+</ng-template>
+  <!-- <ng-template #callVisaDailog>
         
 
         
@@ -258,5 +331,5 @@
 
 
 
-</ng-template>
+</ng-template> -->
     
