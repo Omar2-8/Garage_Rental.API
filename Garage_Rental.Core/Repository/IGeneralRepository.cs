@@ -11,5 +11,8 @@ namespace Garage_Rental.Core.Repository
        public void ChangeAmount(ChangeAmount g);
 
         List<Car> GetAllCarById(int id);
+        List<Rent> GetAllRentById(int id);
+
+        public void ChangeGarageMode(ChangeGarageMode g);
     }
 }

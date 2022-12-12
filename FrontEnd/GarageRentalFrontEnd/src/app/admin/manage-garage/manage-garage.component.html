@@ -126,7 +126,7 @@
                                                 (click)="openChangeStatDailog(obj)">
                                                 Status
                                             </button>
-                                            <button class="btn btn-danger" (click)="openDeleteDailog(obj)">
+                                            <button class="btn btn-danger" (click)="openDeleteDailog(obj.garagE_ID)">
                                                 Delete
                                             </button>
                                         </td>
@@ -183,25 +183,37 @@
                 <ng-template #callUpdatDailog>
                     <div class="m-3 p-3">
                         <form [formGroup]="updateForm" class="m-2">
-                            <mat-form-field class="col-12 text-left">
+                            <mat-form-field appearance="fill" class="mx-2">
                                 <mat-label>garage name</mat-label>
                                 <div>
-                                    <input matInput formControlName="" [(ngModel)]="p_data.garagE_NAME" />
+                                    <input type="text" matInput formControlName="garagE_NAME" [(ngModel)]="p_data.garagE_NAME" />
                                     <mat-error *ngIf="
                       updateForm.controls['garagE_NAME'].hasError('required')
                     ">
-                                        garagE_NAME is <strong>required</strong>
+                                        Garage Name is <strong>required</strong>
                                     </mat-error>
                                 </div>
+
                             </mat-form-field>
 
-                            <br />
+                           
+                            
+                                <mat-label>Garage Mode  </mat-label>
 
-                            <br />
+                             
+                                    <mat-radio-group aria-label="Select an option">
+                                        <mat-radio-button matInput formControlName="garagE_MODE" [(ngModel)]="p_data.garagE_MODE"
+                                            value="available">Available</mat-radio-button>
+                                        <mat-radio-button style="margin-left: 20px" matInput formControlName="garagE_MODE"
+                                            [(ngModel)]="p_data.garagE_MODE" value="unavailable">Unavailable</mat-radio-button>
+                                    </mat-radio-group>
+                            
+                            
                             <div>
+                                <br />
                                 <mat-form-field appearance="fill" class="mx-2">
                                     <mat-label>Available From</mat-label>
-                                    <input matInput formControlName="availablE_FROM"
+                                    <input type="number" matInput formControlName="availablE_FROM"
                                         [(ngModel)]="p_data.availablE_FROM" />
                                     <mat-error *ngIf="
                       updateForm.controls['availablE_FROM'].hasError('required')
@@ -212,7 +224,7 @@
 
                                 <mat-form-field appearance="fill" class="mx-2">
                                     <mat-label>Available To</mat-label>
-                                    <input matInput formControlName="availablE_TO" [(ngModel)]="p_data.availablE_TO" />
+                                    <input type="number" matInput formControlName="availablE_TO" [(ngModel)]="p_data.availablE_TO" />
                                     <mat-error *ngIf="
                       updateForm.controls['availablE_TO'].hasError('required')
                     ">
@@ -220,11 +232,11 @@
                                     </mat-error>
                                 </mat-form-field>
                             </div>
-                            <br />
+                            
                             <div>
                                 <mat-form-field appearance="fill" class="mx-2">
                                     <mat-label>Rent Price</mat-label>
-                                    <input matInput formControlName="renT_PRICE" [(ngModel)]="p_data.renT_PRICE" />
+                                    <input type="number" matInput formControlName="renT_PRICE" [(ngModel)]="p_data.renT_PRICE" />
                                     <mat-error *ngIf="
                       updateForm.controls['renT_PRICE'].hasError('required')
                     ">
@@ -233,7 +245,7 @@
                                 </mat-form-field>
 
                                 <mat-form-field appearance="fill" class="mx-2">
-                                    <mat-label>Street</mat-label><input matInput formControlName="street"
+                                    <mat-label>Street</mat-label><input type="text" matInput formControlName="street"
                                         [(ngModel)]="p_data.street" />
                                     <mat-error *ngIf="updateForm.controls['street'].hasError('required')">
                                         street is <strong>required</strong>
@@ -241,7 +253,7 @@
                                 </mat-form-field>
                             </div>
                             <mat-form-field appearance="fill" class="mx-2">
-                                <mat-label>Building Number</mat-label><input matInput formControlName="buildinG_NUMBER"
+                                <mat-label>Building Number</mat-label><input type="number" matInput formControlName="buildinG_NUMBER"
                                     [(ngModel)]="p_data.buildinG_NUMBER" />
                                 <mat-error *ngIf="
                     updateForm.controls['buildinG_NUMBER'].hasError('required')
@@ -252,7 +264,7 @@
 
                             <mat-form-field appearance="fill" class="mx-2">
                                 <mat-label>User ID</mat-label>
-                                <input matInput formControlName="useR_ID" [(ngModel)]="p_data.useR_ID" />
+                                <input type="number" matInput formControlName="useR_ID" [(ngModel)]="p_data.useR_ID" />
                                 <mat-error *ngIf="updateForm.controls['useR_ID'].hasError('required')">
                                     useR_ID is <strong>required</strong>
                                 </mat-error>
@@ -261,11 +273,11 @@
 
                             <div class="row">
                                 <label>Upload 2 images </label>
-                                <p-fileUpload #file mode="basic" name="demo[]" accept="image/*" class="m-2"
-                                    (change)="uploadFile1(file.files)" [auto]="true" [(ngModel)]="garageModel.image1"
+                                <p-fileUpload  #file formControlName="image1" mode="basic" name="demo[]" accept="image/*" class="m-2"
+                                    (change)="uploadFile1(file.files)" [auto]="true" [(ngModel)]="p_data.image1"
                                     class="col-6 text-left" chooseLabel="Photo 1 "></p-fileUpload>
-                                <p-fileUpload #file1 mode="basic" name="demo[]" accept="image/*" class="m-2"
-                                    (change)="uploadFile2(file1.files)" [auto]="true" [(ngModel)]="garageModel.image2"
+                                <p-fileUpload #file6 formControlName="image2" mode="basic" name="demo[]" accept="image/*" class="m-2"
+                                    (change)="uploadFile2(file6.files)" [auto]="true" [(ngModel)]="p_data.image2"
                                     class="col-6 text-left" chooseLabel="Photo 2"></p-fileUpload>
 
                                 <!-- <input class="form-control-lg" type="file" #file (change)="uploadFile1(file.files)"

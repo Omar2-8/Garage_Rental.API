@@ -22,9 +22,19 @@ namespace Garage_Rental.Infra.Service
             this._GeneralRepository.ChangeAmount(g);
         }
 
+        public void ChangeGarageMode(ChangeGarageMode g)
+        {
+            this._GeneralRepository.ChangeGarageMode(g);
+        }
+
         public List<Car> GetAllCarById(int id)
         {
             return _GeneralRepository.GetAllCarById(id);
+        }
+
+        public List<Rent> GetAllRentById(int id)
+        {
+            return _GeneralRepository.GetAllRentById(id);
         }
     }
 }

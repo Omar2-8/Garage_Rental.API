@@ -218,9 +218,13 @@ export class UserService {
       );
   }
   updateGarage(body: any) {
-    debugger;
-    body.image1 = this.display_image;
-    body.image2 = this.display_image2;
+debugger
+    if(this.display_image !=null ) {  
+      body.image1 = this.display_image;
+      }
+      if(this.display_image2 != null) {
+        body.image2 = this.display_image2;}
+    
     this.spinner.show();
     this.http.put('https://localhost:44391/api/Garage/Update', body).subscribe(
       (resp) => {
@@ -260,6 +264,11 @@ export class UserService {
         }
       );
   }
+  ChangeModeOfGrage(body:any) {this.http.put(this.baseApiUrl+'General/ChangeGarageMode',body).subscribe((resp)=>{
+    this.toster.success('Change Mode Of Garage Successfully !!');
+  },err=>{
+    this.toster.error(err.message, err.status);
+  })}
   //-------End Garage
 
   //-------Rent
@@ -287,7 +296,7 @@ export class UserService {
     //Hide Spinner
     //Resp=> Toastr
 
-    this.http.get('https://localhost:44391/api/Rent/GetById/' + id).subscribe(
+    this.http.get('https://localhost:44391/api/General/GetAllRentById/' + id).subscribe(
       (resp: any) => {
         this.rent = resp;
         console.log(this.user);
@@ -300,6 +309,7 @@ export class UserService {
     );
   }
 
+  
   deleteRent(id: number) {
     this.spinner.show();
 
@@ -410,6 +420,24 @@ export class UserService {
       }
     );
   }
+  getListCarId(id: number) {
+    //show Spinner
+    //Hits Api
+    //Hide Spinner
+    //Resp=> Toastr
+
+    this.http.get('https://localhost:44391/api/General/GetAllCarById/' + id).subscribe(
+      (resp: any) => {
+        this.car = resp;
+        console.log(this.car);
+
+        this.toster.success('Data Retrieved!');
+      },
+      (err) => {
+        this.toster.error(err.message, err.status);
+      }
+    );
+  }
 
   deleteCar(id: number) {
     this.spinner.show();
@@ -449,7 +477,7 @@ export class UserService {
     //Resp=> Toastr
 
     this.http
-      .get('https://localhost:44391/api/Payment/GetById/' + id)
+      .get('https://localhost:44391/api/LongLetGrages/GetByIdListPay/' + id)
       .subscribe(
         (resp: any) => {
           this.payment = resp;

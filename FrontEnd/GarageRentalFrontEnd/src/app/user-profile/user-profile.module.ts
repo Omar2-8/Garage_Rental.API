@@ -12,6 +12,9 @@ import { UserGarageComponent } from './user-garage/user-garage.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 
 import {TableModule} from 'primeng/table';
+import { UserRentsComponent } from './user-rents/user-rents.component';
+import { UserPaymentsComponent } from './user-payments/user-payments.component';
+import { UserCarsComponent } from './user-cars/user-cars.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +24,9 @@ import {TableModule} from 'primeng/table';
     UserSideBarComponent,
     AddTestimonialComponent,
     UserGarageComponent,
+    UserRentsComponent,
+    UserPaymentsComponent,
+    UserCarsComponent,
     ],
   imports: [
     CommonModule,
