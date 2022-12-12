@@ -26,6 +26,7 @@ export class RentGarageComponent implements OnInit {
     visA_AMOUNT: 0,
     cvC_CVV: 0
   };
+ 
   v:any={
     visA_ID: 0,
     visA_AMOUNT: 0,
@@ -55,10 +56,8 @@ export class RentGarageComponent implements OnInit {
     cvC_CVV: new FormControl('', Validators.required),
   });
   CheckCar: FormGroup = new FormGroup({
-    
-    
-    caR_TYPE: new FormControl('', Validators.required),
-    caR_PLATE: new FormControl('', Validators.required),
+    caR_TYPE: new FormControl(),
+    caR_PLATE: new FormControl(),
   });
 
 
@@ -108,27 +107,41 @@ export class RentGarageComponent implements OnInit {
     
   }
   openCarDailog() {
-    this.dialog.open(this.callVisaRent);
+    
+    this.dialog.open(this.callCarRent);
     this.userService.getListCarId(this.userid);
+    
   }
+  
   temb_car:any;
   Car() {
-    
+    debugger
     let cType:string=this.CheckCar.value.caR_TYPE;
-    let cPlate:string=this.CheckCar.value.caR_TYPE;
-    this.userService.getCarId(this.userService.car2.caR_ID);
+    let cPlate:string=this.CheckCar.value.caR_PLATE;
+    if(cType!=null &&cPlate!=null){
     this.temb_car= this.userService.car.filter(x=>x.caR_TYPE==cType&&x.caR_PLATE==cPlate);
+    if(this.temb_car.length!=0){
+      this.toastr.success('The Car Has Been Selected! Car: '+cType+' Car Plate '+cPlate);
+    }
+    else{
+      this.toastr.error('The Car entered is incorrect!');
+    }
   }
+    else{
+      this.toastr.error('Please Choose You Car For Rent!');
+  }
+}
 
   saveData() {
+
     debugger
     this.createForm.value.garagE_ID=parseInt(this.garageid)
      this.createForm.value.useR_ID=parseInt(this.userid)
     
     if(this.userService.garage.garagE_MODE !='unavailable'){
       if(this.userService.garage.availablE_FROM <=this.createForm.value.starT_TIME && this.userService.garage.availablE_TO >=this.createForm.value.enD_TIME ){
-      
-        if( this.visa_t[0].visA_AMOUNT!=0){
+      if(this.temb_car!=undefined){
+        if( this.visa_t!=undefined){
         if(this.visa_t[0].visA_AMOUNT>this.userService.garage.renT_PRICE*(this.createForm.value.enD_TIME-this.createForm.value.starT_TIME)){
           this.ChangeAmount.value.visA_NUMBER=this.visa_t[0].visA_NUMBER;
           this.ChangeAmount.value.visA_AMOUNT=this.visa_t[0].visA_AMOUNT-this.userService.garage.renT_PRICE*(this.createForm.value.enD_TIME-this.createForm.value.starT_TIME);
@@ -143,6 +156,9 @@ export class RentGarageComponent implements OnInit {
   this.toastr.error('Please Add Visa For Rent ');
 
   }
+  else
+  this.toastr.error('Please Add Car For Rent ');
+}
   else
   this.toastr.error('The time of rent garage is not available');
 }

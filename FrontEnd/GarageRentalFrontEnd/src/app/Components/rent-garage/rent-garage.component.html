@@ -76,6 +76,7 @@
                 
                 <p><button href="#" class="btn btn-primary"(click)="openCreateDailog()">Rent</button></p>
                 <p><button href="#" class="btn btn-primary"(click)="openVisaDailog()">Add Visa</button></p>
+                <p><button href="#" class="btn btn-primary"(click)="openCarDailog()">Select Car</button></p>
               </div>
   
               <div class="mb-5">
@@ -193,7 +194,6 @@
   </mat-dialog-content>
   <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close class="btn btn-danger">Cancel</button>
-    <label>Add Visa</label>
     <button
       mat-button
       [mat-dialog-close]="true"
@@ -222,7 +222,7 @@
     <div class="content">
       <div class="container-fluid">
 
-<h2 mat-dialog-title>ADD VISA</h2>
+<h2 mat-dialog-title>Select Car For Rent</h2>
 <mat-dialog-content class="mat-typography">
   <form class="example-form" [formGroup]="CheckCar" >
     <!-- <mat-form-field class="example-full-width" appearance="fill">
@@ -231,14 +231,27 @@
       
       
     </mat-form-field> -->
+    
+<mat-form-field appearance="fill">
+  <mat-label>Select Car Type </mat-label>
+  <mat-select formControlName="caR_TYPE">
+    <mat-option type="text" *ngFor="let obj of userService.car"  [value]="obj.caR_TYPE">
+      {{obj.caR_TYPE}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
 
-  
-        <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>CVC/CVV</mat-label>
-          <input type="number" matInput formControlName="cvC_CVV" />
-  
-          
-        </mat-form-field>
+   
+
+<mat-form-field appearance="fill">
+  <mat-label>Select Car Plate</mat-label>
+  <mat-select formControlName="caR_PLATE">
+    <mat-option type="text" *ngFor="let obj of userService.car"  [value]="obj.caR_PLATE">
+      {{obj.caR_PLATE}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+        
    
   </form>
 
@@ -250,14 +263,14 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close class="btn btn-danger">Cancel</button>
-  <label>Add Visa</label>
+ 
   <button
     mat-button
     [mat-dialog-close]="true"
     cdkFocusInitial
-    (click)="Visa()"class="btn btn-primary"
+    (click)="Car()"class="btn btn-primary"
   >
-  Add Visa
+  Select
 </button>
   
 </mat-dialog-actions>
