@@ -1,5 +1,7 @@
 import { UserService } from './../../Services/user.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-user-cars',
@@ -7,12 +9,59 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-cars.component.css']
 })
 export class UserCarsComponent implements OnInit {
-
-  constructor(public user:UserService) { }
   first = 0;
   rows = 10;
+  constructor(public user:UserService,private dialog: MatDialog) { }
+  @ViewChild('callDeleteDailog') callDelete!: TemplateRef<any>;
+  @ViewChild('callCreteDailog') CreateGarage!: TemplateRef<any>;
+  @ViewChild('callUpdatDailog') callUpdate!: TemplateRef<any>;
+
+  UpdateCar :FormGroup= new FormGroup({
+    caR_ID:new FormControl('',),
+    caR_TYPE:new FormControl('',Validators.required),
+    caR_PLATE:new FormControl('',Validators.required),
+    useR_ID:new FormControl('',),    
+  })
   ngOnInit(): void {
+    let user:any= localStorage.getItem('user');
+    user = JSON.parse(user);
+    this.user.getListCarId(user.USER_ID);
   }
+//Update
+  // p_data :any={};
+  // openUpdateDailog(obj:any){
+  //   console.log(obj);
+  //   this.p_data={
+  //     caR_ID:obj.caR_ID,
+  //     caR_TYPE:obj.caR_TYPE,
+  //     caR_PLATE:obj.caR_PLATE,
+  //     useR_ID:obj.useR_ID
+  //   }
+  //   this.UpdateCar.controls['caR_ID'].setValue(this.p_data.caR_ID);
+  //   this.dialog.open(this.callUpdate);
+  //   }
+  //   saveUpdate(){
+  //     let user:any= localStorage.getItem('user');
+  //     user = JSON.parse(user);
+  //     this.UpdateCar.value.useR_ID=user.USER_ID
+  //     this.user.updateCar(this.UpdateCar.value);
+  //   }
+//Delete
+  openDeleteDailog(id: number) {
+    const dialogRef = this.dialog.open(this.callDelete);
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result != undefined) {
+        if (result == 'yes') {
+          this.user.deleteCar(id);
+        } else if (result == 'no') console.log('thank you ');
+      }
+    });
+  }
+
+
+
+
+
     //for table
     next() {
       this.first = this.first + this.rows;

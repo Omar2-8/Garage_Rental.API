@@ -180,109 +180,6 @@
                     </mat-dialog-actions>
                 </ng-template>
 
-                <!-- <ng-template #ChangeStatusOfGrage>
-                    <h2>Are you sure you want to Change Status Of Grage this Garage ?</h2>
-                    <button class="btn btn-primary" mat-dialog-close="yes">Yes</button>
-                    <button class="btn btn-primary" mat-dialog-close="no">No</button>
-                </ng-template> -->
-                <!-- <ng-template #callUpdatDailog>
-                    <mat-dialog-content class="mat-typography">
-                        <form class="example-form" [formGroup]="updateForm"
-                        style="box-shadow: 0px 14px 59px -3px rgba(0,0,0,0.1); border-radius: 20px; width: 560px;">
-                        <div style="padding: 50px; ">
-                            <mat-form-field class="example-form" appearance="fill" >
-                            <mat-label style="border-bottom: none; width:500px;">garagE_NAME</mat-label>
-                            <input required style="color: black;" type="text" matInput formControlName="garagE_NAME">
-                            <mat-error style="border-bottom: none; width:500px;" *ngIf="updateForm.controls['garagE_NAME'].hasError('required')">
-                                Garage Name<strong>required</strong>
-                            </mat-error>
-                            </mat-form-field>
-                            <br>
-                            <mat-form-field class="example-full-width" appearance="fill">
-                                <mat-label>latitude</mat-label>
-                                <input type="text" matInput formControlName="latitude">
-                            <mat-error *ngIf="updateForm.controls['latitude'].hasError('required')">
-                                latitude <strong>required</strong>
-                            </mat-error>
-                            </mat-form-field>
-                        <br>
-                        <mat-form-field class="example-full-width" appearance="fill" >
-                        <mat-label>longitude</mat-label>
-                        <input type="text" matInput formControlName="longitude">
-                        <mat-error *ngIf="updateForm.controls['longitude'].hasError('required')">
-                            longitude <strong>required</strong>
-                        </mat-error>
-                        </mat-form-field>
-                        <br>
-                            <mat-form-field class="example-full-width" appearance="fill"  >
-                                <mat-label>image1</mat-label>
-                                <input type="text" matInput formControlName="image1">
-                            </mat-form-field>
-                            <br>
-                            <mat-form-field class="example-full-width" appearance="fill"  >
-                                <mat-label>image2</mat-label>
-                                <input type="text" matInput formControlName="image2">
-
-                            </mat-form-field>
-                            <br>
-                            <mat-form-field class="example-full-width" appearance="fill">
-                                <mat-label>Available From</mat-label>
-                                <input type="number" matInput formControlName="availablE_FROM">
-                            <mat-error *ngIf="updateForm.controls['availablE_FROM'].hasError('required')">
-                                Available From <strong>required</strong>
-                            </mat-error>
-                            </mat-form-field>
-                            <br>
-                            <mat-form-field class="example-full-width" appearance="fill">
-                                <mat-label>availablE_TO</mat-label>
-                                <input type="number" matInput formControlName="availablE_TO">
-                            <mat-error *ngIf="updateForm.controls['availablE_TO'].hasError('required')">
-                                availablE_TO <strong>required</strong>
-                            </mat-error>
-                            </mat-form-field>                            <br>
-                            <mat-form-field class="example-full-width" appearance="fill">
-                                <mat-label>renT_PRICE</mat-label>
-                                <input type="number" matInput formControlName="renT_PRICE">
-                            <mat-error *ngIf="updateForm.controls['renT_PRICE'].hasError('required')">
-                                renT_PRICE <strong>required</strong>
-                            </mat-error>
-                            </mat-form-field>                            <br>
-                            <mat-form-field class="example-full-width" appearance="fill">
-                                <mat-label>street</mat-label>
-                                <input type="text" matInput formControlName="street">
-                            <mat-error *ngIf="updateForm.controls['street'].hasError('required')">
-                                street <strong>required</strong>
-                            </mat-error>
-                            </mat-form-field>                            <br>
-                            <mat-form-field class="example-full-width" appearance="fill">
-                                <mat-label>buildinG_NUMBER</mat-label>
-                                <input type="number" matInput formControlName="buildinG_NUMBER">
-                            <mat-error *ngIf="updateForm.controls['buildinG_NUMBER'].hasError('required')">
-                                buildinG_NUMBER <strong>required</strong>
-                            </mat-error>
-                            </mat-form-field>                            <br>
-                            <mat-form-field class="example-full-width" appearance="fill">
-                                <mat-label>garagE_MODE</mat-label>
-                                <input type="text" matInput formControlName="garagE_MODE">
-                            <mat-error *ngIf="updateForm.controls['garagE_MODE'].hasError('required')">
-                                garagE_MODE <strong>required</strong>
-                            </mat-error>
-                            </mat-form-field>                            <br>
-                            <mat-form-field class="example-full-width" appearance="fill">
-                                <mat-label>useR_ID</mat-label>
-                                <input type="text" matInput formControlName="useR_ID">
-                            <mat-error *ngIf="updateForm.controls['useR_ID'].hasError('required')">
-                                useR_ID <strong>required</strong>
-                            </mat-error>
-                            </mat-form-field>                            <br>
-                            <br>
-                            </div>
-                            <mat-dialog-actions style="padding: 20px; margin-left: 190px;" align="end">
-                            <button class="btn btn-primary px-5 py-3" style=" border-radius: 31px;line-height: 14px;" mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="saveData()">ADD</button>
-                            </mat-dialog-actions><br><br><br><br>
-                            </form>
-                    </mat-dialog-content>
-                </ng-template> -->
                 <ng-template #callUpdatDailog>
                     <div class="m-3 p-3">
                         <form [formGroup]="updateForm" class="m-2">
@@ -454,38 +351,10 @@
                 </div>
             </div>
 
-            <!-- <div class="mb-3">
-        <label>Avalable from</label>
-        <input
-          class="form-control form-control-lg form-control-solid"
-          type="text"
-          placeholder="Avalable from"
-          required
-          formControlName="from"
-        />
-      </div>
 
-      <div class="mb-3">
-        <label>Avalable to</label>
-        <input
-          class="form-control form-control-lg form-control-solid"
-          type="text"
-          placeholder="Avalable to"
-          required
-          formControlName="to"
-        />
-      </div> -->
-            <!-- <div class="mb-3">
-        <label>Avalablabilty</label>
-        <p-slider [(ngModel)]="rangeValues" [range]="true"></p-slider>
-      </div> -->
 
             <div class="mb-3">
                 <label>Upload 2 images </label>
-                <!-- <p-fileUpload name="myfile[]" [customUpload]="true" (change)="uploadFile2(file1.files)"[(ngModel)]="garageModel.image1"></p-fileUpload> -->
-
-                <!-- <p-fileUpload name="myfile[]"
-        (change)="uploadFile2(file1.files)"[(ngModel)]="garageModel.image1"></p-fileUpload> -->
                 <input class="form-control-solid" type="file" #file (change)="uploadFile1(file.files)" />
                 <input class="form-control-lg" type="file" #file1 (change)="uploadFile2(file1.files)" />
             </div>

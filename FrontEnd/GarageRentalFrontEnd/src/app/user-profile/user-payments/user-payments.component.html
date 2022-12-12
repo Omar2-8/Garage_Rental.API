@@ -15,7 +15,7 @@
                             <p-table
                             #dt1
                             [value]="user.payment"
-                            [globalFilterFields]="['paY_ID','paY_AMOUNT','garagE_NAME','paY_DATE','useR_ID','visA_ID','renT_ID']"
+                            [globalFilterFields]="['paY_ID','paY_AMOUNT','garagE_NAME','paY_DATE','visA_ID','renT_ID']"
                             [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
                             currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]"
                             >
@@ -34,7 +34,6 @@
                                         <th>Payment Amount<p-columnFilter type="number" field="paY_AMOUNT" display="menu"></p-columnFilter></th>
                                         <th>Garage Number<p-columnFilter type="number" field="garagE_NAME" display="menu"></p-columnFilter></th>
                                         <th>Payment Date<p-columnFilter type="number" field="paY_DATE" display="menu"></p-columnFilter></th>
-                                        <th>User Id<p-columnFilter type="number" field="useR_ID" display="menu"></p-columnFilter></th>
                                         <th>Visa Id<p-columnFilter type="number" field="visA_ID" display="menu"></p-columnFilter></th>
                                         <th>Rent Number<p-columnFilter type="number" field="renT_ID" display="menu"></p-columnFilter></th>
                                         <th></th>
@@ -46,7 +45,6 @@
                                         <td>{{ obj.paY_AMOUNT }}</td>
                                         <td>{{ obj.garagE_NAME }}</td>
                                         <td>{{ obj.paY_DATE }}</td>
-                                        <td>{{ obj.useR_ID }}</td>
                                         <td>{{ obj.visA_ID }}</td>
                                         <td>{{ obj.renT_ID }}</td>
                                     </tr>

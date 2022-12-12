@@ -40,6 +40,21 @@ export class ManageGarageComponent implements OnInit {
     Rents: [],
     Testimonials: [],
   };
+  updateGarageModel: GarageModel = {
+    garagE_ID: 0,
+    garagE_NAME: '',
+    latitude: '',
+    longitude: '',
+    image1: '',
+    image2: '',
+    availablE_FROM: 0,
+    availablE_TO: 0,
+    renT_PRICE: 0,
+    street: '',
+    buildinG_NUMBER: 0,
+    status: '',
+    garagE_MODE: '',
+  };
 
   scrollStrategy: ScrollStrategy;
 
@@ -172,14 +187,44 @@ export class ManageGarageComponent implements OnInit {
   }
 
   //Update
-  p_data: any = {};
-  openUpdateDailog(obj:any) {
+  p_data: GarageModel = {
+    garagE_ID: 0,
+    garagE_NAME: '',
+    latitude: '',
+    longitude: '',
+    image1: '',
+    image2: '',
+    availablE_FROM: 0,
+    availablE_TO: 0,
+    renT_PRICE: 0,
+    street: '',
+    buildinG_NUMBER: 0,
+    status: '',
+    garagE_MODE: '',
+  };
+  openUpdateDailog(obj: {
+    garagE_ID: any;
+    garagE_NAME: any;
+    image1: any;
+    image2: any;
+    availablE_FROM: any;
+    availablE_TO: any;
+    latitude: any;
+    longitude: any;
+    renT_PRICE: any;
+    street: any;
+    buildinG_NUMBER: any;
+    garagE_MODE: any;
+    useR_ID: any;
+    staus: any;
+  }) {
+    debugger;
     console.log(obj);
     this.p_data = {
       garagE_ID: obj.garagE_ID,
       garagE_NAME: obj.garagE_NAME,
-      // latitude: obj.markerPositions[0]['lat'],
-      // longitude: obj.markerPositions[0]['lng'],
+      latitude: obj.latitude,
+      longitude: obj.longitude,
       image1: obj.image1,
       image2: obj.image2,
       availablE_FROM: obj.availablE_FROM,
@@ -189,14 +234,26 @@ export class ManageGarageComponent implements OnInit {
       buildinG_NUMBER: obj.buildinG_NUMBER,
       garagE_MODE: obj.garagE_MODE,
       useR_ID: obj.useR_ID,
+      status: obj.staus,
     };
     this.updateForm.controls['garagE_ID'].setValue(this.p_data.garagE_ID);
     this.dialog.open(this.callUpdate);
   }
 
   saveData() {
-    debugger
-    this.user.updateGarage(this.updateForm.value);
+    debugger;
+    this.garageModel.latitude = this.p_data.latitude;
+    this.garageModel.longitude = this.p_data.longitude;
+
+    this.garageService
+      .updateGarage(this.garageModel.garagE_ID, this.garageModel)
+      .subscribe({
+        next(value) {
+          console.log(value);
+        },
+      });
+
+    //this.user.updateGarage(this.updateForm.value);
     // this.admin.updateGarage();
   }
   saveDataUsers() {

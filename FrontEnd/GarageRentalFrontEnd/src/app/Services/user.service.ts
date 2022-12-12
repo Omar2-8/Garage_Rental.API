@@ -492,4 +492,25 @@ debugger
   }
 
   //--------- End Payment
+
+  //Omar CCode
+
+  getUserList(): Observable<User[]> {
+    return this.http.get<User[]>(this.baseApiUrl + 'Users/GetAll');
+  }
+
+  // getVisa(id: string): Observable<User> {
+  //   return this.http.get<User>(this.baseApiUrl + 'Visa/GetById?id=' + id);
+  // }
+
+  // addVisa(addVisaReq: User): Observable<User> {
+  //   return this.http.post<User>(this.baseApiUrl + 'Visa/Create', addVisaReq);
+  // }
+
+  // updateVisa(id: number, updateVisareq: User): Observable<User> {
+  //   return this.http.post<User>(
+  //     this.baseApiUrl + 'Visa/Update?id=' + id,
+  //     updateVisareq
+  //   );
+  // }
 }
