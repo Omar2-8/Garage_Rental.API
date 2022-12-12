@@ -6,21 +6,22 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
+  constructor(
+    public home: HomeService,
+    public user: UserService,
+    public admin: AdminService
+  ) {}
+  usersNumber!: number;
 
-  constructor(public home:HomeService,public user:UserService,public admin:AdminService) { }
-  userNumber:any;
   ngOnInit(): void {
-    debugger
-    this.admin.getAllUsers();
-    console.log(this.admin.getAllUsers());
-    
-    this.userNumber =this.admin.user.length;
-    console.log(this.userNumber);
-    
-    this.home.getAboutUs();
+    debugger;
+    this.user.getUserList().subscribe({
+      next: (value) => {
+        this.usersNumber = value.length;
+      },
+    });
   }
-
 }
