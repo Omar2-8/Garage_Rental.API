@@ -32,6 +32,7 @@ export class RegisterComponent implements OnInit {
       this.spinner.hide();
     },2000)
     console.log(this.registerForm.value);
+    this.route.navigate(['security/login']);
   }
 ngOnInit(): void {
   
