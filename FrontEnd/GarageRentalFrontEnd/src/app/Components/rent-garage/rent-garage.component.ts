@@ -80,20 +80,18 @@ export class RentGarageComponent implements OnInit {
    user:any;
   ngOnInit(): void {
     this.userService.getSingleGarageId(this.garageid);
-    
+    this.adminService.getAllRents();
     
    this.user = localStorage.getItem('user');
     this.user = JSON.parse(this.user);
     this.userid=this.user.USER_ID;
   }
   
-  temp_r:any;
+ 
   openCreateDailog() {
-    let uid:number=parseInt(this.userid);
-    let gid:number=parseInt(this.garageid);
-    this.dialog.open(this.callCreateRent);
-    this.adminService.getAllRents();
-    this.temp_r= this.adminService.rent.filter(x=> x.useR_ID==uid && x.garagE_ID==gid);
+    debugger
+    
+     this.dialog.open(this.callCreateRent);
   }
 
 
@@ -151,7 +149,7 @@ export class RentGarageComponent implements OnInit {
       this.toastr.error('Please Choose You Car For Rent!');
   }
 }
-
+temp_r:any;
   saveData() {
    
     debugger
@@ -169,23 +167,23 @@ export class RentGarageComponent implements OnInit {
           
           {//payment create
             
+            let uid:number=parseInt(this.userid);
+            let gid:number=parseInt(this.garageid);
+    
+            this.temp_r= this.adminService.rent.pop();
             
-        
-            
-            
-
-
+ 
           this.createPaym.value.paY_AMOUNT=this.visa_t[0].visA_AMOUNT-this.userService.garage.renT_PRICE*(this.createForm.value.enD_TIME-this.createForm.value.starT_TIME);
           this.createPaym.value.garagE_NAME=this.userService.garage.garagE_NAME; 
-          this.createPaym.value.paY_DATE=this.temp_r[0].renT_DATE
-          this.createPaym.value.commissioN_RATE=20;
-          this.createPaym.value.useR_ID=parseInt(this.userid)
-          this.createPaym.value.visA_ID=null;
-          this.createPaym.value.renT_ID=this.temp_r[0].renT_ID
+          this.createPaym.value.paY_DATE=this.temp_r.renT_DATE.split('T')[0];
+          this.createPaym.value.commissioN_RATE=10;
+          this.createPaym.value.useR_ID=parseInt(this.userid);
+          this.createPaym.value.visA_ID=this.visa_t[0].visA_ID;
+          this.createPaym.value.renT_ID=this.temp_r.renT_ID;
 
           this.userService.ChangeAmountVisa(this.ChangeAmount.value);
-        this.userService.createRent(this.createForm.value);
-  //  this.userService.createpay(this.createPaym.value);
+          this.userService.createRent(this.createForm.value);
+          this.userService.createpay(this.createPaym.value);
         }//end payment create
 
         }
