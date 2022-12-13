@@ -2,12 +2,13 @@
   
     <div class="site-wrap" style="background-color: #f8fafb;">
       <app-navbar></app-navbar>
-      <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(../../../assets/Login/images/hero_2.jpg);" data-aos="fade">
+      <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(../../../assets/images/pexels-airam-datoon-9408353.jpg);" data-aos="fade">
         <div class="container">
           <div class="row align-items-center justify-content-center">
             <div class="col-md-5 mx-auto mt-lg-5 text-center">
-              <h1>HD17 19 Utica Ave, New York, USA</h1>
-              <p class="mb-5"><strong class="text-white">$2,000,000</strong></p>
+              <h1>Welcome to Garage Rental
+                </h1>
+              <p class="mb-5"><strong class="text-white"></strong></p>
               
             </div>
           </div>
@@ -26,11 +27,11 @@
                     <div class="col-md-12">
                         <div class="form-block">
                             <div class="mb-4">
-                                <h3>Sign In to <strong>Colorlib</strong></h3>
-                                <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p>
+                                <h3>Sign In to  <strong style=" color: #37cfa2;">Garage Rental</strong></h3>
+                                <p class="mb-4">Create an account to access our services.</p>
                             </div>
 
-                            <h2 mat-dialog-title>Add Testimonial</h2>
+                            <h2 mat-dialog-title>Add Your information</h2>
                             <mat-dialog-content class="mat-typography">
                                <form class="example-form" [formGroup]="registerForm" >
                             
@@ -38,7 +39,7 @@
                                   
                               
                                 <mat-form-field class="example-full-width" appearance="fill">
-                                  <mat-label>firsT_NAME</mat-label>
+                                  <mat-label>FIRST NAME</mat-label>
                                   <input type="text" matInput formControlName="firsT_NAME">
                                   <mat-error *ngIf="registerForm.controls['firsT_NAME'].hasError('required')">
                                     firsT_NAME is <strong>required</strong>
@@ -46,7 +47,7 @@
                                 </mat-form-field>
                                 <br>
                                 <mat-form-field class="example-full-width" appearance="fill">
-                                  <mat-label>lasT_NAME</mat-label>
+                                  <mat-label>LAST NAME</mat-label>
                                   <input type="text" matInput formControlName="lasT_NAME">
                                   <mat-error *ngIf="registerForm.controls['lasT_NAME'].hasError('required')">
                                     lasT_NAME is <strong>required</strong>
@@ -54,7 +55,7 @@
                                 </mat-form-field>
                                 <br>
                                   <mat-form-field class="example-full-width" appearance="fill">
-                                    <mat-label>email</mat-label>
+                                    <mat-label>Email</mat-label>
                                     <input type="text" matInput formControlName="email">
                                     <mat-error *ngIf="registerForm.controls['email'].hasError('required')">
                                       email is <strong>required</strong>
@@ -62,7 +63,7 @@
                                   </mat-form-field>
                             <br>
                                   <mat-form-field class="example-full-width" appearance="fill"  >
-                                    <mat-label>password</mat-label>
+                                    <mat-label>Password</mat-label>
                                     <input type="text" matInput formControlName="password">
                                     <mat-error *ngIf="registerForm.controls['password'].hasError('required')">
                                       password <strong>required</strong>
@@ -87,10 +88,10 @@
                                 
                                   <br>
                                   <mat-form-field class="example-full-width" appearance="fill" >
-                                    <mat-label>useR_IDENTITY</mat-label>
+                                    <mat-label>USER IDENTITY</mat-label>
                                     <input type="text" matInput formControlName="useR_IDENTITY">
                                     <mat-error *ngIf="registerForm.controls['useR_IDENTITY'].hasError('required')">
-                                      useR_IDENTITY <strong>required</strong>
+                                     User IDENTITY <strong>required</strong>
                                     </mat-error>
                                   </mat-form-field>
                                   <br>
@@ -99,8 +100,8 @@
                                 </form>
                             </mat-dialog-content>
                             <mat-dialog-actions align="end">
-                              <button mat-button mat-dialog-close>Cancel</button>
-                              <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="submit()" >ADD</button>
+                            
+                              <button  class="btn btn-lg" style="background-color: #37cfa2; color: white;width: 100%;" mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="submit()" >ADD</button>
                             </mat-dialog-actions>
 
                             <!-- <form  [formGroup]="registerForm">

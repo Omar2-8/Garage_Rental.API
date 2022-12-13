@@ -3,12 +3,12 @@
   
     <div class="site-wrap" style="background-color: #f8fafb;">
       <app-navbar></app-navbar>
-      <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(../../../assets/Login/images/hero_2.jpg);" data-aos="fade">
+      <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(../../../assets/images/pexels-airam-datoon-9408353.jpg);" data-aos="fade">
         <div class="container">
           <div class="row align-items-center justify-content-center">
             <div class="col-md-5 mx-auto mt-lg-5 text-center">
-              <h1>HD17 19 Utica Ave, New York, USA</h1>
-              <p class="mb-5"><strong class="text-white">$2,000,000</strong></p>
+              <h1>Welcome to Garage Rental</h1>
+              
               
             </div>
           </div>
@@ -27,20 +27,25 @@
                     <div class="col-md-12">
                         <div class="form-block">
                             <div class="mb-4">
-                                <h3>Sign In to <strong>Colorlib</strong></h3>
-                                <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p>
+                                <h3>Sign In to <strong style=" color: #37cfa2;">Garage Rental</strong></h3>
+                               
                             </div>
+                            
                             <form >
+                              <div class="row">
+                                <div class="col-sm-12">
                                 <div class="form-group first">
-                                    <label for="Email" style="margin-top: -20px;" class="control-label" ></label>
-                                    <mat-form-field class="example-full-width">
-                                    <input style="border-bottom: none;" class="form-control"
+                                    <!-- <label for="Email" style="margin-top: -20px;" class="control-label" ></label> -->
+                                    
+                                  
+                                      <mat-label >Email</mat-label>
+                                    <input style="border-radius: 15px; background-color: aliceblue;" class="form-control"
                                     id="email"
                                     type="email"
                                     matInput
                                     [formControl]="email"
                                     title="email"
-                                    placeholder="Email"
+                                  
                                     />
                                     <mat-error *ngIf="email.hasError('email')">
                                         Please enter a valid email address
@@ -48,19 +53,19 @@
                                       <mat-error *ngIf="email.hasError('required')">
                                         Email is <strong>required</strong>
                                       </mat-error>
-                                    </mat-form-field>
+                                   
                             
                                 </div>
                                 <div class="form-group last mb-4">
-                                    <label for="Password" style="margin-top: -20px;" class="control-label"></label>
-                                    <mat-form-field class="example-full-width">
-                                    <input  class="form-control"  style="border-bottom: none;"
+                                  <mat-label >Password</mat-label>
+                                 
+                                    <input  class="form-control"  style="background-color: aliceblue;;border-radius: 15px;"
                                     id="password"
                                     type="password"
                                     matInput
                                     [formControl]="password"
                                     title="password"
-                                    placeholder="Password"
+                                    
                                     />
 
                                     <mat-error *ngIf="password.hasError('minlength')">
@@ -69,7 +74,7 @@
                                       <mat-error *ngIf="password.hasError('required')">
                                         password is <strong>required</strong>
                                       </mat-error>
-                                    </mat-form-field>
+                                   
 
                                 </div>
 
@@ -98,7 +103,8 @@
                                     <a href="#" class="google">
                                         <span class="icon-google mr-3"></span>
                                     </a>
-                                </div>
+                                </div></div>
+                              </div>
                             </form>
                         </div>
                     </div>
