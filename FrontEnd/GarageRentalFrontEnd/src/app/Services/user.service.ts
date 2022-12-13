@@ -138,11 +138,11 @@ export class UserService {
       (resp) => {
         console.log(resp);
         this.spinner.hide();
-        this.toster.success('Created !!');
+        this.toster.success('Created Garage successfuly!!');
       },
       (err) => {
         this.spinner.hide();
-        this.toster.error(err.message, err.status);
+        this.toster.error('Created Garage successfuly!!');
       }
     );
   }

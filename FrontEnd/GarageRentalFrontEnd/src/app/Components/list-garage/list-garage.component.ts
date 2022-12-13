@@ -2,6 +2,7 @@ import { GarageService } from './../../Services/garage.service';
 import { GarageModel } from './../../Models/garage.model';
 import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/Services/user.service';
 
 @Component({
   selector: 'app-list-garage',
@@ -13,7 +14,7 @@ export class ListGarageComponent implements OnInit {
   display: any;
   val: any;
 
-  constructor(private garageService: GarageService) {}
+  constructor(private garageService: GarageService,public user: UserService,) {}
 
   ngOnInit(): void {}
 
@@ -49,7 +50,18 @@ export class ListGarageComponent implements OnInit {
     user_ID: new FormControl(''),
 
   });
-
+  garageForm2 = new FormGroup({
+  
+    garagE_NAME: new FormControl('', Validators.required),
+    latitude: new FormControl(''),
+    longitude: new FormControl(''),
+    renT_PRICE: new FormControl('', Validators.required),
+    street: new FormControl('', Validators.required),
+    image1: new FormControl(),
+    image2: new FormControl(),
+    buildinG_NUMBER: new FormControl('', Validators.required),
+    useR_ID: new FormControl(),
+  });
   center: google.maps.LatLngLiteral = {
     lat: 31,
     lng: 36,
@@ -66,6 +78,12 @@ export class ListGarageComponent implements OnInit {
     }
   }
 
+  savetestgarage(){
+    this.garageForm2.value.latitude = '' + this.markerPositions[0]['lat'];
+      this.garageForm2.value.longitude = '' + this.markerPositions[0]['lng'];
+      this.garageForm2.value.useR_ID=45;
+      this.user.createGarage(this.garageForm2.value)
+  }
   saveInfo() {
     debugger;
 
@@ -97,10 +115,21 @@ export class ListGarageComponent implements OnInit {
     });
   }
 
-  uploadImage(file: any) {
+  uploadFile1(file: any) {
+    debugger;
     if (file.length == 0) return;
     let fileToUpload = <File>file[0]; //the first image
     const formdata = new FormData();
     formdata.append('file', fileToUpload, fileToUpload.name);
+    //this.garageModel.image1 = fileToUpload.name;
+    this.user.uploadAttachmentGarage(formdata);
+  }
+  uploadFile2(file: any) {
+    if (file.length == 0) return;
+    let fileToUpload = <File>file[0]; //the first image
+    const formdata = new FormData();
+    formdata.append('file', fileToUpload, fileToUpload.name);
+    //this.garageModel.image2 = fileToUpload.name;
+    this.user.uploadAttachmentGarage2(formdata);
   }
 }
