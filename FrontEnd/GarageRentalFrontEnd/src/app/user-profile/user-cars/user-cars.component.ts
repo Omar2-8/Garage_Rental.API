@@ -13,20 +13,44 @@ export class UserCarsComponent implements OnInit {
   rows = 10;
   constructor(public user:UserService,private dialog: MatDialog) { }
   @ViewChild('callDeleteDailog') callDelete!: TemplateRef<any>;
-  @ViewChild('callCreteDailog') CreateGarage!: TemplateRef<any>;
+  @ViewChild('callCreteDailog') callCreatecar!: TemplateRef<any>;
   @ViewChild('callUpdatDailog') callUpdate!: TemplateRef<any>;
 
-  UpdateCar :FormGroup= new FormGroup({
-    caR_ID:new FormControl('',),
+  createForm :FormGroup= new FormGroup({
     caR_TYPE:new FormControl('',Validators.required),
     caR_PLATE:new FormControl('',Validators.required),
-    useR_ID:new FormControl('',),    
+    useR_ID:new FormControl(''),  
+    
   })
   ngOnInit(): void {
     let user:any= localStorage.getItem('user');
     user = JSON.parse(user);
     this.user.getListCarId(user.USER_ID);
   }
+
+  openCreateDailog(){
+    this.dialog.open(this.callCreatecar);
+  }
+  saveCreate(){
+    debugger;
+    let users:any= localStorage.getItem('user');
+    users = JSON.parse(users);
+    this.createForm.value.useR_ID=parseInt(users.USER_ID);
+    this.user.createCar(this.createForm.value);
+  }
+//Delete
+  openDeleteDailog(id: number) {
+    const dialogRef = this.dialog.open(this.callDelete);
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result != undefined) {
+        if (result == 'yes') {
+          this.user.deleteCar(id);
+        } else if (result == 'no') console.log('thank you ');
+      }
+    });
+  }
+
+
 //Update
   // p_data :any={};
   // openUpdateDailog(obj:any){
@@ -46,20 +70,6 @@ export class UserCarsComponent implements OnInit {
   //     this.UpdateCar.value.useR_ID=user.USER_ID
   //     this.user.updateCar(this.UpdateCar.value);
   //   }
-//Delete
-  openDeleteDailog(id: number) {
-    const dialogRef = this.dialog.open(this.callDelete);
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result != undefined) {
-        if (result == 'yes') {
-          this.user.deleteCar(id);
-        } else if (result == 'no') console.log('thank you ');
-      }
-    });
-  }
-
-
-
 
 
     //for table

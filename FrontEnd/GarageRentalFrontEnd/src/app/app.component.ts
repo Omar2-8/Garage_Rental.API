@@ -1,3 +1,4 @@
+import { HomeService } from 'src/app/Services/home.service';
 import { Component } from '@angular/core';
 import { NgxSpinnerService } from "ngx-spinner";
 
@@ -7,9 +8,11 @@ import { NgxSpinnerService } from "ngx-spinner";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor( ){
+  constructor(public home:HomeService ){
 
   }
-
+  ngOnInit(): void {
+    this.home.getHome();
+  }
   title = 'GarageRentalFrontEnd';
 }
