@@ -24,29 +24,27 @@
           rating is <strong>required</strong>
         </mat-error>
       </mat-form-field>
-      <br />
-      <mat-form-field class="example-full-width" appearance="fill">
+      <!-- <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Status</mat-label>
         <input type="text" matInput formControlName="status" />
         <mat-error *ngIf="createForm.controls['status'].hasError('required')">
           status <strong>required</strong>
         </mat-error>
-      </mat-form-field>
+      </mat-form-field> -->
       <br />
-      <mat-form-field class="example-full-width" appearance="fill">
+      <!-- <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>useR_ID</mat-label>
         <input type="number" matInput formControlName="useR_ID" />
         <mat-error *ngIf="createForm.controls['useR_ID'].hasError('required')">
           useR_ID <strong>required</strong>
         </mat-error>
       </mat-form-field>
-      <br />
+      <br /> -->
     </form>
   </mat-dialog-content>
   <mat-dialog-actions align="end">
-    <button mat-button mat-dialog-close>Cancel</button>
     <button
-      mat-button
+      mat-button class="btn btn-primary"
       [mat-dialog-close]="true"
       cdkFocusInitial
       (click)="saveData()"

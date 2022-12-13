@@ -21,6 +21,11 @@ export class AddTestimonialComponent implements OnInit {
   }
   saveData()
   {
+    debugger
+    this.createForm.value.status='Waiting';
+    let user:any= localStorage.getItem('user');
+    user = JSON.parse(user);
+    this.createForm.value.useR_ID=parseInt(user.USER_ID);
     this.home.createTestimonial(this.createForm.value);
   }
 }

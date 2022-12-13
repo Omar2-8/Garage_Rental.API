@@ -387,16 +387,12 @@ debugger
 
   //--------Car
   createCar(body: any) {
-    this.spinner.show();
-
     this.http.post('https://localhost:44391/api/Car/Create', body).subscribe(
       (resp) => {
         console.log(resp);
-        this.spinner.hide();
         this.toster.success('Created Successfuly!!');
       },
       (err) => {
-        this.spinner.hide();
         this.toster.error(err.message, err.status);
       }
     );
