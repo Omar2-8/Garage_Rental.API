@@ -23,19 +23,19 @@
 
   
 </google-map>
-<div class="w3-display-right" >
-  <span *ngIf="showCardPanel"  style="text-align:center;width:400px ;justify-content: center;margin-top: 200px;">
-    <div class="w3-container w3-center w3-animate-top">
-    <p-card 
+<div class="w6-display-right " >
+  <span *ngIf="showCardPanel" >
+    <div class="w3-container w3-center w3-animate-top "  style="text-align:center;">
+    <p-card   class="m-5 "  
    
       header="{{ garageCard.garagE_NAME }}"
       subheader="{{ garageCard.renT_PRICE }}"
-      [style]="{ width: '360px'  }"
+      [style]="{ width: '900px'  }"
     
       styleClass="p-card-shadow"
     >
-      <ng-template pTemplate="header">
-        <img alt="Card" src="../../../assets/images/{{garageCard.image1}}"/>
+      <ng-template pTemplate="header" >
+        <img style="height: 200px;" alt="Card" src="../../../assets/images/{{garageCard.image1}}"/>
       </ng-template>
       <p>
         Rent Price: {{ garageCard.renT_PRICE }} <br />

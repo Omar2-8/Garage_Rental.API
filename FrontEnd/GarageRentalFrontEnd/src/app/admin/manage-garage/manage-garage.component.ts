@@ -30,6 +30,7 @@ export class ManageGarageComponent implements OnInit {
 
   @ViewChild('callUpdatDailog') callUpdate!: TemplateRef<any>;
   @ViewChild('ChangeStatusOfGrage') ChangeStatuse!: TemplateRef<any>;
+  @ViewChild('ChangeModeOfGrage') Changemo!: TemplateRef<any>;
   @ViewChild('callCreteDailog') CreateGarage!: TemplateRef<any>;
   @ViewChild('callDeleteDailog') callDelete!: TemplateRef<any>;
 
@@ -101,6 +102,11 @@ export class ManageGarageComponent implements OnInit {
     status: new FormControl(''),
     useR_ID: new FormControl(''),
   });
+  ChangeMode: FormGroup = new FormGroup({
+    garagE_ID: new FormControl(),
+    garagE_MODE: new FormControl(''),
+    useR_ID: new FormControl(''),
+  });
 
   constructor(
     public admin: AdminService,
@@ -138,11 +144,25 @@ export class ManageGarageComponent implements OnInit {
     to: new FormControl('', Validators.required),
     price: new FormControl('', Validators.required),
     street: new FormControl('', Validators.required),
-    image1: new FormControl(''),
-    image2: new FormControl(''),
+    image1: new FormControl(),
+    image2: new FormControl(),
     building: new FormControl('', Validators.required),
     mode: new FormControl('', Validators.required),
     status: new FormControl('', Validators.required),
+  });
+
+  //create garage
+  garageForm2 = new FormGroup({
+  
+    garagE_NAME: new FormControl('', Validators.required),
+    latitude: new FormControl(''),
+    longitude: new FormControl(''),
+    renT_PRICE: new FormControl('', Validators.required),
+    street: new FormControl('', Validators.required),
+    image1: new FormControl(),
+    image2: new FormControl(),
+    buildinG_NUMBER: new FormControl('', Validators.required),
+    useR_ID: new FormControl(),
   });
 
   center: google.maps.LatLngLiteral = {
@@ -160,7 +180,13 @@ export class ManageGarageComponent implements OnInit {
       console.log(this.markerPositions[0]);
     }
   }
-
+savetestgarage(){
+  this.garageForm2.value.latitude = '' + this.markerPositions[0]['lat'];
+    this.garageForm2.value.longitude = '' + this.markerPositions[0]['lng'];
+    this.garageForm2.value.useR_ID=45;
+    this.user.createGarage(this.garageForm2.value)
+}
+//end create garage
   saveInfo1() {
     debugger;
 
@@ -172,7 +198,7 @@ export class ManageGarageComponent implements OnInit {
     this.garageModel.latitude = '' + this.markerPositions[0]['lat'];
     this.garageModel.longitude = '' + this.markerPositions[0]['lng'];
     this.garageModel.image1='' + this.garageForm1.value.image1;
-    this.garageModel.image1='' + this.garageForm1.value.image1;
+    this.garageModel.image2='' + this.garageForm1.value.image2;
   }
   saveGarage(form: FormGroup): void {
     
@@ -223,6 +249,13 @@ export class ManageGarageComponent implements OnInit {
     this.admin.ChangeStatusOfGrage(this.ChangeStatus.value);
   }
 
+  //garage MOde
+  saveMode(){
+    this.user.ChangeModeOfGrage(this.ChangeMode.value);
+  }
+
+  //end garage mode
+
   //Dialogs
   openCreateDailog() {
     this.dialog.open(this.CreateGarage);
@@ -248,6 +281,18 @@ export class ManageGarageComponent implements OnInit {
 
     this.ChangeStatus.controls['garagE_ID'].setValue(this.p_data_c.garagE_ID);
     this.dialog.open(this.ChangeStatuse);
+  }
+  openChangeGarageModeDailog(obj: any) {
+    debugger;
+    console.log(obj);
+    this.p_data_c = {
+      garagE_ID: obj.garagE_ID,
+      garagE_MODE: obj.garagE_MODE,
+      useR_ID: obj.useR_ID,
+    };
+
+    this.ChangeMode.controls['garagE_ID'].setValue(this.p_data_c.garagE_ID);
+    this.dialog.open(this.Changemo);
   }
   openUpdateDailog(obj: {
     garagE_ID: any;
@@ -294,7 +339,7 @@ export class ManageGarageComponent implements OnInit {
     let fileToUpload = <File>file[0]; //the first image
     const formdata = new FormData();
     formdata.append('file', fileToUpload, fileToUpload.name);
-    this.garageModel.image1 = fileToUpload.name;
+    //this.garageModel.image1 = fileToUpload.name;
     this.user.uploadAttachmentGarage(formdata);
   }
   uploadFile2(file: any) {
@@ -302,7 +347,7 @@ export class ManageGarageComponent implements OnInit {
     let fileToUpload = <File>file[0]; //the first image
     const formdata = new FormData();
     formdata.append('file', fileToUpload, fileToUpload.name);
-    this.garageModel.image2 = fileToUpload.name;
+    //this.garageModel.image2 = fileToUpload.name;
     this.user.uploadAttachmentGarage2(formdata);
   }
 

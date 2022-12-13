@@ -6,32 +6,25 @@
               <div class="row">
                 <div class="col-md-5">
                   <h2 class="footer-heading mb-4">About Us</h2>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque facere laudantium magnam voluptatum autem. Amet aliquid nesciunt veritatis aliquam.</p>
+                  <div *ngFor="let obj of home.Aboutus">
+                    <p class="lead">{{obj.message}}.</p>
+
+                  </div>
                 </div>
                 <div class="col-md-3 mx-auto">
                   <h2 class="footer-heading mb-4">Quick Links</h2>
                   <ul class="list-unstyled">
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Services</a></li>
+                    <li><a href="http://localhost:4200/#:~:text=GARAGE-,ABOUT%20US,-GARAGE%20RENT">About Us</a></li>
+                    <li><a href="http://localhost:4200/#:~:text=01-,.,-FIND%20A%20GARAGE">How It Works</a></li>
                     <li><a href="#">Testimonials</a></li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="http://localhost:4200/#:~:text=CONTCT-,US,-name%20*">Contact Us</a></li>
                   </ul>
                 </div>
                 
               </div>
             </div>
             <div class="col-md-4">
-              <div class="mb-4">
-                <h2 class="footer-heading mb-4">Subscribe Newsletter</h2>
-              <form action="#" method="post" class="footer-subscribe">
-                <div class="input-group mb-3">
-                  <input type="text" class="form-control border-secondary text-white bg-transparent" placeholder="Enter Email" aria-label="Enter Email" aria-describedby="button-addon2">
-                  <div class="input-group-append">
-                    <button class="btn btn-primary text-black" type="button" id="button-addon2">Send</button>
-                  </div>
-                </div>
-              </form>  
-              </div>
+             
               
               <div class="">
                 <h2 class="footer-heading mb-4">Follow Us</h2>

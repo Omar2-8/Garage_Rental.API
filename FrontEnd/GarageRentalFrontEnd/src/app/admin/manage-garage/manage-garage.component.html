@@ -8,7 +8,7 @@
                 <div class="col-lg-12 col-md-12">
                     <div class="card">
                         <div class="card-header card-header-primary">
-                            <h4 class="card-title">Details About Us page</h4>
+                            <h4 class="card-title">Details Of Garage</h4>
                             <p class="card-category"></p>
                         </div>
                         <div class="card-body table-responsive">
@@ -118,6 +118,10 @@
                                                 (click)="openChangeStatDailog(obj)">
                                                 Status
                                             </button>
+                                            <button style="padding: -10px" class="btn btn-pill"
+                                                (click)="openChangeGarageModeDailog(obj)">
+                                                Mode
+                                            </button>
                                             <button class="btn btn-danger" (click)="openDeleteDailog(obj.garagE_ID)">
                                                 Delete
                                             </button>
@@ -155,6 +159,29 @@
                         </button>
                         <button class="btn btn-primary" mat-button [mat-dialog-close]="true" cdkFocusInitial
                             (click)="saveDataUsers()">
+                            Save
+                        </button>
+                    </mat-dialog-actions>
+                </ng-template>
+
+                <ng-template #ChangeModeOfGrage>
+                    <form [formGroup]="ChangeMode">
+
+                        <mat-radio-group aria-label="Select an option">
+                            <mat-radio-button matInput formControlName="garagE_MODE" [(ngModel)]="p_data_c.garagE_MODE"
+                                value="available">Available</mat-radio-button>
+                            <mat-radio-button style="margin-left: 20px" matInput formControlName="garagE_MODE"
+                                [(ngModel)]="p_data_c.garagE_MODE" value="unavailable">Unavailable</mat-radio-button>
+                        </mat-radio-group>
+
+                    </form>
+
+                    <mat-dialog-actions align="end">
+                        <button class="btn btn-danger" mat-button mat-dialog-close>
+                            Cancel
+                        </button>
+                        <button class="btn btn-primary" mat-button [mat-dialog-close]="true" cdkFocusInitial
+                            (click)="saveMode()">
                             Save
                         </button>
                     </mat-dialog-actions>
@@ -301,7 +328,7 @@
 
 <p-sidebar [(visible)]="isreeateDialogOpen" position="right" [baseZIndex]="10000" styleClass="p-sidebar-lg">
     <div class="m-3 p-3">
-        <form [formGroup]="garageForm1" (ngSubmit)="saveGarage(garageForm1)">
+        <form [formGroup]="garageForm2" (ngSubmit)="savetestgarage()">
             <div class="my-2  ">
                 <h3 style="text-align: center">
                     Choose your Garagee Location to add it to the list
@@ -312,12 +339,12 @@
                     <div class="row mb-3 px-2">
                         <label>Garage Name</label>
                         <input class="form-control form-control-lg form-control-solid" type="text"
-                            placeholder="Garage Name" required formControlName="name" />
+                            placeholder="Garage Name" required formControlName="garagE_NAME" />
                     </div>
                     <div class="row mb-3 px-2">
                         <label>Price</label>
-                        <input class="form-control form-control-lg form-control-solid" type="text" placeholder="Price"
-                            required formControlName="price" />
+                        <input class="form-control form-control-lg form-control-solid" type="number" placeholder="Price"
+                            required formControlName="renT_PRICE" />
                     </div>
                 </div>
                 <div class="col-sm-12">
@@ -329,8 +356,8 @@
 
                     <div class="row mb-3 px-2">
                         <label>building Number</label>
-                        <input class="form-control form-control-lg form-control-solid" type="text"
-                            placeholder="building Number" required formControlName="building" />
+                        <input class="form-control form-control-lg form-control-solid" type="number"
+                            placeholder="building Number" required formControlName="buildinG_NUMBER" />
                     </div>
                 </div>
             </div>
@@ -338,18 +365,18 @@
 
             <div class="row mb-3">
                 <label>Upload 2 images </label>
-                <p-fileUpload #file mode="basic" formControlName="image1"  accept="image/*" class="mb-3" (change)="uploadFile1(file.files)"
+                <p-fileUpload #file9 mode="basic" formControlName="image1"  accept="image/*" class="mb-3" (change)="uploadFile1(file9.files)"
                     [auto]="true" class="col-6 text-left" chooseLabel="Photo 1 "></p-fileUpload>
-                <p-fileUpload #file1 mode="basic" formControlName="image2"  accept="image/*" class="mb-3" (change)="uploadFile2(file1.files)"
-                    [auto]="true" class="col-6 text-left" chooseLabel="Photo 2"></p-fileUpload>
+                <p-fileUpload #file10 mode="basic" formControlName="image2"  accept="image/*" class="mb-3" (change)="uploadFile2(file10.files)"
+                    [auto]="true" class="col-6 text-left" chooseLabel="Photo 2"></p-fileUpload> 
                      
-                                    <!-- <input style=" font-weight: bold;border-radius: 0.2em;
+                                     <!-- <input style=" font-weight: bold;border-radius: 0.2em;
                                     color: dodgerblue;"
-                                    class="col-6 text-left" type="file" #file formControlName="image1" (change)="uploadFile1(file.files) " [(ngModel)]="p_data.image1">
+                                    class="col-6 text-left" type="file" #file12 formControlName="image1" (change)="uploadFile1(file12.files) " >
                                     
                                     <input  style=" font-weight: bold;
                                     color: dodgerblue;" 
-                                    class="col-6 text-left"type="file" #file1 formControlName="image2" (change)="uploadFile2(file1.files) " [(ngModel)]="p_data.image2">  -->
+                                    class="col-6 text-left"type="file" #file11 formControlName="image2" (change)="uploadFile2(file11.files) ">   -->
 
             </div>
 
