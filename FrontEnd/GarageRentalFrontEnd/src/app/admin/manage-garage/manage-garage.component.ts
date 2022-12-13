@@ -138,6 +138,8 @@ export class ManageGarageComponent implements OnInit {
     to: new FormControl('', Validators.required),
     price: new FormControl('', Validators.required),
     street: new FormControl('', Validators.required),
+    image1: new FormControl(''),
+    image2: new FormControl(''),
     building: new FormControl('', Validators.required),
     mode: new FormControl('', Validators.required),
     status: new FormControl('', Validators.required),
@@ -169,8 +171,11 @@ export class ManageGarageComponent implements OnInit {
     this.garageModel.buildinG_NUMBER = Number(this.garageForm1.value.building);
     this.garageModel.latitude = '' + this.markerPositions[0]['lat'];
     this.garageModel.longitude = '' + this.markerPositions[0]['lng'];
+    this.garageModel.image1='' + this.garageForm1.value.image1;
+    this.garageModel.image1='' + this.garageForm1.value.image1;
   }
   saveGarage(form: FormGroup): void {
+    
     console.log('Valid?', form.valid);
     debugger;
     this.saveInfo1();
@@ -186,18 +191,20 @@ export class ManageGarageComponent implements OnInit {
 
   saveData() {
     debugger;
-    this.garageModel.latitude = this.p_data.latitude;
-    this.garageModel.longitude = this.p_data.longitude;
+    this.updateForm.value.latitude= this.p_data.latitude;
+    this.updateForm.value.longitude= this.p_data.longitude;
+    //this.garageModel.latitude = this.p_data.latitude;
+    //this.garageModel.longitude = this.p_data.longitude;
 
-    this.garageService
-      .updateGarage(this.garageModel.garagE_ID, this.garageModel)
-      .subscribe({
-        next(value) {
-          console.log(value);
-        },
-      });
+    // this.garageService
+    //   .updateGarage(this.garageModel.garagE_ID, this.garageModel)
+    //   .subscribe({
+    //     next(value) {
+    //       console.log(value);
+    //     },
+    //   });
 
-    //this.user.updateGarage(this.updateForm.value);
+    this.user.updateGarage(this.updateForm.value);
     // this.admin.updateGarage();
   }
   saveDataUsers() {
