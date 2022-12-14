@@ -49,9 +49,10 @@ const routes: Routes = [
     canActivate: [AuthorizationGuard],
   },
   {
+    
     path: 'userProfile',
     loadChildren: () => UserProfileModule,
-    //canActivate: [AuthorizationGuard],
+    canActivate: [AuthorizationGuard],
   },
   {
     path: 'rent/:id',

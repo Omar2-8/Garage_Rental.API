@@ -183,7 +183,7 @@ export class ManageGarageComponent implements OnInit {
 savetestgarage(){
   this.garageForm2.value.latitude = '' + this.markerPositions[0]['lat'];
     this.garageForm2.value.longitude = '' + this.markerPositions[0]['lng'];
-    this.garageForm2.value.useR_ID=45;
+    this.garageForm2.value.useR_ID=null;
     this.user.createGarage(this.garageForm2.value)
 }
 //end create garage

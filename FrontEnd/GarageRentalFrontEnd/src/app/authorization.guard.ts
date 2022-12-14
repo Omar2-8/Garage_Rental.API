@@ -12,15 +12,15 @@ export class AuthorizationGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       console.log(state);
-   const token= localStorage.getItem('token');
+   const token= localStorage.getItem('token');//save token
    if(token)
 {
   if(state.url.indexOf('Admin')>=0)
   {
-   let user:any= localStorage.getItem('user');
+   let user:any= localStorage.getItem('user');//save  localStorage in user
     if(user)
     {
-      user=JSON.parse(user);
+      user=JSON.parse(user);//uncomprese token
       if(user.Role==1){
         this.toastr.success('Welcome in admin pages ');
         return true;
@@ -35,7 +35,7 @@ export class AuthorizationGuard implements CanActivate {
     }
     else {
       this.toastr.warning('Sorry , this page for admin');
-      this.routr.navigate(['course']);
+      this.routr.navigate(['home']);
       return false;
     }
 

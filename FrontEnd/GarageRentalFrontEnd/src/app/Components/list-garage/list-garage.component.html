@@ -1,4 +1,71 @@
-<div class="m-5 p-5">
+<div class="m-3 p-3">
+  <form [formGroup]="garageForm2" (ngSubmit)="savetestgarage()">
+      <div class="my-2  ">
+          <h3 style="text-align: center">
+              Choose your Garagee Location to add it to the list
+          </h3>
+      </div>
+      <div class="row">
+          <div class="col-sm-12">
+              <div class="row mb-3 px-2">
+                  <label>Garage Name</label>
+                  <input class="form-control form-control-lg form-control-solid" type="text"
+                      placeholder="Garage Name" required formControlName="garagE_NAME" />
+              </div>
+              <div class="row mb-3 px-2">
+                  <label>Price</label>
+                  <input class="form-control form-control-lg form-control-solid" type="number" placeholder="Price"
+                      required formControlName="renT_PRICE" />
+              </div>
+          </div>
+          <div class="col-sm-12">
+              <div class="row mb-3 px-2">
+                  <label>Street</label>
+                  <input class="form-control form-control-lg form-control-solid" type="text" placeholder="Street"
+                      required formControlName="street" />
+              </div>
+
+              <div class="row mb-3 px-2">
+                  <label>building Number</label>
+                  <input class="form-control form-control-lg form-control-solid" type="number"
+                      placeholder="building Number" required formControlName="buildinG_NUMBER" />
+              </div>
+          </div>
+      </div>
+
+
+      <div class="row mb-3">
+          <label>Upload 2 images </label>
+          <p-fileUpload #file9 mode="basic" formControlName="image1"  accept="image/*" class="mb-3" (change)="uploadFile1(file9.files)"
+              [auto]="true" class="col-6 text-left" chooseLabel="Photo 1 "></p-fileUpload>
+          <p-fileUpload #file10 mode="basic" formControlName="image2"  accept="image/*" class="mb-3" (change)="uploadFile2(file10.files)"
+              [auto]="true" class="col-6 text-left" chooseLabel="Photo 2"></p-fileUpload> 
+               
+                               <!-- <input style=" font-weight: bold;border-radius: 0.2em;
+                              color: dodgerblue;"
+                              class="col-6 text-left" type="file" #file12 formControlName="image1" (change)="uploadFile1(file12.files) " >
+                              
+                              <input  style=" font-weight: bold;
+                              color: dodgerblue;" 
+                              class="col-6 text-left"type="file" #file11 formControlName="image2" (change)="uploadFile2(file11.files) ">   -->
+
+      </div>
+
+
+      <label>Choose the location of your Garage</label>
+
+      <google-map height="500px" width="920px" [center]="center" [zoom]="zoom" (mapClick)="addMarker($event)">
+          <map-marker *ngFor="let markerPosition of markerPositions" [position]="markerPosition"
+              [options]="markerOptions"></map-marker>
+      </google-map>
+
+      <button type="submit" class="btn btn-primary btn-lg my-5">Add Garage</button>
+  </form>
+</div>
+
+
+
+<!-- <div class="m-5 p-5">
   <form [formGroup]="garageForm" (ngSubmit)="saveGarage(garageForm)">
     <div class="my-5 p-5">
       <h1>Choose your Garagee Location to add it to the list</h1>
@@ -15,31 +82,7 @@
       />
     </div>
 
-    <!-- <div class="mb-3">
-      <label>Avalable from</label>
-      <input
-        class="form-control form-control-lg form-control-solid"
-        type="text"
-        placeholder="Avalable from"
-        required
-        formControlName="from"
-      />
-    </div>
-
-    <div class="mb-3">
-      <label>Avalable to</label>
-      <input
-        class="form-control form-control-lg form-control-solid"
-        type="text"
-        placeholder="Avalable to"
-        required
-        formControlName="to"
-      />
-    </div> -->
-    <!-- <div class="mb-3">
-      <label>Avalablabilty</label>
-      <p-slider [(ngModel)]="rangeValues" [range]="true"></p-slider>
-    </div> -->
+   
 
     <div class="mb-3">
       <label>Price</label>
@@ -108,7 +151,7 @@
 
     <button type="submit" class="btn btn-primary btn-lg">Add Garage</button>
   </form>
-</div>
+</div> -->
 
 <!-- <div class="m-5 p-5">
   <form #garageForm="ngForm" (ngSubmit)="saveGarage(garageForm)">

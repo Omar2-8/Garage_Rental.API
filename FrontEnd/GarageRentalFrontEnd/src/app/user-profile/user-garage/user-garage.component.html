@@ -73,12 +73,13 @@
                     <td>{{ obj.status }}</td>
                     <td>{{ obj.garagE_MODE }}</td>
                     <td>
-                      <button
-                        class="btn btn-primary"
-                        (click)="openUpdateDailog(obj)"
-                      >
-                        Update
-                      </button>
+                      <button class="btn btn-primary" (click)="openUpdateDailog(obj)">
+                       Update
+                        </button>
+                        <button style="padding: -10px" class="btn btn-pill"
+                        (click)="openChangeGarageModeDailog(obj)">
+                        Mode
+                    </button>
                       <button
                         class="btn btn-danger"
                         (click)="openDeleteDailog(obj.garagE_ID)"
@@ -106,183 +107,216 @@
           <button class="btn btn-primary" mat-dialog-close="no">No</button>
         </ng-template>
 
-        <ng-template #callCreteDailog>
-          <div class="m-5 p-5">
-            <form
-              [formGroup]="garageForm1"
-              (ngSubmit)="saveGarage(garageForm1)"
-            >
-              <div class="my-5 p-5">
-                <h1>Choose your Garagee Location to add it to the list</h1>
-              </div>
-              <div class="mb-3">
-                <label>Garage Name</label>
-                <input
-                  class="form-control form-control-lg form-control-solid"
-                  type="text"
-                  placeholder="Garage Name"
-                  required
-                  formControlName="name"
-                />
-              </div>
-              <div class="mb-3">
-                <label>Price</label>
-                <input
-                  class="form-control form-control-lg form-control-solid"
-                  type="text"
-                  placeholder="Price"
-                  required
-                  formControlName="price"
-                />
-              </div>
-              <div class="mb-3">
-                <label>Street</label>
-                <input
-                  class="form-control form-control-lg form-control-solid"
-                  type="text"
-                  placeholder="Street"
-                  required
-                  formControlName="street"
-                />
-              </div>
-              <div class="mb-3">
-                <label>building Number</label>
-                <input
-                  class="form-control form-control-lg form-control-solid"
-                  type="text"
-                  placeholder="building Number"
-                  required
-                  formControlName="building"
-                />
-              </div>
-              <div class="mb-3">
-                <label>Upload 2 images </label>
-                <input
-                  type="file"
-                  #file
-                  (change)="uploadFile1(file.files)"
-                  [(ngModel)]="garageModel.image1"
-                />
-                <input
-                  type="file"
-                  #file1
-                  (change)="uploadFile2(file1.files)"
-                  [(ngModel)]="garageModel.image1"
-                />
-              </div>
+       
+        <ng-template #callCreateDailog>
+    <div class="m-3 p-3">
+        <form [formGroup]="garageForm2" (ngSubmit)="savetestgarage()">
+            <div class="my-2  ">
+                <h3 style="text-align: center">
+                    Choose your Garagee Location to add it to the list
+                </h3>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="row mb-3 px-2">
+                        <label>Garage Name</label>
+                        <input class="form-control form-control-lg form-control-solid" type="text"
+                            placeholder="Garage Name" required formControlName="garagE_NAME" />
+                    </div>
+                    <div class="row mb-3 px-2">
+                        <label>Price</label>
+                        <input class="form-control form-control-lg form-control-solid" type="number" placeholder="Price"
+                            required formControlName="renT_PRICE" />
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="row mb-3 px-2">
+                        <label>Street</label>
+                        <input class="form-control form-control-lg form-control-solid" type="text" placeholder="Street"
+                            required formControlName="street" />
+                    </div>
 
-              <label>Choose the location of your Garage</label>
-              <google-map
-                height="600px"
-                width="750px"
-                [center]="center"
-                [zoom]="zoom"
-                (mapClick)="addMarker($event)"
-              >
-                <map-marker
-                  *ngFor="let markerPosition of markerPositions"
-                  [position]="markerPosition"
-                  [options]="markerOptions"
-                ></map-marker>
-              </google-map>
-              <button type="submit" class="btn btn-primary btn-lg">
-                Add Garage
-              </button>
-            </form>
-          </div>
-        </ng-template>
-        <app-user-footer></app-user-footer>
-      </div>
+                    <div class="row mb-3 px-2">
+                        <label>building Number</label>
+                        <input class="form-control form-control-lg form-control-solid" type="number"
+                            placeholder="building Number" required formControlName="buildinG_NUMBER" />
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row mb-3">
+                <label>Upload 2 images </label>
+                <p-fileUpload #file9 mode="basic" formControlName="image1"  accept="image/*" class="mb-3" (change)="uploadFile1(file9.files)"
+                    [auto]="true" class="col-6 text-left" chooseLabel="Photo 1 "></p-fileUpload>
+                <p-fileUpload #file10 mode="basic" formControlName="image2"  accept="image/*" class="mb-3" (change)="uploadFile2(file10.files)"
+                    [auto]="true" class="col-6 text-left" chooseLabel="Photo 2"></p-fileUpload> 
+                     
+                                     <!-- <input style=" font-weight: bold;border-radius: 0.2em;
+                                    color: dodgerblue;"
+                                    class="col-6 text-left" type="file" #file12 formControlName="image1" (change)="uploadFile1(file12.files) " >
+                                    
+                                    <input  style=" font-weight: bold;
+                                    color: dodgerblue;" 
+                                    class="col-6 text-left"type="file" #file11 formControlName="image2" (change)="uploadFile2(file11.files) ">   -->
+
+            </div>
+
+
+            <label>Choose the location of your Garage</label>
+
+            <google-map height="500px" width="920px" [center]="center" [zoom]="zoom" (mapClick)="addMarker($event)">
+                <map-marker *ngFor="let markerPosition of markerPositions" [position]="markerPosition"
+                    [options]="markerOptions"></map-marker>
+            </google-map>
+
+            <button type="submit" class="btn btn-primary btn-lg my-5">Add Garage</button>
+        </form>
     </div>
-  </div>
-</div>
+  </ng-template>
+
 
 <!-- /////////// -->
 
 <ng-template #callUpdatDailog>
-  <form [formGroup]="updateForm">
-    <mat-label>Choose Images For Garage </mat-label>
-    <br /><br />
-    <input type="file" formControlName="image1" [(ngModel)]="p_data.image1" />
-    <input type="file" formControlName="image2" [(ngModel)]="p_data.image2" />
-    <br />
-    <br />
+  <div class="m-3 p-3">
+      <form [formGroup]="updateForm" class="m-2">
+          <mat-form-field appearance="fill" class="mx-2">
+              <mat-label>garage name</mat-label>
+              <div>
+                  <input type="text" matInput formControlName="garagE_NAME"
+                      [(ngModel)]="p_data_c.garagE_NAME" />
+                  <mat-error *ngIf="
+    updateForm.controls['garagE_NAME'].hasError('required')
+  ">
+                      Garage Name is <strong>required</strong>
+                  </mat-error>
+              </div>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Available From</mat-label>
-      <input
-        matInput
-        formControlName="availablE_FROM"
-        [(ngModel)]="p_data.availablE_FROM"
-      />
-      <mat-error
-        *ngIf="updateForm.controls['availablE_FROM'].hasError('required')"
-      >
-        availablE_FROM is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>
-    <br />
-    <mat-form-field appearance="fill">
-      <mat-label>Available To </mat-label>
-      <input
-        matInput
-        formControlName="availablE_TO"
-        [(ngModel)]="p_data.availablE_TO"
-      />
-      <mat-error
-        *ngIf="updateForm.controls['availablE_TO'].hasError('required')"
-      >
-        availablE_TO is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>
-    <br />
-    <mat-form-field appearance="fill">
-      <mat-label>Rent Price</mat-label>
-      <input
-        matInput
-        formControlName="renT_PRICE"
-        [(ngModel)]="p_data.renT_PRICE"
-      />
-      <mat-error *ngIf="updateForm.controls['renT_PRICE'].hasError('required')">
-        renT_PRICE is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>
-    <br />
-    <mat-form-field appearance="fill">
-      <mat-label>Street Name</mat-label>
-      <input matInput formControlName="street" [(ngModel)]="p_data.street" />
-      <mat-error *ngIf="updateForm.controls['street'].hasError('required')">
-        street is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>
-    <br />
-    <mat-form-field appearance="fill">
-      <mat-label>Building Number </mat-label>
-      <input
-        matInput
-        formControlName="buildinG_NUMBER"
-        [(ngModel)]="p_data.buildinG_NUMBER"
-      />
-      <mat-error
-        *ngIf="updateForm.controls['buildinG_NUMBER'].hasError('required')"
-      >
-        buildinG_NUMBER is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>
-    <br />
-  </form>
+          </mat-form-field>
+
+
+
+          <mat-label class="mx-2">Garage Mode </mat-label>
+
+
+
+          <mat-radio-group aria-label="Select an option">
+              <mat-radio-button matInput formControlName="garagE_MODE"
+                  [(ngModel)]="p_data_c.garagE_MODE" value="available">Available</mat-radio-button>
+              <mat-radio-button style="margin-left: 20px" matInput formControlName="garagE_MODE"
+                  [(ngModel)]="p_data_c.garagE_MODE" value="unavailable">Unavailable</mat-radio-button>
+          </mat-radio-group>
+
+
+          <div>
+              <br />
+              <mat-form-field appearance="fill" class="mx-2">
+                  <mat-label>Available From</mat-label>
+                  <input type="number" matInput formControlName="availablE_FROM"
+                      [(ngModel)]="p_data_c.availablE_FROM" />
+                  <mat-error *ngIf="
+    updateForm.controls['availablE_FROM'].hasError('required')
+  ">
+                      availablE_FROM is <strong>required</strong>
+                  </mat-error>
+              </mat-form-field>
+
+              <mat-form-field appearance="fill" class="mx-2">
+                  <mat-label>Available To</mat-label>
+                  <input type="number" matInput formControlName="availablE_TO"
+                      [(ngModel)]="p_data_c.availablE_TO" />
+                  <mat-error *ngIf="
+    updateForm.controls['availablE_TO'].hasError('required')
+  ">
+                      availablE_TO is <strong>required</strong>
+                  </mat-error>
+              </mat-form-field>
+          </div>
+
+          <div>
+              <mat-form-field appearance="fill" class="mx-2">
+                  <mat-label>Rent Price</mat-label>
+                  <input type="number" matInput formControlName="renT_PRICE"
+                      [(ngModel)]="p_data_c.renT_PRICE" />
+                  <mat-error *ngIf="
+    updateForm.controls['renT_PRICE'].hasError('required')
+  ">
+                      RENT PRICE is <strong>Required</strong>
+                  </mat-error>
+              </mat-form-field>
+
+              <mat-form-field appearance="fill" class="mx-2">
+                  <mat-label>Street</mat-label><input type="text" matInput formControlName="street"
+                      [(ngModel)]="p_data_c.street" />
+                  <mat-error *ngIf="updateForm.controls['street'].hasError('required')">
+                      street is <strong>required</strong>
+                  </mat-error>
+              </mat-form-field>
+          </div>
+          <mat-form-field appearance="fill" class="mx-2">
+              <mat-label>Building Number</mat-label><input type="number" matInput
+                  formControlName="buildinG_NUMBER" [(ngModel)]="p_data_c.buildinG_NUMBER" />
+              <mat-error *ngIf="
+  updateForm.controls['buildinG_NUMBER'].hasError('required')
+">
+                  buildinG_NUMBER is <strong>required</strong>
+              </mat-error>
+          </mat-form-field>
+
+
+          <div class="row">
+               <label>Upload 2 images </label>
+              <!-- <p-fileUpload type="file" #file formControlName="image1" mode="basic"  accept="image/*" class="m-2"
+                  (change)="uploadFile1(file.files)"  [(ngModel)]="p_data.image1"
+                  class="col-6 text-left" chooseLabel="Photo 1 "></p-fileUpload>
+              <p-fileUpload type="file" #file6 formControlName="image2" mode="basic"  accept="image/*" class="m-2"
+                  (change)="uploadFile2(file6.files)"  [(ngModel)]="p_data.image2"
+                  class="col-6 text-left" chooseLabel="Photo 2"></p-fileUpload>  -->
+                  
+                  <input style=" font-weight: bold;border-radius: 0.2em;
+                  color: dodgerblue;"
+                  class="col-6 text-left" type="file" #file formControlName="image1" (change)="uploadFile1(file.files) " [(ngModel)]="p_data_c.image1">
+                  
+                  <input  style=" font-weight: bold;
+                  color: dodgerblue;" 
+                  class="col-6 text-left"type="file" #file2 formControlName="image2" (change)="uploadFile2(file2.files) " [(ngModel)]="p_data_c.image2"> 
+             
+          </div>
+      </form>
+  </div>
 
   <mat-dialog-actions align="end">
-    <button class="btn btn-primary" mat-button mat-dialog-close>Cancel</button>
-    <button
-      class="btn btn-primary"
-      mat-button
-      [mat-dialog-close]="true"
-      cdkFocusInitial
-      (click)="saveData()"
-    >
-      Save
-    </button>
+      <button class="btn btn-primary" mat-button mat-dialog-close>
+          Cancel
+      </button>
+      <button class="btn btn-primary" mat-button [mat-dialog-close]="true" cdkFocusInitial
+          (click)="saveData()">
+          Save
+      </button>
   </mat-dialog-actions>
 </ng-template>
 <br />
+
+<ng-template #ChangeModeOfGrage>
+  <form [formGroup]="ChangeMode">
+
+      <mat-radio-group aria-label="Select an option">
+          <mat-radio-button matInput formControlName="garagE_MODE" [(ngModel)]="p_data_c.garagE_MODE"
+              value="available">Available</mat-radio-button>
+          <mat-radio-button style="margin-left: 20px" matInput formControlName="garagE_MODE"
+              [(ngModel)]="p_data_c.garagE_MODE" value="unavailable">Unavailable</mat-radio-button>
+      </mat-radio-group>
+
+  </form>
+
+  <mat-dialog-actions align="end">
+      <button class="btn btn-danger" mat-button mat-dialog-close>
+          Cancel
+      </button>
+      <button class="btn btn-primary" mat-button [mat-dialog-close]="true" cdkFocusInitial
+          (click)="saveMode()">
+          Save
+      </button>
+  </mat-dialog-actions>
+</ng-template>
