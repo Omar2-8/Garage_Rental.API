@@ -185,11 +185,23 @@ export class DashboardComponent implements OnInit {
   }
 
   ExportToCsv(month: number) {
-    const data = this.reportsMonthly.filter(
-      (x) => x.paY_DATE.split('-')[1] == month
-    );
-    const csvExporter = new ExportToCsv(this.options);
-    csvExporter.generateCsv(data);
+    if (month == 0) {
+      const data = this.reportsMonthly.map(
+        ({ user, visA_ID, rent, visa, ...rest }) => {
+          return rest;
+        }
+      );
+      console.log(data);
+
+      const csvExporter = new ExportToCsv(this.options);
+      csvExporter.generateCsv(data);
+    } else {
+      const data = this.reportsMonthly.filter(
+        (x) => x.paY_DATE.split('-')[1] == month
+      );
+      const csvExporter = new ExportToCsv(this.options);
+      csvExporter.generateCsv(data);
+    }
   }
 }
 export interface MonthlyProfit {

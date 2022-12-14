@@ -1,68 +1,69 @@
-<div class="sidebar" data-color="purple" style="     background: linear-gradient(to bottom, #4d8893 , #c5c5c5 ); "  >
-     <div class="logo">
-      <a href="#" class="simple-text logo-normal"><b>Garage Rental</b></a>
-     </div>
-     <div class="sidebar-wrapper">
-       <ul class="nav">
-        <li class="nav-item active  ">
-          <!-- <a class="nav-link"style="background: linear-gradient(60deg, #065f45, #065f45);"> -->
-          <a routerLink="/Admin/dashboard" class="nav-link"  style="background-color:#346c76;">
-            <i class="material-icons">dashboard</i>
-            <p>Dashboard</p>
+<div class="sidebar" data-color="purple" style="     background: linear-gradient(to bottom, #4d8893 , #c5c5c5 ); ">
+  <div class="logo">
+    <a href="#" class="simple-text logo-normal"><b>Garage Rental</b></a>
+  </div>
+  <div class="sidebar-wrapper">
+    <ul class="nav">
+      <li class="nav-item active  ">
+        <!-- <a class="nav-link"style="background: linear-gradient(60deg, #065f45, #065f45);"> -->
+        <a routerLink="/Admin/dashboard" class="nav-link" style="background-color:#346c76;">
+          <i class="material-icons">dashboard</i>
+          <p>Dashboard</p>
+        </a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" routerLink="/Admin/profile">
+          <i class="material-icons">dashboard</i>
+          <p>Admin Profile</p>
+        </a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" routerLink="/Admin/users">
+          <i class="material-icons">dashboard</i>
+          <p>User Details</p>
+        </a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" routerLink="/Admin/garage">
+          <i class="material-icons">dashboard</i>
+          <p>Manage Garage</p>
+        </a>
+      </li>
+      <li class="nav-item ">
+        <a routerLink="/Admin/payment" class="nav-link">
+          <i class="fa fa-money" aria-hidden="true"></i>
+          <p>Payments</p>
+        </a>
+      </li>
+      <li class="nav-item ">
+        <a routerLink="/Admin/rents" class="nav-link">
+          <i class="fa fa-money" aria-hidden="true"></i>
+          <p>Rents</p>
+        </a>
+      </li>
+      <li class="nav-item  dropdown ">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i
+            class="fa fa-plus-square-o" aria-hidden="true"></i> Pages</a>
+        <div class="dropdown-menu dropdown-menu-dark" style="background-color:#346c76;color:white;width:89%">
+          <a routerLink="/Admin/home" class="nav-link">
+            <i class="fa fa-home" aria-hidden="true"></i>
+            <p>Home</p>
           </a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link" routerLink="/Admin/profile" >
-            <i class="material-icons">dashboard</i>
-            <p>Admin Profile</p>
+          <a routerLink="/Admin/aboutUs" class="nav-link">
+            <i class="fa fa-buysellads" aria-hidden="true"></i>
+            <p>About Us </p>
           </a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link" routerLink="/Admin/users" >
-            <i class="material-icons">dashboard</i>
-            <p>User Details</p>
+          <a routerLink="/Admin/contactUs" class="nav-link">
+            <i class="fa fa-connectdevelop" aria-hidden="true"></i>
+            <p>Contact Us </p>
           </a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link" routerLink="/Admin/garage" >
-            <i class="material-icons">dashboard</i>
-            <p>Manage Garage</p>
+          <a routerLink="/Admin/testimonial" class="nav-link">
+            <i class="fa fa-comment-o" aria-hidden="true"></i>
+            <p>Testimonials </p>
           </a>
-        </li>
-        <li class="nav-item ">
-          <a routerLink="/Admin/payment" class="nav-link" >
-              <i class="fa fa-money" aria-hidden="true"></i>
-            <p>Payments</p>
-          </a>
-        </li>
-        <li class="nav-item ">
-          <a routerLink="/Admin/rents" class="nav-link" >
-              <i class="fa fa-money" aria-hidden="true"></i>
-            <p>Rents</p>
-          </a>
-        </li>
-          <li class="nav-item  dropdown ">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Pages</a>
-              <div class="dropdown-menu dropdown-menu-dark" style="background-color:#346c76;color:white;width:89%">
-                    <a routerLink="/Admin/home" class="nav-link" > 
-                        <i class="fa fa-home" aria-hidden="true"></i>
-                        <p>Home</p>
-                    </a>
-                    <a routerLink="/Admin/aboutUs" class="nav-link" > 
-                        <i class="fa fa-buysellads" aria-hidden="true"></i>
-                        <p>About Us </p>
-                    </a>
-                    <a routerLink="/Admin/contactUs" class="nav-link" > 
-                        <i class="fa fa-connectdevelop" aria-hidden="true"></i>
-                        <p>Contact Us </p>
-                    </a>
-                    <a routerLink="/Admin/testimonial" class="nav-link" > 
-                        <i class="fa fa-comment-o" aria-hidden="true"></i>
-                        <p>Testimonials </p>
-                    </a>
-               </div>
- 
-            <!-- <button style="
+        </div>
+
+        <!-- <button style="
           margin: 10px 16px 0;
           border-radius: 3px;
           color: #ffffff;
@@ -80,22 +81,30 @@
               <button class="nav-link" routerLink="/Admin/testimonial" mat-menu-item><i class="fa fa-check-square-o" aria-hidden="true"></i>Testimonial</button>
             </mat-menu>
             </div> -->
- 
 
-          <li class="nav-item  dropdown ">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Reports</a>
 
-            <div class="dropdown-menu dropdown-menu-dark" style="background-color:#346c76;color:white;width:89%">
-                <a routerLink="/Admin/reports-monthly" class="nav-link" > 
-                  <i class="fa fa-calendar-o" aria-hidden="true"></i>
-                    <p>Monthly</p>
-                </a>
-                <a routerLink="/Admin/reports-annual" class="nav-link" > 
-                  <i class="fa fa-calendar-o" aria-hidden="true"></i>
-                    <p>Annual</p>
-                </a>                 
-            </div>
-        </li>
-      </ul>
+      <li class="nav-item  dropdown ">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i
+            class="fa fa-plus-square-o" aria-hidden="true"></i> Reports</a>
+
+        <div class="dropdown-menu dropdown-menu-dark" style="background-color:#346c76;color:white;width:89%">
+          <a routerLink="/Admin/reports-monthly" class="nav-link">
+            <i class="fa fa-calendar-o" aria-hidden="true"></i>
+            <p>Monthly</p>
+          </a>
+          <a routerLink="/Admin/reports-annual" class="nav-link">
+            <i class="fa fa-calendar-o" aria-hidden="true"></i>
+            <p>Annual</p>
+          </a>
+        </div>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" (click)="logout()">
+          <i class="fa fa-home"></i>
+          <p>Log Out</p>
+        </a>
+      </li>
+    </ul>
+
   </div>
 </div>

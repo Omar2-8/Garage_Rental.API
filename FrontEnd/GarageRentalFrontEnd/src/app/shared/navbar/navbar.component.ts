@@ -4,18 +4,24 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-
-  constructor(private router:Router) { }
+  logout: boolean = false;
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
+    debugger;
+    if (window.localStorage.getItem('token')) {
+      this.logout = true;
+    }
   }
- click()
- {
-  
-    this.router.navigate(["/"]);
-   
- }
+
+  click() {
+    this.router.navigate(['/']);
+  }
+  Logout() {
+    window.localStorage.clear();
+    this.router.navigateByUrl('/');
+  }
 }
