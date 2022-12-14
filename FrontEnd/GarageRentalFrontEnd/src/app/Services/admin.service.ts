@@ -24,7 +24,7 @@ export class AdminService {
   getAllUsers(){
     this.http.get(this.baseApiUrl+'Users/GetAll').subscribe((Resp:any)=>{//السبسكرايب بتتكون من حالتين اول وحدة ترو والثانية اذا كانت ايرور ريسبونس
       this.user=Resp;
-       this.toster.success('Data Retrieved')
+      //  this.toster.success('Data Retrieved')
     },err=>{
       this.toster.error('something Wrong')
     })
@@ -49,7 +49,7 @@ export class AdminService {
   getAllGarage(){
     this.http.get('https://localhost:44391/api/Garage/GetAll').subscribe((Resp:any)=>{//السبسكرايب بتتكون من حالتين اول وحدة ترو والثانية اذا كانت ايرور ريسبونس
       this.garage=Resp;      
-      this.toster.success('Data Retrieved')
+      // this.toster.success('Data Retrieved')
     },err=>{
       this.toster.error('something Wrong')
     })
@@ -63,14 +63,14 @@ export class AdminService {
     this.http.get('https://localhost:44391/api/Garage/GetById/' + id).subscribe((resp: any) => {
       this.garage = resp;
       console.log(this.garage);
-      this.toster.success('Data Retrieved!');
+      // this.toster.success('Data Retrieved!');
     }, err => {
       this.toster.error(err.message, err.status);
     })
   }
  
   ChangeStatusOfGrage(body:any) {this.http.put(this.baseApiUrl+'LongLetGrages/ChangeGragaeStatus',body).subscribe((resp)=>{
-    this.toster.success('Accepted The Garage Successfully !!');
+    this.toster.success('Change Status of The Garage Successfully !!');
   },err=>{
     this.toster.error(err.message, err.status);
   })
@@ -78,7 +78,7 @@ export class AdminService {
   }
   SendEmail(email: string,status:string) {
     this.http.get(this.baseApiUrl+'Users/SendEmail/'+ email+"/"+status).subscribe((resp: any) => {
-      this.toster.success('Successfully !!');
+      this.toster.success('THe email sending!!');
     }, err => {
       this.toster.error(err.message, err.status);
     })
@@ -130,7 +130,7 @@ export class AdminService {
   getAllRents(){
     this.http.get('https://localhost:44391/api/Rent/GetAll').subscribe((Resp:any)=>{//السبسكرايب بتتكون من حالتين اول وحدة ترو والثانية اذا كانت ايرور ريسبونس
       this.rent=Resp;
-      this.toster.success('Data Retrieved')
+      // this.toster.success('Data Retrieved')
     },err=>{      
       this.toster.error('something Wrong')
     })
@@ -151,7 +151,7 @@ export class AdminService {
   getAllPayment(){
     this.http.get(this.baseApiUrl+'Payment/GetAll').subscribe((Resp:any)=>{//السبسكرايب بتتكون من حالتين اول وحدة ترو والثانية اذا كانت ايرور ريسبونس
       this.payment=Resp;
-      this.toster.success('Data Retrieved')
+      // this.toster.success('Data Retrieved')
     },err=>{
       this.toster.error('something Wrong')
     })

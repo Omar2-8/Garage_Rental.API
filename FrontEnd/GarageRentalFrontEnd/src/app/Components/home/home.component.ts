@@ -1,8 +1,10 @@
+import { UserService } from './../../Services/user.service';
 import { Router } from '@angular/router';
 import { HomeService } from './../../Services/home.service';
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -12,7 +14,7 @@ export class HomeComponent implements OnInit {
 
 
 
-  constructor(public home:HomeService) { }
+  constructor(public home:HomeService,private toster:ToastrService,public users:UserService) { }
 
   createFormContactUs :FormGroup= new FormGroup({
     name:new FormControl('',Validators.required),
@@ -35,8 +37,13 @@ export class HomeComponent implements OnInit {
     //this.dialog.open()
   }
   ngOnInit(): void {
+    let user:any= localStorage.getItem('user');
+    user = JSON.parse(user);
     this.home.getHome();
+    this.toster.success('Welcome '+user.first_name);
     this.home.getAboutUs();
+    this.users.getAllUsers();
+    this.home.getAllTestimonial();
   }
   saveDataTestimonial()
   {

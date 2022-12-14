@@ -1,6 +1,5 @@
 import { AllRentsComponent } from './all-rents/all-rents.component';
 import { ReportsMonthlyComponent } from './reports-monthly/reports-monthly.component';
-import { ReportsAnnualComponent } from './reports-annual/reports-annual.component';
 import { AdminProfileComponent } from './admin-profile/admin-profile.component';
 import { AdminPaymentComponent } from './admin-payment/admin-payment.component';
 import { ManageGarageComponent } from './manage-garage/manage-garage.component';
@@ -54,10 +53,6 @@ const routes: Routes = [
   {
     path:'profile',
     component:AdminProfileComponent
-  },
-  {
-    path:'reports-annual',
-    component:ReportsAnnualComponent
   },
   {
     path:'reports-monthly',

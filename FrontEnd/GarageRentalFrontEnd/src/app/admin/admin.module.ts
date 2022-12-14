@@ -18,7 +18,6 @@ import { ManageGarageComponent } from './manage-garage/manage-garage.component';
 import { AdminPaymentComponent } from './admin-payment/admin-payment.component';
 import { AdminProfileComponent } from './admin-profile/admin-profile.component';
 import { ReportsMonthlyComponent } from './reports-monthly/reports-monthly.component';
-import { ReportsAnnualComponent } from './reports-annual/reports-annual.component';
 import { ButtonModule } from 'primeng/button';
 import { AllRentsComponent } from './all-rents/all-rents.component';
 import { SidebarModule } from 'primeng/sidebar';
@@ -40,7 +39,6 @@ import { ChartModule } from 'primeng/chart';
     AdminPaymentComponent,
     AdminProfileComponent,
     ReportsMonthlyComponent,
-    ReportsAnnualComponent,
     AllRentsComponent,
   ],
   imports: [

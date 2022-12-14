@@ -2,45 +2,7 @@
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
     <div class="site-wrap">
       <app-navbar></app-navbar>
-            <!-- <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner">
-            <div class="carousel-item active" data-bs-interval="3000" [ngClass]="{active:isFirst}"
-            *ngFor="let obj of home.home; index as i;first as isFirst">
-                <img height="800px" src="../../../assets/images/{{obj.imagE_1}}" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                    <h1>{{obj.titlE_1}}</h1>
-                </div>
-            </div>
-            <div class="carousel-item active" data-bs-interval="3000" [ngClass]="{active:isFirst}"
-            *ngFor="let obj of home.home; index as i;first as isFirst">
-                <img height="800px" src="../../../assets/images/{{obj.imagE_2}}" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                    <h1>{{obj.titlE_2}}</h1>
-                </div>
-            </div>
-            <div class="carousel-item active" data-bs-interval="3000" [ngClass]="{active:isFirst}"
-            *ngFor="let obj of home.home; index as i;first as isFirst">
-                <img height="800px" src="../../../assets/images/{{obj.imagE_2}}" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                    <h1>{{obj.titlE_2}}</h1>
-                </div>
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div> -->
+
     <div class="site-block-wrap" >
       <div class="carousel-item active with-dots" [ngClass]="{active:isFirst}" *ngFor="let obj of home.home; index as i;first as isFirst">
 
@@ -48,13 +10,14 @@
           <div class="container">
             <div class="row align-items-center justify-content-center">
               <div class="col-md-6 mt-lg-5 text-center">
-                <h1 class="text-shadow">Buy &amp; {{obj.titlE_1}}</h1>
-                <p class="mb-5 text-shadow">Free website template for Real Estate websites by the fine folks at <a href="https://free-template.co/" target="_blank">Free-Template.co</a>  </p>
-                <p><a routerLink="/garage" class="btn btn-primary px-5 py-3">garage</a></p>
+                <h1 class="text-shadow">{{obj.titlE_1}}</h1>
+                <p class="mb-5 text-shadow">The Best And Fastest way To Find A Garage For Your Car</p>
+                <p><a routerLink="/garage" class="btn btn-primary px-5 py-3">Garage</a></p>
               </div>
             </div>
           </div>
-        </div>  
+        </div>      
+
       </div>   
     </div>       
     
@@ -158,6 +121,55 @@
         </div>
       </div>-->
 
+      <section class="site-section testimonial-wrap" id="testimonials-section">
+        <div class="container">
+          <div class="row mb-5">
+            <div class="col-12 text-center">
+              <h2 class="section-title mb-3">Testimonials</h2>
+            </div>
+          </div>
+  
+          <div class="row" >
+              <div class="col-md-6 mb-4" *ngFor="let obj of home.testimonial_1">
+                  <div class="ftco-testimonial-1" *ngFor="let obj_u of users.user">
+                    <div class="ftco-testimonial-vcard d-flex align-items-center mb-4" *ngIf="obj_u.useR_ID==obj.useR_ID">
+                      <img  src="../../../assets/images/{{obj_u.useR_IMAGE}}" alt="Free website template by Free-Template.co" class="img-fluid mr-3">
+                      <div>
+                        <h3>{{obj_u.firsT_NAME}} {{obj_u.lasT_NAME}}</h3>
+                        <span *ngIf="obj.rating==1"><img src="../../../assets/images/star.jpg" alt="star"> </span>
+                        <span *ngIf="obj.rating==2">
+                          <img src="../../../assets/images/star.jpg" alt="star">
+                          <img src="../../../assets/images/star.jpg" alt="star">
+                        </span>
+                        <span *ngIf="obj.rating==3">
+                          <img src="../../../assets/images/star.jpg" alt="star">
+                          <img src="../../../assets/images/star.jpg" alt="star">
+                          <img src="../../../assets/images/star.jpg" alt="star">
+                        </span>
+                        <span *ngIf="obj.rating==4">
+                          <img src="../../../assets/images/star.jpg" class="test" width="2px" height="2px" alt="star">
+                          <img src="../../../assets/images/star.jpg" class="test" width="2px" height="2px" alt="star">
+                          <img src="../../../assets/images/star.jpg" class="test" width="2px" height="2px" alt="star">
+                          <img src="../../../assets/images/star.jpg" class="test" width="2px" height="2px" alt="star">
+                        </span>
+                        <span *ngIf="obj.rating==5">
+                          <img src="../../../assets/images/star.jpg" alt="star">
+                          <img src="../../../assets/images/star.jpg" alt="star">
+                          <img src="../../../assets/images/star.jpg" alt="star">
+                          <img src="../../../assets/images/star.jpg" alt="star">
+                          <img src="../../../assets/images/star.jpg" alt="star">
+                        </span>
+                        <div>
+                          <h6 >{{obj.opinion}}</h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+          </div>
+        </div>
+      </section>
 
 
       <section class="site-section" id="agents-section">

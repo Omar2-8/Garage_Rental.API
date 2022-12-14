@@ -56,6 +56,7 @@ import { RentGarageComponent } from './Components/rent-garage/rent-garage.compon
     InputTextModule,
     ButtonModule,
     CardModule,
+    NgxSpinnerModule
     
   ],
   providers: [
@@ -64,6 +65,7 @@ import { RentGarageComponent } from './Components/rent-garage/rent-garage.compon
       useClass: TokenInterceptor,
       multi: true,
     },
+    
   ],
   bootstrap: [AppComponent],
 })

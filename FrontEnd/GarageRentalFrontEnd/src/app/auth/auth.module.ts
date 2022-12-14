@@ -25,7 +25,7 @@ import { SharedModule } from './../shared/shared.module';
     MatInputModule,
     MatCardModule,
     MatCheckboxModule,
-    SharedModule
+    SharedModule,
     
   ]
 })

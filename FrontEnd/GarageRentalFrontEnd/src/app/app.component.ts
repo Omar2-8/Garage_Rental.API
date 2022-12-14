@@ -13,6 +13,8 @@ export class AppComponent {
   }
   ngOnInit(): void {
     this.home.getHome();
+    this.home.getAboutUs();
+
   }
   title = 'GarageRentalFrontEnd';
 }

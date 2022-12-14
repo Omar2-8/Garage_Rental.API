@@ -16,6 +16,8 @@ import {MatRadioModule} from '@angular/material/radio';
 import {DropdownModule} from 'primeng/dropdown';
 import {FileUploadModule} from 'primeng/fileupload';
 import {HttpClientModule} from '@angular/common/http';
+import { NgxSpinnerModule } from "ngx-spinner"; 
+
 @NgModule({
   declarations: [
     NavbarComponent,
@@ -37,7 +39,8 @@ import {HttpClientModule} from '@angular/common/http';
     MatRadioModule,
     DropdownModule,
     FileUploadModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxSpinnerModule
   ],
   exports:[
     NavbarComponent,
@@ -55,7 +58,8 @@ import {HttpClientModule} from '@angular/common/http';
     MatRadioModule,
     DropdownModule,
     FileUploadModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxSpinnerModule
   ]
 })
 export class SharedModule { }

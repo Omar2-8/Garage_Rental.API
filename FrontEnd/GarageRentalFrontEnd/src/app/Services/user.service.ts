@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
@@ -32,7 +33,8 @@ export class UserService {
   constructor(
     private http: HttpClient,
     private spinner: NgxSpinnerService,
-    private toster: ToastrService
+    private toster: ToastrService,
+    private router:Router
   ) {}
   //--------Users
   createUser(body: any) {
@@ -44,6 +46,8 @@ export class UserService {
         console.log(resp);
         this.spinner.hide();
         this.toster.success('Created Successfuly!!');
+        this.router.navigate(['/security/login']); 
+        
       },
       (err) => {
         this.spinner.hide();
@@ -57,7 +61,7 @@ export class UserService {
         //السبسكرايب بتتكون من حالتين اول وحدة ترو والثانية اذا كانت ايرور ريسبونس
         this.user = Resp;
         // this.userName=Resp;
-        this.toster.success('Data Retrieved');
+        // this.toster.success('Data Retrieved');
       },
       (err) => {
         this.toster.error('something Wrong');
@@ -72,7 +76,7 @@ export class UserService {
       (resp: any) => {
         this.userid = resp;
         console.log(this.userid);
-        this.toster.success('Data Retrieved!');
+        // this.toster.success('Data Retrieved!');
       },
       (err) => {
         this.toster.error(err.message, err.status);
@@ -157,7 +161,7 @@ export class UserService {
         (resp: any) => {
           this.garage = resp;
           console.log(this.garage);
-          this.toster.success('Data Retrieved!');
+          // this.toster.success('Data Retrieved!');
         },
         (err) => {
           this.toster.error(err.message, err.status);
@@ -301,7 +305,7 @@ debugger
         this.rent = resp;
         console.log(this.user);
 
-        this.toster.success('Data Retrieved!');
+        // this.toster.success('Data Retrieved!');
       },
       (err) => {
         this.toster.error(err.message, err.status);
@@ -332,7 +336,7 @@ debugger
         //السبسكرايب بتتكون من حالتين اول وحدة ترو والثانية اذا كانت ايرور ريسبونس
         this.visa = Resp;
         console.log(this.visa);
-        this.toster.success('Data Retrieved!');
+        // this.toster.success('Data Retrieved!');
       },
       (err) => {
         this.toster.error('something Wrong');
@@ -351,7 +355,7 @@ debugger
         this.visa1 = resp;
         console.log(this.visa);
 
-        this.toster.success('The visa has been selected!');
+        // this.toster.success('The visa has been selected!');
       },
       (err) => {
         this.toster.error(err.message, err.status);
@@ -479,7 +483,7 @@ debugger
           this.payment = resp;
           console.log(this.payment);
 
-          this.toster.success('Data Retrieved!');
+          // this.toster.success('Data Retrieved!');
         },
         (err) => {
           this.toster.error(err.message, err.status);
@@ -493,7 +497,7 @@ debugger
       (resp) => {
         console.log(resp);
         this.spinner.hide();
-        this.toster.success('Created Successfuly!!');
+        // this.toster.success('Created Successfuly!!');
       },
       (err) => {
         this.spinner.hide();

@@ -1,6 +1,4 @@
-
- 
-        .section-title {
+.section-title {
             position: relative;
             display: inline-block;
             text-transform: uppercase;
@@ -17,7 +15,7 @@ hr {
     overflow: visible;
     text-align: center;
     height: 5px;
-        margin-top: 1rem;
+    margin-top: 1rem;
 }
 
 hr:after {
@@ -26,5 +24,9 @@ hr:after {
     padding: 0 4px;
     position: relative;
     top: -13px;
+}
+.test{
+    width: 17px !important;
+    height: 17px !important;
 }
 

@@ -17,6 +17,7 @@ export class HomeService {
   display_image3: any;
   home :any[]=[];
   testimonial :any[]=[];
+  testimonial_1:any[]=[];
   Contactus :any[]=[];
   Aboutus :any[]=[];//عرفنا اريي عشان رح ترجعلي الداتا جيسون اوبجكت فبحتاج ارريي لحتى اخزن فيها الداتا الي جبتها من الإي بي اّي
   constructor(private http:HttpClient ,private spinner:NgxSpinnerService , private toster:ToastrService ) { }
@@ -67,7 +68,7 @@ updateAboutus(body:any)
 getAllContactus(){
   this.http.get('https://localhost:44391/api/ContactU/GetAll').subscribe((Resp:any)=>{//السبسكرايب بتتكون من حالتين اول وحدة ترو والثانية اذا كانت ايرور ريسبونس
     this.Contactus=Resp;
-     this.toster.success('Data Retrieved')
+    //  this.toster.success('Data Retrieved')
   },err=>{
     this.toster.error('something Wrong')
   })
@@ -95,9 +96,12 @@ debugger
     this.http.post('https://localhost:44391/api/Testimonial/Create', body).subscribe((resp) => {
       console.log(resp);
       this.spinner.hide();
+    this.spinner.show();
+
       this.toster.success('Created Successfuly!!');
     }, err => {
-      this.spinner.hide();
+    this.spinner.show();
+    this.spinner.hide();
       this.toster.error(err.message, err.status);
     }
     )
@@ -107,9 +111,12 @@ debugger
 
 
     this.http.get('https://localhost:44391/api/Testimonial/GetAll').subscribe((Resp:any)=>{//السبسكرايب بتتكون من حالتين اول وحدة ترو والثانية اذا كانت ايرور ريسبونس
-      this.testimonial=Resp;
-
-       this.toster.success('Data Retrieved')
+    this.testimonial=Resp;
+      
+    this.testimonial_1=Resp;
+    this.testimonial_1=this.testimonial.filter(x=>x.status=="Accept");
+    debugger;
+      //  this.toster.success('Data Retrieved')
     },err=>{
 
       this.toster.error('something Wrong')
@@ -154,7 +161,7 @@ debugger
       this.http.get('https://localhost:44391/api/Home/GetAll').subscribe((Resp:any)=>{//السبسكرايب بتتكون من حالتين اول وحدة ترو والثانية اذا كانت ايرور ريسبونس
         this.home=Resp;
 
-         this.toster.success('Data Retrieved')
+        
       },err=>{
 
         this.toster.error('something Wrong')

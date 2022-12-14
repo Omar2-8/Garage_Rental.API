@@ -14,12 +14,12 @@
                         <thead>
                             <tr>
                                 <th>
-                                    Image 1
+                                    Image 
                                 </th>
                                 <th>
-                                    Title 1
+                                    Title 
                                 </th>
-                                <th>
+                                <!-- <th>
                                     Image 2
                                 </th>
                                 <th>
@@ -30,7 +30,7 @@
                                 </th>
                                 <th>
                                     Title 3
-                                </th>
+                                </th> -->
                                 <th></th>
                             </tr>
                         </thead>
@@ -40,10 +40,10 @@
 
                                 <td><img src="../../../assets/images/{{obj.imagE_1}}" width="100px" height="100px"></td>
                                 <td>{{obj.titlE_1}}</td>
-                                <td><img src="../../../assets/images/{{obj.imagE_2}}" width="100px" height="100px"></td>
+                                <!-- <td><img src="../../../assets/images/{{obj.imagE_2}}" width="100px" height="100px"></td>
                                 <td>{{obj.titlE_2}}</td>
                                 <td><img src="../../../assets/images/{{obj.imagE_3}}" width="100px" height="100px"></td>
-                                <td>{{obj.titlE_3}}</td>
+                                <td>{{obj.titlE_3}}</td> -->
                                 <td>
                                     <button class="btn btn-primary" (click)="openUpdateDailog(obj)">Update</button>
                                 </td>
@@ -75,7 +75,7 @@
                 </mat-form-field>
                 <br>
                 
-                <input type="file" #file1 formControlName="imagE_2"  (change)="uploadFile1(file1.files) " [(ngModel)]="p_data.imagE_2">
+                <!-- <input type="file" #file1 formControlName="imagE_2"  (change)="uploadFile1(file1.files) " [(ngModel)]="p_data.imagE_2">
                 
                 <br>
                 <mat-form-field class="example-full-width" appearance="fill">
@@ -98,7 +98,7 @@
                     <mat-error *ngIf="UpdateHome.controls['titlE_3'].hasError('required')">
                         Title 3 is <strong>required</strong>
                     </mat-error>
-                </mat-form-field>
+                </mat-form-field> -->
                 <br>
                 
                 </form>

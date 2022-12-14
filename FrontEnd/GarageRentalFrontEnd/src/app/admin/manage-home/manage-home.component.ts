@@ -18,10 +18,10 @@ export class ManageHomeComponent implements OnInit {
     id:new FormControl(),
     imagE_1:new FormControl(),
     titlE_1:new FormControl('',Validators.required),
-    imagE_2:new FormControl(),
-    titlE_2:new FormControl('',Validators.required),
-    imagE_3:new FormControl(),
-    titlE_3:new FormControl('',Validators.required),
+    // imagE_2:new FormControl(),
+    // titlE_2:new FormControl('',Validators.required),
+    // imagE_3:new FormControl(),
+    // titlE_3:new FormControl('',Validators.required),
     
   })
 
@@ -38,12 +38,14 @@ export class ManageHomeComponent implements OnInit {
       id:obj.id,
       imagE_1:obj.imagE_1,
       titlE_1:obj.titlE_1,
-      imagE_2:obj.imagE_2,
-      titlE_2:obj.titlE_2,
-      imagE_3:obj.imagE_3,
-      titlE_3:obj.titlE_3
+      // imagE_2:obj.imagE_2,
+      // titlE_2:obj.titlE_2,
+      // imagE_3:obj.imagE_3,
+      // titlE_3:obj.titlE_3
     }
     this.UpdateHome.controls['id'].setValue(this.p_data.id);
+
+
     this.dialog.open(this.callUpdate);
   
     }
