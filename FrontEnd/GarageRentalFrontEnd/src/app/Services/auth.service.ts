@@ -31,7 +31,7 @@ export class AuthService {
       const responce={
         token :resp.toString()
       }
-      localStorage.setItem('token',responce.token);
+      localStorage.setItem('token',responce.token);//save local in token
       let data :any=jwt_decode(responce.token);
       localStorage.setItem('user',JSON.stringify({...data}));
       debugger
