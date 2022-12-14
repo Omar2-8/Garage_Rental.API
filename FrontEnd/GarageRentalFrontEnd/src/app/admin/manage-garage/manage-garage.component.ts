@@ -9,6 +9,7 @@ import { GarageModel } from './../../Models/garage.model';
 import { User } from 'src/app/Models/user.model';
 
 import { Overlay } from '@angular/cdk/overlay';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-manage-garage',
   templateUrl: './manage-garage.component.html',
@@ -113,7 +114,9 @@ export class ManageGarageComponent implements OnInit {
     private dialog: MatDialog,
     private garageService: GarageService,
     public user: UserService,
-    private readonly sso: ScrollStrategyOptions
+    private readonly sso: ScrollStrategyOptions,
+    private toster: ToastrService
+
   ) {
     this.scrollStrategy = this.sso.noop();
   }
@@ -207,9 +210,13 @@ savetestgarage(){
     this.saveInfo1();
     this.garageService.addGarage(this.garageModel).subscribe({
       next: () => {
+        this.toster.success('Created Garage successfuly!!');
+
         console.log('adding Garagee succeful');
       },
       error: (er) => {
+        this.toster.error('Created Garage unsuccessfuly!!');
+
         console.log(er);
       },
     });

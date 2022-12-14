@@ -3,6 +3,7 @@ import { GarageModel } from './../../Models/garage.model';
 import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/Services/user.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-list-garage',
@@ -14,7 +15,8 @@ export class ListGarageComponent implements OnInit {
   display: any;
   val: any;
 
-  constructor(private garageService: GarageService,public user: UserService,) {}
+    
+    constructor(private garageService: GarageService,public user: UserService,private toster: ToastrService) {}
 
   ngOnInit(): void {}
 
@@ -107,6 +109,8 @@ export class ListGarageComponent implements OnInit {
 
     this.garageService.addGarage(this.garageModel).subscribe({
       next: () => {
+        this.toster.success('Created Garage successfuly!!');
+
         console.log('adding Garagee succeful');
       },
       error: (er) => {
