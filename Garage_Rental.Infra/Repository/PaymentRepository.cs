@@ -29,8 +29,8 @@ namespace Garage_Rental.Infra.Repository
                 p.Add("p_DATE", t.PAY_DATE, dbType: DbType.Date, direction: ParameterDirection.Input);
                 p.Add("c_RATE", t.COMMISSION_RATE, dbType: DbType.Decimal, direction: ParameterDirection.Input);
                 p.Add("U_ID", t.USER_ID, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-            p.Add("V_ID", t.VISA_ID, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-            p.Add("R_ID", t.RENT_ID, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+                p.Add("V_ID", t.VISA_ID, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+                p.Add("R_ID", t.RENT_ID, dbType: DbType.Decimal, direction: ParameterDirection.Input);
                 p.Add("result", dbType: DbType.Int32, direction: ParameterDirection.Output);
                  dBContext.Connection.Execute("Payment_Package.CreatePAYMENT", p, commandType: CommandType.StoredProcedure);
             int id = p.Get<int>("result");

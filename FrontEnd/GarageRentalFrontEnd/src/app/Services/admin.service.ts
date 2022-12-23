@@ -38,8 +38,11 @@ export class AdminService {
     this.spinner.show();
     this.http.post('https://localhost:44391/api/Garage/Create', body).subscribe((resp) => {
       console.log(resp);
-      this.spinner.hide();
-      this.toster.success('Created !!');
+      setTimeout(()=>{
+        this.spinner.hide();
+        this.toster.success('Created Garage !!');
+        },2000)
+      
     }, err => {
       this.spinner.hide();
       this.toster.error(err.message, err.status);
@@ -88,9 +91,14 @@ export class AdminService {
   {
     this.spinner.show();    
     this.http.delete(this.baseApiUrl+'Garage/Delete/'+id).subscribe((resp)=>{
-        this.toster.success('Deleted Successfully !!');
+        
+        setTimeout(()=>{
+          this.spinner.hide();
+          this.toster.success('Deleted Successfully !!');
+          },2500)
     },err=>{
       this.toster.error(err.message, err.status);
+      this.spinner.hide(); 
     })
   }
   updateGarage(body:any)

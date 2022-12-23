@@ -227,8 +227,11 @@
                                     <mat-error *ngIf="
                       updateForm.controls['availablE_FROM'].hasError('required')
                     ">
-                                        availablE_FROM is <strong>required</strong>
+                    available from is <strong>required</strong>
                                     </mat-error>
+                                    <mat-error *ngIf="updateForm.controls['availablE_FROM'].hasError('min')">
+                    the minimum of available from <strong>is 1</strong>
+                  </mat-error>
                                 </mat-form-field>
 
                                 <mat-form-field appearance="fill" class="mx-2">
@@ -238,8 +241,13 @@
                                     <mat-error *ngIf="
                       updateForm.controls['availablE_TO'].hasError('required')
                     ">
-                                        availablE_TO is <strong>required</strong>
+                    available to is <strong>required</strong>
                                     </mat-error>
+                                    <mat-error *ngIf="
+                                    updateForm.controls['availablE_TO'].hasError('max')
+                                  ">
+                                  the Maximum of available to <strong>is 24</strong>
+                                                  </mat-error>
                                 </mat-form-field>
                             </div>
 

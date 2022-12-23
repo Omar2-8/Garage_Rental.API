@@ -53,10 +53,10 @@ export class DashboardComponent implements OnInit {
       next: (value) => {
         this.gargesNumber = value.length;
         this.watingGargesNumber = value.filter(
-          (x) => x.status == 'wating'
+          (x) => x.status == 'waiting'
         ).length;
         this.acceptedGargesNumber = value.filter(
-          (x) => x.status == 'accept'
+          (x) => x.status == 'Accept'
         ).length;
         this.rejectedGargesNumber = value.filter(
           (x) => x.status == 'Reject'

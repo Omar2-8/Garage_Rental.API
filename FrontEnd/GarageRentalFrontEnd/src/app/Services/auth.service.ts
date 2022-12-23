@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { HomeService } from './home.service';
 import jwt_decode from "jwt-decode";
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class AuthService {
   constructor(private home :HomeService, 
     
     private toastr:ToastrService,private router:Router,private http:HttpClient,
-    ) { }
+    private spinner: NgxSpinnerService ) { }
   login(email:any, password:any)
   {
     var body ={
@@ -27,6 +28,7 @@ export class AuthService {
     const requestOptions={
       headers: new HttpHeaders(headerDic)
     }
+    
     this.http.post('https://localhost:44391/api/Auth/AuthLogin/',body,requestOptions).subscribe((resp:any)=>{
       const responce={
         token :resp.toString()
@@ -35,12 +37,17 @@ export class AuthService {
       let data :any=jwt_decode(responce.token);
       localStorage.setItem('user',JSON.stringify({...data}));
       debugger
-      if(data.Role==1)
+      if(data.ROLES_ID==1){
+        
       this.router.navigate(['Admin/dashboard']);
-      else if (data.Role==2)
-      this.router.navigate(['home']); 
+     }
+      else if (data.ROLES_ID==2){
+        
+      this.router.navigate(['home']);
+      
+     }
     },err=>{
-      this.toastr.error(err.message,err.status);
+      this.toastr.error('Your Email Or Password incorrect');
     })
   }
 }

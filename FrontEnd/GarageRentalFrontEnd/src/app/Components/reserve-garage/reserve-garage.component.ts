@@ -43,7 +43,7 @@ export class ReserveGarageComponent implements OnInit {
     debugger;
     this.GarageService.getGarageList().subscribe({
       next: (data: GarageModel[]) => {
-        this.garages = data;
+        this.garages = data.filter(x=>x.status=="Accept");
         this.garages.forEach((element) => {
           var x = +element.latitude;
           var y = +element.longitude;

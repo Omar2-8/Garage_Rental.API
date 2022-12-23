@@ -5,7 +5,7 @@ import {TableModule} from 'primeng/table';
 import { MatDialog } from '@angular/material/dialog';
 
 import { AdminService } from './../../Services/admin.service';
-import { FormControl, FormGroup, Validators, NgForm } from '@angular/forms';
+import { FormControl, FormGroup, Validators, NgForm, MaxValidator } from '@angular/forms';
 import { GarageService } from './../../Services/garage.service';
 import { GarageModel } from './../../Models/garage.model';
 import { ScrollStrategy, ScrollStrategyOptions } from '@angular/cdk/overlay';
@@ -44,8 +44,8 @@ export class UserGarageComponent implements OnInit {
     longitude: new FormControl(''),
     image1: new FormControl(),
     image2: new FormControl(),
-    availablE_FROM: new FormControl('', Validators.required),
-    availablE_TO: new FormControl('', Validators.required),
+    availablE_FROM: new FormControl('', [Validators.required,Validators.min(1)]),
+    availablE_TO: new FormControl('',[ Validators.required,Validators.max(24)]),
     renT_PRICE: new FormControl('', Validators.required),
     street: new FormControl('', Validators.required),
     buildinG_NUMBER: new FormControl('', Validators.required),
@@ -102,7 +102,7 @@ export class UserGarageComponent implements OnInit {
   savetestgarage(){
     this.garageForm2.value.latitude = '' + this.markerPositions[0]['lat'];
       this.garageForm2.value.longitude = '' + this.markerPositions[0]['lng'];
-      this.updateForm.value.useR_ID=parseInt(this.userid);
+      this.garageForm2.value.useR_ID=parseInt(this.userid);
       this.user.createGarage(this.garageForm2.value)
   }
   

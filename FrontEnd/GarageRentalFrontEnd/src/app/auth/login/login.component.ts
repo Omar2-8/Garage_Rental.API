@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { NgxSpinnerService } from "ngx-spinner";
@@ -19,9 +20,13 @@ export class LoginComponent implements OnInit {
   
   login()
   {
+    this.spinner.show();
     
-    this.auth.login(this.email,this.password);
-    
+    setTimeout(()=>{
+      this.spinner.hide();
+      this.auth.login(this.email,this.password);
+      },2000)
+      
   }
 
  
@@ -31,7 +36,7 @@ export class LoginComponent implements OnInit {
     localStorage.getItem('user info is saved');
     localStorage.getItem('Email');
     localStorage.getItem('Password');
-
+   
   }
 
   click(){

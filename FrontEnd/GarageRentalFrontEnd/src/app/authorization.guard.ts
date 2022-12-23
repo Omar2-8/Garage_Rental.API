@@ -21,7 +21,7 @@ export class AuthorizationGuard implements CanActivate {
     if(user)
     {
       user=JSON.parse(user);//uncomprese token
-      if(user.Role==1){
+      if(user.ROLES_ID==1){
         this.toastr.success('Welcome in admin pages ');
         return true;
       }
@@ -39,10 +39,10 @@ export class AuthorizationGuard implements CanActivate {
       return false;
     }
 
-  }
+   }
 
     return true;
-}
+} 
   
     else 
     {

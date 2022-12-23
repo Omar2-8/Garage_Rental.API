@@ -25,11 +25,12 @@ export class AdminProfileComponent implements OnInit {
     useR_IDENTITY:new FormControl('',Validators.required),
     roleS_ID:new FormControl(),
   })
-
+  rloeid:any;
   ngOnInit(): void {
     let user:any= localStorage.getItem('user');
     user = JSON.parse(user);
     this.users.getUserId(user.USER_ID);
+    this.rloeid=user.ROLES_ID;
   }
 
   p_data :any={};
@@ -44,12 +45,13 @@ export class AdminProfileComponent implements OnInit {
       phonenumber:obj.phonenumber,
       useR_IMAGE:obj.useR_IMAGE,
       useR_IDENTITY:obj.useR_IDENTITY,
-      roleS_ID:obj.roleS_ID,
+      roleS_ID:this.rloeid,
     }
     this.UpdateProfile.controls['useR_ID'].setValue(this.p_data.useR_ID);
     this.dialog.open(this.callUpdate);
     }
     saveDataProfile(){
+      this.UpdateProfile.value.roleS_ID=parseInt(this.rloeid);
       this.users.updateUser(this.UpdateProfile.value);
     }
     uploadFile(file:any){

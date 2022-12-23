@@ -37,12 +37,12 @@ namespace Garage_Rental.Infra.Service
                  new Claim("USER_ID",result.USER_ID.ToString()),
                  new Claim("first_name", result.FIRST_NAME),
                  new Claim("Email", result.Email),
-                 new Claim("Role", result.ROLES_ID.ToString())
+                 new Claim("ROLES_ID", result.ROLES_ID.ToString())
                  
                };
                 var tokeOptions = new JwtSecurityToken(
                     claims: claims,
-                    expires: DateTime.Now.AddSeconds(10),
+                    expires: DateTime.Now.AddSeconds(60),
                     signingCredentials: signinCredentials
                 );
                 var tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);

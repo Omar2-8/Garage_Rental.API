@@ -44,14 +44,20 @@ export class UserService {
     this.http.post('https://localhost:44391/api/Users/Create', body).subscribe(
       (resp) => {
         console.log(resp);
-        this.spinner.hide();
+        setTimeout(()=>{
+          this.spinner.hide();
         this.toster.success('Created Successfuly!!');
+          },2000)
+        
         this.router.navigate(['/security/login']); 
         
       },
       (err) => {
-        this.spinner.hide();
-        this.toster.error(err.message, err.status);
+        setTimeout(()=>{
+          this.spinner.hide();
+          this.toster.error('Something Wrong!!');
+          },2000)
+        
       }
     );
   }
@@ -91,10 +97,17 @@ export class UserService {
       .delete('https://localhost:44391/api/Users/Delete/' + id)
       .subscribe(
         (resp) => {
-          this.toster.success('Deleted Successfully !!');
+          setTimeout(()=>{
+            this.spinner.hide();
+           this.toster.success('Deleted Successfully !!');
+            },2000)
+         
         },
         (err) => {
-          this.toster.error(err.message, err.status);
+          setTimeout(()=>{
+            this.spinner.hide();
+           this.toster.error('Can not Deleted !!');
+            },2000)
         }
       );
   }
@@ -106,12 +119,18 @@ export class UserService {
     this.spinner.show();
     this.http.put('https://localhost:44391/api/Users/Update', body).subscribe(
       (resp) => {
-        this.spinner.hide();
+        setTimeout(()=>{
+          this.spinner.hide();
         this.toster.success('Updated Successfully !!');
+          },2000)
+        
       },
       (err) => {
-        this.spinner.hide();
-        this.toster.error(err.message, err.status);
+        setTimeout(()=>{
+          this.spinner.hide();
+         this.toster.error('Can not Updated Please Try Again Later !!');
+          },2000)
+        
       }
     );
   }
@@ -141,12 +160,18 @@ export class UserService {
     this.http.post('https://localhost:44391/api/Garage/Create', body).subscribe(
       (resp) => {
         console.log(resp);
-        this.spinner.hide();
-        this.toster.success('Created Garage successfuly!!');
+        setTimeout(()=>{
+          this.spinner.hide();
+           this.toster.success('Created Garage successfuly!!');
+          },2000)
+       
       },
       (err) => {
-        this.spinner.hide();
-        this.toster.error('Created Garage successfuly!!');
+        setTimeout(()=>{
+          this.spinner.hide();
+       this.toster.error('Can not Create Garage!!');
+          },2000)
+        
       }
     );
   }
@@ -214,9 +239,14 @@ export class UserService {
       .delete('https://localhost:44391/api/Garage/Delete/' + id)
       .subscribe(
         (resp) => {
-          this.toster.success('Deleted Successfully !!');
+          setTimeout(()=>{
+            this.spinner.hide();
+         this.toster.success('Deleted Successfully !!');
+            },2000)
+          
         },
         (err) => {
+          this.spinner.hide();
           this.toster.error(err.message, err.status);
         }
       );
@@ -232,12 +262,18 @@ debugger
     this.spinner.show();
     this.http.put('https://localhost:44391/api/Garage/Update', body).subscribe(
       (resp) => {
-        this.spinner.hide();
-        this.toster.success('Accepted The Garage Successfully !!');
+        setTimeout(()=>{
+          this.spinner.hide();
+          this.toster.success('Update Garage Successfully !!');
+          },2000)
+       
       },
       (err) => {
-        this.spinner.hide();
-        this.toster.error(err.message, err.status);
+        setTimeout(()=>{
+          this.spinner.hide();
+          this.toster.error('Can Not Updated Garage !!');
+          },2000)
+        
       }
     );
   }
@@ -289,7 +325,7 @@ debugger
       },
       (err) => {
         this.spinner.hide();
-        this.toster.error(err.message, err.status);
+        this.toster.error('Can Not Rent Please Check on start and end (time)');
       }
     );
   }
@@ -397,7 +433,7 @@ debugger
         this.toster.success('Created Successfuly!!');
       },
       (err) => {
-        this.toster.error(err.message, err.status);
+        this.toster.error('Please Cheack Car Type And Car Plate!!');
       }
     );
   }

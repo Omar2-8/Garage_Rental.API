@@ -17,9 +17,15 @@ export class ListGarageComponent implements OnInit {
 
     
     constructor(private garageService: GarageService,public user: UserService,private toster: ToastrService) {}
+userid:any;
+  ngOnInit(): void {
 
-  ngOnInit(): void {}
-
+    let user:any= localStorage.getItem('user');
+    user = JSON.parse(user);
+    this.user.getGarageId(user.USER_ID)
+    this.userid=user.USER_ID;
+  }
+  
   mode = ['Available', 'NotAvailable'];
   rangeValues!: number[];
   garageModel: GarageModel = {
@@ -83,7 +89,7 @@ export class ListGarageComponent implements OnInit {
   savetestgarage(){
     this.garageForm2.value.latitude = '' + this.markerPositions[0]['lat'];
       this.garageForm2.value.longitude = '' + this.markerPositions[0]['lng'];
-      this.garageForm2.value.useR_ID=45;
+      this.garageForm2.value.useR_ID=parseInt(this.userid);;
       this.user.createGarage(this.garageForm2.value)
   }
   saveInfo() {
