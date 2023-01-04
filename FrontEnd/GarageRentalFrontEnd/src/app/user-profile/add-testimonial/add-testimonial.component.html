@@ -19,14 +19,16 @@
 
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Rating</mat-label>
-        <input type="tel" matInput formControlName="rating" placeholder="max length 5 " />
+        <input type="number" matInput formControlName="rating" placeholder="max length 5 " />
         <mat-error *ngIf="createForm.controls['rating'].hasError('required')">
           rating is <strong>required</strong>
         </mat-error>
-        <mat-error *ngIf="createForm.controls['rating'].hasError('maxLength')">
-          max-5 <strong>max-5</strong>
+        <mat-error *ngIf="createForm.controls['rating'].hasError('max')">
+          max-rating <strong>5</strong>
         </mat-error>
-
+        <mat-error *ngIf="createForm.controls['rating'].hasError('min')">
+          min-rating<strong>1</strong>
+        </mat-error>
       </mat-form-field>
       <!-- <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Status</mat-label>
@@ -48,6 +50,7 @@
   </mat-dialog-content>
   <mat-dialog-actions align="end">
     <button
+    [disabled]="!createForm.controls['rating'].valid"
       mat-button class="btn btn-primary"
       [mat-dialog-close]="true"
       cdkFocusInitial

@@ -13,7 +13,7 @@ export class AddTestimonialComponent implements OnInit {
   constructor(public home:HomeService,public dialog: MatDialog) { }
   createForm :FormGroup= new FormGroup({
     opinion:new FormControl('',Validators.required),
-    rating:new FormControl('',[Validators.required,Validators.maxLength(1)]),
+    rating:new FormControl('',[Validators.required,Validators.max(5),Validators.min(1)]),
     status:new FormControl('',Validators.required),
     useR_ID:new FormControl('',Validators.required),
   })

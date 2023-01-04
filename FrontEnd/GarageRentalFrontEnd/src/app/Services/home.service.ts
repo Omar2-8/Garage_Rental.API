@@ -95,14 +95,19 @@ debugger
 
     this.http.post('https://localhost:44391/api/Testimonial/Create', body).subscribe((resp) => {
       console.log(resp);
-      this.spinner.hide();
-    this.spinner.show();
+      setTimeout(()=>{
+        this.spinner.hide();
+        this.toster.success('Created Successfuly!!');
+        },2500)
 
-      this.toster.success('Created Successfuly!!');
+      
     }, err => {
-    this.spinner.show();
-    this.spinner.hide();
-      this.toster.error(err.message, err.status);
+    
+      setTimeout(()=>{
+        this.spinner.hide();
+        this.toster.error(err.message, err.status);
+        },2500)
+      
     }
     )
   }
