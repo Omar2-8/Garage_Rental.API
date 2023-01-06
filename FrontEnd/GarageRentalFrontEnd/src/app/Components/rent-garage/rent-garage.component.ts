@@ -33,7 +33,7 @@ export class RentGarageComponent implements OnInit {
     visA_AMOUNT: 0,
   };
   constructor(public userService:UserService,public adminService:AdminService,public dialog: MatDialog,private route: ActivatedRoute,private toastr: ToastrService) {
-   this.garageid =this.route.snapshot.params['id'];
+   this.garageid =parseInt(this.route.snapshot.params['id']);
    }
 
   
@@ -76,12 +76,17 @@ export class RentGarageComponent implements OnInit {
 
   p_data_c: any = {};
 
-
+  // UsId: any = {};
    user:any;
   ngOnInit(): void {
-    this.userService.getSingleGarageId(this.garageid);
-    this.adminService.getAllRents();
     
+    this.userService.getSingleGarageId(this.garageid);
+    debugger
+    // this.UsId=this.userService.getSingleGarageId(this.garageid);
+    
+    this.adminService.getAllRents();
+    this.userService.getAllUsers();
+
    this.user = localStorage.getItem('user');
     this.user = JSON.parse(this.user);
     this.userid=this.user.USER_ID;
