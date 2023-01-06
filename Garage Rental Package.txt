@@ -1,0 +1,658 @@
+create or replace PACKAGE ABOUT_PACKAGE AS
+PROCEDURE GETALLABOUT;
+PROCEDURE UPDATEABOUT(User_Id IN NUMBER,U_Name IN VARCHAR2,U_Email IN VARCHAR2,Msg in VARCHAR2,Phone in number ,U_Address in VARCHAR2,result out number);
+END ABOUT_PACKAGE;
+
+
+create or replace PACKAGE BODY ABOUT_PACKAGE
+AS
+PROCEDURE GETALLABOUT
+as
+CUR_ALL SYS_REFCURSOR;
+BEGIN
+OPEN CUR_ALL FOR
+SELECT * FROM ABOUT_US;
+DBMS_SQL.RETURN_RESULT(CUR_ALL);
+end GETALLABOUT;
+
+PROCEDURE UPDATEABOUT(User_Id IN NUMBER,U_Name IN VARCHAR2,U_Email IN VARCHAR2,Msg in VARCHAR2,Phone in number ,U_Address in VARCHAR2,result out number)
+AS
+U_id NUMBER ;
+BEGIN 
+UPDATE ABOUT_US SET NAME=U_Name,email=U_Email,message=Msg,phone_number=Phone,address=U_Address 
+WHERE ID=User_Id RETURNING ID into U_id;
+COMMIT;
+if U_id is null 
+ then result :=0;
+ else 
+ result :=U_id;
+ end if;
+END UPDATEABOUT;
+
+
+
+END ABOUT_PACKAGE;
+
+-----------------------------------------------------------------------------
+
+create or replace PACKAGE Car_Package AS
+procedure GetCarsById(Id in number);
+procedure GetCarsByCarId(Id in number);
+PROCEDURE CreateCar(CAR_TYPE in varchar2,CAR_PLATE in VARCHAR2,User_Id in number,result out number);
+PROCEDURE DeleteCar(ID IN NUMBER);
+end Car_Package;
+
+create or replace PACKAGE Body Car_Package as
+procedure GetCarsById(Id in number)
+As
+cur_All SYS_REFCURSOR;
+Begin
+open cur_All for 
+select * from CARS
+where user_id = id ;
+dbms_sql.return_result(cur_All);
+End GetCarsById;
+
+
+procedure GetCarsByCarId(Id in number)
+As
+cur_All SYS_REFCURSOR;
+Begin
+open cur_All for 
+select * from CARS
+where car_id = id ;
+dbms_sql.return_result(cur_All);
+End GetCarsByCarId;
+
+PROCEDURE CreateCar(CAR_TYPE in varchar2,CAR_PLATE in VARCHAR2,User_Id in number,result out number)
+As
+U_id number ;
+BEGIN
+INSERT INTO cars VALUES(DEFAULT,CAR_TYPE,CAR_PLATE,User_Id)RETURNING CAR_ID into U_id;
+COMMIT;
+if U_id is null 
+ then result :=0;
+ else 
+ result :=U_id;
+ end if;
+END CreateCar;
+
+PROCEDURE DeleteCar(ID IN NUMBER)
+aS
+BEGIN
+DELETE cars WHERE car_id=ID;
+COMMIT;
+END DeleteCar;
+
+
+END Car_Package;
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+create or replace PACKAGE Contact_PACKAGE AS
+PROCEDURE GETALLContact;
+PROCEDURE CreateContact(UName IN VARCHAR2,UEmail IN VARCHAR2,Msg IN VARCHAR2,Phone IN NUMBER,result out number);
+PROCEDURE DeleteContact(U_id in Number);
+END Contact_PACKAGE;
+
+
+create or replace PACKAGE BODY Contact_PACKAGE
+AS
+PROCEDURE GETALLContact
+as
+CUR_ALL SYS_REFCURSOR;
+BEGIN
+OPEN CUR_ALL FOR
+SELECT * FROM CONTACT_US;
+DBMS_SQL.RETURN_RESULT(CUR_ALL);
+
+end GETALLContact;
+
+PROCEDURE CreateContact(UName IN VARCHAR2,UEmail IN VARCHAR2,Msg IN VARCHAR2,Phone IN NUMBER,result out number)
+AS
+U_id number ;
+BEGIN
+INSERT INTO CONTACT_US VALUES(DEFAULT,UName,UEmail,Msg,Phone)RETURNING ID into U_id;
+ COMMIT;
+if U_id is null 
+ then result :=0;
+ else 
+ result :=U_id;
+ end if;
+END CreateContact; 
+
+PROCEDURE DeleteContact(U_id in Number)
+AS
+BEGIN 
+delete from CONTACT_US
+where ID = U_id ;
+commit;
+END DeleteContact;
+
+END Contact_PACKAGE;
+
+
+---------------------------------------------------------------------------------------------------------
+
+create or replace PACKAGE GARAGE_PACKAGE AS
+PROCEDURE GETALLGARAGE;
+PROCEDURE GETLONGITUDELATITUDE;
+PROCEDURE GETLONGITUDELATITUDEByID(ID in number);
+PROCEDURE DeleteGARAGE(ID IN NUMBER);
+procedure GetGARAGESById(ID in number);
+procedure GetSingleGARAGESById(ID in number);
+
+PROCEDURE CreateGARAGE(Name IN VARCHAR2,G_Latitude IN VARCHAR2,G_Longitude IN VARCHAR2,Img1 IN VARCHAR2,Img2 IN VARCHAR2,
+Price IN number,G_Street IN VARCHAR2,BUILDING_Num In NUMBER,U_ID IN NUMBER,result out number);
+
+PROCEDURE UPDATEGARAGE(G_ID IN NUMBER ,Name IN VARCHAR2,G_Latitude IN VARCHAR2,G_Longitude IN VARCHAR2,Img1 IN VARCHAR2,Img2 IN VARCHAR2,Available_Start IN NUMBER,
+Available_End IN NUMBER,Price IN number,G_Street IN VARCHAR2,BUILDING_Num In NUMBER,G_MODE IN VARCHAR2,U_ID IN NUMBER,result out number);
+
+PROCEDURE ChangeGarageStatus(G_ID IN NUMBER,G_STATUS IN VARCHAR2,result out number);
+PROCEDURE ChangeGarageMode(G_ID IN NUMBER,G_MODE IN VARCHAR2,result out number);
+END GARAGE_PACKAGE;
+
+
+
+create or replace PACKAGE Body GARAGE_PACKAGE as
+
+
+PROCEDURE GETLONGITUDELATITUDEByID(ID in number)
+as
+CUR_ALL SYS_REFCURSOR;
+BEGIN
+OPEN CUR_ALL FOR
+SELECT LATITUDE,LONGITUDE FROM GARAGE WHERE GARAGE_ID=ID;
+DBMS_SQL.RETURN_RESULT(CUR_ALL);
+END GETLONGITUDELATITUDEByID;
+
+PROCEDURE GETALLGARAGE
+as
+CUR_ALL SYS_REFCURSOR;
+BEGIN
+OPEN CUR_ALL FOR
+SELECT * FROM GARAGE;
+DBMS_SQL.RETURN_RESULT(CUR_ALL);
+END GETALLGARAGE;
+
+PROCEDURE DeleteGARAGE(ID IN NUMBER)
+aS
+BEGIN
+DELETE GARAGE WHERE GARAGE_ID=ID;
+COMMIT;
+
+END DeleteGARAGE;
+
+procedure GetGARAGESById(ID in number)
+As
+cur_All SYS_REFCURSOR;
+Begin
+open cur_All for 
+select * from GARAGE
+where USER_ID = ID ;
+dbms_sql.return_result(cur_All);
+END GetGARAGESById;
+
+procedure GetSingleGARAGESById(ID in number)
+As
+cur_All SYS_REFCURSOR;
+Begin
+open cur_All for 
+select * from GARAGE
+where GARAGE_ID = ID ;
+dbms_sql.return_result(cur_All);
+END GetSingleGARAGESById;
+
+PROCEDURE CreateGARAGE(Name IN VARCHAR2,G_Latitude IN VARCHAR2,G_Longitude IN VARCHAR2,Img1 IN VARCHAR2,Img2 IN VARCHAR2,
+Price IN number,G_Street IN VARCHAR2,BUILDING_Num In NUMBER,U_ID IN NUMBER,result out number)
+AS
+USERS_id number ;
+BEGIN
+INSERT INTO GARAGE VALUES(DEFAULT,Name,G_Latitude,G_Longitude,Img1,Img2,NULL,null,Price,G_Street,BUILDING_Num,'waiting',null,U_ID)RETURNING garage_id into USERS_id;
+COMMIT;
+if USERS_id is null 
+ then result :=0;
+ else 
+ result :=USERS_id;
+ end if;
+END CreateGARAGE;
+
+
+
+PROCEDURE UPDATEGARAGE(G_ID IN NUMBER ,Name IN VARCHAR2,G_Latitude IN VARCHAR2,G_Longitude IN VARCHAR2,Img1 IN VARCHAR2,Img2 IN VARCHAR2,Available_Start IN NUMBER,
+Available_End IN NUMBER,Price IN number,G_Street IN VARCHAR2,BUILDING_Num In NUMBER,G_MODE IN VARCHAR2,U_ID IN NUMBER,result out number)
+As
+Users_id NUMBER ;
+BEGIN 
+UPDATE GARAGE SET GARAGE_NAME=Name,LATITUDE=G_Latitude,LONGITUDE=G_Longitude,image1=Img1,image2=Img2 ,AVAILABLE_FROM =Available_Start,
+AVAILABLE_TO=Available_End,RENT_PRICE=Price, STREET=G_Street, BUILDING_NUMBER= BUILDING_Num,GARAGE_MODE= G_MODE, USER_ID=U_ID
+WHERE GARAGE_ID=G_ID RETURNING GARAGE_ID into Users_id;
+COMMIT;
+if Users_id is null 
+ then result :=0;
+ else 
+ result :=Users_id;
+ end if;
+end UPDATEGARAGE;
+
+PROCEDURE GETLONGITUDELATITUDE
+as
+CUR_ALL SYS_REFCURSOR;
+BEGIN
+OPEN CUR_ALL FOR
+SELECT LATITUDE,LONGITUDE FROM GARAGE;
+DBMS_SQL.RETURN_RESULT(CUR_ALL);
+END GETLONGITUDELATITUDE;
+
+PROCEDURE ChangeGarageStatus(G_ID IN NUMBER,G_STATUS IN VARCHAR2,result out number)
+AS
+gaid number ;
+BEGIN 
+UPDATE Garage SET status=G_STATUS
+WHERE GARAGE_ID=G_ID RETURNING GARAGE_ID into gaid;
+COMMIT;
+if gaid is null 
+ then result :=0;
+ else 
+ result :=gaid;
+ end if;
+END ChangeGarageStatus;
+
+PROCEDURE ChangeGarageMode(G_ID IN NUMBER,G_MODE IN VARCHAR2,result out number)
+AS
+gaid number ;
+BEGIN 
+UPDATE Garage SET garage_mode=G_MODE
+WHERE GARAGE_ID=G_ID RETURNING GARAGE_ID into gaid;
+COMMIT;
+if gaid is null 
+ then result :=0;
+ else 
+ result :=gaid;
+ end if;
+END ChangeGarageMode;
+
+END GARAGE_PACKAGE;
+
+
+
+------------------------------------------------------------------------------------------------------------------
+create or replace PACKAGE HOME_Package AS
+PROCEDURE DETAILS;
+PROCEDURE UPDATEHOME(H_ID IN NUMBER,IMG1 IN VARCHAR2,H_Title1 IN VARCHAR2,IMG2 IN VARCHAR2,H_Title2 IN VARCHAR2,IMG3 IN VARCHAR2,H_Title3 in varchar2,result out number);
+end HOME_Package;
+
+
+
+
+create or replace PACKAGE Body HOME_Package 
+as
+PROCEDURE DETAILS
+as
+CUR_ALL SYS_REFCURSOR;
+BEGIN
+OPEN CUR_ALL FOR
+SELECT * FROM HOME;
+DBMS_SQL.RETURN_RESULT(CUR_ALL);
+end DETAILS;
+
+PROCEDURE UPDATEHOME(H_ID IN NUMBER,IMG1 IN VARCHAR2,H_Title1 IN VARCHAR2,IMG2 IN VARCHAR2,H_Title2 IN VARCHAR2,IMG3 IN VARCHAR2,H_Title3 in varchar2,result out number)
+AS
+U_id NUMBER ;
+BEGIN 
+UPDATE HOME SET image_1=IMG1,title_1=H_Title1,image_2=IMG2,title_2=H_Title2,image_3=IMG3,title_3=H_Title3
+WHERE ID=H_ID RETURNING ID into U_id;
+COMMIT;
+if U_id is null 
+ then result :=0;
+ else 
+ result :=U_id;
+ end if;
+END UPDATEHOME;
+
+
+end HOME_Package;
+
+-------------------------------------------------------------------------------------------------------------------
+
+create or replace PACKAGE Login_Package 
+AS
+PROCEDURE UserLogin(UEmail IN VARCHAR,PASS IN VARCHAR);
+END Login_Package;
+
+
+
+
+create or replace package body Login_package 
+as 
+PROCEDURE UserLogin(UEmail IN VARCHAR,PASS IN VARCHAR)
+as 
+c_all SYS_REFCURSOR ; 
+begin 
+open c_all for select user_id,first_name,Email ,ROLES_ID from users where EMAIL= UEmail and password=PASS ; 
+DBMS_SQL.RETURN_RESULT(c_all);
+end UserLogin; 
+
+
+
+end Login_package;
+
+
+
+---------------------------------------------------------------------------------------------------------
+
+create or replace PACKAGE PAYMENT_PACKAGE AS
+PROCEDURE GETALLPAYMENT;
+PROCEDURE CreatePAYMENT(P_Amount IN number,G_NAME IN VARCHAR2,p_DATE IN DATE,c_RATE IN number,
+U_ID IN number,V_ID IN NUMBER,R_ID In NUMBER,result out number);
+procedure GetPAYMENTById(Id in number);
+PROCEDURE DeletePAYMENT(Id in Number);
+END PAYMENT_PACKAGE;
+
+
+
+create or replace PACKAGE BODY PAYMENT_PACKAGE
+AS
+PROCEDURE GETALLPAYMENT
+as
+CUR_ALL SYS_REFCURSOR;
+BEGIN
+OPEN CUR_ALL FOR
+SELECT * FROM PAYMENT;
+DBMS_SQL.RETURN_RESULT(CUR_ALL);
+end GETALLPAYMENT;
+
+PROCEDURE CreatePAYMENT(P_Amount IN number,G_NAME IN VARCHAR2,p_DATE IN DATE,c_RATE IN number,
+U_ID IN number,V_ID IN NUMBER,R_ID In NUMBER,result out number)
+AS
+pymid number ;
+BEGIN
+INSERT INTO payment VALUES(DEFAULT,P_Amount,G_NAME,p_DATE,c_RATE,U_ID,V_ID,R_ID)RETURNING PAY_ID into pymid;
+COMMIT;
+if pymid is null 
+ then result :=0;
+ else 
+ result :=pymid;
+ end if;
+END CreatePAYMENT;
+
+
+
+procedure GetPAYMENTById(Id in number)
+As
+cur_All SYS_REFCURSOR;
+Begin
+open cur_All for 
+select * from PAYMENT
+where user_id = id ;
+dbms_sql.return_result(cur_All);
+End GetPAYMENTById;
+
+PROCEDURE DeletePAYMENT(Id in Number)
+AS
+BEGIN 
+delete from PAYMENT
+where PAY_ID = Id ;
+commit;
+END DeletePAYMENT;
+
+END PAYMENT_PACKAGE;
+
+
+
+------------------------------------------------------------------------------------------------------------
+
+create or replace PACKAGE Rent_PACKAGE AS
+PROCEDURE GetAllRent;
+PROCEDURE CreatRent(startTimes IN number,ENDTimes IN number,G_ID IN number,U_ID in NUMBER,result out number);
+procedure GetRentById(Id in number);
+PROCEDURE DeleteRent(ID IN NUMBER);
+
+END Rent_PACKAGE;
+
+
+
+
+create or replace PACKAGE Body Rent_PACKAGE as
+PROCEDURE GetAllRent
+as
+CUR_ALL SYS_REFCURSOR;
+BEGIN
+OPEN CUR_ALL FOR
+SELECT * FROM rent;
+DBMS_SQL.RETURN_RESULT(CUR_ALL);
+end GetAllRent;
+
+procedure GetRentById(Id in number)
+As
+cur_All SYS_REFCURSOR;
+Begin
+open cur_All for 
+select * from rent
+where user_id =id ;
+dbms_sql.return_result(cur_All);
+End GetRentById;
+
+
+PROCEDURE CreatRent(startTimes IN number,ENDTimes IN number,G_ID IN number,U_ID in NUMBER,result out number)
+AS
+USERS_id number;
+
+
+BEGIN
+INSERT INTO rent VALUES(DEFAULT,startTimes,ENDTimes,G_ID,U_ID,DEFAULT) RETURNING RENT_ID into USERS_id;
+COMMIT;
+Update Garage set GARAGE_MODE='unavailable' WHERE GARAGE_ID =G_ID;
+COMMIT;
+if USERS_id is null 
+ then result :=0;
+ else 
+ result :=USERS_id;
+ end if;
+END CreatRent;
+
+PROCEDURE DeleteRent(ID IN NUMBER)
+As
+BEGIN
+DELETE rent WHERE RENT_ID =ID;
+COMMIT;
+END DeleteRent;
+
+END rent_Package;
+
+
+-------------------------------------------------------------------------------------------------------
+
+create or replace PACKAGE TESTIMONIAL_PACKAGE AS
+PROCEDURE GETALLTESTIMONIAL;
+PROCEDURE CreateTESTIMONIAL(U_Rating IN NUMBER,U_Opinion IN VARCHAR2,STATUS IN VARCHAR2,User_Id IN NUMBER,result out number);
+PROCEDURE UPDATETESTIMONIAL(Us_Id IN NUMBER,U_STATUS IN VARCHAR2,result out number);
+PROCEDURE DeleteTESTIMONIAL(U_id in Number);
+END TESTIMONIAL_PACKAGE;
+
+
+
+create or replace PACKAGE BODY TESTIMONIAL_PACKAGE
+AS
+PROCEDURE GETALLTESTIMONIAL
+as
+CUR_ALL SYS_REFCURSOR;
+BEGIN
+OPEN CUR_ALL FOR
+SELECT * FROM TESTIMONIAL;
+DBMS_SQL.RETURN_RESULT(CUR_ALL);
+
+end GETALLTESTIMONIAL;
+
+
+PROCEDURE CreateTESTIMONIAL(U_Rating IN NUMBER,U_Opinion IN VARCHAR2,STATUS IN VARCHAR2,User_Id IN NUMBER,result out number)
+AS
+U_id number ;
+BEGIN
+INSERT INTO TESTIMONIAL VALUES(DEFAULT,U_Rating,U_Opinion,'Waiting',User_Id)RETURNING ID into U_id;
+ COMMIT;
+if U_id is null 
+ then result :=0;
+ else 
+ result :=U_id;
+ end if;
+END CreateTESTIMONIAL; 
+
+PROCEDURE UPDATETESTIMONIAL(Us_Id IN NUMBER,U_STATUS IN VARCHAR2,result out number)
+AS
+U_id number ;
+BEGIN 
+UPDATE TESTIMONIAL SET STATUS=U_STATUS
+WHERE ID=Us_Id RETURNING ID into U_id;
+COMMIT;
+if U_id is null 
+ then result :=0;
+ else 
+ result :=U_id;
+ end if;
+END UPDATETESTIMONIAL;
+
+PROCEDURE DeleteTESTIMONIAL(U_id in Number)
+AS
+BEGIN 
+delete from TESTIMONIAL
+where ID = U_id ;
+commit;
+END DeleteTESTIMONIAL;
+
+END TESTIMONIAL_PACKAGE;
+
+
+
+--------------------------------------------------------------------------------------------------
+
+create or replace PACKAGE Users_Package AS
+PROCEDURE GETALLUSERS;
+procedure GetUSERById(Id in number);
+PROCEDURE CREATEUSER(FName IN VARCHAR2,LName IN VARCHAR2,U_email IN VARCHAR2,pass IN VARCHAR2,phone IN number,img in varchar2,U_identity IN VARCHAR2,role_id in number,result out number);
+PROCEDURE UPDATEUSER(ID IN NUMBER,FName IN VARCHAR2,LName IN VARCHAR2,U_email IN VARCHAR2,pass IN VARCHAR2,phone IN number,img in varchar2,U_identity IN VARCHAR2,role_id in number,result out number);
+PROCEDURE DeleteUsers(ID IN NUMBER);
+end Users_Package;
+
+
+
+
+create or replace PACKAGE Body Users_Package 
+as
+PROCEDURE GETALLUSERS
+as
+CUR_ALL SYS_REFCURSOR;
+BEGIN
+OPEN CUR_ALL FOR
+SELECT * FROM USERS;
+DBMS_SQL.RETURN_RESULT(CUR_ALL);
+end GETALLUSERS;
+
+procedure GetUSERById(Id in number)
+As
+cur_All SYS_REFCURSOR;
+Begin
+open cur_All for 
+select * from USERS
+where user_id = id ;
+dbms_sql.return_result(cur_All);
+End GetUSERById;
+
+PROCEDURE CREATEUSER(FName IN VARCHAR2,LName IN VARCHAR2,U_email IN VARCHAR2,pass IN VARCHAR2,phone IN number,img in varchar2,U_identity IN VARCHAR2,role_id in number,result out number)
+AS
+U_id number ;
+BEGIN
+INSERT INTO USERS VALUES(DEFAULT,FName,LName,U_email,pass,phone,img,U_identity,2)RETURNING USER_ID into U_id;
+COMMIT;
+if U_id is null 
+ then result :=0;
+ else 
+ result :=U_id;
+ end if;
+END CREATEUSER;
+
+PROCEDURE UPDATEUSER(ID IN NUMBER,FName IN VARCHAR2,LName IN VARCHAR2,U_email IN VARCHAR2,pass IN VARCHAR2,phone IN number,img in varchar2,U_identity IN VARCHAR2,role_id in number,result out number)
+AS
+U_id NUMBER ;
+BEGIN 
+UPDATE USERS SET FIRST_NAME=FName,LAST_NAME=LName,EMAIL=U_email,PASSWORD=pass,PHONENUMBER=phone ,USER_IMAGE =img,USER_identity=U_identity,ROLES_ID=role_id
+WHERE User_Id=ID RETURNING User_Id into U_id;
+COMMIT;
+if U_id is null 
+ then result :=0;
+ else 
+ result :=U_id;
+ end if;
+END UPDATEUSER;
+
+
+PROCEDURE DeleteUsers(ID IN NUMBER)
+As
+BEGIN
+DELETE USERS WHERE user_id =ID;
+COMMIT;
+END DeleteUsers;
+
+END Users_Package;
+
+-----------------------------------------------------------------------------------------------------------
+
+
+create or replace PACKAGE Visa_Package AS
+PROCEDURE GetAllVisa;
+procedure GetVisaById(Id in number);
+PROCEDURE DeleteVisa(ID IN NUMBER);
+PROCEDURE ChangeAmount(V_NUMBER IN NUMBER,V_AMOUNT IN VARCHAR2,result out number);
+
+end Visa_Package;
+
+
+
+create or replace PACKAGE Body Visa_PACKAGE as
+PROCEDURE GetAllVisa
+as
+CUR_ALL SYS_REFCURSOR;
+BEGIN
+OPEN CUR_ALL FOR
+SELECT * FROM Visa;
+DBMS_SQL.RETURN_RESULT(CUR_ALL);
+end GetAllVisa;
+
+procedure GetVisaById(Id in number)
+As
+cur_All SYS_REFCURSOR;
+Begin
+open cur_All for 
+select * from Visa
+where id = Visa_id  ;
+dbms_sql.return_result(cur_All);
+End GetVisaById;
+
+
+PROCEDURE DeleteVisa(ID IN NUMBER)
+As
+BEGIN
+DELETE Visa WHERE Visa_Id =ID;
+COMMIT;
+END DeleteVisa;
+
+PROCEDURE ChangeAmount(V_NUMBER IN NUMBER,V_AMOUNT IN VARCHAR2,result out number)
+AS
+uid number ;
+BEGIN 
+UPDATE Visa SET visa_amount=V_AMOUNT
+WHERE  visa_number=V_NUMBER RETURNING VISA_ID into uid;
+COMMIT;
+if uid is null 
+ then result :=0;
+ else 
+ result :=uid;
+ end if;
+END ChangeAmount;
+
+END Visa_Package;
+
+
+
+
