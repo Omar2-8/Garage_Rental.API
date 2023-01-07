@@ -20,7 +20,7 @@ namespace Garage_Rental.Core.Data
         public string Image2 { get; set; }
         public decimal? AVAILABLE_FROM { get; set; }
         public decimal? AVAILABLE_TO { get; set; }
-        public decimal? RENT_PRICE { get; set; }
+        public double? RENT_PRICE { get; set; }
         public string Street { get; set; }
         public decimal? BUILDING_NUMBER { get; set; }
         public string Status { get; set; }

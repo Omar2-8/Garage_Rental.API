@@ -14,7 +14,7 @@
                     <p-table
                     #dt1
                     [value]="admin.user"
-                    [globalFilterFields]="['firsT_NAME','lasT_NAME', 'email', 'phonenumber', 'useR_IDENTITY']"
+                    [globalFilterFields]="['useR_ID','firsT_NAME','lasT_NAME', 'email', 'phonenumber', 'useR_IDENTITY']"
                     [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]"
                     >
@@ -28,6 +28,10 @@
                       </ng-template>
                     <ng-template pTemplate="header">
                         <tr>
+                            <th>
+                                User ID
+                                <p-columnFilter type="number" field="useR_ID" display="menu"></p-columnFilter>
+                            </th>
                             <th>
                                 First Name
                                 <p-columnFilter type="text" field="firsT_NAME" display="menu"></p-columnFilter>
@@ -55,6 +59,7 @@
                     </ng-template>
                     <ng-template  pTemplate="body" let-obj>
                         <tr>
+                            <td>{{ obj.useR_ID }}</td>
                             <td>{{ obj.firsT_NAME }}</td>
                             <td>{{ obj.lasT_NAME }}</td>
                             <td>{{ obj.email }}</td>

@@ -181,7 +181,7 @@ temp_r:any;
           this.createPaym.value.paY_AMOUNT=this.userService.garage.renT_PRICE*(this.createForm.value.enD_TIME-this.createForm.value.starT_TIME);
           this.createPaym.value.garagE_NAME=this.userService.garage.garagE_NAME; 
           this.createPaym.value.paY_DATE=this.temp_r.renT_DATE.split('T')[0];
-          this.createPaym.value.commissioN_RATE=10;
+          this.createPaym.value.commissioN_RATE=1;
           this.createPaym.value.useR_ID=parseInt(this.userid);
           this.createPaym.value.visA_ID=this.visa_t[0].visA_ID;
           this.createPaym.value.renT_ID=this.temp_r.renT_ID;

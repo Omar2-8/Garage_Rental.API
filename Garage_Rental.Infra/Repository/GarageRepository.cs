@@ -26,7 +26,7 @@ namespace Garage_Rental.Infra.Repository
             p.Add("G_Longitude", t.Longitude, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("Img1", t.Image1, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("Img2", t.Image2, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("Price", t.RENT_PRICE, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("Price", t.RENT_PRICE, dbType: DbType.Double, direction: ParameterDirection.Input);
             p.Add("G_Street", t.Street, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("BUILDING_Num", t.BUILDING_NUMBER, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("U_ID", t.USER_ID, dbType: DbType.Int32, direction: ParameterDirection.Input);
@@ -77,7 +77,7 @@ namespace Garage_Rental.Infra.Repository
             p.Add("Img2", t.Image2, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("Available_Start", t.AVAILABLE_FROM, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("Available_End", t.AVAILABLE_TO, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("Price", t.RENT_PRICE, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("Price", t.RENT_PRICE, dbType: DbType.Double, direction: ParameterDirection.Input);
             p.Add("G_Street", t.Street, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("BUILDING_Num", t.BUILDING_NUMBER, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("G_MODE", t.GARAGE_MODE, dbType: DbType.String, direction: ParameterDirection.Input);
