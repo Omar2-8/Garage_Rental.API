@@ -121,7 +121,7 @@
         </div>
       </div>-->
 
-      <section class="site-section testimonial-wrap" id="testimonials-section">
+      <section class="site-section testimonial-wrap" id="testimonials-section" >
         <div class="container">
           <div class="row mb-5">
             <div class="col-12 text-center">
@@ -129,7 +129,7 @@
             </div>
           </div>
   
-          <div class="row" >
+          <div class="row" style="margin-left: 200px;">
               <div class="col-md-6 mb-4" *ngFor="let obj of home.testimonial_1">
                   <div class="ftco-testimonial-1" *ngFor="let obj_u of users.user">
                     <div class="ftco-testimonial-vcard d-flex align-items-center mb-4" *ngIf="obj_u.useR_ID==obj.useR_ID">
@@ -138,13 +138,13 @@
                         <h3>{{obj_u.firsT_NAME}} {{obj_u.lasT_NAME}}</h3>
                         <span *ngIf="obj.rating==1"><img src="../../../assets/images/star.jpg" alt="star"> </span>
                         <span *ngIf="obj.rating==2">
-                          <img src="../../../assets/images/star.jpg" alt="star">
-                          <img src="../../../assets/images/star.jpg" alt="star">
+                          <img src="../../../assets/images/star.jpg" class="test" width="2px" height="2px" alt="star">
+                          <img src="../../../assets/images/star.jpg" class="test" width="2px" height="2px" alt="star">
                         </span>
                         <span *ngIf="obj.rating==3">
-                          <img src="../../../assets/images/star.jpg" alt="star">
-                          <img src="../../../assets/images/star.jpg" alt="star">
-                          <img src="../../../assets/images/star.jpg" alt="star">
+                          <img src="../../../assets/images/star.jpg" class="test" width="2px" height="2px" alt="star">
+                          <img src="../../../assets/images/star.jpg" class="test" width="2px" height="2px" alt="star">
+                          <img src="../../../assets/images/star.jpg" class="test" width="2px" height="2px" alt="star">
                         </span>
                         <span *ngIf="obj.rating==4">
                           <img src="../../../assets/images/star.jpg" class="test" width="2px" height="2px" alt="star">
@@ -153,11 +153,11 @@
                           <img src="../../../assets/images/star.jpg" class="test" width="2px" height="2px" alt="star">
                         </span>
                         <span *ngIf="obj.rating==5">
-                          <img src="../../../assets/images/star.jpg" alt="star">
-                          <img src="../../../assets/images/star.jpg" alt="star">
-                          <img src="../../../assets/images/star.jpg" alt="star">
-                          <img src="../../../assets/images/star.jpg" alt="star">
-                          <img src="../../../assets/images/star.jpg" alt="star">
+                          <img src="../../../assets/images/star.jpg" class="test" width="2px" height="2px" alt="star">
+                          <img src="../../../assets/images/star.jpg" class="test" width="2px" height="2px" alt="star">
+                          <img src="../../../assets/images/star.jpg" class="test" width="2px" height="2px" alt="star">
+                          <img src="../../../assets/images/star.jpg" class="test" width="2px" height="2px" alt="star">
+                          <img src="../../../assets/images/star.jpg" class="test" width="2px" height="2px" alt="star">
                         </span>
                         <div>
                           <h6 >{{obj.opinion}}</h6>
@@ -192,10 +192,28 @@
                     <li><a href="#"><span class="icon-linkedin"></span></a></li>
                     <li><a href="#"><span class="icon-instagram"></span></a></li>
                   </ul>
-                  <img style="width: 450px;height: 300px;" src="../../../assets/images/omar.jpg" alt="Free website template by Free-Template.co" class="img-fluid">
+                  <img style="width: 450px;height: 300px;" src="../../../assets/images/IMG_3257.jpg" alt="Free website template by Free-Template.co" class="img-fluid">
                 </figure>
                 <div class="p-3 bg-primary">
-                  <h3 class="mb-2">Omar AL-Ghouti</h3>
+                  <h3 class="mb-2">Bashar Nidal </h3>
+                  <span class="position">Developer</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3 mb-3">
+              <div class="team-member">
+                <figure>
+                  <ul class="social">
+                    <li><a href="#"><span class="icon-facebook"></span></a></li>
+                    <li><a href="#"><span class="icon-twitter"></span></a></li>
+                    <li><a href="#"><span class="icon-linkedin"></span></a></li>
+                    <li><a href="#"><span class="icon-instagram"></span></a></li>
+                  </ul>
+                  <img style="width: 450px;height: 300px;" src="../../../assets/images/IMG_3627.jpg" alt="Free website template by Free-Template.co" class="img-fluid">
+                </figure>
+                <div class="p-3 bg-primary">
+                  <h3 class="mb-2">Ali Jaara </h3>
                   <span class="position">Developer</span>
                 </div>
               </div>
@@ -210,7 +228,7 @@
                     <li><a href="#"><span class="icon-linkedin"></span></a></li>
                     <li><a href="#"><span class="icon-instagram"></span></a></li>
                   </ul>
-                  <img src="../../../assets/images/me1.jpeg"style="width: 450px;height: 300px;" alt="Free website template by Free-Template.co" class="img-fluid">
+                  <img src="../../../assets/images/IMG_3543.jpg"style="width: 450px;height: 300px;" alt="Free website template by Free-Template.co" class="img-fluid">
                 </figure>
                 <div class="p-3 bg-primary">
                   <h3 class="mb-2">Zaid Abu Sailek</h3>
@@ -228,7 +246,7 @@
                     <li><a href="#"><span class="icon-linkedin"></span></a></li>
                     <li><a href="#"><span class="icon-instagram"></span></a></li>
                   </ul>
-                  <img src="../../../assets/images/falah1.jpg"  style="width: 450px;height: 300px;" alt="Free website template by Free-Template.co" class="img-fluid">
+                  <img src="../../../assets/images/IMG_3572.jpg"  style="width: 450px;height: 300px;" alt="Free website template by Free-Template.co" class="img-fluid">
                 </figure>
                 <div class="p-3 bg-primary">
                   <h3 class="mb-2">Falah Al-kharabsheh
@@ -237,7 +255,10 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-6 col-lg-3 mb-3">
+            <div class="row"> 
+
+              <div class="col-md-6 col-lg-4 mb-4" ></div>
+            <div class="col-md-6 col-lg-4 mb-4" >
               <div class="team-member">
                 <figure>
                   <ul class="social">
@@ -246,14 +267,20 @@
                     <li><a href="#"><span class="icon-linkedin"></span></a></li>
                     <li><a href="#"><span class="icon-instagram"></span></a></li>
                   </ul>
-                  <img src="../../../assets/images/ali.jpg"style="width: 350px;height: 300px;" alt="Free website template by Free-Template.co" class="img-fluid">
+                  <img src="../../../assets/images/IMG_3627.jpg"style="width: 350px;height: 300px;" alt="Free website template by Free-Template.co" class="img-fluid">
                 </figure>
                 <div class="p-3 bg-primary">
-                  <h3 class="mb-2">Ali Jaara</h3>
+                  <h3 class="mb-2">Zaid Al-Kharshan </h3>
                   <span class="position">Developer</span>
                 </div>
               </div>
             </div>
+            
+            <div class="col-md-6 col-lg-4 mb-4" ></div>
+
+          </div>
+
+
           </div>
         </div>
       </section>

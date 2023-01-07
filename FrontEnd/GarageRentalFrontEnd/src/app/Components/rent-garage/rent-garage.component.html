@@ -4,7 +4,7 @@
           <div class="row align-items-center justify-content-center">
             <div class="col-md-5 mx-auto mt-lg-5 text-center">
               <h1>Welcome To Garage Rental</h1>
-              <p class="mb-5"><strong class="text-white">$2,000,000</strong></p>
+              <!-- <p class="mb-5"><strong class="text-white">$2,000,000</strong></p> -->
               
             </div>
           </div>
@@ -27,15 +27,23 @@
               </div>
             </div>
             <div class="col-lg-6">
-              <div> <h1 >Garage Name:<strong style=" color: #37cfa2;"> {{ userService.garage.garagE_NAME }}</strong> </h1></div>
-              <br>
-              <div><H2 >Rent Price :<strong style=" color: #37cfa2;">{{  userService.garage.renT_PRICE }}$</strong></H2></div><br>
-              <div><h2>Available From :<strong style=" color: #37cfa2;">{{userService.garage.availablE_FROM }}</strong></h2> </div><br>
-              <div><h2>Available To :<strong style=" color: #37cfa2;"> {{  userService.garage.availablE_TO }}</strong></h2></div><br>
-              <div><h2>Street :<strong style=" color: #37cfa2;">{{  userService.garage.street }}</strong></h2></div><br>
-              <div><h2>Building Number :<strong style=" color: #37cfa2;">{{  userService.garage.buildinG_NUMBER }} </strong></h2></div><br>
-              <div><h2>Garage Mode :<strong style=" color: #37cfa2;">{{  userService.garage.garagE_MODE }}</strong> </h2></div><br>
-             
+
+              <div *ngFor="let obj_u of userService.user">
+                <div *ngIf="obj_u.useR_ID==userService.garage.useR_ID">
+                  <div><H2 >Owner  : <strong style=" color: #37cfa2;">{{ obj_u.firsT_NAME }} {{ obj_u.lasT_NAME }}</strong></H2></div><br>
+                  <div><H2 >Phone  : <strong style=" color: #37cfa2;">{{ obj_u.phonenumber }}</strong></H2></div>
+                </div>
+              </div><br>
+              <!-- <div> <h1 >Garage Name:<strong style=" color: #37cfa2;"> {{ userService.garage.garagE_NAME }}</strong> </h1></div>
+              <br> -->
+              <div><H2 >Rent Price : <strong style=" color: #37cfa2;">{{  userService.garage.renT_PRICE }} JD</strong></H2></div><br>
+              <div><h2>Available From : <strong style=" color: #37cfa2;">{{userService.garage.availablE_FROM }} - {{userService.garage.availablE_TO }}</strong></h2> </div><br>
+              <!-- <div><h2>Available To :<strong style=" color: #37cfa2;"> {{userService.garage.availablE_TO }}</strong></h2></div><br> -->
+              <div><h2>Street : <strong style=" color: #37cfa2;">{{  userService.garage.street }}</strong></h2></div><br>
+              <div><h2>Building Number : <strong style=" color: #37cfa2;">{{  userService.garage.buildinG_NUMBER }} </strong></h2></div><br>
+              <div *ngIf="userService.garage.garagE_MODE=='available'"><h2>Garage Mode : <strong style=" color: #37cfa2;">{{  userService.garage.garagE_MODE }}</strong> </h2> <br></div>
+              <div *ngIf="userService.garage.garagE_MODE=='unavailable'"><h2>Garage Mode : <strong style=" color: #e20404;">{{  userService.garage.garagE_MODE }}</strong> </h2></div><br>
+
               <button href="#"  style="width:50%;" class="btn btn-primary"(click)="openVisaDailog()">Add Visa</button>
               
               <button style="width:50%;" href="#" class="btn btn-primary"(click)="openCarDailog()">Select Car</button>

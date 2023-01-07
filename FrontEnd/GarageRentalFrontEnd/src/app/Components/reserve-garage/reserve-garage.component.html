@@ -28,8 +28,7 @@
     <div class="w3-container w3-center w3-animate-top "  style="text-align:center;">
     <p-card   class="m-5 "  
    
-      header="{{ garageCard.garagE_NAME }}"
-      subheader="{{ garageCard.renT_PRICE }}"
+      header="{{ garageCard.garagE_MODE }}"
       [style]="{ width: '900px'  }"
     
       styleClass="p-card-shadow"
@@ -38,10 +37,10 @@
         <img style="height: 200px;" alt="Card" src="../../../assets/images/{{garageCard.image1}}"/>
       </ng-template>
       <p>
-        Rent Price: {{ garageCard.renT_PRICE }} <br />
-        available from {{ garageCard.availablE_FROM }} to
-        {{ garageCard.availablE_TO }}<br />
-        building Number {{ garageCard.buildinG_NUMBER }} in street{{
+        Rent Price: <b>{{ garageCard.renT_PRICE }} JD</b><br />
+        Available From: <b>({{ garageCard.availablE_FROM }} -
+        {{ garageCard.availablE_TO }})</b><br />
+        Building Number <b>({{ garageCard.buildinG_NUMBER }})</b><br> Street.{{
           garageCard.street
         }}
       </p>
