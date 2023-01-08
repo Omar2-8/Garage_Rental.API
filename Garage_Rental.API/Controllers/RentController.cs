@@ -57,5 +57,6 @@ namespace Garage_Rental.API.Controllers
         {
             _rentService.Update(rent);
         }
+
     }
 }

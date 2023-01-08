@@ -104,5 +104,36 @@ namespace Garage_Rental.API.Controllers
                 clinte.Disconnect(true);
             }
         }
+        [HttpGet]
+        [Route("{ParentEmail}/{status}")]
+        public void SendEmail2(String ParentEmail, String status)
+        {
+            MimeMessage message = new MimeMessage();
+            MailboxAddress from = new MailboxAddress("Garage Rental", "s.moe12@yahoo.com");
+            message.From.Add(from);
+            MailboxAddress to = new MailboxAddress("User", ParentEmail);
+            message.To.Add(to);
+            message.Subject = "Your Garage (rented)";
+            BodyBuilder bodyBuilder = new BodyBuilder();
+            if (status == null)
+            {
+                bodyBuilder.HtmlBody =
+                "<p>Your Garage is not rented <b style=\"color:#7fb685\"></b></p> ";
+            }
+            else
+            {
+                bodyBuilder.HtmlBody =
+                status;
+
+            }
+            message.Body = bodyBuilder.ToMessageBody();
+            using (var clinte = new SmtpClient())
+            {
+                clinte.Connect("smtp.mail.yahoo.com", 465, true);
+                clinte.Authenticate("s.moe12@yahoo.com", "rxlhovtglvjibneg");
+                clinte.Send(message);
+                clinte.Disconnect(true);
+            }
+        }
     }
 }

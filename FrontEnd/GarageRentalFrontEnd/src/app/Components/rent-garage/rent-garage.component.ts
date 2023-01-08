@@ -6,6 +6,8 @@ import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Visa } from 'src/app/Models/visa.model';
 import { UserService } from 'src/app/Services/user.service';
+import { User } from 'src/app/Models/user.model';
+import { parse } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
   selector: 'app-rent-garage',
@@ -154,7 +156,24 @@ export class RentGarageComponent implements OnInit {
       this.toastr.error('Please Choose You Car For Rent!');
   }
 }
+UserData: User = {
+  USER_ID: 0,
+  FIRST_NAME: '',
+  LAST_NAME: '',
+  email: '',
+  Password: '',
+  Phonenumber: 0,
+  USER_IMAGE: '',
+  USER_IDENTITY: '',
+  ROLES_ID: 0,
+  Cars: [],
+  Garages: [],
+  Payments: [],
+  Rents: [],
+  Testimonials: [],
+};
 temp_r:any;
+ xs:any;
   saveData() {
    
     debugger
@@ -189,6 +208,13 @@ temp_r:any;
           this.userService.ChangeAmountVisa(this.ChangeAmount.value);
           this.userService.createRent(this.createForm.value);
           this.userService.createpay(this.createPaym.value);
+          this.userService.getAllUsers();
+          this.xs=this.userService.user.filter(x=>x.useR_ID==this.userService.garage.useR_ID);
+          
+         this.adminService.SendEmail2(this.xs[0].email, 'Your Garage is rented now from '+this.createForm.value.starT_TIME+':00 to '+this.createForm.value.enD_TIME+':00'+
+         ' User Name:'+(this.xs[0].firsT_NAME)+' '+this.xs[0].lasT_NAME+' Phonenumber: '+this.xs[0].phonenumber);
+
+            
         }//end payment create
 
         }

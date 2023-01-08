@@ -86,6 +86,14 @@ export class AdminService {
       this.toster.error(err.message, err.status);
     })
   }
+  SendEmail2(email: string,status:string) {
+    debugger;
+    this.http.get(this.baseApiUrl+'Users/SendEmail2/'+ email+"/"+status).subscribe((resp: any) => {
+      this.toster.success('THe email sending!!');
+    }, err => {
+      this.toster.error(err.message, err.status);
+    })
+  }
 
   deleteGarage(id:number)
   {
