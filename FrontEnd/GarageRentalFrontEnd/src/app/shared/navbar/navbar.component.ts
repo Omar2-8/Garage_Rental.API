@@ -8,12 +8,14 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
   logout: boolean = false;
+  profile: boolean=false;
   constructor(private router: Router) {}
 
   ngOnInit(): void {
     debugger;
     if (window.localStorage.getItem('token')) {
       this.logout = true;
+      this.profile=true;
     }
   }
 

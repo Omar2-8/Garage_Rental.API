@@ -17,7 +17,7 @@ export class RegisterComponent implements OnInit {
     password :new FormControl('',[Validators.required,Validators.minLength(8)]),
     phonenumber:new FormControl('',[Validators.required,Validators.minLength(9)]),
     useR_IMAGE:new FormControl(),
-    useR_IDENTITY:new FormControl('',[Validators.required]),
+    useR_IDENTITY:new FormControl('',[Validators.required,Validators.minLength(10),Validators.maxLength(10)]),
     
     
   })
@@ -26,6 +26,10 @@ export class RegisterComponent implements OnInit {
   p_data :any={};
   
   submit(){
+    if(this.registerForm.invalid)
+    {
+      return
+    }
     this.user.createUser(this.registerForm.value);
     this.spinner.show();
     setTimeout(()=>{

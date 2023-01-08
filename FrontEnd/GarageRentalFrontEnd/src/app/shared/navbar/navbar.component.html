@@ -32,8 +32,8 @@
             <li *ngIf="!logout"><a routerLink="/security/login" class="nav-link">Login</a></li>
             <li *ngIf="logout"><a routerLink="/security/login" class="nav-link" (click)="Logout()">Logout</a></li>
 
-            <li><a routerLink="/security/register" class="nav-link">Register</a></li>
-            <li><a routerLink="/userProfile/Profile" class="nav-link">Profile</a></li>
+            <li *ngIf="!logout"><a routerLink="/security/register" class="nav-link">Register</a></li>
+            <li *ngIf="profile"><a routerLink="/userProfile/Profile" class="nav-link">Profile</a></li>
           </ul>
         </nav>
       </div>
